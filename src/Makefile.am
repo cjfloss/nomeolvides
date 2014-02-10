@@ -51,6 +51,7 @@ nomeolvides_SOURCES = \
 	nomeolvides-dialog-preferencias.vala \
 	nomeolvides-hecho.vala \
 	nomeolvides-interfaz-principal.vala \
+	nomeolvides-linea-de-tiempo.vala \
 	nomeolvides-lista.vala \
 	nomeolvides-liststore-anios.vala \
 	nomeolvides-liststore-base.vala \
@@ -73,8 +74,6 @@ nomeolvides_SOURCES = \
 	nomeolvides-utiles.vala \
 	nomeolvides-ventana-principal.vala \
 	$(NULL)
-
-
 
 nomeolvides-resources.c: nomeolvides.gresource.xml
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(srcdir)/nomeolvides.gresource.xml \

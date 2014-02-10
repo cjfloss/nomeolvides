@@ -26,8 +26,10 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	public InterfazPrincipal anios_hechos { get; private set; }
 	private int anio_actual;
 	private Lista lista_actual;
+	private LineaDeTiempo linea;
 
-	public VentanaPrincipal ( Gtk.Application app ) {
+	public VentanaPrincipal ( Gtk.Application app )
+	{
 		Object (application: app);
 		this.set_application (app);
 		this.set_title ("Nomeolvides v" + Config.VERSION );
@@ -42,6 +44,8 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 		this.anios_hechos = new InterfazPrincipal ();
 		
 		this.add (main_box);
+
+		this.linea = new LineaDeTiempo ();
 		
 		this.toolbar = new Nomeolvides.Toolbar ();
 
@@ -93,6 +97,7 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 		this.set_titlebar ( toolbar );
 	#endif
 		this.main_box.pack_start ( anios_hechos, true, true, 0 );
+		this.main_box.pack_start (linea, true, true, 0);
 
 		this.conectar_seniales ();
 	}
