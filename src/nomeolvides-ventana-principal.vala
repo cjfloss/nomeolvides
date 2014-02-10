@@ -240,6 +240,10 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 		}
 	}
 
+	public void cargar_linea_de_tiempo (Array<Hecho> hechos) {
+		this.linea.set_hechos ( hechos );
+	}
+
 	public void show_visible () {
 		this.show_all ();
 		this.anios_hechos.mostrar_scroll_vista ( false );
