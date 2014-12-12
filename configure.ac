@@ -20,7 +20,7 @@ AX_IS_RELEASE([micro-version])
 dnl ***********************************************************************
 dnl Initialize autoconf
 dnl ***********************************************************************
-AC_INIT([Nomeolvides],[package_version],[bug_report_url],[nomeolvides])
+AC_INIT([Nomeolvides-git],[package_version],[bug_report_url],[nomeolvides-git])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR([NEWS])
 AC_CONFIG_MACRO_DIR([m4])
@@ -120,8 +120,8 @@ dnl ***********************************************************************
 PKG_CHECK_MODULES(GTK_MODULE, [gtk+-3.0 >= 3.18])
 PKG_CHECK_MODULES(SQLITE_MODULE, [sqlite3 >= 3.0])
 
-nomeolvideslocaledir='${prefix}/${DATADIRNAME}/locale'
-AC_SUBST(nomeolvideslocaledir)
+nomeolvides_gitlocaledir='${prefix}/${DATADIRNAME}/locale'
+AC_SUBST(nomeolvides_gitlocaledir)
 
 GLIB_COMPILE_RESOURCES=`$PKG_CONFIG --variable glib_compile_resources gio-2.0`
 AC_SUBST(GLIB_COMPILE_RESOURCES)
@@ -130,7 +130,7 @@ AC_OUTPUT([
 Makefile
 src/Makefile
 data/Makefile
-data/ar.com.softwareperonista.Nomeolvides.desktop.in
+data/ar.com.softwareperonista.Nomeolvides-git.desktop.in
 po/Makefile.in
 ],[],
 [API_VERSION='$API_VERSION'])

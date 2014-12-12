@@ -37,5 +37,5 @@ src/nomeolvides-notebook-anios-listas.ui
 src/nomeolvides-dialog-hecho.ui
 src/nomeolvides-treeview-hechos.ui
 src/nomeolvides-dialog-hecho-borrar.ui
-data/ar.com.softwareperonista.Nomeolvides.desktop.in.in
-data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in
+data/ar.com.softwareperonista.Nomeolvides-git.desktop.in.in
+data/ar.com.softwareperonista.Nomeolvides-git.appdata.xml.in

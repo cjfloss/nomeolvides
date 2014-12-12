@@ -20,7 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides/nomeolvides-selector-fecha.ui" )]
+[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides-git/nomeolvides-selector-fecha.ui" )]
 public class Nomeolvides.SelectorFecha : Grid {
   [GtkChild]
 	private SpinButton spinbutton_dia;

@@ -20,7 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides/nomeolvides-ventana-principal.ui" )]
+[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides-git/nomeolvides-ventana-principal.ui" )]
 public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	[GtkChild]
 	public HeaderBar headerbar;

@@ -20,7 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides/nomeolvides-treeview-anios.ui" )]
+[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides-git/nomeolvides-treeview-anios.ui" )]
 public class Nomeolvides.TreeViewAnios : TreeView {
 	private ListStoreAnios lista;
 

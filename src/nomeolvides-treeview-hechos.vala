@@ -19,7 +19,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides/nomeolvides-treeview-hechos.ui" )]
+[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides-git/nomeolvides-treeview-hechos.ui" )]
 public class Nomeolvides.TreeViewHechos : Gtk.TreeView {
 	public int anio_actual { get; private set; }
 

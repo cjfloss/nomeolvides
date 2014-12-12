@@ -20,7 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides/nomeolvides-toolbar.ui" )]
+[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides-git/nomeolvides-toolbar.ui" )]
 public class Nomeolvides.Toolbar : Nomeolvides.HeaderBar {
 	public Toolbar () {}
 

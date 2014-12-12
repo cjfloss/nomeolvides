@@ -228,8 +228,8 @@ msgstr "Año"
 #: src/nomeolvides-headerbar.vala:47 src/nomeolvides-headerbar.vala:55
 #: data/ar.com.softwareperonista.Nomeolvides.desktop.in.in:9
 #: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:6
-msgid "Nomeolvides"
-msgstr "Nomeolvides"
+msgid "Nomeolvides Beta"
+msgstr "Nomeolvides Beta"
 
 #: src/nomeolvides-headerbar.vala:80 src/nomeolvides-headerbar.ui:55
 msgid "Add to list"

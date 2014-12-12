@@ -2,9 +2,9 @@
 
 ## Created by Anjuta
 
-bin_PROGRAMS = nomeolvides
+bin_PROGRAMS = nomeolvides-git
 
-nomeolvides_SOURCES = \
+nomeolvides_git_SOURCES = \
 	config.vapi \
 	nomeolvides-acciones-db.vala \
 	nomeolvides-app.vala \
@@ -68,26 +68,25 @@ nomeolvides_SOURCES = \
 	$(NULL)
 
 nomeolvides-resources.c: nomeolvides.gresource.xml
-	$(AM_V_GEN) glib-compile-resources --sourcedir=$(srcdir) --target=$@ --c-name nomeolvides --generate-source $<
+	$(AM_V_GEN) glib-compile-resources --sourcedir=$(srcdir) --target=$@ --c-name nomeolvides_git --generate-source $<
 
-nomeolvides_CFLAGS = \
+nomeolvides_git_CFLAGS = \
 	-include config.h \
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\" \
 	$(GTK_MODULE_CFLAGS) \
 	$(SQLITE_MODULE_CFLAGS) \
 	$(NULL)
 
-nomeolvides_LDADD = \
+nomeolvides_git_LDADD = \
 	$(GTK_MODULE_LIBS) \
 	$(SQLITE_MODULE_LIBS) \
 	$(NULL)
 
-nomeolvides_LDFLAGS = \
+nomeolvides_git_LDFLAGS = \
 	$(WARN_LDFLAGS) \
 	$(NULL)
 
-
-nomeolvides_VALAFLAGS = \
+nomeolvides_git_VALAFLAGS = \
 	--thread \
 	--target-glib=2.44 \
 	--pkg glib-2.0 \
@@ -96,15 +95,14 @@ nomeolvides_VALAFLAGS = \
 	--gresources nomeolvides.gresource.xml \
 	$(NULL)
 
-
 if PLATFORM_WIN32
-nomeolvides_LDFLAGS += -Wl,--export-all-symbols
+nomeolvides_git_LDFLAGS += -Wl,--export-all-symbols
 else
-nomeolvides_LDFLAGS += -Wl,--export-dynamic
+nomeolvides_git_LDFLAGS += -Wl,--export-dynamic
 endif
 
 if NATIVE_WIN32
-nomeolvides_LDFLAGS += -mwindows
+nomeolvides_git_LDFLAGS += -mwindows
 endif
 
 EXTRA_DIST = 	$(ui_DATA) \

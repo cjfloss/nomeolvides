@@ -19,7 +19,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides/nomeolvides-stack-hechos-dialog.ui" )]
+[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides-git/nomeolvides-stack-hechos-dialog.ui" )]
 public class Nomeolvides.StackHechosDialog : Gtk.Stack {
 	[GtkChild]
   private TreeViewHechos treeview_muchos_hechos;

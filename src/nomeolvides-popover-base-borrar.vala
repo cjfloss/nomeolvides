@@ -20,7 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui= "/ar/com/softwareperonista/nomeolvides/nomeolvides-popover-base-borrar.ui" )]
+[GtkTemplate ( ui= "/ar/com/softwareperonista/nomeolvides-git/nomeolvides-popover-base-borrar.ui" )]
 public class Nomeolvides.PopoverBaseBorrar : Popover {
 	[GtkChild]
 	protected Label label_pregunta;

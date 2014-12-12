@@ -20,7 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui= "/ar/com/softwareperonista/nomeolvides/nomeolvides-popover-lista-agregar.ui" )]
+[GtkTemplate ( ui= "/ar/com/softwareperonista/nomeolvides-git/nomeolvides-popover-lista-agregar.ui" )]
 public class Nomeolvides.PopoverListaAgregar : PopoverBase {
 	public PopoverListaAgregar ( Widget relative_to ) {
 		base ( relative_to );
