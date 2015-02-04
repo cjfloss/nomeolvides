@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2015 Fernando Fernandez <fernando@softwareperonista.com.ar -->
 <application>
   <id type="desktop">nomeolvides.desktop</id>
-  <licence>CC-BY-SA</licence>
+  <metadata_license>CC-BY-SA</metadata_license>
+  <project_license>GPL-3.0</project_license>
   <name>Nomeolvides</name>
   <description>
     <_p>
