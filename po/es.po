@@ -1,15 +1,15 @@
 # Nomeolvides.
 # Copyright (C) 2013,2014 Software Peronista.
 # This file is distributed under the same license as the Nomeolvides package.
-# Fernando Fernandez <fernando@softwareperonista.com.ar>, 2013, 2014.
+# Fernando Fernandez <fernando@softwareperonista.com.ar>, 2013, 2014, 2015.
 #
 #: ../src/nomeolvides-dialog-base.vala:50
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.9.556\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-03 11:28-0300\n"
-"PO-Revision-Date: 2014-04-27 18:32-0300\n"
+"POT-Creation-Date: 2015-02-04 20:04-0300\n"
+"PO-Revision-Date: 2015-02-04 20:02-0300\n"
 "Last-Translator: Fernando Fernandez <fernando@softwareperonista.com.ar>\n"
 "Language-Team: Español <nomeolvides@softwareperonista.com.ar>\n"
 "Language: es \n"
@@ -23,15 +23,28 @@ msgid ""
 "A simple historical facts manager featuring a number of basic actions such "
 "as add historical facts in differents collections, edit and organize them in "
 "personalized lists created by the user and import/export facts for backup or "
-"sharing. It focuses on providing a friendly user interface even when manage "
-"a great amount of facts."
+"sharing."
 msgstr ""
 "Un gestor de hechos históricos sencillo que implementa un conjunto básico de "
 "acciones, tales como agregar hechos históricos en diferentes colecciones, "
 "editarlos y organizarlos en listas personalizadas creadas por el usuario y "
-"importar/exportar hechos para hacer copias de seguridad o compartirlos. Está "
-"enfocado en ofrecer una interface amigable aun manejando una gran cantidad "
-"de hechos."
+"importar/exportar hechos para hacer copias de seguridad o compartirlos."
+
+#: ../data/nomeolvides.appdata.xml.in.h:2
+msgid ""
+"It focuses on providing a friendly user interface even when manage a great "
+"amount of facts."
+msgstr ""
+"Está enfocado en ofrecer una interfaz amigable aun manejando una gran "
+"cantidad de hechos."
+
+#: ../data/nomeolvides.appdata.xml.in.h:3
+msgid "The default interface"
+msgstr "Interfaz por Defecto"
+
+#: ../data/nomeolvides.appdata.xml.in.h:4
+msgid "The classic interface"
+msgstr "Interfaz Clásica"
 
 #: ../data/nomeolvides.desktop.in.in.h:1
 msgid "history;facts;"
