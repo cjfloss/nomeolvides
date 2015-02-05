@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.9.556\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-04 20:04-0300\n"
+"POT-Creation-Date: 2015-02-04 23:52-0300\n"
 "PO-Revision-Date: 2015-02-04 20:02-0300\n"
 "Last-Translator: Fernando Fernandez <fernando@softwareperonista.com.ar>\n"
 "Language-Team: Español <nomeolvides@softwareperonista.com.ar>\n"
@@ -85,8 +85,8 @@ msgstr "Elija un Archivo"
 
 #: ../src/nomeolvides-dialog-archivo-abrir.vala:33
 #: ../src/nomeolvides-dialog-archivo-guardar.vala:32
-#: ../src/nomeolvides-dialog-base-borrar.vala:73
-#: ../src/nomeolvides-dialog-base-borrar.vala:97
+#: ../src/nomeolvides-dialog-base-borrar.vala:74
+#: ../src/nomeolvides-dialog-base-borrar.vala:98
 #: ../src/nomeolvides-dialog-base.vala:37
 #: ../src/nomeolvides-dialog-base.vala:42
 #: ../src/nomeolvides-dialog-coleccion.vala:32
@@ -113,8 +113,8 @@ msgstr "Guardar Archivo"
 msgid "Save"
 msgstr "Guardar"
 
-#: ../src/nomeolvides-dialog-base-borrar.vala:74
-#: ../src/nomeolvides-dialog-base-borrar.vala:98
+#: ../src/nomeolvides-dialog-base-borrar.vala:75
+#: ../src/nomeolvides-dialog-base-borrar.vala:99
 #: ../src/nomeolvides-dialog-base.vala:43
 msgid "Apply"
 msgstr "Aplicar"
