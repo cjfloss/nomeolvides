@@ -4,7 +4,8 @@
   <id type="desktop">nomeolvides.desktop</id>
   <metadata_license>CC-BY-SA</metadata_license>
   <project_license>GPL-3.0</project_license>
-  <name>Nomeolvides</name>
+  <_name>Nomeolvides</_name>
+  <_summary>Ephemeride Manager</_summary>
   <description>
     <_p>
       A simple historical facts manager featuring a number of basic actions
