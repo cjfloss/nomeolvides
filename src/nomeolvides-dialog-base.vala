@@ -27,7 +27,7 @@ public class Nomeolvides.DialogBase : Gtk.Popover {
 	protected Button aplicar_button;
 	protected Button cancelar_button;
 #endif
-	protected Entry nombre_entry;
+	public Entry nombre_entry;
 	protected int64 id;
 	public Base respuesta { get; protected set; }
 	protected Label nombre_label;
@@ -48,7 +48,6 @@ public class Nomeolvides.DialogBase : Gtk.Popover {
 #endif
 		this.modal = true;	
 		this.nombre_label = new Label.with_mnemonic ( _("") + ": " );
-
 		this.nombre_entry = new Entry ( );
 		this.nombre_entry.set_max_length ( 30 );
 
@@ -77,6 +76,7 @@ public class Nomeolvides.DialogBase : Gtk.Popover {
 		grid.attach ( this.aplicar_button, 1, 1, 1, 1 );
 		this.add ( grid );
 	#endif
+		this.nombre_entry.grab_focus ();
 	}
 #if DISABLE_GNOME3
 	protected void on_response (Dialog source, int response_id) {
