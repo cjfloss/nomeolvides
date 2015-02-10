@@ -24,7 +24,8 @@ public class Nomeolvides.DialogListaEditar : DialogBase {
 #if DISABLE_GNOME3
 	public DialogListaEditar () {
 		this.title = _("Edit Custom List");
-		this.add_button ( _("Edit") , ResponseType.APPLY);
+		Button boton_apply = this.get_widget_for_response ( ResponseType.APPLY ) as Button;
+		boton_apply.set_label ( _("Edit") );
 #else
 	public Base objeto_viejo;
 	public DialogListaEditar ( Widget relative_to ) {

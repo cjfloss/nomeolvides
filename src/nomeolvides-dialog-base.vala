@@ -36,6 +36,7 @@ public class Nomeolvides.DialogBase : Gtk.Popover {
 	public DialogBase () {
 		this.resizable = false;
 		this.add_button ( _("Cancel") , ResponseType.CLOSE );
+		this.add_button ( _("Apply") , ResponseType.APPLY);
 		this.response.connect(on_response);
 #else
 	public DialogBase ( Gtk.Widget relative_to ) {
@@ -77,6 +78,7 @@ public class Nomeolvides.DialogBase : Gtk.Popover {
 	#if DISABLE_GNOME3
 		var contenido = this.get_content_area() as Box;
 		contenido.pack_start( grid, true, true, 0 );
+		this.get_widget_for_response ( ResponseType.APPLY ).set_sensitive ( false );
 	#else
 		grid.attach ( this.cancelar_button, 0, 1, 1, 1 );
 		grid.attach ( this.aplicar_button, 1, 1, 1, 1 );
@@ -102,10 +104,27 @@ public class Nomeolvides.DialogBase : Gtk.Popover {
 	public virtual void set_datos ( Base objeto ) {
 		this.nombre_entry.set_text ( objeto.nombre );
 		this.nombre_hecho = objeto.nombre;
+	#if DISABLE_GNOME3
+		this.get_widget_for_response ( ResponseType.APPLY ).set_sensitive ( false );
+	#else
 		this.aplicar_button.set_sensitive ( false );
+	#endif
 		this.id = objeto.id;
 	}
 
+	
+	public void borrar_datos () {
+		this.nombre_entry.set_text ("");
+	}
+#if DISABLE_GNOME3
+	public virtual void activar_boton_aplicar () {
+		if ( this.nombre_entry.get_text_length () > 0 && this.nombre_entry.get_text () != this.nombre_hecho ) {
+			this.get_widget_for_response ( ResponseType.APPLY ).set_sensitive ( true );
+		} else {
+			this.get_widget_for_response ( ResponseType.APPLY ).set_sensitive ( false );
+		}
+	}
+#else
 	public virtual void activar_boton_aplicar () {
 		if ( this.nombre_entry.get_text_length () > 0 && this.nombre_entry.get_text () != this.nombre_hecho ) {
 			this.aplicar_button.set_sensitive ( true );
@@ -113,11 +132,7 @@ public class Nomeolvides.DialogBase : Gtk.Popover {
 			this.aplicar_button.set_sensitive ( false );
 		}
 	}
-	public void borrar_datos () {
-		this.nombre_entry.set_text ("");
-	}
-#if DISABLE_GNOME3
-#else
+
 	protected void ocultar () {
 		this.signal_cerrado ( this.get_relative_to () );
 		this.hide ();

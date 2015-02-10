@@ -24,7 +24,8 @@ public class Nomeolvides.DialogListaAgregar : DialogBase {
 #if DISABLE_GNOME3
 	public DialogListaAgregar () {
 		this.title = _ ("Add Custom List");
-		this.add_button ( _("Add") , ResponseType.APPLY );
+		Button boton_apply = this.get_widget_for_response ( ResponseType.APPLY ) as Button;
+		boton_apply.set_label ( _("Add") );
 #else
 	public DialogListaAgregar ( Widget relative_to ) {
 		base ( relative_to );
