@@ -27,6 +27,7 @@ public class Nomeolvides.DialogBase : Gtk.Popover {
 	protected Button aplicar_button;
 	protected Button cancelar_button;
 #endif
+	protected string nombre_hecho;
 	public Entry nombre_entry;
 	protected int64 id;
 	public Base respuesta { get; protected set; }
@@ -40,13 +41,15 @@ public class Nomeolvides.DialogBase : Gtk.Popover {
 	public DialogBase ( Gtk.Widget relative_to ) {
 		GLib.Object ( relative_to: relative_to);
 		this.cancelar_button = new Button.with_mnemonic ( _("Cancel") );
-		this.aplicar_button = new Button.with_mnemonic ( _("Apply") );	
+		this.aplicar_button = new Button.with_mnemonic ( _("Apply") );
+		this.aplicar_button.set_sensitive ( false );
 		this.cancelar_button.set_border_width ( 5 );
 		this.aplicar_button.set_border_width ( 5 );
 		this.aplicar_button.clicked.connect ( this.aplicar );
 		this.cancelar_button.clicked.connect ( this.ocultar );
-		this.cancelar_button.get_style_context ().add_class ( "suggested-action" );
+		this.aplicar_button.get_style_context ().add_class ( "suggested-action" );
 #endif
+		this.nombre_hecho = "";
 		this.modal = true;	
 		this.nombre_label = new Label.with_mnemonic ( _("") + ": " );
 		this.nombre_entry = new Entry ( );
@@ -62,6 +65,7 @@ public class Nomeolvides.DialogBase : Gtk.Popover {
 		grid.set_margin_end ( 20 );
 		grid.set_margin_start ( 20 );
 	#endif
+		this.nombre_entry.changed.connect ( this.activar_boton_aplicar );
 		grid.set_margin_top ( 30 );
 		grid.set_margin_bottom ( 20 );
 		grid.set_valign ( Align.CENTER );
@@ -97,9 +101,18 @@ public class Nomeolvides.DialogBase : Gtk.Popover {
 
 	public virtual void set_datos ( Base objeto ) {
 		this.nombre_entry.set_text ( objeto.nombre );
+		this.nombre_hecho = objeto.nombre;
+		this.aplicar_button.set_sensitive ( false );
 		this.id = objeto.id;
 	}
 
+	public virtual void activar_boton_aplicar () {
+		if ( this.nombre_entry.get_text_length () > 0 && this.nombre_entry.get_text () != this.nombre_hecho ) {
+			this.aplicar_button.set_sensitive ( true );
+		} else {
+			this.aplicar_button.set_sensitive ( false );
+		}
+	}
 	public void borrar_datos () {
 		this.nombre_entry.set_text ("");
 	}
