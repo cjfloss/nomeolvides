@@ -27,6 +27,7 @@ public class Nomeolvides.DialogBase : Gtk.Popover {
 	protected Button aplicar_button;
 	protected Button cancelar_button;
 #endif
+	protected string nombre_hecho;
 	public Entry nombre_entry;
 	protected int64 id;
 	public Base respuesta { get; protected set; }
@@ -35,17 +36,21 @@ public class Nomeolvides.DialogBase : Gtk.Popover {
 	public DialogBase () {
 		this.resizable = false;
 		this.add_button ( _("Cancel") , ResponseType.CLOSE );
+		this.add_button ( _("Apply") , ResponseType.APPLY);
 		this.response.connect(on_response);
 #else
 	public DialogBase ( Gtk.Widget relative_to ) {
 		GLib.Object ( relative_to: relative_to);
 		this.cancelar_button = new Button.with_mnemonic ( _("Cancel") );
-		this.aplicar_button = new Button.with_mnemonic ( _("Apply") );	
+		this.aplicar_button = new Button.with_mnemonic ( _("Apply") );
+		this.aplicar_button.set_sensitive ( false );
 		this.cancelar_button.set_border_width ( 5 );
 		this.aplicar_button.set_border_width ( 5 );
 		this.aplicar_button.clicked.connect ( this.aplicar );
 		this.cancelar_button.clicked.connect ( this.ocultar );
+		this.aplicar_button.get_style_context ().add_class ( "suggested-action" );
 #endif
+		this.nombre_hecho = "";
 		this.modal = true;	
 		this.nombre_label = new Label.with_mnemonic ( _("") + ": " );
 		this.nombre_entry = new Entry ( );
@@ -61,6 +66,7 @@ public class Nomeolvides.DialogBase : Gtk.Popover {
 		grid.set_margin_end ( 20 );
 		grid.set_margin_start ( 20 );
 	#endif
+		this.nombre_entry.changed.connect ( this.activar_boton_aplicar );
 		grid.set_margin_top ( 30 );
 		grid.set_margin_bottom ( 20 );
 		grid.set_valign ( Align.CENTER );
@@ -68,9 +74,11 @@ public class Nomeolvides.DialogBase : Gtk.Popover {
 
 		grid.attach ( this.nombre_label, 0, 0, 1, 1 );
 		grid.attach ( this.nombre_entry, 1, 0, 1, 1 );
+		grid.set_column_homogeneous ( true );
 	#if DISABLE_GNOME3
 		var contenido = this.get_content_area() as Box;
 		contenido.pack_start( grid, true, true, 0 );
+		this.get_widget_for_response ( ResponseType.APPLY ).set_sensitive ( false );
 	#else
 		grid.attach ( this.cancelar_button, 0, 1, 1, 1 );
 		grid.attach ( this.aplicar_button, 1, 1, 1, 1 );
@@ -95,14 +103,36 @@ public class Nomeolvides.DialogBase : Gtk.Popover {
 
 	public virtual void set_datos ( Base objeto ) {
 		this.nombre_entry.set_text ( objeto.nombre );
+		this.nombre_hecho = objeto.nombre;
+	#if DISABLE_GNOME3
+		this.get_widget_for_response ( ResponseType.APPLY ).set_sensitive ( false );
+	#else
+		this.aplicar_button.set_sensitive ( false );
+	#endif
 		this.id = objeto.id;
 	}
 
+	
 	public void borrar_datos () {
 		this.nombre_entry.set_text ("");
 	}
 #if DISABLE_GNOME3
+	public virtual void activar_boton_aplicar () {
+		if ( this.nombre_entry.get_text_length () > 0 && this.nombre_entry.get_text () != this.nombre_hecho ) {
+			this.get_widget_for_response ( ResponseType.APPLY ).set_sensitive ( true );
+		} else {
+			this.get_widget_for_response ( ResponseType.APPLY ).set_sensitive ( false );
+		}
+	}
 #else
+	public virtual void activar_boton_aplicar () {
+		if ( this.nombre_entry.get_text_length () > 0 && this.nombre_entry.get_text () != this.nombre_hecho ) {
+			this.aplicar_button.set_sensitive ( true );
+		} else {
+			this.aplicar_button.set_sensitive ( false );
+		}
+	}
+
 	protected void ocultar () {
 		this.signal_cerrado ( this.get_relative_to () );
 		this.hide ();

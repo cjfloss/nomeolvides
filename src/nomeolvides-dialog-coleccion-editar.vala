@@ -24,7 +24,8 @@ public class Nomeolvides.DialogColeccionEditar : DialogBase {
 #if DISABLE_GNOME3
 	 public DialogColeccionEditar () {
 		this.title = _("Edit Collection");
-		this.add_button ( _("Edit") , ResponseType.APPLY);
+		Button boton_apply = this.get_widget_for_response ( ResponseType.APPLY ) as Button;
+		boton_apply.set_label ( _("Edit") );
 #else
 		public Base objeto_viejo;
 	 public DialogColeccionEditar ( Widget relative_to ) {

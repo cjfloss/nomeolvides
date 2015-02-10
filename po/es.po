@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the Nomeolvides package.
 # Fernando Fernandez <fernando@softwareperonista.com.ar>, 2013, 2014, 2015.
 #
-#: ../src/nomeolvides-dialog-base.vala:50
+#: ../src/nomeolvides-dialog-base.vala:55
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.9.556\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-09 23:44-0300\n"
+"POT-Creation-Date: 2015-02-10 00:32-0300\n"
 "PO-Revision-Date: 2015-02-08 05:47-0300\n"
 "Last-Translator: Fernando Fernandez <fernando@softwareperonista.com.ar>\n"
 "Language-Team: Español <nomeolvides@softwareperonista.com.ar>\n"
@@ -91,9 +91,9 @@ msgstr "Elija un Archivo"
 #: ../src/nomeolvides-dialog-archivo-abrir.vala:33
 #: ../src/nomeolvides-dialog-archivo-guardar.vala:32
 #: ../src/nomeolvides-dialog-base-borrar.vala:74
-#: ../src/nomeolvides-dialog-base-borrar.vala:98
-#: ../src/nomeolvides-dialog-base.vala:37
-#: ../src/nomeolvides-dialog-base.vala:42
+#: ../src/nomeolvides-dialog-base-borrar.vala:99
+#: ../src/nomeolvides-dialog-base.vala:38
+#: ../src/nomeolvides-dialog-base.vala:44
 #: ../src/nomeolvides-dialog-coleccion.vala:32
 #: ../src/nomeolvides-dialog-hecho-borrar.vala:60
 #: ../src/nomeolvides-dialog-hecho-borrar.vala:62
@@ -119,8 +119,9 @@ msgid "Save"
 msgstr "Guardar"
 
 #: ../src/nomeolvides-dialog-base-borrar.vala:75
-#: ../src/nomeolvides-dialog-base-borrar.vala:99
-#: ../src/nomeolvides-dialog-base.vala:43
+#: ../src/nomeolvides-dialog-base-borrar.vala:100
+#: ../src/nomeolvides-dialog-base.vala:39
+#: ../src/nomeolvides-dialog-base.vala:45
 msgid "Apply"
 msgstr "Aplicar"
 
@@ -128,21 +129,21 @@ msgstr "Aplicar"
 msgid "Add a Collection"
 msgstr "Agregar una Coleccion"
 
-#: ../src/nomeolvides-dialog-coleccion-agregar.vala:27
-#: ../src/nomeolvides-dialog-coleccion-agregar.vala:31
+#: ../src/nomeolvides-dialog-coleccion-agregar.vala:28
+#: ../src/nomeolvides-dialog-coleccion-agregar.vala:32
 #: ../src/nomeolvides-dialog-hecho-agregar.vala:34
 #: ../src/nomeolvides-dialog-hecho-agregar.vala:36
 #: ../src/nomeolvides-dialog-hecho-lista-agregar.vala:58
 #: ../src/nomeolvides-dialog-hecho-lista-agregar.vala:71
 #: ../src/nomeolvides-dialog-hecho-lista-agregar.vala:73
-#: ../src/nomeolvides-dialog-lista-agregar.vala:27
-#: ../src/nomeolvides-dialog-lista-agregar.vala:31
+#: ../src/nomeolvides-dialog-lista-agregar.vala:28
+#: ../src/nomeolvides-dialog-lista-agregar.vala:32
 #: ../src/nomeolvides-toolbar.vala:57
 msgid "Add"
 msgstr "Agregar"
 
-#: ../src/nomeolvides-dialog-coleccion-agregar.vala:33
-#: ../src/nomeolvides-dialog-coleccion-editar.vala:34
+#: ../src/nomeolvides-dialog-coleccion-agregar.vala:34
+#: ../src/nomeolvides-dialog-coleccion-editar.vala:35
 #: ../src/nomeolvides-dialog-coleccion.vala:36
 msgid "Colection name"
 msgstr "Nombre de la Colección"
@@ -177,11 +178,11 @@ msgstr "Cantidad de Hechos"
 msgid "Edit Collection"
 msgstr "Editar Colección"
 
-#: ../src/nomeolvides-dialog-coleccion-editar.vala:27
-#: ../src/nomeolvides-dialog-coleccion-editar.vala:32
+#: ../src/nomeolvides-dialog-coleccion-editar.vala:28
+#: ../src/nomeolvides-dialog-coleccion-editar.vala:33
 #: ../src/nomeolvides-dialog-hecho-editar.vala:30
-#: ../src/nomeolvides-dialog-lista-editar.vala:27
-#: ../src/nomeolvides-dialog-lista-editar.vala:32
+#: ../src/nomeolvides-dialog-lista-editar.vala:28
+#: ../src/nomeolvides-dialog-lista-editar.vala:33
 #: ../src/nomeolvides-toolbar.vala:60
 #: ../src/nomeolvides-ventana-principal.vala:73
 msgid "Edit"
@@ -306,8 +307,8 @@ msgstr "Sleccione un archivo"
 msgid "Add Custom List"
 msgstr "Agregar Lista Personalizada"
 
-#: ../src/nomeolvides-dialog-lista-agregar.vala:33
-#: ../src/nomeolvides-dialog-lista-editar.vala:34
+#: ../src/nomeolvides-dialog-lista-agregar.vala:34
+#: ../src/nomeolvides-dialog-lista-editar.vala:35
 #: ../src/nomeolvides-dialog-lista.vala:36
 msgid "List Name"
 msgstr "Nombre de la Lista"

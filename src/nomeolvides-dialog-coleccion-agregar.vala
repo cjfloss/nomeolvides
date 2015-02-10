@@ -24,7 +24,8 @@ public class Nomeolvides.DialogColeccionAgregar : DialogBase {
 #if DISABLE_GNOME3
 	public DialogColeccionAgregar () {
 		this.title = _("Add a Collection");
-		this.add_button ( _("Add"), ResponseType.APPLY );
+		Button boton_apply = this.get_widget_for_response ( ResponseType.APPLY ) as Button;
+		boton_apply.set_label ( _("Add") );
 #else
 	public DialogColeccionAgregar ( Gtk.Widget relative_to ) {
 		base ( relative_to );
