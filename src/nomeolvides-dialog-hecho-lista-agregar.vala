@@ -82,7 +82,7 @@ public class Nomeolvides.DialogHechoListaAgregar : Dialog {
 			Label label_hecho = new Label ( "" );
 			label_hecho.set_markup ( "<span font_weight=\"heavy\">"+ hechos_elegidos.index (0).nombre +"</span>");
 			if ( label_hecho.get_text ().length > 50 ) {
-				label_hecho.set_size_request ( 600, -1 );
+				label_hecho.set_size_request ( 400, -1 );
 				label_hecho.set_line_wrap_mode ( Pango.WrapMode.WORD );
 				label_hecho.set_line_wrap ( true );
 			}
