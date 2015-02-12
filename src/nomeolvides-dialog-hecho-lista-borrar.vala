@@ -101,13 +101,13 @@ public class Nomeolvides.DialogHechoListaBorrar : Dialog {
 	public void set_hechos ( Array<Hecho> hechos_elegidos ) {
 		if ( hechos_elegidos.length == 1 ) {
 			this.pregunta.set_label ( _("Do you want to remove this fact from the list?") );
-			this.hecho_label.set_label (  _("Fact") + ":" );
-			if( hecho_label.get_text ().length > 50 ) {
-				this.hecho_label.set_size_request ( 600, -1 );
-				this.hecho_label.set_line_wrap_mode ( Pango.WrapMode.WORD );
-				this.hecho_label.set_line_wrap ( true );
+			this.hecho_label.set_label ( _("Fact") + ":" );
+			this.hecho_nombre.set_markup ( "<span font_weight=\"heavy\">"+ hechos_elegidos.index (0).nombre +"</span>" );
+			if( hecho_nombre.get_text ().length > 50 ) {
+				this.hecho_nombre.set_size_request ( 400, -1 );
+				this.hecho_nombre.set_line_wrap_mode ( Pango.WrapMode.WORD );
+				this.hecho_nombre.set_line_wrap ( true );
 			}
-			this.hecho_nombre.set_markup (  "<span font_weight=\"heavy\">"+ hechos_elegidos.index (0).nombre +"</span>" );
 			this.grid.attach ( hecho_nombre, 1, 1, 1, 1 );
 		} else {
 			this.title = _("Remove Facts from List");
