@@ -29,7 +29,7 @@ public class Nomeolvides.SelectorFecha : Box {
 	public SelectorFecha () {
 		this.set_orientation (Orientation.HORIZONTAL);
 		this.dia_spin = new SpinButton (new Adjustment ( 17, 1, 31, 1, 1, 1 ), 1, 0 );
-		this.anio_spin = new SpinButton (new Adjustment ( 1945, 1, 9999, 1, 1, 1 ), 1, 0 );
+		this.anio_spin = new SpinButton (new Adjustment ( 1945, -999999999999999, 999999999999999, 1, 1, 1 ), 1, 0 );
 		this.anio_spin.value_changed.connect ( this.cambiar_anio );
 		this.set_combo_box ();
 
