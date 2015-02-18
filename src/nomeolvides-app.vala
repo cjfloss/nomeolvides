@@ -319,7 +319,7 @@ public class Nomeolvides.App : Gtk.Application  {
 	}
 
 	public void cargar_listas () {
-		this.window.cargar_listas_view ( this.datos.lista_de_listas () );
+		this.window.cargar_listas_view ( this.datos.array_de_listas () );
 	}
 
 	public void cargar_lista_anios () {

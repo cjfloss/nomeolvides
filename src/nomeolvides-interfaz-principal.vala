@@ -85,7 +85,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 		}
 	}
 	private void elegir_anio () {
-		if ( this.anio_actual != this.anios_view.get_anio () ) {
+		if ( this.anio_actual != this.anios_view.get_anio () && this.anios_view.get_anio () != 0) {
 			this.anio_actual = this.anios_view.get_anio ();
 			this.lista_actual = null; //ningina lista
 			this.anios_cursor_changed();
@@ -95,7 +95,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 
 	private void elegir_lista () {
 			var lista = this.db.select_lista ( "WHERE rowid=\"" 
-		                                                + this.listas_view.get_elemento_id ().to_string() + "\"");
+											+ this.listas_view.get_elemento_id ().to_string() + "\"");
 		if ( this.lista_actual != lista ) {
 			this.lista_actual = lista;
 			this.anio_actual = 0; //ningún anio
@@ -104,11 +104,11 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 		}
 	}
 
-	private void cambiar_pestania () {
-		if ( this.anio_actual != 0 ) {
-			this.elegir_lista ();
-		} else {
+	private void cambiar_pestania ( Widget page, uint num_page ) {
+		if ( num_page == 0 ) {
 			this.elegir_anio ();
+		} else {
+			this.elegir_lista ();
 		}
 	}
 
@@ -133,7 +133,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 	public void mostrar_scroll_vista ( bool mostrar ) {	
 		if ( mostrar == true ) {
 			this.vista_hecho.show_all ();
-		} else {	
+		} else {
 			this.vista_hecho.hide ();
 		}	
 	}
@@ -143,15 +143,15 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 		this.listas_cursor_changed ();
 	}
 
-	public void cargar_listas ( ListStoreListas listas ) {
-		if ( !(listas.vacio) ) {			
-			this.listas_view.set_model ( listas );
+	public void cargar_listas ( Array<Lista> listas ) {
+		if ( !(listas.length == 0 ) ) {
+			this.listas_view.agregar_varios ( listas );
 			this.anios_listas.get_nth_page (1).show ();
 		} else {
 			this.anios_listas.get_nth_page (1).hide ();
-			this.elegir_anio ();
+			//this.elegir_anio ();
 		}
-		this.anios_cursor_changed ();
+		this.listas_cursor_changed ();
 	}
 
 	public void cargar_lista_hechos ( Array<Hecho> hechos ) {
@@ -176,7 +176,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 
 	public string get_nombre_pestania () {
 		return this.anios_listas.get_tab_label_text ( this.anios_listas.get_nth_page
-		                                               ( this.anios_listas.get_current_page () ) );
+													( this.anios_listas.get_current_page () ) );
 	}
 
 	public void limpiar_hechos_view () {

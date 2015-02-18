@@ -163,8 +163,12 @@ public class Nomeolvides.Datos : GLib.Object {
 
 	public ListStoreListas lista_de_listas () {
 		var listas = this.db.select_listas ();
-		
+
 		return this.armar_liststore_listas ( listas );
+	}
+
+	public Array<Lista> array_de_listas () {
+		return this.db.select_listas ();
 	}
 
 	public ListStoreColecciones lista_de_colecciones () {
@@ -200,8 +204,7 @@ public class Nomeolvides.Datos : GLib.Object {
 
 		for ( int i=0; i < listas.length; i++ ) {
 			var lista = listas.index (i);
-			var cantidad_hechos = this.db.count_hechos_lista ( lista );
-			liststore.agregar ( lista, cantidad_hechos );			
+			liststore.agregar ( lista, this.db.count_hechos_lista ( lista ) );
 		}
 
 		return liststore;
@@ -212,8 +215,7 @@ public class Nomeolvides.Datos : GLib.Object {
 
 		for ( int i=0; i < colecciones.length; i++ ) {
 			var coleccion = colecciones.index (i);
-			var cantidad_hechos = this.db.count_hechos_coleccion ( coleccion );
-			liststore.agregar ( coleccion, cantidad_hechos );
+			liststore.agregar ( coleccion, this.db.count_hechos_coleccion ( coleccion ) );
 		}
 
 		return liststore;

@@ -49,7 +49,7 @@ public class Nomeolvides.TreeViewAnios : TreeView {
 			this.lista.get_iter(out iterador, path);
 			this.lista.get_value (iterador, 0, out valor);
 			return (int)valor;
-		} else { 
+		} else {
 			return 0; //retorna el número mágico 0. No existe el año 0, por lo tanto, no hay año elegido.
 		}
 	}

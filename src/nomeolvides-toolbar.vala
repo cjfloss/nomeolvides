@@ -134,6 +134,8 @@ public class Nomeolvides.Toolbar : Gtk.HeaderBar {
 	public void set_label_anio ( string anio = "0" ) {
 		if ( anio != "0") {
 			this.set_title ( _("Year") + ": " + anio );
+		} else {
+			this.set_title ( "" );
 		}
 	}
 

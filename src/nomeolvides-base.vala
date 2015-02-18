@@ -19,11 +19,11 @@
 
 using Nomeolvides;
 
-public class Nomeolvides.Base : GLib.Object{
+public class Nomeolvides.Base : GLib.Object {
 	public int64 id;
 	public string nombre { get; protected set; }
 	public string hash { get; protected set; }
-	
+
 	public Base ( string nombre ) {
 		this.nombre = Utiles.ponerCaracterEspecial ( nombre );
 		this.hash = Utiles.calcular_checksum ( this.a_json () );
@@ -34,7 +34,7 @@ public class Nomeolvides.Base : GLib.Object{
 			this.nombre = Utiles.sacarDatoJson ( json, "nombre" );
 		} else {
 			this.nombre = "null";
-		}	
+		}
 		this.hash = Utiles.calcular_checksum ( this.a_json () );
 	}
 
@@ -42,9 +42,9 @@ public class Nomeolvides.Base : GLib.Object{
 
 	}
 
-	public string a_json () {	
+	public string a_json () {
 		var retorno = "\"nombre\":\"" + Utiles.sacarCaracterEspecial ( this.nombre ) + "\"";
-		
+
 		return retorno;
 	}
 
@@ -56,7 +56,7 @@ public class Nomeolvides.Base : GLib.Object{
 
 	public string to_string () {
 		var retorno  = "\"" + Utiles.sacarCaracterEspecial ( this.nombre ) + "\"";
-		
+
 		return retorno;
 	}
 

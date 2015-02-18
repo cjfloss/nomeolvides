@@ -22,21 +22,94 @@ using Nomeolvides;
 
 public class Nomeolvides.ListStoreBase : ListStore {
 	protected TreeIter iterador;
+	protected Array<Base> elementos;
 	public bool vacio { get; private set; }
 	
 	public ListStoreBase ( Type[] tipos = { typeof(string), typeof(int), typeof(Base) } ) {
 		this.set_column_types(tipos);
 		this.vacio = true;
+		this.elementos = new Array<Base> ();
 	}
 
-	public void agregar ( Base elemento, int cantidad_hechos ) {
-		if (elemento != null ) {
+	public void agregar ( Base elemento, int cantidad_hechos = 0 ) {
+		if (elemento != null && !this.ya_agregado (elemento) ) {
 			this.append ( out this.iterador );
 			this.set ( this.iterador,
 						0,elemento.nombre,
 						1,cantidad_hechos,
 						2,elemento );
 			this.vacio = false;
+			this.elementos.append_val ( elemento );
+		}
+	}
+
+	public bool ya_agregado ( Base nuevo ) {
+		bool resultado = false;
+
+		for (int i = 0; i < this.elementos.length; i++ ) {
+			if ( this.elementos.index (i).get_checksum () == nuevo.get_checksum () ) {;
+				resultado = true;
+				break;
+			}
+		}
+
+		return resultado;
+	}
+
+	public bool sobra ( Base sobrante ) {
+		bool de_mas = true;
+		int i = 0;
+
+		for ( i = 0; i < this.elementos.length; i++ ) {
+			if ( this.elementos.index (i).get_checksum () == sobrante.get_checksum () ) {
+				de_mas = false;
+				break;
+			}
+		}
+
+		return de_mas;
+	}
+
+	private void eliminar_sobrantes ( ) {
+		TreeIter iter;
+		Value value_elemento;
+		Base elemento;
+		bool flag = true;
+
+		this.get_iter_first ( out iter );
+
+		do {
+			this.get_value ( iter, 2, out value_elemento );
+			elemento = (Base) value_elemento;
+
+			if ( this.sobra ( elemento )) {
+				this.remove (iter);
+				flag = this.get_iter_first ( out iter );
+			} else {
+				flag = this.iter_next ( ref iter );
+			}
+		} while ( flag );
+	}
+
+	public void agregar_varios ( Array<Base> nuevos ) {
+		if ( nuevos.length > 0 ) {
+			for ( int i = 0; i < nuevos.length; i++ ) {
+				this.agregar ( nuevos.index (i));
+				elementos.append_val ( nuevos.index (i) );
+			}
+
+			this.elementos = new Array<Base> ();
+			for ( int i = 0; i < nuevos.length; i++ ) {
+				this.elementos.append_val ( nuevos.index (i) );
+			}
+
+			if ( !this.vacio ) {
+				this.eliminar_sobrantes ();
+			}
+
+		} else {
+			this.clear ();
+			this.elementos = new Array<Base> ();
 		}
 	}
 
@@ -102,7 +175,7 @@ public class Nomeolvides.ListStoreBase : ListStore {
 					break;
 				}
 				i++;
-			}while ( this.iter_next(ref iter) );
+			} while ( this.iter_next(ref iter) );
 		}
 
 		return i;

@@ -33,7 +33,6 @@ public class Nomeolvides.TreeViewBase : TreeView {
 	}
 
 	public TreeViewBase.ventana_principal () {
-
 		var nombre_cell = new CellRendererText ();
 		nombre_cell.ellipsize = Pango.EllipsizeMode.END;
 		nombre_cell.width_chars = 30;
@@ -43,7 +42,7 @@ public class Nomeolvides.TreeViewBase : TreeView {
 		nombre_columna.set_expand ( true );
 
 		this.insert_column ( nombre_columna, -1 );
-
+		this.set_model ( new ListStoreBase () );
 	}
 
 	public int64 get_elemento_id () {
@@ -65,6 +64,11 @@ public class Nomeolvides.TreeViewBase : TreeView {
 			elemento = value_elemento as Base;
 		}
 		return elemento;
+	}
+
+	public void agregar_varios ( Array<Base> nuevos ) {
+		ListStoreBase lista = this.get_model () as ListStoreBase;
+		lista.agregar_varios ( nuevos );
 	}
 
 	public void eliminar ( Base a_eliminar ) {
