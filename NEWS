@@ -1,3 +1,7 @@
+0.12 / 2015-02-24
+=================
+In this version we offer an user experince better than earlier version. The user interface had a lot of changes too that make it simplier and elegante. There were many changes under the hood. We simplify the name of classes and files and the code source too, to make simplier add new changes. Many bugs were ficed too.
+
 0.10 / 2014-07-26
 =================
 In this version we focused on improve the user ecperience by fixing many annoying o distracting bugs. In the same way, we also made some changes on user interface and many dialogs. Now the user can select many fatcs at the same time y interact with them, by adding them to a list o delete them. Great part of the code was rewrited to make it simple a cleaner and many bugs were fixed.
