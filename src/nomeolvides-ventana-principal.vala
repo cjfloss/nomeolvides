@@ -169,11 +169,13 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 
 	public void cargar_anios_view ( Array<int> ventana_principal_anios ) {
 		this.anios_hechos.cargar_lista_anios ( ventana_principal_anios );
+		this.actualizar_anio_label ();
 	}
 
 	public void cargar_listas_view ( ListStoreListas listas ) {
 		this.anios_hechos.cargar_listas ( listas );
 		this.anios_hechos.mostrar_scroll_vista ( false );
+		this.actualizar_lista_label ();
 	}
 
 	public void cargar_hechos_view ( Array<Hecho> hechos ) {
