@@ -23,11 +23,6 @@ using Nomeolvides;
 public class Nomeolvides.TreeViewListas : TreeViewBase {
 	private ListStoreListas listas;
 	public TreeViewListas () {
-		base ();
-		this.listas = new ListStoreListas ();
-	}
-
-	public TreeViewListas.ventana_principal () {
 		this.listas = new ListStoreListas ();
 		this.set_model ( this.listas );
 	}
