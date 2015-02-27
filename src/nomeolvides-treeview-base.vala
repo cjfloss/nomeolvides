@@ -33,7 +33,6 @@ public class Nomeolvides.TreeViewBase : TreeView {
 	}
 
 	public TreeViewBase.ventana_principal () {
-
 		var nombre_cell = new CellRendererText ();
 		nombre_cell.ellipsize = Pango.EllipsizeMode.END;
 		nombre_cell.width_chars = 30;
@@ -43,7 +42,6 @@ public class Nomeolvides.TreeViewBase : TreeView {
 		nombre_columna.set_expand ( true );
 
 		this.insert_column ( nombre_columna, -1 );
-
 	}
 
 	public int64 get_elemento_id () {

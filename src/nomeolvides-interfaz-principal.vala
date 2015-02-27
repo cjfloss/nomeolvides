@@ -23,7 +23,8 @@ using Nomeolvides;
 public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 	private TreeViewHechos hechos_view;
 	private TreeViewAnios anios_view;
-	private TreeViewBase listas_view;
+	private TreeViewListas
+		 listas_view;
 	private Portada vista_hecho;
 	private ScrolledWindow scroll_hechos_view;
 	private ScrolledWindow scroll_anios_view;
@@ -37,7 +38,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 		this.db = new AccionesDB ( Configuracion.base_de_datos() );
 		this.anios_view = new TreeViewAnios ();
 		this.hechos_view = new TreeViewHechos ();
-		this.listas_view = new TreeViewBase.ventana_principal ();
+		this.listas_view = new TreeViewListas.ventana_principal ();
 		this.vista_hecho = new Portada ();
 		this.vista_hecho.set_size_request (300,-1);
 
@@ -95,7 +96,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 
 	private void elegir_lista () {
 			var lista = this.db.select_lista ( "WHERE rowid=\"" 
-		                                                + this.listas_view.get_elemento_id ().to_string() + "\"");
+											+ this.listas_view.get_elemento_id ().to_string() + "\"");
 		if ( this.lista_actual != lista ) {
 			this.lista_actual = lista;
 			this.anio_actual = 0; //ningún anio
@@ -143,9 +144,9 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 		this.listas_cursor_changed ();
 	}
 
-	public void cargar_listas ( ListStoreListas listas ) {
-		if ( !(listas.vacio) ) {			
-			this.listas_view.set_model ( listas );
+	public void cargar_listas ( Array<Lista> listas ) {
+		if ( listas.length > 0 ) {
+			this.listas_view.agregar_varios ( listas );
 			this.anios_listas.get_nth_page (1).show ();
 		} else {
 			this.anios_listas.get_nth_page (1).hide ();

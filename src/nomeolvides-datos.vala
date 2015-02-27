@@ -158,28 +158,30 @@ public class Nomeolvides.Datos : GLib.Object {
 		if ( lista != null ) {
 			hechos = this.db.select_hechos_lista ( lista );
 		}
+
 		return hechos;
 	}
 
-	public ListStoreListas lista_de_listas () {
+	public Array<Lista> lista_de_listas () {
+		return this.db.select_listas ();
+	}
+
+	public ListStoreListas liststore_de_listas () {
 		var listas = this.db.select_listas ();
 		
 		return this.armar_liststore_listas ( listas );
 	}
 
-	public ListStoreColecciones lista_de_colecciones () {
+	public ListStoreColecciones liststore_de_colecciones () {
 		var colecciones = this.db.select_colecciones ( "WHERE colecciones.id NOT IN coleccionesborrar" );
 
 		return this.armar_liststore_colecciones ( colecciones );
 	}
 
 	public bool hay_listas() {
-		TreeIter iter;
-		bool hay=false;
+		bool hay = false;
 
-		var liststore = this.lista_de_listas();
-
-		if ( liststore.get_iter_first ( out iter ) ) { 
+		if ( this.db.select_listas ().length > 0 ) { 
 			hay = true;
 		}
 		return hay;
@@ -195,13 +197,13 @@ public class Nomeolvides.Datos : GLib.Object {
 		return hay;
 	}
 
-	private ListStoreListas armar_liststore_listas ( Array<Lista> listas) {
+	private ListStoreListas armar_liststore_listas ( Array<Lista> listas ) {
 		var liststore = new ListStoreListas ();
 
 		for ( int i=0; i < listas.length; i++ ) {
 			var lista = listas.index (i);
 			var cantidad_hechos = this.db.count_hechos_lista ( lista );
-			liststore.agregar ( lista, cantidad_hechos );			
+			liststore.agregar ( lista, cantidad_hechos );
 		}
 
 		return liststore;

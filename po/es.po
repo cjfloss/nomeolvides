@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.9.556\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-24 15:41-0300\n"
+"POT-Creation-Date: 2015-02-27 02:44-0300\n"
 "PO-Revision-Date: 2015-02-08 05:47-0300\n"
 "Last-Translator: Fernando Fernandez <fernando@softwareperonista.com.ar>\n"
 "Language-Team: Español <nomeolvides@softwareperonista.com.ar>\n"
@@ -60,7 +60,7 @@ msgid "history;facts;"
 msgstr "historia;hechos;"
 
 #: ../src/nomeolvides-app.vala:332
-#: ../src/nomeolvides-interfaz-principal.vala:67
+#: ../src/nomeolvides-interfaz-principal.vala:68
 #: ../src/nomeolvides-treeview-anios.vala:31
 msgid "Years"
 msgstr "Años"
@@ -265,7 +265,7 @@ msgid "Do you want to remove this facts from the list?"
 msgstr "¿Desea eliminar estos hechos de la lista?"
 
 #: ../src/nomeolvides-dialog-hecho.vala:45
-#: ../src/nomeolvides-treeview-base.vala:41
+#: ../src/nomeolvides-treeview-base.vala:40
 #: ../src/nomeolvides-treeview-hechos.vala:36
 msgid "Name"
 msgstr "Nombre"
@@ -422,7 +422,7 @@ msgid "Colections"
 msgstr "Colecciones"
 
 #: ../src/nomeolvides-dialog-preferencias.vala:46
-#: ../src/nomeolvides-interfaz-principal.vala:68
+#: ../src/nomeolvides-interfaz-principal.vala:69
 msgid "Lists"
 msgstr "Listas"
 

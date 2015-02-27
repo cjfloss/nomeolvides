@@ -23,8 +23,8 @@ using Nomeolvides;
 public class Nomeolvides.ListStoreAnios : ListStore {
 	private TreeIter iterador;
 	private Array<int> anios;
-	
-	public ListStoreAnios () {		
+
+	public ListStoreAnios () {
 		Type[] tipos= { typeof (int) };
 		this.set_column_types(tipos);
 		this.anios = new Array<int>();
@@ -102,5 +102,5 @@ public class Nomeolvides.ListStoreAnios : ListStore {
 				flag = this.iter_next ( ref iter );
 			}
 		} while ( flag );
-	}	
+	}
 }

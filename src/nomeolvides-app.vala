@@ -125,7 +125,7 @@ public class Nomeolvides.App : Gtk.Application  {
 		if ( this.datos.hay_colecciones_activas () ) {
 
 			var add_dialog = new DialogHechoAgregar ( this.window as VentanaPrincipal,
-													this.datos.lista_de_colecciones () );
+													this.datos.liststore_de_colecciones () );
 
 			add_dialog.show();
 
@@ -152,7 +152,7 @@ public class Nomeolvides.App : Gtk.Application  {
 
 		this.window.get_hecho_actual ( out hecho );
 
-		var edit_dialog = new DialogHechoEditar( this.window, this.datos.lista_de_colecciones () );
+		var edit_dialog = new DialogHechoEditar( this.window, this.datos.liststore_de_colecciones () );
 		edit_dialog.set_datos ( hecho );
 		edit_dialog.show_all ();
 
@@ -192,15 +192,15 @@ public class Nomeolvides.App : Gtk.Application  {
 	}
 
 	private void preferencias_dialog_run () {
-		this.dialogo_preferencias.ejecutar ( this.datos.lista_de_colecciones (), this.datos.lista_de_listas () );
+		this.dialogo_preferencias.ejecutar ( this.datos.liststore_de_colecciones (), this.datos.liststore_de_listas () );
 		this.dialogo_preferencias.show_all ();
 		this.dialogo_preferencias.set_toolbar_buttons_invisible ();
 		this.dialogo_preferencias.run ();
 	}
 
 	private void preferencias ( ) {
-		var colecciones = this.datos.lista_de_colecciones ();
-		var listas = this.datos.lista_de_listas ();
+		var colecciones = this.datos.liststore_de_colecciones ();
+		var listas = this.datos.liststore_de_listas ();
 		this.dialogo_preferencias = new DialogPreferencias ( this.window, colecciones, listas );
 		this.dialogo_preferencias.hide.connect ( this.inicializar_ventana );
 		this.dialogo_preferencias.hide ();
@@ -260,7 +260,7 @@ public class Nomeolvides.App : Gtk.Application  {
 			DialogHechoListaAgregar dialogo = new DialogHechoListaAgregar ( this.window );
 
 			dialogo.setear_hechos ( this.window.get_hechos_seleccionados () );
-			dialogo.setear_listas ( this.datos.lista_de_listas() );
+			dialogo.setear_listas ( this.datos.liststore_de_listas () );
 
 			if (dialogo.run () == ResponseType.APPLY) {
 				for (int i = 0; i < dialogo.hechos.length; i++ ) {
@@ -301,7 +301,7 @@ public class Nomeolvides.App : Gtk.Application  {
 	}
 
 	public void importar_dialog () {
-		var abrir_archivo = new DialogHechosImportar (this.window, GLib.Environment.get_current_dir (), this.datos.lista_de_colecciones ());
+		var abrir_archivo = new DialogHechosImportar (this.window, GLib.Environment.get_current_dir (), this.datos.liststore_de_colecciones ());
 		abrir_archivo.set_transient_for ( this.window );
 
 		if (abrir_archivo.run () == ResponseType.ACCEPT) {

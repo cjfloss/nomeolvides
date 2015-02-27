@@ -71,7 +71,8 @@ nomeolvides_SOURCES = \
 	nomeolvides-preferencias-base.vala \
 	nomeolvides-preferencias-listas.vala \
 	nomeolvides-preferencias-colecciones.vala \
-	nomeolvides-dialog-hechos-importar.vala
+	nomeolvides-dialog-hechos-importar.vala \
+	nomeolvides-treeview-listas.vala
 
 
 
