@@ -85,7 +85,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 		}
 	}
 	private void elegir_anio () {
-		if ( this.anio_actual != this.anios_view.get_anio () ) {
+		if ( this.anio_actual != this.anios_view.get_anio () || this.anios_view.get_anio () == 0 ) {
 			this.anio_actual = this.anios_view.get_anio ();
 			this.lista_actual = null; //ningina lista
 			this.anios_cursor_changed();
@@ -105,10 +105,13 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 	}
 
 	private void cambiar_pestania () {
-		if ( this.anio_actual != 0 ) {
+		switch ( this.anios_listas.get_current_page () ) {
+		case 0:
 			this.elegir_lista ();
-		} else {
+			break;
+		case 1:
 			this.elegir_anio ();
+			break;
 		}
 	}
 
