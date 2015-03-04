@@ -19,24 +19,36 @@
 using Gtk;
 using Nomeolvides;
 
-public class Nomeolvides.NmoButton : Gtk.Button {
-
+public class Nomeolvides.Boton : Gtk.ToggleButton {
 	// Constructor
-	public NmoButton ( string label ) {
+	public Boton ( string label ) {
 		this.set_label ( label );
 		this.setear_propiedades ();
+		this.toggled.connect (apretar);
 	}
 
-	public NmoButton.icono ( string icono, Gtk.IconSize tamanio ) {
+	public Boton.icono ( string icono, Gtk.IconSize tamanio ) {
 		var imagen = new Image.from_icon_name ( icono, tamanio );
 		this.set_image ( imagen );
 		this.setear_propiedades ();
 	}
 
+	public Boton.con_margen ( string label ) {
+		this.set_label ( label );
+		this.setear_propiedades ();
+		this.set_margin_top ( 5 );
+		this.set_margin_bottom ( 5 );
+	}
+
 	private void setear_propiedades () {
-		this.set_margin_top ( 9 );
-		this.set_margin_bottom ( 9 );
 		this.set_halign ( Align.START );
 	}
-}
 
+	public void apretar () {
+		if ( this.get_active () ) {
+			this.activado ();
+		}
+	}
+
+	public signal void activado ();
+}

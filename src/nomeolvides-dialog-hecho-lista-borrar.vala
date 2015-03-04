@@ -20,8 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
-public class Nomeolvides.BorrarHechoListaDialog : Dialog
-{	
+public class Nomeolvides.DialogHechoListaBorrar : Dialog {
 	public Array<Hecho> hechos;
 	private Lista lista;
 	private Label hecho_nombre;
@@ -31,8 +30,11 @@ public class Nomeolvides.BorrarHechoListaDialog : Dialog
 	private Label pregunta;
 	private Grid grid;
 	
-	public BorrarHechoListaDialog ( VentanaPrincipal ventana ) {
-		this.title = _("Remove Fact from List");
+	public DialogHechoListaBorrar ( VentanaPrincipal ventana ) {
+#if DISABLE_GNOME3
+#else
+		Object (use_header_bar: 1);
+#endif
 		this.set_transient_for ( ventana as Window );
 		this.set_default_size ( 450, 200 );
 
@@ -79,11 +81,17 @@ public class Nomeolvides.BorrarHechoListaDialog : Dialog
 		grid.attach ( pregunta, 0, 0, 2, 1 );
 		grid.attach ( lista_label, 0, 2, 1, 1 );
 		grid.attach ( lista_nombre, 1, 2, 1, 1 );
+
+		this.set_title ( _("Remove Fact from List") );
 		
 		this.response.connect ( on_response );
-
-		this.add_button ( _("Cancel") , ResponseType.CANCEL );
+		this.add_button ( _("Cancel"), ResponseType.CANCEL );
+#if DISABLE_GNOME3
 		this.add_button ( _("Remove") , ResponseType.APPLY );
+#else
+		var boton = this.add_button ( _("Remove") , ResponseType.APPLY );
+		boton.get_style_context ().add_class ( "suggested-action" );
+#endif
 
 		var contenido = this.get_content_area () as Box;
 		contenido.pack_start ( grid, true, true, 0 );
@@ -94,20 +102,20 @@ public class Nomeolvides.BorrarHechoListaDialog : Dialog
 	public void set_hechos ( Array<Hecho> hechos_elegidos ) {
 		if ( hechos_elegidos.length == 1 ) {
 			this.pregunta.set_label ( _("Do you want to remove this fact from the list?") );
-			this.hecho_label.set_label (  _("Fact") + ":" );
-			if( hecho_label.get_text ().length > 50 ) {
-				this.hecho_label.set_size_request ( 600, -1 );
-				this.hecho_label.set_line_wrap_mode ( Pango.WrapMode.WORD );
-				this.hecho_label.set_line_wrap ( true );
+			this.hecho_label.set_label ( _("Fact") + ":" );
+			this.hecho_nombre.set_markup ( "<span font_weight=\"heavy\">"+ hechos_elegidos.index (0).nombre +"</span>" );
+			if( hecho_nombre.get_text ().length > 50 ) {
+				this.hecho_nombre.set_size_request ( 400, -1 );
+				this.hecho_nombre.set_line_wrap_mode ( Pango.WrapMode.WORD );
+				this.hecho_nombre.set_line_wrap ( true );
 			}
-			this.hecho_nombre.set_markup (  "<span font_weight=\"heavy\">"+ hechos_elegidos.index (0).nombre +"</span>" );
 			this.grid.attach ( hecho_nombre, 1, 1, 1, 1 );
 		} else {
 			this.title = _("Remove Facts from List");
 			this.set_size_request ( 600, 200 );
 			this.pregunta.set_label ( _("Do you want to remove this facts from the list?") );
 			this.hecho_label.set_label (  _("Facts") + ":" );
-			var treeview_hechos = new ViewHechos ();
+			var treeview_hechos = new TreeViewHechos ();
 			var scroll_hechos = new ScrolledWindow ( null, null );
 			scroll_hechos.set_policy ( PolicyType.NEVER, PolicyType.AUTOMATIC );
 			treeview_hechos.set_margin_bottom ( 10 );
@@ -130,10 +138,8 @@ public class Nomeolvides.BorrarHechoListaDialog : Dialog
 		this.lista = lista;
 	}
 
-	private void on_response (Dialog source, int response_id)
-	{
-        switch (response_id)
-		{
+	private void on_response (Dialog source, int response_id) {
+        switch (response_id) {
     		case ResponseType.CANCEL:
         		this.hide ();
         		break;

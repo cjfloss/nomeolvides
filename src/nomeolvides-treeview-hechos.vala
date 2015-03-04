@@ -20,11 +20,11 @@ using Gtk;
 using Nomeolvides;
 
 
-public class Nomeolvides.ViewHechos : Gtk.TreeView {
+public class Nomeolvides.TreeViewHechos : Gtk.TreeView {
 
 	public int anio_actual { get; private set; }
 
-	public ViewHechos () {
+	public TreeViewHechos () {
 		var nombre_cell = new CellRendererText ();
 
 		nombre_cell.ellipsize = Pango.EllipsizeMode.END;
@@ -33,7 +33,11 @@ public class Nomeolvides.ViewHechos : Gtk.TreeView {
 
 		nombre_cell.width_chars = 30;
 
-		this.insert_column_with_attributes (-1, _("Name"), nombre_cell, "text", 0);
+		var nombre_columna = new TreeViewColumn.with_attributes ( _("Name"), nombre_cell, "text", 0 );
+
+		nombre_columna.set_expand ( true );
+
+		this.insert_column ( nombre_columna, -1 );
 		this.insert_column_with_attributes (-1, _("Date"), fecha_cell, "text", 2);
 		this.model = new ListStoreHechos.anio_int (0);
 		this.set_model ( new ListStoreHechos () );
@@ -80,7 +84,7 @@ public class Nomeolvides.ViewHechos : Gtk.TreeView {
 
 		for ( uint i = 0; i < list_path.length (); i++ ) {
 			this.get_model ().get_iter ( out iter, list_path.nth_data ( i ));
-			this.get_model().get_value (iter, 3, out hecho_value);
+			this.get_model ().get_value (iter, 3, out hecho_value);
 			hechos.append_val ( (Hecho) hecho_value );
 		}
 

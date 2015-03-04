@@ -20,13 +20,17 @@
 using Gtk;
 using Nomeolvides;
 
-public class Nomeolvides.BorrarHechoDialogo : Dialog {
+public class Nomeolvides.DialogHechoBorrar : Dialog {
 	public Grid grid;
 	private Label pregunta;
 	private Label hecho;
 	public Array<Hecho> hechos;
 
-	public BorrarHechoDialogo ( VentanaPrincipal ventana ) {
+	public DialogHechoBorrar ( VentanaPrincipal ventana ) {
+#if DISABLE_GNOME3
+#else
+		Object (use_header_bar: 1);
+#endif
 		this.set_modal ( true );
 		this.set_transient_for ( ventana as Gtk.Window );
 		this.set_size_request ( 450, 200 );
@@ -52,10 +56,13 @@ public class Nomeolvides.BorrarHechoDialogo : Dialog {
 
 		grid.attach ( pregunta, 0, 0, 2, 1 );
 		grid.attach ( hecho, 0, 1, 1, 1 );
-
+#if DISABLE_GNOME3
 		this.add_button ( _("Cancel"), ResponseType.CANCEL);
-		this.add_button ( _("Apply"), ResponseType.APPLY);
-		
+#else
+		var boton = this.add_button ( _("Cancel"), ResponseType.CANCEL);
+		boton.get_style_context ().add_class ( "suggested-action" );
+#endif
+		this.add_button ( _("Delete"), ResponseType.APPLY);
 		var contenido = this.get_content_area() as Box;
 		contenido.pack_start(grid, false, false, 0);
 
@@ -65,7 +72,7 @@ public class Nomeolvides.BorrarHechoDialogo : Dialog {
 	public void setear_hechos ( Array<Hecho> hechos_elegidos ) {
 		if ( hechos_elegidos.length > 1 ) {
 			this.set_size_request ( 600, 200 );
-			var treeview_hechos = new ViewHechos ();
+			var treeview_hechos = new TreeViewHechos ();
 			var scroll_hechos = new ScrolledWindow ( null, null );
 			scroll_hechos.set_policy ( PolicyType.NEVER, PolicyType.AUTOMATIC );
 			treeview_hechos.set_margin_bottom ( 10 );
@@ -74,7 +81,6 @@ public class Nomeolvides.BorrarHechoDialogo : Dialog {
 			scroll_hechos.add ( treeview_hechos );;
 			this.grid.attach ( scroll_hechos, 1, 1, 1, 1 );
 		}
-
 		this.set_labels ( hechos_elegidos );
 
 		for ( int i = 0; i < hechos_elegidos.length; i++ ) {

@@ -20,17 +20,18 @@
 using Gtk;
 using Nomeolvides;
 
-public class Nomeolvides.AddHechoListaDialog : Dialog
-{	
+public class Nomeolvides.DialogHechoListaAgregar : Dialog {
 	private ComboBox listas;
 	private ListStoreListas liststore;
 	public Array<Hecho> hechos;
 	private int64 id_lista;
 	private Grid grid;
 	
-	public AddHechoListaDialog ( VentanaPrincipal ventana )
-	{
-		this.title = _("Add Fact to List");
+	public DialogHechoListaAgregar ( VentanaPrincipal ventana ) {
+#if DISABLE_GNOME3
+#else
+		Object (use_header_bar: 1);
+#endif
 		this.set_default_size ( 450, 200 );
 		this.set_transient_for ( ventana as Window );
 		
@@ -56,6 +57,7 @@ public class Nomeolvides.AddHechoListaDialog : Dialog
 
 		var label_pregunta = new Label (_("Add") + ":");
 		var label_listas = new Label ( _("to list") );
+		this.set_title (_("Add Fact to List"));
 		
 		grid.attach ( label_pregunta, 0, 0, 1, 1 );
 		grid.attach ( label_listas, 0, 1, 1, 1 );
@@ -65,7 +67,12 @@ public class Nomeolvides.AddHechoListaDialog : Dialog
 		contenido.pack_start (grid, true, true, 0 );
 
 		this.add_button ( _("Cancel"), ResponseType.CANCEL );
+#if DISABLE_GNOME3
 		this.add_button ( _("Add"), ResponseType.APPLY );
+#else
+		var boton = this.add_button ( _("Add"), ResponseType.APPLY );
+		boton.get_style_context ().add_class ( "suggested-action" );
+#endif
 
 		this.show_all ();
 	}
@@ -74,8 +81,8 @@ public class Nomeolvides.AddHechoListaDialog : Dialog
 		if ( hechos_elegidos.length == 1 ) {
 			Label label_hecho = new Label ( "" );
 			label_hecho.set_markup ( "<span font_weight=\"heavy\">"+ hechos_elegidos.index (0).nombre +"</span>");
-			if( label_hecho.get_text ().length > 50 ) {
-				label_hecho.set_size_request ( 600, -1 );
+			if ( label_hecho.get_text ().length > 50 ) {
+				label_hecho.set_size_request ( 400, -1 );
 				label_hecho.set_line_wrap_mode ( Pango.WrapMode.WORD );
 				label_hecho.set_line_wrap ( true );
 			}
@@ -83,7 +90,7 @@ public class Nomeolvides.AddHechoListaDialog : Dialog
 		} else {
 			this.title = _("Add Facts to List");
 			this.set_size_request ( 600, 200 );
-			var treeview_hechos = new ViewHechos ();
+			var treeview_hechos = new TreeViewHechos ();
 			var scroll_hechos = new ScrolledWindow ( null, null );
 			scroll_hechos.set_policy ( PolicyType.NEVER, PolicyType.AUTOMATIC );
 			treeview_hechos.set_margin_bottom ( 10 );
@@ -108,10 +115,8 @@ public class Nomeolvides.AddHechoListaDialog : Dialog
 		this.listas.set_model ( liststore );
 	}
 
-	private void on_response (Dialog source, int response_id)
-	{
-        switch (response_id)
-		{
+	private void on_response (Dialog source, int response_id) {
+        switch (response_id) {
     		case ResponseType.APPLY:
         		this.crear_respuesta ();
 				break;

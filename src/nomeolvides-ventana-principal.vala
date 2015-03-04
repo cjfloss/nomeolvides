@@ -7,12 +7,12 @@
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * nomeolvides is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- *   bullit - 39 escalones - silent love (japonesa) 
+ * 
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -20,17 +20,14 @@
 using Gtk;
 using Nomeolvides;
 
-public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow
-{
-
+public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	private Box main_box { get; private set; }
-	private HeaderBar toolbar { get; private set; }
-	public Anios_hechos_vista anios_hechos { get; private set; }
+	public Toolbar toolbar { get; private set; }
+	public InterfazPrincipal anios_hechos { get; private set; }
 	private int anio_actual;
 	private Lista lista_actual;
-	
-	public VentanaPrincipal ( Gtk.Application app )
-	{   
+
+	public VentanaPrincipal ( Gtk.Application app ) {
 		Object (application: app);
 		this.set_application (app);
 		this.set_title ("Nomeolvides v" + Config.VERSION );
@@ -39,18 +36,22 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow
 		this.set_size_request (500,350);
 
 		this.anio_actual = 0;
-		
-		this.main_box = new Box (Orientation.VERTICAL,0);
 
-		this.anios_hechos = new Anios_hechos_vista ();
+		this.main_box = new Box ( Orientation.VERTICAL, 0 );
+
+		this.anios_hechos = new InterfazPrincipal ();
 		
 		this.add (main_box);
 		
-		this.toolbar = new HeaderBar ();
+		this.toolbar = new Nomeolvides.Toolbar ();
+
+		this.toolbar.agregar_send_button ();
+		this.toolbar.agregar_list_button ();
 	#if DISABLE_GNOME3
+		this.toolbar.agregar_titulo ();
+
 		var menu_barra = new MenuBar ();
 		this.main_box.pack_start ( menu_barra, false, false, 0 );
-
 
 		var menu_archivo_item = new Gtk.MenuItem.with_mnemonic ( _("File"));
 		menu_barra.add( menu_archivo_item );
@@ -69,7 +70,6 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow
 		menu_salir.activate.connect ( this.menu_salir_activate_signal );
 		menu_archivo.add ( menu_salir );
 
-
 		var menu_editar_item = new Gtk.MenuItem.with_mnemonic ( _("Edit") );
 		menu_barra.add( menu_editar_item );
 		var menu_editar = new Gtk.Menu ();
@@ -78,7 +78,6 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow
 		var menu_preferencias = new Gtk.MenuItem.with_mnemonic ( _("Preferences") );
 		menu_preferencias.activate.connect ( this.menu_preferencias_activate_signal );
 		menu_editar.add ( menu_preferencias );
-
 
 		var menu_ayuda_item = new Gtk.MenuItem.with_mnemonic ( _("Help") );
 		menu_barra.add( menu_ayuda_item );
@@ -89,7 +88,6 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow
 		menu_acerca.activate.connect ( this.menu_acerca_activate_signal );
 		menu_ayuda.add ( menu_acerca );
 
-
 		this.main_box.pack_start ( this.toolbar, false, false, 0 );
 	#else
 		this.set_titlebar ( toolbar );
@@ -99,19 +97,13 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow
 		this.conectar_seniales ();
 	}
 
-
 	private void conectar_seniales () {
-
-		this.toolbar.add_button.clicked.connect ( this.toolbar_add_button_clicked_signal );
-		this.toolbar.undo_button.clicked.connect ( this.toolbar_undo_button_clicked_signal );
-		this.toolbar.redo_button.clicked.connect ( this.toolbar_redo_button_clicked_signal );
-		this.toolbar.edit_button.clicked.connect ( this.toolbar_edit_button_clicked_signal );
-		this.toolbar.delete_button.clicked.connect ( this.toolbar_delete_button_clicked_signal );
-		this.toolbar.send_button.clicked.connect ( this.toolbar_send_button_clicked_signal );
-	#if DISABLE_GNOME3
-	#else
-		this.toolbar.cerrar_signal.connect ( this.close );
-	#endif
+		this.toolbar.add_button.activado.connect ( this.toolbar_add_button_clicked_signal );
+		this.toolbar.undo_button.activado.connect ( this.toolbar_undo_button_clicked_signal );
+		this.toolbar.redo_button.activado.connect ( this.toolbar_redo_button_clicked_signal );
+		this.toolbar.edit_button.activado.connect ( this.toolbar_edit_button_clicked_signal );
+		this.toolbar.delete_button.activado.connect ( this.toolbar_delete_button_clicked_signal );
+		this.toolbar.send_button.activado.connect ( this.toolbar_send_button_clicked_signal );
 		this.anios_hechos.anios_cursor_changed.connect ( this.anios_hechos_anios_cursor_changed_signal );
 		this.anios_hechos.listas_cursor_changed.connect ( this.anios_hechos_listas_cursor_changed_signal );
 		this.anios_hechos.hechos_selection_changed.connect ( this.elegir_hecho );
@@ -153,9 +145,9 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow
 		this.anio_actual = this.anios_hechos.get_anio_actual ();
 		if ( this.anio_actual != 0 ) {
 			this.toolbar.list_button_set_agregar ();
-			this.toolbar.list_button.clicked.disconnect (this.toolbar_list_button_quitar_clicked_signal);
-			this.toolbar.list_button.clicked.disconnect (this.toolbar_list_button_agregar_clicked_signal);
-			this.toolbar.list_button.clicked.connect ( this.toolbar_list_button_agregar_clicked_signal );
+			this.toolbar.list_button.activado.disconnect (this.toolbar_list_button_quitar_clicked_signal);
+			this.toolbar.list_button.activado.disconnect (this.toolbar_list_button_agregar_clicked_signal);
+			this.toolbar.list_button.activado.connect ( this.toolbar_list_button_agregar_clicked_signal );
 			this.anios_hechos_anios_cursor_changed ();
 		}
 		
@@ -166,9 +158,9 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow
 		this.lista_actual = this.anios_hechos.get_lista_actual ();
 		if (this.lista_actual != null ) {
 			this.toolbar.list_button_set_quitar ();
-			this.toolbar.list_button.clicked.disconnect (this.toolbar_list_button_quitar_clicked_signal);
-			this.toolbar.list_button.clicked.disconnect (this.toolbar_list_button_agregar_clicked_signal);
-			this.toolbar.list_button.clicked.connect ( this.toolbar_list_button_quitar_clicked_signal );
+			this.toolbar.list_button.activado.disconnect (this.toolbar_list_button_quitar_clicked_signal);
+			this.toolbar.list_button.activado.disconnect (this.toolbar_list_button_agregar_clicked_signal);
+			this.toolbar.list_button.activado.connect ( this.toolbar_list_button_quitar_clicked_signal );
 			this.anios_hechos_listas_cursor_changed ();
 		}
 
@@ -240,7 +232,7 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow
 			this.toolbar.set_buttons_invisible ();		
 		}
 	}
-	
+
 	public void show_visible () {
 		this.show_all ();
 		this.anios_hechos.mostrar_scroll_vista ( false );

@@ -1,3 +1,10 @@
+0.12 / 2015-02-24
+=================
+  * Se mejoró la interfaz gráfica en tanto en la versión estandar como en la clásica
+  * Se agregaron los nuevos widgets de Gtk+ para poner el diseño en sintonía con las Human Interface Guidelines de Gnome
+  * Se mejoró la estructura del código fuente y la nomenclatura de las clases y archivos
+  * Se corrigieron varios errores menores
+
 0.10 / 2014-07-26
 =================
   * Ahora se puede seleccionar multiples hechos

@@ -20,25 +20,33 @@
 using Gtk;
 using Nomeolvides;
 
-public class Nomeolvides.EditColeccionDialog : DialogColeccion
-{
-	private int64 id_coleccion;
-	public EditColeccionDialog ( )
-	{
-		this.title = _("Edit Collection");
-		this.add_button ( _("Edit") , ResponseType.APPLY);
+public class Nomeolvides.DialogListaAgregar : DialogBase {
+#if DISABLE_GNOME3
+	public DialogListaAgregar () {
+		this.title = _ ("Add Custom List");
+		Button boton_apply = this.get_widget_for_response ( ResponseType.APPLY ) as Button;
+		boton_apply.set_label ( _("Add") );
+#else
+	public DialogListaAgregar ( Widget relative_to ) {
+		base ( relative_to );
+		base.aplicar_button.set_label ( _("Add") );
+#endif
+		this.nombre_label.set_label (_("List Name") + ": " );
 	}
-
-	public void set_datos (Coleccion coleccion) {
-		this.nombre_coleccion_entry.set_text ( coleccion.nombre );
-		this.id_coleccion = coleccion.id;
-	}
-
+#if DISABLE_GNOME3
 	protected override void crear_respuesta() {
-		if(this.nombre_coleccion_entry.get_text_length () > 0)
-		{
-			this.respuesta = new Coleccion (this.nombre_coleccion_entry.get_text (), true);
-			this.respuesta.id = this.id_coleccion;
+		if ( this.nombre_entry.get_text_length () > 0 ) {
+			this.respuesta = new Lista ( this.nombre_entry.get_text () );
 		}
-	} 
+	}
+#else
+	protected override void aplicar () {
+		if ( this.nombre_entry.get_text_length () > 0 ) {
+			this.respuesta = new Lista ( this.nombre_entry.get_text () );
+			this.signal_agregar ( this.respuesta );
+			this.borrar_datos ();
+			this.ocultar ();
+		}
+	}
+#endif
 }

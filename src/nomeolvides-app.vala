@@ -21,14 +21,13 @@ using GLib;
 using Gtk;
 using Nomeolvides;
 
-public class Nomeolvides.App : Gtk.Application 
-{
+public class Nomeolvides.App : Gtk.Application  {
 	public static App app;
 	public VentanaPrincipal window;
 	public Datos datos;
 	public GLib.Menu application_menu;
 	private Migrador migrador;
-	private Preferencias dialogo_preferencias;
+	private DialogPreferencias dialogo_preferencias;
 
 	private void create_window () {
 		this.window = new VentanaPrincipal (this);
@@ -91,7 +90,7 @@ public class Nomeolvides.App : Gtk.Application
 	private void connect_signals () {
 		this.window.toolbar_add_button_clicked.connect ( this.add_hecho_dialog );
 		this.window.toolbar_undo_button_clicked.connect ( this.undo_hecho );
-		this.window.toolbar_redo_button_clicked.connect ( this.redo_hecho );		
+		this.window.toolbar_redo_button_clicked.connect ( this.redo_hecho );
 		this.window.toolbar_edit_button_clicked.connect ( this.edit_hecho_dialog );
 		this.window.toolbar_delete_button_clicked.connect ( this.delete_hecho_dialog );
 		this.window.toolbar_send_button_clicked.connect ( this.send_hecho );
@@ -125,15 +124,16 @@ public class Nomeolvides.App : Gtk.Application
 
 		if ( this.datos.hay_colecciones_activas () ) {
 
-			var add_dialog = new AddHechoDialog( this.window as VentanaPrincipal, this.datos.lista_de_colecciones () ); 
-		
+			var add_dialog = new DialogHechoAgregar ( this.window as VentanaPrincipal,
+													this.datos.lista_de_colecciones () );
+
 			add_dialog.show();
 
-			if ( add_dialog.run() == ResponseType.APPLY )
-			{
-				this.datos.agregar_hecho( add_dialog.respuesta );			
-			}		
+			if ( add_dialog.run() == ResponseType.APPLY ) {
+				this.datos.agregar_hecho( add_dialog.respuesta );
+			}
 			add_dialog.destroy();
+			this.window.toolbar.add_button.set_active ( false );
 		}
 	}
 	
@@ -152,7 +152,7 @@ public class Nomeolvides.App : Gtk.Application
 
 		this.window.get_hecho_actual ( out hecho );
 
-		var edit_dialog = new EditHechoDialog( this.window, this.datos.lista_de_colecciones () );
+		var edit_dialog = new DialogHechoEditar( this.window, this.datos.lista_de_colecciones () );
 		edit_dialog.set_datos ( hecho );
 		edit_dialog.show_all ();
 
@@ -160,18 +160,20 @@ public class Nomeolvides.App : Gtk.Application
 			this.datos.edit_hecho ( edit_dialog.respuesta );
 		}
 		edit_dialog.destroy();
+		this.window.toolbar.edit_button.set_active ( false );
 	}
 
 	public void delete_hecho_dialog () {
-		BorrarHechoDialogo delete_dialog = new BorrarHechoDialogo ( this.window as VentanaPrincipal);
+		DialogHechoBorrar delete_dialog = new DialogHechoBorrar ( this.window as VentanaPrincipal);
 		delete_dialog.setear_hechos ( this.window.get_hechos_seleccionados () );
 
 		if (delete_dialog.run() == ResponseType.APPLY) {
 			for (int i = 0; i < delete_dialog.hechos.length; i++ ) {
-					this.datos.eliminar_hecho ( delete_dialog.hechos.index (i) );
+				this.datos.eliminar_hecho ( delete_dialog.hechos.index (i) );
 			}
 		}	
 		delete_dialog.destroy ();
+		this.window.toolbar.delete_button.set_active ( false );
 	}
 
 	public void about_dialog () {
@@ -199,12 +201,12 @@ public class Nomeolvides.App : Gtk.Application
 	private void preferencias ( ) {
 		var colecciones = this.datos.lista_de_colecciones ();
 		var listas = this.datos.lista_de_listas ();
-		this.dialogo_preferencias = new Preferencias ( this.window, colecciones, listas );
+		this.dialogo_preferencias = new DialogPreferencias ( this.window, colecciones, listas );
 		this.dialogo_preferencias.hide.connect ( this.inicializar_ventana );
 		this.dialogo_preferencias.hide ();
 	}
 
-	public void send_hecho () {		
+	public void send_hecho () {
 		Hecho hecho; 
 		string asunto;
 		string cuerpo;
@@ -227,24 +229,26 @@ public class Nomeolvides.App : Gtk.Application
 			Archivo.escribir (archivo, hechos_json );
 		
 			string commando = @"xdg-email --subject '$asunto' --body '$cuerpo' --attach '$archivo' $direccion";
-  
 			try {
 				Process.spawn_command_line_async( commando );
 			} catch(SpawnError err) {
 				stdout.printf(err.message+"\n");
 			}
 		}
+		this.window.toolbar.send_button.set_active ( false );
 	}
 
 	public void undo_hecho () {
 		this.datos.deshacer_cambios ();
+		this.window.toolbar.undo_button.set_active ( false );
 	}
 
 	public void redo_hecho () {
 		this.datos.rehacer_cambios ();
+		this.window.toolbar.redo_button.set_active ( false );
 	}
 
-	public void add_hecho_lista () {		
+	public void add_hecho_lista () {
 		Hecho hecho;
 		this.window.get_hecho_actual ( out hecho );
 
@@ -253,10 +257,10 @@ public class Nomeolvides.App : Gtk.Application
 		}
 
 		if ( this.datos.hay_listas () ) {
-			AddHechoListaDialog dialogo = new AddHechoListaDialog ( this.window );
+			DialogHechoListaAgregar dialogo = new DialogHechoListaAgregar ( this.window );
 
 			dialogo.setear_hechos ( this.window.get_hechos_seleccionados () );
-            dialogo.setear_listas ( this.datos.lista_de_listas() );
+			dialogo.setear_listas ( this.datos.lista_de_listas() );
 
 			if (dialogo.run () == ResponseType.APPLY) {
 				for (int i = 0; i < dialogo.hechos.length; i++ ) {
@@ -265,39 +269,43 @@ public class Nomeolvides.App : Gtk.Application
 			}
 			dialogo.close ();
 		}
+		this.window.toolbar.list_button.active = false;
+		this.window.toolbar.list_button.set_active ( false );
 	}
 
 	public void remove_hecho_lista () {
-		var dialogo = new BorrarHechoListaDialog ( this.window );
+		var dialogo = new DialogHechoListaBorrar ( this.window );
 		var lista = this.window.get_lista_actual ();
-		
+
 		dialogo.set_hechos ( this.window.get_hechos_seleccionados () );
 		dialogo.set_lista ( lista );
-		
+
 		if (dialogo.run () == ResponseType.APPLY) {
 			for ( int i = 0; i < dialogo.hechos.length; i++ ) {
 				this.datos.quitar_hecho_lista ( dialogo.hechos.index (i), lista );
 			}
 		}
-		dialogo.close ();			
+		dialogo.close ();
+		this.window.toolbar.list_button.set_active ( false );
+
 	}
 
 	public void save_as_file_dialog () {
-		SaveFileDialog guardar_archivo = new SaveFileDialog(GLib.Environment.get_current_dir ());
+		DialogArchivoGuardar guardar_archivo = new DialogArchivoGuardar ( GLib.Environment.get_current_dir () );
 		guardar_archivo.set_transient_for ( this.window );
 
 		if (guardar_archivo.run () == ResponseType.ACCEPT) {		
-            this.datos.save_as_file ( guardar_archivo.get_filename () );
+			this.datos.save_as_file ( guardar_archivo.get_filename () );
 		}
 		guardar_archivo.close ();
 	}
 
 	public void importar_dialog () {
-		var abrir_archivo = new ImportarHechos(GLib.Environment.get_current_dir (), this.datos.lista_de_colecciones ());
+		var abrir_archivo = new DialogHechosImportar (this.window, GLib.Environment.get_current_dir (), this.datos.lista_de_colecciones ());
 		abrir_archivo.set_transient_for ( this.window );
 
 		if (abrir_archivo.run () == ResponseType.ACCEPT) {
-            this.datos.open_file ( abrir_archivo.get_filename (), abrir_archivo.get_coleccion_id () );
+			this.datos.open_file ( abrir_archivo.get_filename (), abrir_archivo.get_coleccion_id () );
 		}
 		abrir_archivo.close ();
 	}

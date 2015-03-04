@@ -12,7 +12,6 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- *   bullit - 39 escalones - silent love (japonesa) 
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -20,36 +19,40 @@
 using Gtk;
 using Nomeolvides;
 
-public class Nomeolvides.Preferencias : Gtk.Dialog {
+public class Nomeolvides.DialogPreferencias : Gtk.Dialog {
 	private Notebook notebook;
-	private ColeccionesConfig config_colecciones;
-	private ListasConfig config_listas;
+	private PreferenciasColecciones config_colecciones;
+	private PreferenciasListas config_listas;
 	
-	public Preferencias (VentanaPrincipal ventana, ListStoreColecciones colecciones, ListStoreListas listas ) {
-		this.set_title (_("Preferences"));
+	public DialogPreferencias ( VentanaPrincipal ventana, ListStoreColecciones colecciones, ListStoreListas listas ) {
 		this.set_modal ( true );
 		this.set_default_size (600, 350);
 		this.set_transient_for ( ventana as Gtk.Window );
 
-		this.config_colecciones = new ColeccionesConfig ( colecciones );
-		this.config_listas = new ListasConfig ( listas );
+#if DISABLE_GNOME3
+#else
+		var headerbar = new HeaderBar ();
+		this.set_titlebar ( headerbar );
+#endif
+		this.set_title (_("Preferences"));
+
+		this.config_colecciones = new PreferenciasColecciones ( colecciones );
+		this.config_listas = new PreferenciasListas ( listas );
 		this.config_colecciones.cambio_colecciones_signal.connect ( this.config_listas.actualizar_liststore );
 
 		this.notebook = new Notebook ();
 		this.notebook.set_size_request ( 400, 270 );
-	#if DISABLE_GNOME3
-		this.notebook.set_margin_right ( 10 );
-		this.notebook.set_margin_left ( 10 );
-	#else
-		this.notebook.set_margin_end ( 10 );
-		this.notebook.set_margin_start ( 10 );
-	#endif
 		this.notebook.append_page ( this.config_colecciones, new Label(_("Colections") ));
 		this.notebook.append_page ( this.config_listas, new Label (_("Lists") ));
+
 		Gtk.Box contenido =  this.get_content_area () as Box;
 		contenido.pack_start ( this.notebook, true, true, 0 );
-		
+
+#if DISABLE_GNOME3
 		this.add_button ( _("Close"), ResponseType.CLOSE );
+#else
+		headerbar.set_show_close_button ( true );
+#endif
 		this.response.connect(on_response);
 	}
 

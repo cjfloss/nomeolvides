@@ -1,3 +1,7 @@
+0.12 / 2015-02-24
+=================
+En esta versión logramos ofrecer una experiencia de uso muy superior a las versiones anteriores. Además, la interfaz de usuario tuvo muchos cambios que la hacen más sencilla y elegante. En la parte interna, se mejoró mucho los nombres de las clases y  archivos, así como la simplificación de algunas parte del código, para que sea más sencillo introducir nuevos cambios. También se corrigieron varios errores.
+
 0.10 / 2014-07-26
 =================
 En esta versión nos enfocamos en mejorar la experiencia de uso del programa solucionando varios errores que hacían molesto o distraían a la hora de usar Nomeolvides. También con este fin, mejoramos sensiblemente la interfaz de usuario y muchos de los diálogos. Se agregó la posibilidad de seleccionar múltiples hechos a la vez y realizar acciones tales como agregarlos a una lista o borrarlos. Además, se reescribió gran parte del código para hacer que los cambios sean más sencillos y se corrigieron gran cantidad de errores.
