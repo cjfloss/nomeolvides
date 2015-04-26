@@ -23,7 +23,7 @@ using Nomeolvides;
 public class Nomeolvides.SelectorFecha : Box {
 	public SpinButton dia_spin { get; private set; }
 	public ComboBox mes_combo { get; private set; }
-	public ListStore mes_lista { get; private set; }
+	public Gtk.ListStore mes_lista { get; private set; }
 	public SpinButton anio_spin { get; private set; }
 
 	public SelectorFecha () {
@@ -55,7 +55,7 @@ public class Nomeolvides.SelectorFecha : Box {
 		string[] meses = {_("January"), _("February"), _("March"), _("April"), _("May"), _("June"), _("July"),
 											_("August"), _("September"), _("October"), _("November"), _("December")};
 		
-		this.mes_lista = new ListStore ( 2, typeof(string), typeof(int) );
+		this.mes_lista = new Gtk.ListStore ( 2, typeof(string), typeof(int) );
 
 		for (int i = 0; i < 12; i++ ) {
 			this.mes_lista.append (out iter);

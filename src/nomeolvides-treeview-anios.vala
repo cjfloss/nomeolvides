@@ -62,7 +62,7 @@ public class Nomeolvides.TreeViewAnios : TreeView {
 		int anio2;
 
 		this.lista.get_value(iter1, 0, out val1);
-        this.lista.get_value(iter2, 0, out val2);
+		this.lista.get_value(iter2, 0, out val2);
 
 		anio1 = (int) val1;
 		anio2 = (int) val2;
@@ -76,6 +76,5 @@ public class Nomeolvides.TreeViewAnios : TreeView {
 				return 0;
 			}
 		}
-			
 	}
 }

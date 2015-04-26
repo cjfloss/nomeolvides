@@ -20,8 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
-public static int main (string[] args)
-{
+public static int main ( string[] args ) {
 
 	Intl.setlocale(LocaleCategory.MESSAGES, "");
 	Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.PACKAGE_LOCALE_DIR);
@@ -29,10 +28,10 @@ public static int main (string[] args)
 	Intl.textdomain (Config.GETTEXT_PACKAGE);
 
 	Gtk.init(ref args);
-		
+
 	var app = new App();
 	app.run(args);
 	app = null;
-		
+
 	return 0;
 }

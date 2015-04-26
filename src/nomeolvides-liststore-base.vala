@@ -20,7 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
-public class Nomeolvides.ListStoreBase : ListStore {
+public class Nomeolvides.ListStoreBase : Gtk.ListStore {
 	protected TreeIter iterador;
 	public bool vacio { get; private set; }
 	
