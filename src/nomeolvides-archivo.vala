@@ -1,8 +1,8 @@
 /* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /* nomeolvides
- *
+ * 
  * Copyright (C) 2013 Andres Fernandez <andres@softwareperonista.com.ar>
- *
+ * 
  * nomeolvides is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
@@ -12,7 +12,7 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- *   bullit - 39 escalones - silent love (japonesa) 
+ * 
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -20,13 +20,13 @@
 using Gtk;
 using Nomeolvides;
 
-public class Nomeolvides.Archivo : GLib.Object{ 
+public class Nomeolvides.Archivo : GLib.Object {
 	public static void crear ( string path, string datos = "" ) {
 		var archivo = File.new_for_path ( path );
 		try {
-			archivo.create (FileCreateFlags.NONE);
-		} catch (Error e) {
-			error (e.message);
+			archivo.create ( FileCreateFlags.NONE );
+		} catch ( Error e ) {
+			error ( e.message );
 		}
 
 		if ( datos != "" ) {
@@ -38,8 +38,8 @@ public class Nomeolvides.Archivo : GLib.Object{
 		var directorio = File.new_for_path ( path );
 		try {
 			directorio.make_directory ();
-		}  catch (Error e) {
-			error (e.message);
+		}  catch ( Error e ) {
+			error  (e.message );
 		}
 	}
 
@@ -72,15 +72,15 @@ public class Nomeolvides.Archivo : GLib.Object{
 
 	public static bool existe_uri ( string uri ) {
 		var archivo = File.new_for_uri ( uri );
-		bool retorno; 
+		bool retorno;
 
 		try {
 			archivo.query_info ("standard::icon", 0);
 			retorno = true;
-		}  catch (Error e) {
+		} catch ( Error e ) {
 			retorno = false;
 		}
-			
+
 		return retorno;
 	}
 
@@ -102,7 +102,7 @@ public class Nomeolvides.Archivo : GLib.Object{
 		try {
 			FileUtils.get_contents ( path, out contenido_archivo );
 		} catch ( Error e ) {
-			print (_("Error while open") + ": " + path + "\n");
+			print ( _("Error while open") + ": " + path + "\n" );
 			contenido_archivo = "";
 		}
 	}
@@ -113,15 +113,15 @@ public class Nomeolvides.Archivo : GLib.Object{
 
 		archivo = File.new_for_uri ( uri );
 
-		if ( Archivo.existe_uri (uri) ) {
+		if ( Archivo.existe_uri ( uri ) ) {
 			try {
-				archivo.load_contents(null ,out contenido, null);
+				archivo.load_contents( null ,out contenido, null );
 			}  catch (Error e) {
-				print (_("Error while open") + ": " + uri + "\n");
+				print ( _("Error while open") + ": " + uri + "\n" );
 			}
 			contenido_archivo = (string) contenido;
 		} else {
 			contenido_archivo = "";
-		}	
+		}
 	}
 }
