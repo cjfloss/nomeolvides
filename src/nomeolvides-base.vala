@@ -1,8 +1,8 @@
 /* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /* nomeolvides
- *
+ * 
  * Copyright (C) 2014 Andres Fernandez <andres@softwareperonista.com.ar>
- *
+ * 
  * nomeolvides is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,7 @@
 
 using Nomeolvides;
 
-public class Nomeolvides.Base : GLib.Object{
+public class Nomeolvides.Base : GLib.Object {
 	public int64 id;
 	public string nombre { get; protected set; }
 	public string hash { get; protected set; }
@@ -34,7 +34,7 @@ public class Nomeolvides.Base : GLib.Object{
 			this.nombre = Utiles.sacarDatoJson ( json, "nombre" );
 		} else {
 			this.nombre = "null";
-		}	
+		}
 		this.hash = Utiles.calcular_checksum ( this.a_json () );
 	}
 
@@ -44,19 +44,19 @@ public class Nomeolvides.Base : GLib.Object{
 
 	public string a_json () {	
 		var retorno = "\"nombre\":\"" + Utiles.sacarCaracterEspecial ( this.nombre ) + "\"";
-		
+
 		return retorno;
 	}
 
 	public string a_sql () {
 		var retorno  = "nombre=\"" + Utiles.sacarCaracterEspecial ( this.nombre ) + "\"";
-		
+
 		return retorno;
 	}
 
 	public string to_string () {
 		var retorno  = "\"" + Utiles.sacarCaracterEspecial ( this.nombre ) + "\"";
-		
+
 		return retorno;
 	}
 
