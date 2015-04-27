@@ -22,7 +22,7 @@ using Nomeolvides;
 
 public class Nomeolvides.DialogHechoEditar : Nomeolvides.DialogHecho {
 	private int64 hecho_id;
-	
+
 	public DialogHechoEditar ( VentanaPrincipal ventana, ListStoreColecciones colecciones ) {
 		base (ventana, colecciones );
 		this.set_title ( _("Edit Fact") );
@@ -45,9 +45,9 @@ public class Nomeolvides.DialogHechoEditar : Nomeolvides.DialogHecho {
 		this.set_coleccion_de_hecho ( hecho_a_editar.coleccion );
 		this.hecho_id = hecho_a_editar.id;
 	}
-	
+
 	private void on_response ( Dialog source, int response_id ) {
-        switch ( response_id )
+		switch ( response_id )
 		{
 			case ResponseType.APPLY:
 				modificar();
@@ -55,9 +55,9 @@ public class Nomeolvides.DialogHechoEditar : Nomeolvides.DialogHecho {
 			case ResponseType.CANCEL:
 				destroy();
 				break;
-        }
-    }
-		
+		}
+	}
+
 	private void modificar () {
 		this.crear_respuesta ();
 		this.respuesta.id = this.hecho_id;

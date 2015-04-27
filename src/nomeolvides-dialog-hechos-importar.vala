@@ -1,4 +1,4 @@
-/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 2; tab-width: 2 -*-  */
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
 /*
  * nomeolvides-importar-hechos.vala
  * Copyright (C) 2013 Fernando Fernandez <fernando@softwareperonista.com.ar>
@@ -7,14 +7,14 @@
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * nomeolvides is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 using Gtk;
 using Nomeolvides;
@@ -48,7 +48,7 @@ public class Nomeolvides.DialogHechosImportar : Dialog {
 		colecciones_liststore.agregar_al_inicio ( coleccion , 0 );
 
 		this.boton_elegir_archivo = new Button ();
-		this.boton_elegir_archivo.set_label (_("Choose File"));
+		this.boton_elegir_archivo.set_label (_("Choose File") );
 		this.boton_elegir_archivo.clicked.connect ( this.elegir_archivo );
 
 		var coleccion_label = new Label.with_mnemonic ( _("Colection") );
@@ -74,7 +74,7 @@ public class Nomeolvides.DialogHechosImportar : Dialog {
 		grid.attach ( this.combo_colecciones, 1, 1, 1, 1 );
 
 		var contenido = this.get_content_area() as Box;
-		contenido.pack_start(grid, false, true, 0);
+		contenido.pack_start( grid, false, true, 0 );
 
 		this.show_all ();
 	}

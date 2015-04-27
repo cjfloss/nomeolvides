@@ -1,20 +1,20 @@
-/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
-/* nomeolvides
- *
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
+/*
+ * nomeolvides-dialog-hecho-lista-borrar.vala
  * Copyright (C) 2013 Andres Fernandez <andres@softwareperonista.com.ar>
  *
  * nomeolvides is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * nomeolvides is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 using Gtk;
@@ -33,13 +33,13 @@ public class Nomeolvides.DialogHechoListaBorrar : Dialog {
 	public DialogHechoListaBorrar ( VentanaPrincipal ventana ) {
 #if DISABLE_GNOME3
 #else
-		Object (use_header_bar: 1);
+		Object ( use_header_bar: 1 );
 #endif
 		this.set_transient_for ( ventana as Window );
 		this.set_default_size ( 450, 200 );
 
 		this.pregunta = new Label.with_mnemonic ( "" );
-		this.hecho_label = new Label.with_mnemonic ( "");
+		this.hecho_label = new Label.with_mnemonic ( "" );
 		this.hecho_nombre = new Label ( "" );
 		this.lista_label = new Label.with_mnemonic ( _("From list") + ":" );
 		this.lista_nombre = new Label ( "" );
@@ -134,17 +134,17 @@ public class Nomeolvides.DialogHechoListaBorrar : Dialog {
 	}
 
 	public void set_lista ( Lista lista ) {
-		this.lista_nombre.set_markup ( "<span font_weight=\"heavy\">"+ lista.nombre +"</span>");
+		this.lista_nombre.set_markup ( "<span font_weight=\"heavy\">"+ lista.nombre +"</span>" );
 		this.lista = lista;
 	}
 
-	private void on_response (Dialog source, int response_id) {
-        switch (response_id) {
-    		case ResponseType.CANCEL:
-        		this.hide ();
-        		break;
-        }
-    }
+	private void on_response ( Dialog source, int response_id ) {
+		switch ( response_id ) {
+			case ResponseType.CANCEL:
+				this.hide ();
+				break;
+		}
+	}
 
 	public Lista get_lista () {
 		return this.lista;
