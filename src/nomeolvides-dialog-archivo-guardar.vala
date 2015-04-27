@@ -1,6 +1,6 @@
-/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
-/* nomeolvides
- *
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
+/*
+ * nomeolvides-dialog-archivo-guardar.vala
  * Copyright (C) 2013 Andres Fernandez <andres@softwareperonista.com.ar>
  *
  * nomeolvides is free software: you can redistribute it and/or modify it
@@ -14,7 +14,7 @@
  * See the GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 using Gtk;
@@ -22,25 +22,25 @@ using Nomeolvides;
 
 public class Nomeolvides.DialogArchivoGuardar : FileChooserDialog {
 
-    private string ultimo_directorio;
+	private string ultimo_directorio;
 
-    public DialogArchivoGuardar (string directorio_actual) {
-        this.title = _("Save File");
-        this.action = FileChooserAction.SAVE;
-		this.set_current_folder (directorio_actual);
+	public DialogArchivoGuardar ( string directorio_actual ) {
+		this.title = _("Save File");
+		this.action = FileChooserAction.SAVE;
+		this.set_current_folder ( directorio_actual );
 
-        add_button ( _("Cancel"), ResponseType.CANCEL);
-        add_button ( _("Save"), ResponseType.ACCEPT);
-        set_default_response (ResponseType.ACCEPT);
+		add_button ( _("Cancel"), ResponseType.CANCEL );
+		add_button ( _("Save"), ResponseType.ACCEPT );
+		set_default_response ( ResponseType.ACCEPT );
 
-        if (this.ultimo_directorio != null) {
-            set_current_folder (this.ultimo_directorio);
-        }
-    }
+		if ( this.ultimo_directorio != null ) {
+			set_current_folder ( this.ultimo_directorio );
+		}
+	}
 
-    public override void response (int type) {
-        if (type == ResponseType.ACCEPT) {
-            this.ultimo_directorio = get_current_folder ();
-        }
-    }
+	public override void response ( int type ) {
+		if ( type == ResponseType.ACCEPT ) {
+			this.ultimo_directorio = get_current_folder ();
+		}
+	}
 }

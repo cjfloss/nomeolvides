@@ -1,6 +1,6 @@
-/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
-/* nomeolvides
- *
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
+/*
+ * nomeolvides-deshacer.vala
  * Copyright (C) 2013 Andres Fernandez <andres@softwareperonista.com.ar>
  *
  * nomeolvides is free software: you can redistribute it and/or modify it
@@ -29,12 +29,12 @@ public class Nomeolvides.Deshacer<G> : Object {
 		this.lista_rehacer = new Array<DeshacerItem<G>> ();
 	}
 
-	public void guardar_borrado ( G borrar, DeshacerTipo tipo ) {		
+	public void guardar_borrado ( G borrar, DeshacerTipo tipo ) {
 		this.lista_deshacer.append_val ( new DeshacerItem<G> ( borrar, tipo) );
 		this.deshacer_con_items ();
 	}
 
-	public void guardar_rehacer ( DeshacerItem<G> rehacer ) {		
+	public void guardar_rehacer ( DeshacerItem<G> rehacer ) {
 		if ( rehacer.get_tipo () == DeshacerTipo.BORRAR ) {
 			this.lista_rehacer.append_val ( new DeshacerItem<G> ( rehacer.get_borrado(), rehacer.get_tipo() ) );
 		} else {
@@ -84,7 +84,7 @@ public class Nomeolvides.Deshacer<G> : Object {
 			} else {
 				this.guardar_borrado ( item.get_borrado (), item.get_tipo ());
 			}
-			
+
 			retorno = true;
 		} else {
 			this.rehacer_sin_items ();
@@ -93,7 +93,7 @@ public class Nomeolvides.Deshacer<G> : Object {
 	}
 
 	public void borrar_rehacer () {
-		this.lista_rehacer = new Array<DeshacerItem<G>> ();;
+		this.lista_rehacer = new Array<DeshacerItem<G>> ();
 		this.rehacer_sin_items ();
 	}
 

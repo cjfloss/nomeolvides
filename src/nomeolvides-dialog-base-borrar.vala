@@ -1,6 +1,6 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
-/* Nomeolvides
- *
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
+/*
+ * nomeolvides-dialog-base-borrar.vala
  * Copyright (C) 2013 Andres Fernandez <andres@softwareperonista.com.ar>
  *
  * nomeolvides is free software: you can redistribute it and/or modify it
@@ -14,11 +14,12 @@
  * See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 using Gtk;
 using Nomeolvides;
+
 #if DISABLE_GNOME3
 public class Nomeolvides.DialogBaseBorrar : Dialog {
 #else
@@ -44,7 +45,7 @@ public class Nomeolvides.DialogBaseBorrar : Popover {
 		this.nombre_objeto = new Label ( "" );
 		this.hechos = new Label.with_mnemonic ( "" );
 		this.hechos_objeto = new Label ( "" );
-		Grid grid = new Grid ( );
+		Grid grid = new Grid ();
 
 		pregunta.set_halign ( Align.CENTER );
 		pregunta.set_margin_bottom ( 15 );
@@ -107,8 +108,8 @@ public class Nomeolvides.DialogBaseBorrar : Popover {
 	}
 
 	public void set_datos ( Base objeto_a_borrar, int cantidad_hechos ) {
-		nombre_objeto.set_markup ( "<span font_weight=\"heavy\">"+ objeto_a_borrar.nombre +"</span>");
-		hechos_objeto.set_markup ( "<span font_weight=\"heavy\">"+ cantidad_hechos.to_string () +"</span>");
+		nombre_objeto.set_markup ( "<span font_weight=\"heavy\">"+ objeto_a_borrar.nombre +"</span>" );
+		hechos_objeto.set_markup ( "<span font_weight=\"heavy\">"+ cantidad_hechos.to_string () +"</span>" );
 	#if DISABLE_GNOME3
 	#else
 		this.objeto = objeto_a_borrar;
@@ -116,7 +117,7 @@ public class Nomeolvides.DialogBaseBorrar : Popover {
 	}
 #if DISABLE_GNOME3
 #else
-	protected void ocultar (){
+	protected void ocultar () {
 		this.signal_cerrado ( this.get_relative_to () );
 		this.hide ();
 	}

@@ -1,18 +1,18 @@
 /* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
-/* nomeolvides
- *
+/*
+ * nomeolvides-datos.vala
  * Copyright (C) 2012 Andres Fernandez <andres@softwareperonista.com.ar>
  *
  * nomeolvides is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * nomeolvides is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -53,7 +53,7 @@ public class Nomeolvides.Datos : GLib.Object {
 	}
 
 	public void quitar_hecho_lista ( Hecho hecho, Lista lista ) {
-		this.db.delete_hecho_lista ( hecho, lista );		
+		this.db.delete_hecho_lista ( hecho, lista );
 		this.datos_cambio_hechos ();
 	}
 
@@ -77,7 +77,7 @@ public class Nomeolvides.Datos : GLib.Object {
 
 	public void deshacer_cambios () {
 		DeshacerItem<Hecho> item;
-		bool hay_hechos_deshacer = this.deshacer.deshacer ( out item ); 
+		bool hay_hechos_deshacer = this.deshacer.deshacer ( out item );
 		if ( hay_hechos_deshacer ){
 			if ( item.get_tipo () == DeshacerTipo.EDITAR ) {
 				this.db.update_hecho ( item.get_borrado() );
@@ -92,7 +92,7 @@ public class Nomeolvides.Datos : GLib.Object {
 	public void rehacer_cambios () {
 		DeshacerItem<Hecho> item;
 
-		bool hay_hechos_rehacer = this.deshacer.rehacer ( out item ); 
+		bool hay_hechos_rehacer = this.deshacer.rehacer ( out item );
 		if ( hay_hechos_rehacer ){
 			if ( item.get_tipo () == DeshacerTipo.EDITAR ) {
 			this.db.update_hecho ( item.get_borrado() );
@@ -112,7 +112,7 @@ public class Nomeolvides.Datos : GLib.Object {
 		string todo;
 		string[] lineas;
 		Hecho nuevoHecho;
-		int i;	
+		int i;
 
 		todo = Archivo.leer ( nombre_archivo );
 
@@ -132,7 +132,7 @@ public class Nomeolvides.Datos : GLib.Object {
 		
 		for ( int i=0; i < hechos.length; i++ ) {
 			var hecho = hechos.index (i);
-			a_guardar += hecho.a_json () + "\n";			
+			a_guardar += hecho.a_json () + "\n";
 		}
 
 		Archivo.escribir ( archivo, a_guardar );
@@ -148,7 +148,7 @@ public class Nomeolvides.Datos : GLib.Object {
 		if ( anio != 0 ) {
 			hechos = this.db.select_hechos_visibles ( "WHERE anio=\"" + anio.to_string () +"\"" );
 		}
-		
+
 		return hechos;
 	}
 
@@ -179,7 +179,7 @@ public class Nomeolvides.Datos : GLib.Object {
 
 		var liststore = this.lista_de_listas();
 
-		if ( liststore.get_iter_first ( out iter ) ) { 
+		if ( liststore.get_iter_first ( out iter ) ) {
 			hay = true;
 		}
 		return hay;
@@ -201,7 +201,7 @@ public class Nomeolvides.Datos : GLib.Object {
 		for ( int i=0; i < listas.length; i++ ) {
 			var lista = listas.index (i);
 			var cantidad_hechos = this.db.count_hechos_lista ( lista );
-			liststore.agregar ( lista, cantidad_hechos );			
+			liststore.agregar ( lista, cantidad_hechos );
 		}
 
 		return liststore;
@@ -232,7 +232,7 @@ public class Nomeolvides.Datos : GLib.Object {
 	}
 
 	public void signal_cambio_hechos_listas () {
-		this.datos_cambio_hechos ();		
+		this.datos_cambio_hechos ();
 	}
 
 	public void signal_hechos_deshacer () {

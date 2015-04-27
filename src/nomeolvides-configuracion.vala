@@ -1,20 +1,20 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
-/* Nomeolvides
- * 
+/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
+/*
+ * nomeolvides-configuracion.vala
  * Copyright (C) 2012 Andres Fernandez <andres@softwareperonista.com.ar>
- * 
+ *
  * nomeolvides is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * nomeolvides is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 using Gtk;
@@ -23,37 +23,40 @@ using Nomeolvides;
 public class Nomeolvides.Configuracion : GLib.Object {
 	public static void create_about_dialog ( VentanaPrincipal window ) {
 		string[] authors = {
-  			"Andres Fernandez <andres@softwareperonista.com.ar>",
-  			"Fernando Fernandez <fernando@softwareperonista.com.ar>"
+			"Andres Fernandez <andres@softwareperonista.com.ar>",
+			"Fernando Fernandez <fernando@softwareperonista.com.ar>"
 		};
 		Gtk.show_about_dialog (window,
-			   "authors", authors,
-			   "program-name", "Nomeolvides",
-			   "title", _("About Nomeolvides"),
-			   "comments", _("Historical ephemeris manager"),
-			   "copyright", "Copyright 2012, 2013, 2014 Fernando Fernandez " + _("and") + " Andres Fernandez",
-			   "license-type", Gtk.License.GPL_3_0,
-			   "logo-icon-name", "nomeolvides",
-			   "version", Config.VERSION,
-			   "website", "https://github.com/softwareperonista/nomeolvides",
-			   "wrap-license", true);	
+				"authors", authors,
+				"program-name", "Nomeolvides",
+				"title", _("About Nomeolvides"),
+				"comments", _("Historical ephemeris manager"),
+				"copyright", "Copyright 2012, 2013, 2014 Fernando Fernandez " + _("and") + " Andres Fernandez",
+				"license-type", Gtk.License.GPL_3_0,
+				"logo-icon-name", "nomeolvides",
+				"version", Config.VERSION,
+				"website", "https://github.com/softwareperonista/nomeolvides",
+				"wrap-license", true);
 	}
-	
-	public static void set_config () {		
+
+	public static void set_config () {
 		if ( !Archivo.existe_path ( Configuracion.directorio_datos () ) ) {
 			Archivo.crear_directorio ( Configuracion.directorio_datos () );
 		}
 
-		if (!Archivo.existe_path ( Configuracion.base_de_datos () ) ) {
+		if ( !Archivo.existe_path ( Configuracion.base_de_datos () ) ) {
 			string stdout;
 			string stderr;
 			int exitstatus;
 
 			try {
-				Process.spawn_command_line_sync ( "sqlite3 " +   Configuracion.base_de_datos () + " \"" +  Configuracion.db_sql () + "\"", out stdout, out stderr, out exitstatus);
+				Process.spawn_command_line_sync ( "sqlite3 " +
+						Configuracion.base_de_datos () +
+						" \"" +  Configuracion.db_sql () +
+						"\"", out stdout, out stderr, out exitstatus);
 			} catch (SpawnError e) {
 				print ("Error: %s\n", e.message);
-				print ("Comando:\n" + "sqlite3 " +   Configuracion.base_de_datos () + " \"" +  Configuracion.db_sql () + "\"\n\n");
+				print ("Comando:\n" + "sqlite3 " + Configuracion.base_de_datos () + " \"" + Configuracion.db_sql () + "\"\n\n");
 				print ("Salida:\n\tstdout : " + stdout + "\n\tstderr : " + stderr + "\n\texitstatus : " + exitstatus.to_string () + "\n");
 			}
 		}

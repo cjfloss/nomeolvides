@@ -1,6 +1,6 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
-/* Nomeolvides
- *
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
+/*
+ * nomeolvides-dialog-base.vala
  * Copyright (C) 2013 Andres Fernandez <andres@softwareperonista.com.ar>
  *
  * nomeolvides is free software: you can redistribute it and/or modify it
@@ -14,7 +14,7 @@
  * See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 using Gtk;
@@ -40,7 +40,7 @@ public class Nomeolvides.DialogBase : Gtk.Popover {
 		this.response.connect(on_response);
 #else
 	public DialogBase ( Gtk.Widget relative_to ) {
-		GLib.Object ( relative_to: relative_to);
+		GLib.Object ( relative_to: relative_to );
 		this.cancelar_button = new Button.with_mnemonic ( _("Cancel") );
 		this.aplicar_button = new Button.with_mnemonic ( _("Apply") );
 		this.aplicar_button.set_sensitive ( false );
@@ -51,12 +51,12 @@ public class Nomeolvides.DialogBase : Gtk.Popover {
 		this.cancelar_button.get_style_context ().add_class ( "suggested-action" );
 #endif
 		this.nombre_hecho = "";
-		this.modal = true;	
+		this.modal = true;
 		this.nombre_label = new Label.with_mnemonic ( _("") + ": " );
-		this.nombre_entry = new Entry ( );
+		this.nombre_entry = new Entry ();
 		this.nombre_entry.set_max_length ( 30 );
 
-		var grid = new Grid ( );
+		var grid = new Grid ();
 	#if DISABLE_GNOME3
 		grid.set_margin_right ( 20 );
 		grid.set_margin_left ( 20 );
