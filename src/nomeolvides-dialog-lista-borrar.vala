@@ -1,6 +1,6 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
- *nomeolvides-dialog-lista-borrar.vala
+ * nomeolvides-dialog-lista-borrar.vala
  * Copyright (C) 2013 Andres Fernandez <andres@softwareperonista.com.ar>
  *
  * nomeolvides is free software: you can redistribute it and/or modify it
@@ -30,7 +30,7 @@ public class Nomeolvides.DialogListaBorrar : DialogBaseBorrar {
 		base.aplicar_button.set_label ( _("Delete") );
 #endif
 		this.pregunta.set_label ( _("Do you want to remove custom list?") );
-		this.nombre.set_label ( _("List") + ":");
-		this.hechos.set_label ( _("Amount of facts") + ":");
+		this.nombre.set_label ( _("List") + ":" );
+		this.hechos.set_label ( _("Amount of facts") + ":" );
 	}
 }

@@ -1,18 +1,18 @@
 /* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
-/* nomeolvides
- *
+/*
+ * nomeolvides-hecho.vala
  * Copyright (C) 2012 Fernando Fernandez <fernando@softwareperonista.com.ar>
  *
  * nomeolvides is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * nomeolvides is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -24,12 +24,11 @@ public class Nomeolvides.Hecho : Nomeolvides.Base {
 	public int64 coleccion;
 	public string fuente { get; private set; }
 
-	// Constructor
 	public Hecho ( string nombre, string descripcion, int anio, int mes, int dia, int64 coleccion, string fuente = "" )
 	{
 		base ( nombre );
 		this.descripcion = Utiles.ponerCaracterEspecial ( descripcion );
-		this.fecha = new DateTime.utc (anio, mes, dia, 0,0,0);
+		this.fecha = new DateTime.utc ( anio, mes, dia, 0,0,0 );
 		this.coleccion = coleccion;
 		this.fuente = Utiles.ponerCaracterEspecial ( fuente );
 		this.hash = Utiles.calcular_checksum ( this.a_json () );
@@ -40,17 +39,17 @@ public class Nomeolvides.Hecho : Nomeolvides.Base {
 		if ( !json.contains ( "{\"Hecho\":{" ) ) {
 			this.nombre = "null";
 			this.descripcion = "null";
-			this.fecha = new DateTime.utc ( 2013,2,20,0,0,0 );
+			this.fecha = new DateTime.utc ( 2013, 2, 20, 0, 0, 0 );
 			this.fuente = "null";
 		} else {
 			this.nombre = Utiles.ponerCaracterEspecial ( Utiles.sacarDatoJson ( json, "nombre" ) );
 			this.descripcion = Utiles.ponerCaracterEspecial ( Utiles.sacarDatoJson ( json, "descripcion" ) );
-			this.fecha = new DateTime.utc (int.parse ( Utiles.sacarDatoJson( json, "anio" ) ),
-			                               int.parse ( Utiles.sacarDatoJson( json, "mes" ) ),
-			                               int.parse ( Utiles.sacarDatoJson( json, "dia" ) ),
-			                     		   0,0,0);
+			this.fecha = new DateTime.utc ( int.parse ( Utiles.sacarDatoJson( json, "anio" ) ),
+											int.parse ( Utiles.sacarDatoJson( json, "mes" ) ),
+											int.parse ( Utiles.sacarDatoJson( json, "dia" ) ),
+											0,0,0 );
 			this.fuente = Utiles.ponerCaracterEspecial ( Utiles.sacarDatoJson ( json, "fuente" ) );
-		}	
+		}
 		this.hash = Utiles.calcular_checksum ( this.a_json () );
 
 		this.coleccion = coleccion;
@@ -91,7 +90,7 @@ public class Nomeolvides.Hecho : Nomeolvides.Base {
 		retorno += "dia=\"" + this.fecha.get_day_of_month ().to_string () + "\",";
 		retorno += "fuente=\"" + Utiles.sacarCaracterEspecial( this.fuente ) + "\",";
 		retorno += "coleccion=\"" + this.coleccion.to_string () + "\"";
-		
+
 		return retorno;
 	}
 
@@ -102,7 +101,7 @@ public class Nomeolvides.Hecho : Nomeolvides.Base {
 	}
 
 	public bool esIgual (string otroSum) {
-		
+
 		if (this.hash == otroSum) {
 			return true;
 		}

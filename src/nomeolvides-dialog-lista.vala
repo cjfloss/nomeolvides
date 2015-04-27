@@ -1,6 +1,6 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
-/* Nomeolvides
- * 
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
+/*
+ * nomeolvides-dialog-lista.vala
  * Copyright (C) 2013 Andres Fernandez <andres@softwareperonista.com.ar>
  * 
  * nomeolvides is free software: you can redistribute it and/or modify it
@@ -23,17 +23,17 @@ using Nomeolvides;
 public class Nomeolvides.DialogLista : Gtk.Dialog {
 	protected Entry nombre_entry;
 	public Lista respuesta { get; protected set; }
-	
-	public DialogLista ( )
+
+	public DialogLista ()
 	{
 		this.resizable = false;
 		this.modal = true;
 
-		this.add_button ( _("Cancel") , ResponseType.CLOSE);
+		this.add_button ( _("Cancel") , ResponseType.CLOSE );
 
-		this.response.connect(on_response);
+		this.response.connect( on_response );
 
-		var nombre_label = new Label.with_mnemonic (_("List Name") + ": ");
+		var nombre_label = new Label.with_mnemonic ( _("List Name") + ": " );
 
 		this.nombre_entry = new Entry ();
 		this.nombre_entry.set_max_length ( 30 );
@@ -51,32 +51,32 @@ public class Nomeolvides.DialogLista : Gtk.Dialog {
 		grid.set_valign ( Align.CENTER );
 		grid.set_halign ( Align.CENTER );
 
-		grid.attach (nombre_label, 0, 0, 1, 1);
-	    grid.attach (this.nombre_entry, 1, 0, 1, 1);
+		grid.attach ( nombre_label, 0, 0, 1, 1 );
+		grid.attach ( this.nombre_entry, 1, 0, 1, 1 );
 
 		var contenido = this.get_content_area() as Box;
 
-		contenido.pack_start(grid, true, true, 0);
+		contenido.pack_start( grid, true, true, 0 );
 
 		this.show_all ();
 	}
 
-	protected void on_response (Dialog source, int response_id)
+	protected void on_response ( Dialog source, int response_id )
 	{
-        switch (response_id)
+		switch (response_id)
 		{
-    		case ResponseType.APPLY:
-        		this.crear_respuesta ();
+			case ResponseType.APPLY:
+				this.crear_respuesta ();
 				break;
-    		case ResponseType.CLOSE:
-        		this.destroy();
-        		break;
-        }
-    }
+			case ResponseType.CLOSE:
+				this.destroy();
+				break;
+		}
+	}
 
 	protected virtual void crear_respuesta () {
 		if( nombre_entry.get_text_length () > 0 ) {
-			this.respuesta  = new Lista (this.nombre_entry.get_text ());
+			this.respuesta = new Lista ( this.nombre_entry.get_text () );
 		}
 	}
 }
