@@ -310,7 +310,7 @@ public class Nomeolvides.Migrador : Gtk.Dialog {
 			}
 			for (int j = 0; j < this.colecciones.index(i).cantidad_hechos(); j++ ) {
 				var hecho = this.colecciones.index(i).get_hecho ( j );
-				hecho.set_coleccion ( id_rea l);
+				hecho.set_coleccion ( id_real );
 				this.db.insert_hecho ( hecho );
 				this.barra_colecciones_hechos.set_fraction ( progreso_hecho * (j+1) );
 				this.barra_colecciones_hechos.set_text ( ( (int)( this.barra_colecciones_hechos.fraction*100 ) ).to_string () + "%" );
