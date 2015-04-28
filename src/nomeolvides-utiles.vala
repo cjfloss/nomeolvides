@@ -1,6 +1,6 @@
-/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
-/* nomeolvides
- *
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
+/*
+ * nomeolvides-utiles.vala
  * Copyright (C) 2012 Fernando Fernandez <fernando@softwareperonista.com.ar>
  *
  * nomeolvides is free software: you can redistribute it and/or modify it
@@ -14,7 +14,7 @@
  * See the GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 using Nomeolvides;
@@ -26,7 +26,7 @@ public class Nomeolvides.Utiles : GLib.Object{
 		string saltoDeLinea = "\n";
 		string reemplazoSaltoDeLinea = "|";
 		string retorno = inicial.replace ( saltoDeLinea, reemplazoSaltoDeLinea );
-		
+
 		string comillas = "\"";
 		string reemplazoComillas = "_";
 		retorno = retorno.replace ( comillas, reemplazoComillas );
@@ -39,7 +39,7 @@ public class Nomeolvides.Utiles : GLib.Object{
 		string saltoDeLinea = "\n";
 		string reemplazoSaltoDeLinea = "|";
 		string retorno = inicial.replace ( reemplazoSaltoDeLinea, saltoDeLinea );
-		
+
 		string comillas = "\"";
 		string reemplazoComillas = "_";
 		retorno = retorno.replace ( reemplazoComillas, comillas );
@@ -51,7 +51,7 @@ public class Nomeolvides.Utiles : GLib.Object{
 		string retorno = nombre;
 
 		retorno = retorno.replace (" ","-");
-		retorno = retorno.down();
+		retorno = retorno.down ();
 		retorno = retorno.replace ("á", "a");
 		retorno = retorno.replace ("é", "e");
 		retorno = retorno.replace ("í", "i");
@@ -65,8 +65,8 @@ public class Nomeolvides.Utiles : GLib.Object{
 
 	public static string sacarDatoJson(string json, string campo) {
 		int inicio,fin;
-		inicio = json.index_of(":",json.index_of("\"" + campo + "\"")) + 2;
-		fin = json.index_of ("\"", inicio);
+		inicio = json.index_of ( ":", json.index_of ( "\"" + campo + "\"" ) ) + 2;
+		fin = json.index_of ( "\"", inicio );
 		return json[inicio:fin];
 	}
 

@@ -1,4 +1,4 @@
-/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
 /*
  * nomeolvides-box-toolbar.vala
  * Copyright (C) 2014 Fernando Fernandez <fernando@softwareperonista.com.ar>
@@ -7,14 +7,14 @@
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * nomeolvides is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 using Gtk;
@@ -38,7 +38,7 @@ public class Nomeolvides.Toolbar : Gtk.HeaderBar {
 	public Box box_derecha { get; private set; }
 	public Box box_centro { get; private set; }
 #if DISABLE_GNOME3
-	public Label titulo_label {get; private set;}
+	public Label titulo_label { get; private set; }
 #endif
 
 	public Toolbar () {
@@ -76,11 +76,11 @@ public class Nomeolvides.Toolbar : Gtk.HeaderBar {
 		this.box_izquierda.pack_start ( this.undo_button );
 		this.box_izquierda.pack_start ( this.redo_button );
 
-		this.box_derecha = new Box ( Gtk.Orientation.HORIZONTAL, 0);
+		this.box_derecha = new Box ( Gtk.Orientation.HORIZONTAL, 0 );
 		this.box_derecha.get_style_context().add_class ( Gtk.STYLE_CLASS_LINKED );
 
 #if DISABLE_GNOME3
-		this.box_centro = new Box ( Gtk.Orientation.HORIZONTAL, 0);
+		this.box_centro = new Box ( Gtk.Orientation.HORIZONTAL, 0 );
 
 		this.box_izquierda.hexpand = true;
 		this.box_centro.hexpand = true;
@@ -126,7 +126,7 @@ public class Nomeolvides.Toolbar : Gtk.HeaderBar {
 
 	public void set_title ( string titulo ) {
 		if ( this.titulo_label != null ) {
-			this.titulo_label.set_markup ("<span weight='bold'>" + titulo + "</span>");
+			this.titulo_label.set_markup ( "<span weight='bold'>" + titulo + "</span>" );
 		}
 	}
 #endif
@@ -175,12 +175,12 @@ public class Nomeolvides.Toolbar : Gtk.HeaderBar {
 		}
 	}
 
-	public void list_button_set_agregar ( ) {
-		this.list_button.set_label (_("Add to list"));
+	public void list_button_set_agregar () {
+		this.list_button.set_label ( _("Add to list") );
 	}
 
-	public void list_button_set_quitar ( ) {
-		this.list_button.set_label (_("Remove from list"));
+	public void list_button_set_quitar () {
+		this.list_button.set_label ( _("Remove from list") );
 	}
 
 	public void activar_deshacer () {

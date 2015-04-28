@@ -1,6 +1,6 @@
-/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
-/* nomeolvides
- *
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
+/*
+ * nomeolvides-ventana-principal.vala
  * Copyright (C) 2012 Fernando Fernandez <fernando@softwareperonista.com.ar>
  *
  * nomeolvides is free software: you can redistribute it and/or modify it
@@ -12,9 +12,9 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 using Gtk;
@@ -28,12 +28,12 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	private Lista lista_actual;
 
 	public VentanaPrincipal ( Gtk.Application app ) {
-		Object (application: app);
-		this.set_application (app);
-		this.set_title ("Nomeolvides v" + Config.VERSION );
-		this.set_position (WindowPosition.CENTER);
-		this.set_default_size (1100,600);
-		this.set_size_request (500,350);
+		Object ( application: app );
+		this.set_application ( app );
+		this.set_title ( "Nomeolvides v" + Config.VERSION );
+		this.set_position ( WindowPosition.CENTER );
+		this.set_default_size ( 1100,600 );
+		this.set_size_request ( 500,350 );
 
 		this.anio_actual = 0;
 
@@ -41,7 +41,7 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 
 		this.anios_hechos = new InterfazPrincipal ();
 		
-		this.add (main_box);
+		this.add ( main_box );
 		
 		this.toolbar = new Nomeolvides.Toolbar ();
 
@@ -53,7 +53,7 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 		var menu_barra = new MenuBar ();
 		this.main_box.pack_start ( menu_barra, false, false, 0 );
 
-		var menu_archivo_item = new Gtk.MenuItem.with_mnemonic ( _("File"));
+		var menu_archivo_item = new Gtk.MenuItem.with_mnemonic ( _("File") );
 		menu_barra.add( menu_archivo_item );
 		var menu_archivo = new Gtk.Menu ();
 		menu_archivo_item.set_submenu ( menu_archivo );
@@ -145,12 +145,12 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 		this.anio_actual = this.anios_hechos.get_anio_actual ();
 		if ( this.anio_actual != 0 ) {
 			this.toolbar.list_button_set_agregar ();
-			this.toolbar.list_button.activado.disconnect (this.toolbar_list_button_quitar_clicked_signal);
-			this.toolbar.list_button.activado.disconnect (this.toolbar_list_button_agregar_clicked_signal);
+			this.toolbar.list_button.activado.disconnect ( this.toolbar_list_button_quitar_clicked_signal );
+			this.toolbar.list_button.activado.disconnect ( this.toolbar_list_button_agregar_clicked_signal );
 			this.toolbar.list_button.activado.connect ( this.toolbar_list_button_agregar_clicked_signal );
 			this.anios_hechos_anios_cursor_changed ();
 		}
-		
+
 		this.actualizar_anio_label ();
 	}
 
@@ -158,8 +158,8 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 		this.lista_actual = this.anios_hechos.get_lista_actual ();
 		if (this.lista_actual != null ) {
 			this.toolbar.list_button_set_quitar ();
-			this.toolbar.list_button.activado.disconnect (this.toolbar_list_button_quitar_clicked_signal);
-			this.toolbar.list_button.activado.disconnect (this.toolbar_list_button_agregar_clicked_signal);
+			this.toolbar.list_button.activado.disconnect ( this.toolbar_list_button_quitar_clicked_signal );
+			this.toolbar.list_button.activado.disconnect ( this.toolbar_list_button_agregar_clicked_signal );
 			this.toolbar.list_button.activado.connect ( this.toolbar_list_button_quitar_clicked_signal );
 			this.anios_hechos_listas_cursor_changed ();
 		}
@@ -184,11 +184,10 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	}
 
 	private void actualizar_anio_label () {
-		if ( this.anio_actual != 0) {
-			this.toolbar.set_label_anio ( this.anio_actual.to_string() );
+		if ( this.anio_actual != 0 ) {
+			this.toolbar.set_label_anio ( this.anio_actual.to_string () );
 		} else {
-			this.toolbar.set_label_anio ( );
-
+			this.toolbar.set_label_anio ();
 		}
 	}
 
@@ -196,8 +195,8 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 		if ( this.lista_actual != null ) {
 			this.toolbar.set_label_lista ( this.lista_actual.nombre );
 		} else {
-			this.toolbar.set_label_lista ( );
-		}	
+			this.toolbar.set_label_lista ();
+		}
 	}
 
 	public int get_anio_actual () {
@@ -209,7 +208,7 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	}
 
 	public TreePath get_hecho_actual ( out Hecho hecho ) {
-		return this.anios_hechos.get_hecho_actual (out hecho );
+		return this.anios_hechos.get_hecho_actual ( out hecho );
 	}
 
 	public Array<Hecho> get_hechos_seleccionados () {
@@ -231,7 +230,7 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 				}
 			}
 		} else {
-			this.toolbar.set_buttons_invisible ();		
+			this.toolbar.set_buttons_invisible ();
 		}
 	}
 
