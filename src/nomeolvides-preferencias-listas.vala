@@ -1,20 +1,20 @@
-/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
-/* nomeolvides
- *
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
+/*
+ * nomeolvides-preferencias-litas.vala
  * Copyright (C) 2013 Andres Fernandez <andres@softwareperonista.com.ar>
  *
  * nomeolvides is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * nomeolvides is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 using Gtk;
@@ -45,7 +45,7 @@ public class Nomeolvides.PreferenciasListas: Nomeolvides.PreferenciasBase {
 		if ( this.db.insert_lista ( objeto as Lista ) ) {
 			objeto.id = this.db.ultimo_rowid();
 			liststore = this.treeview.get_model () as ListStoreListas;
-			liststore.agregar (objeto as Lista, 0);
+			liststore.agregar ( objeto as Lista, 0 );
 			this.cambio_listas_signal ();
 			return true;
 		} else {
@@ -92,7 +92,7 @@ public class Nomeolvides.PreferenciasListas: Nomeolvides.PreferenciasBase {
 		for ( int i=0; i < listas.length; i++ ) {
 			var lista = listas.index (i);
 			var cantidad_hechos = this.db.count_hechos_lista ( lista );
-			liststore.agregar ( lista, cantidad_hechos );			
+			liststore.agregar ( lista, cantidad_hechos );
 		}
 
 		this.treeview.set_model ( liststore );

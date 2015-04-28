@@ -1,6 +1,6 @@
-/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
-/* nomeolvides
- *
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
+/*
+ * nomeolvides-preferencias-base.vala
  * Copyright (C) 2014 Andres Fernandez <andres@softwareperonista.com.ar>
  *
  * nomeolvides is free software: you can redistribute it and/or modify it
@@ -14,7 +14,7 @@
  * See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 using Gtk;
@@ -44,7 +44,7 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 		this.toolbar.set_show_close_button ( false );
 #endif
 
-		this.scroll_view = new ScrolledWindow (null,null);
+		this.scroll_view = new ScrolledWindow ( null,null );
 		this.scroll_view.set_policy ( PolicyType.NEVER, PolicyType.AUTOMATIC );
 		this.scroll_view.set_border_width ( 1 );
 
@@ -98,7 +98,7 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 		this.editar_dialog.show_all ();
 
 	#if DISABLE_GNOME3
-		if (this.editar_dialog.run() == ResponseType.APPLY) {
+		if ( this.editar_dialog.run() == ResponseType.APPLY ) {
 			if ( this.actualizar ( objeto, this.editar_dialog.respuesta ) ) {
 				this.cambio_signal ();
 			}
@@ -133,7 +133,7 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 	void deshacer_cambios () {
 		DeshacerItem<Base> item;
 		bool hay_colecciones_deshacer = this.deshacer.deshacer ( out item );
-		if ( hay_colecciones_deshacer ){
+		if ( hay_colecciones_deshacer ) {
 			this.efectuar_deshacer ( item.get_borrado () );
 			this.cambio_signal ();
 		}
@@ -143,7 +143,7 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 		DeshacerItem<Base> item;
 
 		bool hay_colecciones_rehacer = this.deshacer.rehacer ( out item );
-		if ( hay_colecciones_rehacer ){
+		if ( hay_colecciones_rehacer ) {
 			this.efectuar_rehacer ( item.get_borrado () );
 			this.cambio_signal ();
 		}

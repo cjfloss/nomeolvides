@@ -1,6 +1,6 @@
-/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
-/* nomeolvides
- *
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
+/*
+ * nomeolvides-preferencias-colecciones.vala
  * Copyright (C) 2013 Andres Fernandez <andres@softwareperonista.com.ar>
  *
  * nomeolvides is free software: you can redistribute it and/or modify it
@@ -14,7 +14,7 @@
  * See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 using Gtk;
@@ -95,7 +95,7 @@ public class Nomeolvides.PreferenciasColecciones : Nomeolvides.PreferenciasBase 
 		base.elegir ();
 
 		if ( this.cambio_toggle ) {
-			Coleccion coleccion = this.db.select_coleccion ( "WHERE rowid=\"" + this.treeview.get_elemento_id().to_string() + "\"");
+			Coleccion coleccion = this.db.select_coleccion ( "WHERE rowid=\"" + this.treeview.get_elemento_id().to_string() + "\"" );
 			TreeViewColecciones treeview_colecciones = this.treeview as TreeViewColecciones;
 			coleccion.visible = treeview_colecciones.get_coleccion_cursor_visible ();
 			this.db.update_coleccion ( coleccion );
@@ -109,4 +109,3 @@ public class Nomeolvides.PreferenciasColecciones : Nomeolvides.PreferenciasBase 
 
 	public signal void cambio_colecciones_signal ();
 }
-

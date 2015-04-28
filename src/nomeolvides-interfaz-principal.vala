@@ -1,20 +1,20 @@
-/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
-/* nomeolvides
- *
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
+/*
+ * nomeolvides-interfaz-principal.vala
  * Copyright (C) 2013 Fernando Fernandez <fernando@softwareperonista.com.ar>
  *
  * nomeolvides is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * nomeolvides is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 using Gtk;
@@ -39,14 +39,14 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 		this.hechos_view = new TreeViewHechos ();
 		this.listas_view = new TreeViewBase.ventana_principal ();
 		this.vista_hecho = new Portada ();
-		this.vista_hecho.set_size_request (300,-1);
+		this.vista_hecho.set_size_request ( 300,-1 );
 
-		this.scroll_hechos_view = new ScrolledWindow (null,null);
-		this.scroll_anios_view = new ScrolledWindow (null,null);
-		this.scroll_listas_view = new ScrolledWindow (null,null);
-		this.scroll_hechos_view.set_policy (PolicyType.NEVER, PolicyType.AUTOMATIC);
-		this.scroll_anios_view.set_policy (PolicyType.NEVER, PolicyType.AUTOMATIC);
-		this.scroll_listas_view.set_policy (PolicyType.NEVER, PolicyType.AUTOMATIC);
+		this.scroll_hechos_view = new ScrolledWindow ( null,null );
+		this.scroll_anios_view = new ScrolledWindow ( null,null );
+		this.scroll_listas_view = new ScrolledWindow ( null,null );
+		this.scroll_hechos_view.set_policy ( PolicyType.NEVER, PolicyType.AUTOMATIC );
+		this.scroll_anios_view.set_policy ( PolicyType.NEVER, PolicyType.AUTOMATIC );
+		this.scroll_listas_view.set_policy ( PolicyType.NEVER, PolicyType.AUTOMATIC );
 
 		this.anios_listas = new Notebook ();
 
@@ -56,7 +56,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 		this.hechos_view.row_activated.connect ( mostrar_vista );
 		this.anios_listas.switch_page.connect ( cambiar_pestania );
 
-		Separator separador = new Separator(Orientation.VERTICAL);
+		Separator separador = new Separator( Orientation.VERTICAL );
 
 		this.anio_actual = 0;
 
@@ -64,20 +64,20 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 		this.scroll_anios_view.add ( this.anios_view );
 		this.scroll_listas_view.add ( this.listas_view );
 
-		this.anios_listas.append_page ( this.scroll_anios_view, new Label(_("Years") ));
-		this.anios_listas.append_page ( this.scroll_listas_view, new Label (_("Lists") ));
-		
-		this.pack_start (this.anios_listas, false, false, 0);
-		this.pack_start (new Separator(Orientation.VERTICAL), false, false, 2);
-		this.pack_start (this.scroll_hechos_view, true, true, 0);
-		this.pack_start (separador, false, false, 2);
-		this.pack_start (this.vista_hecho, false, false, 0);
+		this.anios_listas.append_page ( this.scroll_anios_view, new Label( _("Years") ) );
+		this.anios_listas.append_page ( this.scroll_listas_view, new Label ( _("Lists") ) );
+
+		this.pack_start ( this.anios_listas, false, false, 0 );
+		this.pack_start ( new Separator( Orientation.VERTICAL ), false, false, 2 );
+		this.pack_start ( this.scroll_hechos_view, true, true, 0 );
+		this.pack_start ( separador, false, false, 2 );
+		this.pack_start ( this.vista_hecho, false, false, 0 );
 	}
 
 	private void elegir_hecho () {
 		this.hechos_selection_changed();
 		if ( this.hechos_view.get_hechos_seleccionados ().length == 1 ) {
-			if (this.vista_hecho.visible == true ) {
+			if ( this.vista_hecho.visible == true ) {
 				this.mostrar_hecho ();
 			}
 		} else {
@@ -95,7 +95,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 
 	private void elegir_lista () {
 			var lista = this.db.select_lista ( "WHERE rowid=\"" 
-		                                                + this.listas_view.get_elemento_id ().to_string() + "\"");
+												+ this.listas_view.get_elemento_id ().to_string() + "\"");
 		if ( this.lista_actual != lista ) {
 			this.lista_actual = lista;
 			this.anio_actual = 0; //ningún anio
@@ -147,7 +147,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 	}
 
 	public void cargar_listas ( ListStoreListas listas ) {
-		if ( !(listas.vacio) ) {			
+		if ( !(listas.vacio) ) {
 			this.listas_view.set_model ( listas );
 			this.anios_listas.get_nth_page (1).show ();
 		} else {
@@ -178,8 +178,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 	}
 
 	public string get_nombre_pestania () {
-		return this.anios_listas.get_tab_label_text ( this.anios_listas.get_nth_page
-		                                               ( this.anios_listas.get_current_page () ) );
+		return this.anios_listas.get_tab_label_text ( this.anios_listas.get_nth_page ( this.anios_listas.get_current_page () ) );
 	}
 
 	public void limpiar_hechos_view () {

@@ -1,20 +1,20 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
-/* Nomeolvides
- * 
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
+/*
+ * nomeolvides-portada.vala
  * Copyright (C) 2013 Andres Fernandez <andres@softwareperonista.com.ar>
- * 
+ *
  * nomeolvides is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * nomeolvides is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 using Gtk;
@@ -25,7 +25,7 @@ public class Nomeolvides.Portada : Box {
 	private Label label_fecha;
 	private Label descripcion;
 	private Label label_fuente;
-	
+
 	public Portada () {
 		this.set_orientation ( Orientation.VERTICAL );
 		this.set_spacing ( 10 );
@@ -33,11 +33,11 @@ public class Nomeolvides.Portada : Box {
 		this.set_hexpand ( false );
 
 		var scroll_descripcion = new ScrolledWindow ( null, null );
-		scroll_descripcion.set_policy (PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
-		
-		this.label_nombre = new Label.with_mnemonic ("");
-		this.label_fecha = new Label.with_mnemonic ("");
-		this.label_fuente = new Label.with_mnemonic ("");
+		scroll_descripcion.set_policy ( PolicyType.AUTOMATIC, PolicyType.AUTOMATIC );
+
+		this.label_nombre = new Label.with_mnemonic ( "" );
+		this.label_fecha = new Label.with_mnemonic ( "" );
+		this.label_fuente = new Label.with_mnemonic ( "" );
 
 		this.label_nombre.set_width_chars ( 30 );
 		this.label_fecha.set_width_chars ( 30 );
@@ -59,7 +59,7 @@ public class Nomeolvides.Portada : Box {
 
 		this.label_fuente.wrap_mode = Pango.WrapMode.WORD_CHAR;
 
-		this.descripcion = new Label.with_mnemonic ("");
+		this.descripcion = new Label.with_mnemonic ( "" );
 	#if DISABLE_GNOME3
 		this.descripcion.set_margin_left ( 10 );
 		this.descripcion.set_margin_right ( 10 );
@@ -77,7 +77,7 @@ public class Nomeolvides.Portada : Box {
 		descripcion_box.set_valign ( Align.START );
 
 		descripcion_box.pack_start ( this.descripcion );
-		
+
 		scroll_descripcion.add_with_viewport ( descripcion_box );
 
 		this.pack_start ( this.label_nombre, false, false, 0 );

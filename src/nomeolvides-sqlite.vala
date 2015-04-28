@@ -1,20 +1,20 @@
-/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
-/* nomeolvides
- *
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
+/*
+ * nomeolvides-sqlite.vala
  * Copyright (C) 2013 Andres Fernandez <andres@softwareperonista.com.ar>
  *
  * nomeolvides is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * nomeolvides is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 using GLib;
@@ -30,10 +30,10 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 		this.nombre_db = nombredb;
 	}
 	
-	protected bool open ( ) {
+	protected bool open () {
 		bool retorno = true;
 		this.rc = Database.open ( nombre_db, out this.db );
-		if ( this.rc != Sqlite.OK) {
+		if ( this.rc != Sqlite.OK ) {
 			stderr.printf ( _("Could not open the data base") + ": %d, %s\n", this.rc, this.db.errmsg () );
 			retorno = false;
 		}
@@ -42,12 +42,12 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 
 		if (rc != Sqlite.OK) {
 			stderr.printf ("SQL error: %d, %s\n", rc, db.errmsg ());
-        }
-		
+		}
+
 		return retorno;
 	}
 
-	protected bool query (string sql_query, out Statement stmt) {
+	protected bool query ( string sql_query, out Statement stmt ) {
 		bool retorno = true;
 
 		this.rc = this.db.prepare_v2 ( sql_query, -1, out stmt, null );
@@ -62,16 +62,16 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 
 	protected bool insert ( string tabla, string columnas ,string valores ) {
 		bool retorno = false;
-		if ( this.open ( ) ) {
+		if ( this.open () ) {
 			retorno = true;
-			var rc = this.db.exec ("INSERT INTO \""+ tabla +"\" (" + columnas + ") VALUES (" + valores + ")", null, null);
+			var rc = this.db.exec ( "INSERT INTO \""+ tabla +"\" (" + columnas + ") VALUES (" + valores + ")", null, null );
 
 			//print ("INSERT INTO \""+ tabla +"\" VALUES (" + valores + ")" + "\n");
 
-			if (rc != Sqlite.OK) {
+			if ( rc != Sqlite.OK ) {
 				stderr.printf ( "SQL error: %d, %s\n", rc, db.errmsg () );
 				retorno = false;
-  			}
+			}
 		}
 
 		return retorno;
@@ -79,16 +79,16 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 
 	protected bool del ( string tabla, string where = "" ) {
 		bool retorno = false;
-		if ( this.open ( ) ) {
+		if ( this.open () ) {
 			retorno = true;
 			//print ("DELETE FROM " + tabla + " " + where + "\n");
 
-			var rc = this.db.exec ("DELETE FROM " + tabla + " " + where, null, null);
+			var rc = this.db.exec ( "DELETE FROM " + tabla + " " + where, null, null );
 
-			if (rc != Sqlite.OK) {
+			if ( rc != Sqlite.OK ) {
 				stderr.printf ( "SQL error: %d, %s\n", rc, db.errmsg () );
 				retorno = false;
-    		}
+			}
 		}
 
 		return retorno;
@@ -97,15 +97,15 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 	protected bool update ( string tabla, string valores, string where ) {
 		bool retorno = false;
 		if ( this.open ( ) ) {
-			retorno = true;		
+			retorno = true;
 			//print ("SQL: " + "UPDATE " + tabla + " SET " + valores + " " + where + "\n");
-		
-			var rc = this.db.exec ("UPDATE " + tabla + " SET " + valores + " " + where, null, null);
 
-			if (rc != Sqlite.OK) {
-				stderr.printf ("SQL error: %d, %s\n", rc, db.errmsg ());
+			var rc = this.db.exec ( "UPDATE " + tabla + " SET " + valores + " " + where, null, null );
+
+			if ( rc != Sqlite.OK ) {
+				stderr.printf ( "SQL error: %d, %s\n", rc, db.errmsg () );
 				retorno = false;
-    		}
+			}
 		}
 
 		return retorno;
@@ -116,7 +116,7 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 
 		//print ("SQL: " + "SELECT " + columnas + " FROM " + tabla + " " + where + "\n");
 		
-		this.open ( );
+		this.open ();
 		this.query ( "SELECT " + columnas + " FROM " + tabla + " " + where, out stmt);
 
 		return stmt;
@@ -128,7 +128,7 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 		//print ( "SELECT DISTINCT " + columnas + " FROM " + tabla + " " + where +"\n" );
 		
 		this.open ();
-		this.query ( "SELECT DISTINCT " + columnas + " FROM " + tabla + " " + where, out stmt);
+		this.query ( "SELECT DISTINCT " + columnas + " FROM " + tabla + " " + where, out stmt );
 
 		return stmt;
 	}
@@ -137,8 +137,8 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 		Statement stmt;
 
 		//print ("SELECT COUNT (*) FROM " + tabla + " " + where + "\n");
-		this.open ( );
-		this.query ( "SELECT COUNT (*) FROM " + tabla + " " + where, out stmt);
+		this.open ();
+		this.query ( "SELECT COUNT (*) FROM " + tabla + " " + where, out stmt );
 
 		return stmt;
 	} 
@@ -152,30 +152,30 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 		int rc = stmt.step ();
 		
 		while ( rc == Sqlite.ROW ) {
-			switch ( rc  ) {
+			switch ( rc ) {
 				case Sqlite.DONE:
 					break;
 				case Sqlite.ROW:
 					for ( int j = 0; j < cols; j++ ) {
 						columnas[j] = stmt.column_text ( j );
-					} 
+					}
 
-					hecho = new Hecho (columnas[0],
-					              columnas[1],
-			    		          int.parse (columnas[2]),
-			        		      int.parse (columnas[3]),
-			            		  int.parse (columnas[4]),
-								  int64.parse (columnas[5]), 
-								  columnas[6]);
-					hecho.id = int64.parse(columnas[7]);
+					hecho = new Hecho ( columnas[0],
+								columnas[1],
+								int.parse (columnas[2]),
+								int.parse (columnas[3]),
+								int.parse (columnas[4]),
+								int64.parse (columnas[5]),
+								columnas[6]);
+					hecho.id = int64.parse(columnas[7] );
 					hechos.append_val( hecho );
 					break;
 				default:
-					print (_("Error parsing facts"));
+					print ( _("Error parsing facts") );
 					break;
 			}
 			
-			rc = stmt.step ();		
+			rc = stmt.step ();
 		}
 
 		return hechos;
@@ -183,11 +183,11 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 
 	public void insert_hecho ( Hecho hecho ) {
 		Array<Hecho> existe = select_hechos ( "WHERE hechos.nombre=\"" + Utiles.sacarCaracterEspecial ( hecho.nombre ) + "\" AND " +
-											  "anio=\"" + hecho.get_anio ().to_string () + "\" AND " +
-		                                      "mes=\"" + hecho.get_mes ().to_string () + "\" AND " +
-		                                      "dia=\"" + hecho.get_dia ().to_string () + "\"" );
+											"anio=\"" + hecho.get_anio ().to_string () + "\" AND " +
+											"mes=\"" + hecho.get_mes ().to_string () + "\" AND " +
+											"dia=\"" + hecho.get_dia ().to_string () + "\"" );
 		if ( existe.length == 0 ) {
-			this.insert ( "hechos", "nombre,descripcion,anio,mes,dia,fuente,coleccion" ,hecho.to_string ()   );
+			this.insert ( "hechos", "nombre,descripcion,anio,mes,dia,fuente,coleccion" ,hecho.to_string () );
 		}
 	}
 
@@ -197,7 +197,7 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 
 		if ( existe == null ) {
 			retorno = true;
-			if ( !(this.insert ( "listas", "nombre" ,"\"" + lista.nombre + "\"" ))) {
+			if ( !(this.insert ( "listas", "nombre" ,"\"" + lista.nombre + "\"" ) ) ) {
 				retorno = false;
 			}
 		}
@@ -206,8 +206,8 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 	}
 
 	public void insert_hecho_lista ( Hecho hecho, Lista lista ) {
-		string valores = "\"" + lista.id.to_string() + "\", \""
-			                  + hecho.id.to_string() + "\"";
+		string valores = "\"" + lista.id.to_string () + "\", \""
+						+ hecho.id.to_string () + "\"";
 		
 		this.insert ( "listashechos", "lista,hecho",valores );
 	}
@@ -218,7 +218,7 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 
 		if ( existe == null ) {
 			retorno = true;
-			 if ( !(this.insert ( "colecciones", "nombre,visible", coleccion.to_string () ))) {
+			 if ( !(this.insert ( "colecciones", "nombre,visible", coleccion.to_string () ) ) ) {
 				retorno = false;
 			 }
 		}
@@ -244,7 +244,7 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 
 	public bool delete_lista ( Lista lista ) {
 		bool retorno = false;
-		
+
 		if (this.del ( "listas", "WHERE id=\"" + lista.id.to_string() +"\"" ) ) {
 			retorno = true;
 		}
@@ -254,15 +254,15 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 
 	public void delete_hecho_lista ( Hecho hecho, Lista lista ) {
 		this.del ( "listashechos",
-		           "WHERE lista=\"" + lista.id.to_string()
-		                            + "\" AND hecho=\"" 
-		                            + hecho.id.to_string() +"\"" );
-	
+				"WHERE lista=\"" + lista.id.to_string()
+				+ "\" AND hecho=\"" 
+				+ hecho.id.to_string() +"\"" );
+
 	}
-	
+
 	public bool delete_coleccion ( Coleccion coleccion ) {
 		bool retorno = false;
-		
+
 		if( this.del ( "colecciones", "WHERE id=\"" + coleccion.id.to_string() +"\"" )) {
 			retorno = true;
 		}
@@ -295,15 +295,15 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 		string valores = hecho.a_sql ();
 
 		this.update ( "hechos",
-		              valores,
-		              " WHERE id=\"" + hecho.id.to_string() + "\"" );
+					valores,
+					" WHERE id=\"" + hecho.id.to_string() + "\"" );
 	}
- 
+
 	public bool update_lista ( Lista lista ) {
 		bool retorno = false;
 		string valores = lista.a_sql ();
 
-		if ( this.update ( "listas",valores," WHERE id=\"" + lista.id.to_string() + "\"" )) {
+		if ( this.update ( "listas",valores," WHERE id=\"" + lista.id.to_string() + "\"" ) ) {
 			retorno = true;
 		}
 
@@ -312,13 +312,13 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 
 	public void update_hecho_lista ( Hecho hecho, Lista lista ) {
 		string valores = "lista=\"" + lista.id.to_string() + "\" hecho=\""
-			                        + lista.id.to_string() + "\"";
+						+ lista.id.to_string() + "\"";
 
 		this.update ( "listashechos",
-		              valores,
-		              "WHERE lista=\"" + lista.id.to_string()
-		                               + "\" AND hecho=\"" 
-		                               + hecho.id.to_string() +"\"" );
+					valores,
+					"WHERE lista=\"" + lista.id.to_string()
+					+ "\" AND hecho=\"" 
+					+ hecho.id.to_string() +"\"" );
 	}
 
 	public bool update_coleccion ( Coleccion coleccion ) {
@@ -341,14 +341,14 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 		} else {
 			where_nuevo = where + " AND";
 		}
-		
+
 		var stmt = this.select ( "hechos,colecciones",
-		                         "hechos.nombre,descripcion,anio,mes,dia,coleccion,fuente,hechos.id",
-		                         where_nuevo + " hechos.id NOT IN hechosborrar AND hechos.coleccion NOT IN coleccionesborrar" +
-		                         " GROUP BY hechos.id"); 
-	
+								 "hechos.nombre,descripcion,anio,mes,dia,coleccion,fuente,hechos.id",
+								 where_nuevo + " hechos.id NOT IN hechosborrar AND hechos.coleccion NOT IN coleccionesborrar" +
+								 " GROUP BY hechos.id"); 
+
 		hechos = this.parse_query_hechos ( stmt );
-		
+
 		return hechos;
 	}
 
@@ -362,7 +362,7 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 			where_nuevo = where + " AND";
 		}
 
-		hechos = this.select_hechos ( where_nuevo + " colecciones.visible=\"true\"");
+		hechos = this.select_hechos ( where_nuevo + " colecciones.visible=\"true\"" );
 
 		return hechos;
 	}
@@ -393,16 +393,16 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 						columnas[j] = stmt.column_text ( j );
 					} 
 
-					lista = new Lista (columnas[0]);
-					lista.id = int64.parse(columnas[1]);
+					lista = new Lista ( columnas[0] );
+					lista.id = int64.parse( columnas[1] );
 					listas.append_val( lista );
 					break;
 				default:
 					print (_("Error"));
 					break;
 			}
-			
-			rc = stmt.step ();		
+
+			rc = stmt.step ();
 		}
 		
 		return listas;
@@ -411,17 +411,17 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 	public Array<Hecho> select_hechos_lista ( Lista lista ) {
 		Array<Hecho> hechos = new Array<Hecho> ();
 		string where = " WHERE lista=\"" + lista.id.to_string () + "\"" 
-                     + "AND listashechos.hecho=hechos.id " 
-				     + "AND colecciones.visible=\"true\" AND hechos.coleccion=colecciones.id "
+					 + "AND listashechos.hecho=hechos.id " 
+					 + "AND colecciones.visible=\"true\" AND hechos.coleccion=colecciones.id "
 					 + "AND hechos.id NOT IN hechosborrar "
-			         + "AND hechos.coleccion NOT IN coleccionesborrar";
+					 + "AND hechos.coleccion NOT IN coleccionesborrar";
 
 		var stmt = this.select ( "hechos,listashechos,colecciones",
-		                    	 "hechos.nombre,descripcion,anio,mes,dia,coleccion,fuente,hechos.id",
+								 "hechos.nombre,descripcion,anio,mes,dia,coleccion,fuente,hechos.id",
 								 where ); 
-  
+
 		hechos = this.parse_query_hechos ( stmt );
-		
+
 		return hechos;
 	}
 
@@ -436,33 +436,33 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 		} else {
 			nuevo_where = where + " AND colecciones.id NOT IN coleccionesborrar";
 		}
-		
+
 		var stmt = this.select ( "colecciones", "nombre,visible,id", nuevo_where ); 
-	
+
 		int cols = stmt.column_count ();
 		int rc = stmt.step ();
-		
+
 		while ( rc == Sqlite.ROW ) {
-			switch ( rc  ) {
+			switch ( rc ) {
 				case Sqlite.DONE:
 					break;
 				case Sqlite.ROW:
 					for ( int j = 0; j < cols; j++ ) {
 						columnas[j] = stmt.column_text ( j );
-					} 
+					}
 
-					coleccion = new Coleccion (columnas[0], bool.parse (columnas[1]) );
-					coleccion.id = int64.parse(columnas[2]);
+					coleccion = new Coleccion ( columnas[0], bool.parse ( columnas[1] ) );
+					coleccion.id = int64.parse( columnas[2] );
 					colecciones.append_val( coleccion );
 					break;
 				default:
-					print (_("Error"));
+					print ( _("Error") );
 					break;
 			}
-			
-			rc = stmt.step ();		
+
+			rc = stmt.step ();
 		}
-		
+
 		return colecciones;
 	}
 
@@ -476,18 +476,18 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 		int rc = stmt.step ();
 
 		if ( rc == Sqlite.ROW ) {
-			switch ( rc  ) {
+			switch ( rc ) {
 				case Sqlite.DONE:
 					break;
 				case Sqlite.ROW:
 					for ( int j = 0; j < cols; j++ ) {
 						columnas[j] = stmt.column_text ( j );
 					}
-					coleccion = new Coleccion (columnas[0], bool.parse (columnas[1]) );
-					coleccion.id = int64.parse(columnas[2]);
+					coleccion = new Coleccion ( columnas[0], bool.parse ( columnas[1] ) );
+					coleccion.id = int64.parse( columnas[2] );
 					break;
 				default:
-					print (_("Error"));
+					print ( _("Error") );
 					break;
 			}
 		}
@@ -505,18 +505,18 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 		int rc = stmt.step ();
 
 		if ( rc == Sqlite.ROW ) {
-			switch ( rc  ) {
+			switch ( rc ) {
 				case Sqlite.DONE:
 					break;
 				case Sqlite.ROW:
 					for ( int j = 0; j < cols; j++ ) {
 						columnas[j] = stmt.column_text ( j );
 					}
-					lista = new Lista (columnas[0]);
-					lista.id = int64.parse(columnas[1]);
+					lista = new Lista ( columnas[0] );
+					lista.id = int64.parse( columnas[1] );
 					break;
 				default:
-					print (_("Error"));
+					print ( _("Error") );
 					break;
 			}
 		}
@@ -527,29 +527,29 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 	public int count_hechos_coleccion ( Coleccion coleccion ) {
 		int cantidad_hechos = 0;
 
-		var stmt = this.count ("hechos", "WHERE coleccion=" + coleccion.id.to_string() + " AND hechos.id NOT IN hechosborrar");
+		var stmt = this.count ( "hechos", "WHERE coleccion=" + coleccion.id.to_string() + " AND hechos.id NOT IN hechosborrar" );
 
 		int rc = stmt.step ();
 
 		if ( rc == Sqlite.ROW ) {
-			cantidad_hechos = int.parse (stmt.column_text (0));
+			cantidad_hechos = int.parse ( stmt.column_text (0) );
 		}
 
 		return cantidad_hechos;
 	}
-	
+
 	public int count_hechos_lista ( Lista lista ) {
 		int cantidad_hechos = 0;
 
 		var stmt = this.count ("listashechos,hechos", "WHERE lista=" + lista.id.to_string() 
-		                                                              + " AND listashechos.hecho NOT IN hechosborrar"
-		                   											  + " AND listashechos.hecho = hechos.id"
-		                   											  + " AND hechos.coleccion NOT IN coleccionesborrar");
+																	+ " AND listashechos.hecho NOT IN hechosborrar"
+																	+ " AND listashechos.hecho = hechos.id"
+																	+ " AND hechos.coleccion NOT IN coleccionesborrar");
 
 		int rc = stmt.step ();
 
 		if ( rc == Sqlite.ROW ) {
-			cantidad_hechos = int.parse (stmt.column_text (0));
+			cantidad_hechos = int.parse ( stmt.column_text (0) );
 		}
 
 		return cantidad_hechos;
@@ -566,25 +566,25 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 		}
 
 		var stmt = this.select_distinct ( "hechos,colecciones", "anio", 
-		                                   where_nuevo + " colecciones.visible=\"true\" " 
-		                                   +"AND hechos.coleccion = colecciones.id"
-		                                   + " AND hechos.coleccion NOT IN coleccionesborrar"
-		                                   + " AND hechos.id NOT IN hechosborrar GROUP BY hechos.id" );
+										where_nuevo + " colecciones.visible=\"true\" " 
+										+"AND hechos.coleccion = colecciones.id"
+										+ " AND hechos.coleccion NOT IN coleccionesborrar"
+										+ " AND hechos.id NOT IN hechosborrar GROUP BY hechos.id" );
 
 		int rc = stmt.step ();
-		
+
 		while ( rc == Sqlite.ROW ) {
-			switch ( rc  ) {
+			switch ( rc ) {
 				case Sqlite.DONE:
 					break;
 				case Sqlite.ROW:
-					anios.append_val( int.parse (stmt.column_text (0)) );					
+					anios.append_val( int.parse ( stmt.column_text (0) ) );
 					break;
 				default:
-					print (_("Error parsing lists"));
+					print ( _("Error parsing lists") );
 					break;
 			}
-			
+
 			rc = stmt.step ();
 		}
 		return anios;
