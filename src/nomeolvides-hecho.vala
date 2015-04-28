@@ -1,4 +1,4 @@
-/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
 /*
  * nomeolvides-hecho.vala
  * Copyright (C) 2012 Fernando Fernandez <fernando@softwareperonista.com.ar>

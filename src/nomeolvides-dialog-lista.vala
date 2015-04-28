@@ -1,4 +1,4 @@
-/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
+/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
 /*
  * nomeolvides-dialog-lista.vala
  * Copyright (C) 2013 Andres Fernandez <andres@softwareperonista.com.ar>
