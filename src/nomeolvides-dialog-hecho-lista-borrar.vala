@@ -31,10 +31,8 @@ public class Nomeolvides.DialogHechoListaBorrar : Dialog {
 	private Grid grid;
 	
 	public DialogHechoListaBorrar ( VentanaPrincipal ventana ) {
-#if DISABLE_GNOME3
-#else
 		Object (use_header_bar: 1);
-#endif
+
 		this.set_transient_for ( ventana as Window );
 		this.set_default_size ( 450, 200 );
 
@@ -55,21 +53,13 @@ public class Nomeolvides.DialogHechoListaBorrar : Dialog {
 		hecho_nombre.set_margin_bottom ( 10 );
 		lista_label.set_halign ( Align.END );
 		lista_nombre.set_halign ( Align.START );
-#if DISABLE_GNOME3
-		hecho_label.set_margin_right ( 20 );
-		hecho_nombre.set_margin_left ( 20 );
-		lista_label.set_margin_right ( 20 );
-		lista_nombre.set_margin_left ( 20 );
-		grid.set_margin_right ( 20 );
-		grid.set_margin_left ( 20 );
-#else
+		
 		hecho_label.set_margin_end ( 20 );
 		hecho_nombre.set_margin_start ( 20 );
 		lista_label.set_margin_end ( 20 );
 		lista_nombre.set_margin_start ( 20 );
 		grid.set_margin_end ( 20 );
 		grid.set_margin_start ( 20 );
-#endif
 
 		grid.set_valign ( Align.CENTER );
 		grid.set_halign ( Align.CENTER );
@@ -86,12 +76,8 @@ public class Nomeolvides.DialogHechoListaBorrar : Dialog {
 		
 		this.response.connect ( on_response );
 		this.add_button ( _("Cancel"), ResponseType.CANCEL );
-#if DISABLE_GNOME3
-		this.add_button ( _("Remove") , ResponseType.APPLY );
-#else
 		var boton = this.add_button ( _("Remove") , ResponseType.APPLY );
 		boton.get_style_context ().add_class ( "suggested-action" );
-#endif
 
 		var contenido = this.get_content_area () as Box;
 		contenido.pack_start ( grid, true, true, 0 );

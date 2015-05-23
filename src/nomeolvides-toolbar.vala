@@ -37,22 +37,10 @@ public class Nomeolvides.Toolbar : Gtk.HeaderBar {
 	public Box box_izquierda { get; private set; }
 	public Box box_derecha { get; private set; }
 	public Box box_centro { get; private set; }
-#if DISABLE_GNOME3
-	public Label titulo_label {get; private set;}
-#endif
 
 	public Toolbar () {
-
-#if DISABLE_GNOME3
-		this.spacing = 0;
-		this.orientation = Gtk.Orientation.HORIZONTAL;
-		this.set_homogeneous ( true );
-		this.hexpand = true;
-
-#else
 		this.has_subtitle = false;
 		this.set_show_close_button ( true );
-#endif
 
 		this.add_button = new  Boton ( _("Add") );
 		this.undo_button = new  Boton ( _("Undo") );
@@ -69,9 +57,6 @@ public class Nomeolvides.Toolbar : Gtk.HeaderBar {
 		this.box_izquierda = new Box ( Gtk.Orientation.HORIZONTAL, 0);
 		this.box_izquierda.get_style_context().add_class ( Gtk.STYLE_CLASS_LINKED );
 
-#if DISABLE_GNOME3
-		this.box_izquierda.margin = 2;
-#endif
 		this.box_izquierda.pack_start ( this.add_button );
 		this.box_izquierda.pack_start ( this.undo_button );
 		this.box_izquierda.pack_start ( this.redo_button );
@@ -79,29 +64,10 @@ public class Nomeolvides.Toolbar : Gtk.HeaderBar {
 		this.box_derecha = new Box ( Gtk.Orientation.HORIZONTAL, 0);
 		this.box_derecha.get_style_context().add_class ( Gtk.STYLE_CLASS_LINKED );
 
-#if DISABLE_GNOME3
-		this.box_centro = new Box ( Gtk.Orientation.HORIZONTAL, 0);
-
-		this.box_izquierda.hexpand = true;
-		this.box_centro.hexpand = true;
-		this.box_derecha.hexpand = true;
-
-		this.box_izquierda.halign = Gtk.Align.START;
-		this.box_centro.halign = Gtk.Align.CENTER;
-		this.box_derecha.halign = Gtk.Align.END;
-
-		this.titulo_label = null;
-
-		this.box_derecha.margin = 2;
-#endif
-
 		this.box_derecha.pack_end ( this.edit_button );
 		this.box_derecha.pack_end ( this.delete_button );
 
 		this.pack_start ( this.box_izquierda );
-#if DISABLE_GNOME3
-		this.pack_start ( this.box_centro );
-#endif
 		this.pack_end ( this.box_derecha );
 
 		this.show.connect ( this.set_buttons_invisible );
@@ -117,19 +83,6 @@ public class Nomeolvides.Toolbar : Gtk.HeaderBar {
 		this.list_button_set_agregar ();
 		this.box_derecha.pack_end ( this.list_button );
 	}
-
-#if DISABLE_GNOME3
-	public void agregar_titulo () {
-		this.titulo_label = new Label ( "" );
-		this.box_centro.pack_start ( this.titulo_label );
-	}
-
-	public void set_title ( string titulo ) {
-		if ( this.titulo_label != null ) {
-			this.titulo_label.set_markup ("<span weight='bold'>" + titulo + "</span>");
-		}
-	}
-#endif
 
 	public void set_label_anio ( string anio = "0" ) {
 		if ( anio != "0") {

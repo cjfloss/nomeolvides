@@ -38,11 +38,7 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 
 		this.toolbar = new Nomeolvides.Toolbar ();
 		this.toolbar.set_border_width ( 1 );
-
-#if DISABLE_GNOME3
-#else
 		this.toolbar.set_show_close_button ( false );
-#endif
 
 		this.scroll_view = new ScrolledWindow (null,null);
 		this.scroll_view.set_policy ( PolicyType.NEVER, PolicyType.AUTOMATIC );
@@ -68,27 +64,17 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 		this.deshacer.rehacer_sin_items.connect ( this.toolbar.desactivar_rehacer );
 		this.deshacer.rehacer_con_items.connect ( this.toolbar.activar_rehacer );
 		this.treeview.cursor_changed.connect ( this.elegir );
-	#if DISABLE_GNOME3
-	#else
+
 		this.agregar_dialog.signal_cerrado.connect ( this.desactivar_boton );
 		this.borrar_dialog.signal_cerrado.connect ( this.desactivar_boton );
 		this.editar_dialog.signal_cerrado.connect ( this.desactivar_boton );
 		this.agregar_dialog.signal_agregar.connect ( this.agregar );
 		this.editar_dialog.signal_actualizar.connect ( this.actualizar );
 		this.borrar_dialog.signal_borrar.connect ( this.borrar );
-	#endif
 	}
 
 	protected virtual void add_dialog () {
 		this.agregar_dialog.show_all ();
-	#if DISABLE_GNOME3
-		if ( agregar_dialog.run() == ResponseType.APPLY ) {
- 			this.agregar ( agregar_dialog.respuesta );
-		}
-		this.agregar_dialog.hide ();
-		this.toolbar.add_button.set_active ( false );
-	#endif
-
 		this.agregar_dialog.borrar_datos ();
 	}
 
@@ -96,30 +82,12 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 		Base objeto = this.treeview.get_elemento ();
 		this.editar_dialog.set_datos ( objeto );
 		this.editar_dialog.show_all ();
-
-	#if DISABLE_GNOME3
-		if (this.editar_dialog.run() == ResponseType.APPLY) {
-			if ( this.actualizar ( objeto, this.editar_dialog.respuesta ) ) {
-				this.cambio_signal ();
-			}
-		}
-		this.toolbar.edit_button.set_active ( false );
-		this.editar_dialog.hide ();
-	#endif
 	}
 
 	private void delete_dialog () {
 		Base objeto = this.treeview.get_elemento ();
 		this.borrar_dialog.set_datos ( objeto, this.treeview.get_cantidad_hechos () );
 		this.borrar_dialog.show_all ();
-	#if DISABLE_GNOME3
-		if ( this.borrar_dialog.run() == ResponseType.APPLY ) {
-			this.borrar ( objeto );
-			this.cambio_signal ();
-		}
-		this.borrar_dialog.hide ();
-		this.toolbar.delete_button.set_active ( false );
-	#endif
 	}
 
 	protected virtual void elegir () {
@@ -152,13 +120,11 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 	public void set_buttons_invisible () {
 		this.toolbar.set_buttons_invisible ();
 	}
-#if DISABLE_GNOME3
-#else
+
 	protected void desactivar_boton ( Widget relative_to ) {
 		var boton = relative_to as ToggleButton;
 		boton.set_active ( false );
 	}
-#endif
 
 	protected virtual bool agregar ( Base objeto ) {
 		return false;

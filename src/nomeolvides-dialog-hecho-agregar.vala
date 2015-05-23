@@ -30,19 +30,12 @@ public class Nomeolvides.DialogHechoAgregar : Nomeolvides.DialogHecho {
 		this.response.connect(on_response);
 		this.nombre_entry.activate.connect(on_activate);
 
-#if DISABLE_GNOME3
-		this.add_button ( _("Add") , ResponseType.APPLY);
-#else
 		var boton = this.add_button ( _("Add") , ResponseType.APPLY);
 		boton.get_style_context ().add_class ( "suggested-action" );
-#endif
 	}
 
-
-	private void on_response (Dialog source, int response_id)
-	{
-		switch (response_id)
-		{
+	private void on_response (Dialog source, int response_id) {
+		switch ( response_id ) {
 			case ResponseType.APPLY:
 				aplicar();
 				break;
@@ -58,8 +51,7 @@ public class Nomeolvides.DialogHechoAgregar : Nomeolvides.DialogHecho {
 		}
 	}
 
-	private void aplicar ()
-	{
+	private void aplicar () {
 		this.crear_respuesta ();
 	}
 }

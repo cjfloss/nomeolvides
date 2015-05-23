@@ -47,51 +47,8 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 
 		this.toolbar.agregar_send_button ();
 		this.toolbar.agregar_list_button ();
-	#if DISABLE_GNOME3
-		this.toolbar.agregar_titulo ();
-
-		var menu_barra = new MenuBar ();
-		this.main_box.pack_start ( menu_barra, false, false, 0 );
-
-		var menu_archivo_item = new Gtk.MenuItem.with_mnemonic ( _("File"));
-		menu_barra.add( menu_archivo_item );
-		var menu_archivo = new Gtk.Menu ();
-		menu_archivo_item.set_submenu ( menu_archivo );
-
-		var menu_exportar = new Gtk.MenuItem.with_mnemonic ( _("Export Facts") );
-		menu_exportar.activate.connect ( this.menu_exportar_activate_signal );
-		menu_archivo.add ( menu_exportar );
-
-		var menu_importar = new Gtk.MenuItem.with_mnemonic ( _("Import facts") );
-		menu_importar.activate.connect ( this.menu_importar_activate_signal );
-		menu_archivo.add ( menu_importar );
-
-		var menu_salir = new Gtk.MenuItem.with_mnemonic ( _("Quit") );
-		menu_salir.activate.connect ( this.menu_salir_activate_signal );
-		menu_archivo.add ( menu_salir );
-
-		var menu_editar_item = new Gtk.MenuItem.with_mnemonic ( _("Edit") );
-		menu_barra.add( menu_editar_item );
-		var menu_editar = new Gtk.Menu ();
-		menu_editar_item.set_submenu ( menu_editar );
-
-		var menu_preferencias = new Gtk.MenuItem.with_mnemonic ( _("Preferences") );
-		menu_preferencias.activate.connect ( this.menu_preferencias_activate_signal );
-		menu_editar.add ( menu_preferencias );
-
-		var menu_ayuda_item = new Gtk.MenuItem.with_mnemonic ( _("Help") );
-		menu_barra.add( menu_ayuda_item );
-		var menu_ayuda = new Gtk.Menu ();
-		menu_ayuda_item.set_submenu ( menu_ayuda );
-
-		var menu_acerca = new Gtk.MenuItem.with_mnemonic ( _("About Nomeolvides") );
-		menu_acerca.activate.connect ( this.menu_acerca_activate_signal );
-		menu_ayuda.add ( menu_acerca );
-
-		this.main_box.pack_start ( this.toolbar, false, false, 0 );
-	#else
+	
 		this.set_titlebar ( toolbar );
-	#endif
 		this.main_box.pack_start ( anios_hechos, true, true, 0 );
 
 		this.conectar_seniales ();
@@ -264,28 +221,6 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 		this.anios_hechos.limpiar_hechos_view ();
 	}
 
-#if DISABLE_GNOME3
-	public void menu_exportar_activate_signal () {
-		this.menu_exportar_activate ();
-	}
-
-	public void menu_importar_activate_signal () {
-		this.menu_importar_activate ();
-	}
-
-	public void menu_salir_activate_signal () {
-		this.menu_salir_activate ();
-	}
-
-	public void menu_preferencias_activate_signal () {
-		this.menu_preferencias_activate ();
-	}
-
-	public void menu_acerca_activate_signal () {
-		this.menu_acerca_activate ();
-	}
-
-#endif
 	public signal void toolbar_add_button_clicked ();
 	public signal void toolbar_undo_button_clicked ();
 	public signal void toolbar_redo_button_clicked ();
@@ -296,11 +231,4 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	public signal void toolbar_list_agregar_button_clicked ();
 	public signal void anios_hechos_anios_cursor_changed ();
 	public signal void anios_hechos_listas_cursor_changed ();
-#if DISABLE_GNOME3
-	public signal void menu_exportar_activate ();
-	public signal void menu_importar_activate ();
-	public signal void menu_salir_activate ();
-	public signal void menu_preferencias_activate ();
-	public signal void menu_acerca_activate ();
-#endif
 }

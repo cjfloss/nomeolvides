@@ -25,8 +25,7 @@ public class Nomeolvides.Hecho : Nomeolvides.Base {
 	public string fuente { get; private set; }
 
 	// Constructor
-	public Hecho ( string nombre, string descripcion, int anio, int mes, int dia, int64 coleccion, string fuente = "" )
-	{
+	public Hecho ( string nombre, string descripcion, int anio, int mes, int dia, int64 coleccion, string fuente = "" ) {
 		base ( nombre );
 		this.descripcion = Utiles.ponerCaracterEspecial ( descripcion );
 		this.fecha = new DateTime.utc (anio, mes, dia, 0,0,0);

@@ -60,13 +60,8 @@ public class Nomeolvides.Portada : Box {
 		this.label_fuente.wrap_mode = Pango.WrapMode.WORD_CHAR;
 
 		this.descripcion = new Label.with_mnemonic ("");
-	#if DISABLE_GNOME3
-		this.descripcion.set_margin_left ( 10 );
-		this.descripcion.set_margin_right ( 10 );
-	#else
 		this.descripcion.set_margin_start ( 10 );
 		this.descripcion.set_margin_end ( 10 );
-	#endif
 		this.descripcion.set_line_wrap ( true );
 		this.descripcion.set_justify ( Justification.FILL );
 		this.descripcion.set_halign ( Align.START );

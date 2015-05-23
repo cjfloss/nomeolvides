@@ -21,25 +21,13 @@ using Gtk;
 using Nomeolvides;
 
 public class Nomeolvides.DialogListaAgregar : DialogBase {
-#if DISABLE_GNOME3
-	public DialogListaAgregar () {
-		this.title = _ ("Add Custom List");
-		Button boton_apply = this.get_widget_for_response ( ResponseType.APPLY ) as Button;
-		boton_apply.set_label ( _("Add") );
-#else
 	public DialogListaAgregar ( Widget relative_to ) {
 		base ( relative_to );
 		base.aplicar_button.set_label ( _("Add") );
-#endif
+
 		this.nombre_label.set_label (_("List Name") + ": " );
 	}
-#if DISABLE_GNOME3
-	protected override void crear_respuesta() {
-		if ( this.nombre_entry.get_text_length () > 0 ) {
-			this.respuesta = new Lista ( this.nombre_entry.get_text () );
-		}
-	}
-#else
+
 	protected override void aplicar () {
 		if ( this.nombre_entry.get_text_length () > 0 ) {
 			this.respuesta = new Lista ( this.nombre_entry.get_text () );
@@ -48,5 +36,4 @@ public class Nomeolvides.DialogListaAgregar : DialogBase {
 			this.ocultar ();
 		}
 	}
-#endif
 }

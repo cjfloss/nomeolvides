@@ -28,10 +28,8 @@ public class Nomeolvides.DialogHechoEditar : Nomeolvides.DialogHecho {
 		this.set_title (_("Edit Fact"));
 
 		this.add_button ( _("Edit") , ResponseType.APPLY);
-#if DISABLE_GNOME3
-#else
 		this.get_widget_for_response ( ResponseType.CANCEL ).get_style_context ().add_class ( "suggested-action" );
-#endif
+
 		this.response.connect(on_response);
 	}
 

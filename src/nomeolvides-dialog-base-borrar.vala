@@ -19,26 +19,19 @@
 
 using Gtk;
 using Nomeolvides;
-#if DISABLE_GNOME3
-public class Nomeolvides.DialogBaseBorrar : Dialog {
-#else
+
 public class Nomeolvides.DialogBaseBorrar : Popover {
 	protected Button aplicar_button;
 	protected Button cancelar_button;
 	protected Base objeto;
-#endif
 	protected Label pregunta;
 	protected Label nombre;
 	protected Label nombre_objeto;
 	protected Label hechos;
 	protected Label hechos_objeto;
-#if DISABLE_GNOME3
-	public DialogBaseBorrar () {
-		this.set_modal ( true );
-#else
 	public DialogBaseBorrar ( Widget relative_to ) {
 		GLib.Object ( relative_to: relative_to);
-#endif
+
 		this.pregunta = new Label.with_mnemonic ( "" );
 		this.nombre = new Label.with_mnemonic ( "" );
 		this.nombre_objeto = new Label ( "" );
@@ -55,14 +48,6 @@ public class Nomeolvides.DialogBaseBorrar : Popover {
 		nombre_objeto.set_margin_bottom ( 10 );
 		hechos.set_halign ( Align.END );
 		hechos_objeto.set_halign ( Align.START );
-#if DISABLE_GNOME3
-		nombre.set_margin_right ( 20 );
-		nombre_objeto.set_margin_left ( 20 );
-		hechos.set_margin_right ( 20 );
-		hechos_objeto.set_margin_left ( 20 );
-		grid.set_margin_right ( 20 );
-		grid.set_margin_left ( 20 );
-#else
 		nombre.set_margin_end ( 20 );
 		nombre_objeto.set_margin_start ( 20 );
 		hechos.set_margin_end ( 20 );
@@ -78,7 +63,7 @@ public class Nomeolvides.DialogBaseBorrar : Popover {
 		this.aplicar_button.clicked.connect ( this.aplicar );
 		this.cancelar_button.clicked.connect ( this.ocultar );
 		this.cancelar_button.get_style_context ().add_class ( "suggested-action" );
-#endif
+
 		grid.set_column_homogeneous ( true );
 		grid.set_valign ( Align.CENTER );
 		grid.set_halign ( Align.CENTER );
@@ -92,30 +77,20 @@ public class Nomeolvides.DialogBaseBorrar : Popover {
 		grid.attach ( nombre_objeto, 1, 1, 1, 1 );
 		grid.attach ( hechos, 0, 2, 1, 1 );
 		grid.attach ( hechos_objeto, 1, 2, 1, 1 );
-#if DISABLE_GNOME3
-		var contenido = this.get_content_area() as Box;
-		contenido.pack_start ( grid, true, true, 0 );
 
-		this.add_button ( _("Cancel"), ResponseType.REJECT );
-		this.add_button ( _("Apply"), ResponseType.APPLY );
-#else
 		this.closed.connect ( this.ocultar );
 		grid.attach ( cancelar_button, 0, 3, 1, 1 );
 		grid.attach ( aplicar_button, 1, 3, 1, 1 );
 		this.add ( grid );
-#endif
 	}
 
 	public void set_datos ( Base objeto_a_borrar, int cantidad_hechos ) {
 		nombre_objeto.set_markup ( "<span font_weight=\"heavy\">"+ objeto_a_borrar.nombre +"</span>");
 		hechos_objeto.set_markup ( "<span font_weight=\"heavy\">"+ cantidad_hechos.to_string () +"</span>");
-	#if DISABLE_GNOME3
-	#else
+
 		this.objeto = objeto_a_borrar;
-	#endif
 	}
-#if DISABLE_GNOME3
-#else
+	 
 	protected void ocultar (){
 		this.signal_cerrado ( this.get_relative_to () );
 		this.hide ();
@@ -128,5 +103,4 @@ public class Nomeolvides.DialogBaseBorrar : Popover {
 
 	public signal void signal_borrar ( Base objeto );
 	public signal void signal_cerrado ( Widget relative_to );
-#endif
 }

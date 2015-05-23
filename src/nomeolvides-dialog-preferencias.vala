@@ -29,11 +29,8 @@ public class Nomeolvides.DialogPreferencias : Gtk.Dialog {
 		this.set_default_size (600, 350);
 		this.set_transient_for ( ventana as Gtk.Window );
 
-#if DISABLE_GNOME3
-#else
 		var headerbar = new HeaderBar ();
 		this.set_titlebar ( headerbar );
-#endif
 		this.set_title (_("Preferences"));
 
 		this.config_colecciones = new PreferenciasColecciones ( colecciones );
@@ -48,11 +45,8 @@ public class Nomeolvides.DialogPreferencias : Gtk.Dialog {
 		Gtk.Box contenido =  this.get_content_area () as Box;
 		contenido.pack_start ( this.notebook, true, true, 0 );
 
-#if DISABLE_GNOME3
-		this.add_button ( _("Close"), ResponseType.CLOSE );
-#else
 		headerbar.set_show_close_button ( true );
-#endif
+
 		this.response.connect(on_response);
 	}
 

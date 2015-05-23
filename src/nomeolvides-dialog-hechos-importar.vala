@@ -27,10 +27,8 @@ public class Nomeolvides.DialogHechosImportar : Dialog {
 	private string archivo;
 	
 	public DialogHechosImportar (VentanaPrincipal ventana, string directorio_actual, ListStoreColecciones colecciones_liststore ) {
-#if DISABLE_GNOME3
-#else
 		Object (use_header_bar: 1);
-#endif
+
 		this.title = _("Import Facts From File");
 		this.directorio = directorio_actual;
 		this.set_default_size ( 512, 250 );
@@ -39,10 +37,8 @@ public class Nomeolvides.DialogHechosImportar : Dialog {
 		var boton_cancel = this.add_button ( _("Cancel"), ResponseType.CANCEL );
 		this.add_button ( _("Import"), ResponseType.ACCEPT );
 
-#if DISABLE_GNOME3
-#else
 		boton_cancel.get_style_context ().add_class ( "suggested-action" );
-#endif
+
 		var coleccion = new Coleccion ( _("Select Colection"), true );
 
 		colecciones_liststore.agregar_al_inicio ( coleccion , 0 );

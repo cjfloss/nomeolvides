@@ -30,10 +30,8 @@ public class Nomeolvides.DialogHecho : Dialog {
 	public Hecho respuesta { get; protected set; }
 	
 	public DialogHecho (VentanaPrincipal ventana, ListStoreColecciones colecciones_liststore ) {
-#if DISABLE_GNOME3
-#else
 		Object (use_header_bar: 1);
-#endif
+
 		this.resizable = true;
 		this.modal = true;
 		this.set_default_size (600,400);
@@ -51,17 +49,11 @@ public class Nomeolvides.DialogHecho : Dialog {
 		fecha_label.set_halign ( Align.END );
 		coleccion_label.set_halign ( Align.END );
 		fuente_label.set_halign ( Align.END );
-#if DISABLE_GNOME3
-		nombre_label.set_margin_left ( 15 );
-		fecha_label.set_margin_left ( 15 );
-		coleccion_label.set_margin_left ( 15 );
-		fuente_label.set_margin_left ( 15 );
-#else
 		nombre_label.set_margin_end ( 15 );
 		fecha_label.set_margin_end ( 15 );
 		coleccion_label.set_margin_end ( 15 );
 		fuente_label.set_margin_end ( 15 );
-#endif
+
 		this.nombre_entry = new Entry ();
 		this.fuente_entry = new Entry ();
 		

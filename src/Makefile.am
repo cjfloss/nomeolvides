@@ -80,18 +80,10 @@ nomeolvides-resources.c: nomeolvides.gresource.xml
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(srcdir)/nomeolvides.gresource.xml \
 	--target=$@ --sourcedir=$(srcdir) --c-name nomeolvides --generate-source
 
-if DISABLE_GNOME3
-nomeolvides_VALAFLAGS = \
-	--pkg sqlite3 \
-	--pkg gtk+-3.0 \
-	-g \
-	-D DISABLE_GNOME3
-else
 nomeolvides_VALAFLAGS = \
 	--pkg sqlite3 \
 	--pkg gtk+-3.0 \
 	-g
-endif
 
 nomeolvides_LDFLAGS = \
 	-Wl,--export-dynamic

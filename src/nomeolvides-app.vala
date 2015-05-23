@@ -55,8 +55,6 @@ public class Nomeolvides.App : Gtk.Application  {
 	}
 
 	public void create_app_menu () {
-	#if DISABLE_GNOME3
-	#else
 		var action = new GLib.SimpleAction ("salir-app", null);
 		action.activate.connect (() => { salir_app (); });
 		this.add_action (action);
@@ -84,7 +82,6 @@ public class Nomeolvides.App : Gtk.Application  {
 		} catch (GLib.Error e ) {
     		error ("loading ui file: %s", e.message); 
 		}
-	#endif
 	}
 
 	private void connect_signals () {
@@ -107,13 +104,6 @@ public class Nomeolvides.App : Gtk.Application  {
 		this.datos.datos_no_hechos_deshacer.connect ( this.window.desactivar_boton_deshacer  );
 		this.datos.datos_hechos_rehacer.connect ( this.window.activar_boton_rehacer );
 		this.datos.datos_no_hechos_rehacer.connect ( this.window.desactivar_boton_rehacer  );
-	#if DISABLE_GNOME3
-		this.window.menu_importar_activate.connect ( this.importar );
-		this.window.menu_exportar_activate.connect ( this.exportar );
-		this.window.menu_salir_activate.connect ( this.salir_app );
-		this.window.menu_preferencias_activate.connect ( this.preferencias_dialog_run );
-		this.window.menu_acerca_activate.connect ( this.about_dialog );
-	#endif
 	}
 
 	public void add_hecho_dialog () {
