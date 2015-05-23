@@ -75,31 +75,30 @@ public class Nomeolvides.DialogHecho : Dialog {
 		this.descripcion_textview = new TextView ();
 		this.descripcion_textview.set_wrap_mode (WrapMode.WORD);
 		
-		this.descripcion_scroll.add_with_viewport ( this.descripcion_textview );
+		this.descripcion_scroll.add( this.descripcion_textview );
 		descripcion_frame.add ( this.descripcion_scroll );
+		descripcion_frame.set_hexpand ( true );
+		descripcion_frame.set_vexpand ( true );
 
 		this.set_combo_box ( colecciones_liststore );
-		
-		Box box_hecho = new Box (Orientation.HORIZONTAL, 0);
-		Box box_labels = new Box (Orientation.VERTICAL, 0);
-		Box box_widgets = new Box (Orientation.VERTICAL, 0);
 
-		box_labels.pack_start (nombre_label, false, false, 5);		
-		box_labels.pack_start (fecha_label, false, false, 5);
-		box_labels.pack_start (coleccion_label, false, false, 5);
-		box_labels.pack_start (fuente_label, false, false, 5);
-		box_widgets.pack_start (nombre_entry, false, false, 0);
-		box_widgets.pack_start (fecha, false, false, 0);
-		box_widgets.pack_start (combo_colecciones, false, false, 0);
-		box_widgets.pack_start (fuente_entry, false, false, 0);
+		var grid = new Grid ();
+
+		grid.attach ( nombre_label, 0, 0, 1, 1 );
+		grid.attach ( nombre_entry, 1, 0, 1, 1 );
+		grid.attach ( fecha_label, 0, 1, 1, 1 );
+		grid.attach ( fecha, 1, 1, 1, 1 );
+		grid.attach ( coleccion_label, 0, 2, 1, 1 );
+		grid.attach ( combo_colecciones, 1, 2, 1, 1 );
+		grid.attach ( fuente_label, 0, 3, 1, 1 );
+		grid.attach ( fuente_entry, 1, 3, 1, 1 );
+		grid.attach ( descripcion_frame, 0, 4, 2, 1 );
+		grid.set_row_spacing ( 5 );
+		grid.set_border_width ( 4 );
 		
-		box_hecho.pack_start (box_labels, true, false, 0);
-		box_hecho.pack_start (box_widgets, true, true, 0);
-	
 		var contenido = this.get_content_area() as Box;
 
-		contenido.pack_start(box_hecho, false, false, 0);
-		contenido.pack_start(descripcion_frame, true, true, 0);
+		contenido.pack_start( grid, true, true, 0 );
 		
 		this.show_all ();
 	}
