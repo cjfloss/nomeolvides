@@ -37,7 +37,7 @@ public class Nomeolvides.Archivo : GLib.Object{
 	public static void crear_directorio ( string path ) {
 		var directorio = File.new_for_path ( path );
 		try {
-			directorio.make_directory ();
+			directorio.make_directory_with_parents ();
 		}  catch (Error e) {
 			error (e.message);
 		}
