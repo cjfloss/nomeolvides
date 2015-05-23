@@ -33,9 +33,9 @@ public class Nomeolvides.SelectorFecha : Box {
 		this.anio_spin.value_changed.connect ( this.cambiar_anio );
 		this.set_combo_box ();
 
-		this.pack_start (dia_spin, false, false, 0);
-		this.pack_start (mes_combo, false, false, 0);
-		this.pack_start (anio_spin, false, false, 0);
+		this.pack_start (dia_spin, true, true, 0);
+		this.pack_start (mes_combo, true, true, 0);
+		this.pack_start (anio_spin, true, true, 0);
 	}
 
 	private void set_combo_box () {
