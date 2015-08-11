@@ -2,5 +2,6 @@
 <gresources>
   <gresource prefix="/org/softwareperonista/nomeolvides">
     <file>nomeolvides-app-menu.ui</file>
+    <file>nomeolvides-treeview-hechos.ui</file>
   </gresource>
 </gresources> 

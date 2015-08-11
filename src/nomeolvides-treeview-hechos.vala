@@ -19,29 +19,12 @@
 using Gtk;
 using Nomeolvides;
 
-
+[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-treeview-hechos.ui" )]
 public class Nomeolvides.TreeViewHechos : Gtk.TreeView {
-
 	public int anio_actual { get; private set; }
 
-	public TreeViewHechos () {
-		var nombre_cell = new CellRendererText ();
-
-		nombre_cell.ellipsize = Pango.EllipsizeMode.END;
-
-		var fecha_cell = new CellRendererText ();
-
-		nombre_cell.width_chars = 30;
-
-		var nombre_columna = new TreeViewColumn.with_attributes ( _("Name"), nombre_cell, "text", 0 );
-
-		nombre_columna.set_expand ( true );
-
-		this.insert_column ( nombre_columna, -1 );
-		this.insert_column_with_attributes (-1, _("Date"), fecha_cell, "text", 2);
-		this.model = new ListStoreHechos.anio_int (0);
+	construct {
 		this.set_model ( new ListStoreHechos () );
-		this.get_selection ().set_mode ( SelectionMode.MULTIPLE );
 	}
 
 	public void mostrar_hechos ( Array<Hecho> hechos ) {
@@ -92,4 +75,4 @@ public class Nomeolvides.TreeViewHechos : Gtk.TreeView {
 	}
 
 	public signal void cambia_anio_signal ();
-}			
+}
