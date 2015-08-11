@@ -20,84 +20,35 @@
 using Gtk;
 using Nomeolvides;
 
+[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-dialog-hecho-lista-agregar.ui" )]
 public class Nomeolvides.DialogHechoListaAgregar : Dialog {
-	private ComboBox listas;
-	private ListStoreListas liststore;
+  [GtkChild]
+  private Label label_hecho;
+  [GtkChild]
+	private ComboBox combobox_listas;
+	[GtkChild]
+  private TreeViewHechos treeview_muchos_hechos;
+	[GtkChild]
+	private Stack stack_hechos;
 	public Array<Hecho> hechos;
 	private int64 id_lista;
-	private Grid grid;
 	
 	public DialogHechoListaAgregar ( VentanaPrincipal ventana ) {
-#if DISABLE_GNOME3
-#else
 		Object (use_header_bar: 1);
-#endif
-		this.set_default_size ( 450, 200 );
 		this.set_transient_for ( ventana as Window );
-		
-		this.response.connect(on_response);
-
-		this.listas = new ComboBox ();
 		this.hechos = new Array<Hecho> ();
-
-		this.grid = new Grid ( );
-		grid.set_row_spacing ( 15 );
-		grid.set_column_spacing ( 20 );
-	#if DISABLE_GNOME3
-		grid.set_margin_right ( 30 );
-		grid.set_margin_left ( 30 );
-	#else
-		grid.set_margin_end ( 30 );
-		grid.set_margin_start ( 30 );
-	#endif
-		grid.set_margin_top ( 15 );
-		grid.set_margin_bottom ( 15 );
-		grid.set_valign ( Align.CENTER );
-		grid.set_halign ( Align.CENTER );
-
-		var label_pregunta = new Label (_("Add") + ":");
-		var label_listas = new Label ( _("to list") );
-		this.set_title (_("Add Fact to List"));
-		
-		grid.attach ( label_pregunta, 0, 0, 1, 1 );
-		grid.attach ( label_listas, 0, 1, 1, 1 );
-		grid.attach ( this.listas, 1, 1, 1, 1 );
-
-		var contenido = this.get_content_area () as Box;
-		contenido.pack_start (grid, true, true, 0 );
-
-		this.add_button ( _("Cancel"), ResponseType.CANCEL );
-#if DISABLE_GNOME3
-		this.add_button ( _("Add"), ResponseType.APPLY );
-#else
-		var boton = this.add_button ( _("Add"), ResponseType.APPLY );
-		boton.get_style_context ().add_class ( "suggested-action" );
-#endif
-
-		this.show_all ();
 	}
 
 	public void setear_hechos ( Array<Hecho> hechos_elegidos ) {
 		if ( hechos_elegidos.length == 1 ) {
-			Label label_hecho = new Label ( "" );
-			label_hecho.set_markup ( "<span font_weight=\"heavy\">"+ hechos_elegidos.index (0).nombre +"</span>");
-			if ( label_hecho.get_text ().length > 50 ) {
-				label_hecho.set_size_request ( 400, -1 );
-				label_hecho.set_line_wrap_mode ( Pango.WrapMode.WORD );
-				label_hecho.set_line_wrap ( true );
-			}
-		this.grid.attach ( label_hecho, 1, 0, 1, 1 );
+			this.label_hecho.set_label ( hechos_elegidos.index (0).nombre );
 		} else {
 			this.title = _("Add Facts to List");
 			this.set_size_request ( 600, 200 );
-			var treeview_hechos = new TreeViewHechos ();
-			var scroll_hechos = new ScrolledWindow ( null, null );
-			scroll_hechos.set_policy ( PolicyType.NEVER, PolicyType.AUTOMATIC );
-			treeview_hechos.set_margin_bottom ( 10 );
-			treeview_hechos.mostrar_hechos ( hechos_elegidos );
-			scroll_hechos.set_size_request ( 100, 110 );
-			scroll_hechos.add ( treeview_hechos );
-			this.grid.attach ( scroll_hechos, 1, 0, 1, 1 );
+			this.treeview_muchos_hechos.set_margin_bottom ( 10 );
+			this.treeview_muchos_hechos.mostrar_hechos ( hechos_elegidos );
+			this.stack_hechos.set_size_request ( 110, 150 );
+			this.stack_hechos.set_visible_child_name ( "page_muchos_hechos" );
 		}
 
 		for ( int i = 0; i < hechos_elegidos.length; i++ ) {
@@ -107,14 +58,10 @@ public class Nomeolvides.DialogHechoListaAgregar : Dialog {
 	}
 
 	public void setear_listas ( ListStoreListas liststore) {
-		CellRendererText renderer = new CellRendererText ();
-		this.listas.pack_start (renderer, true);
-		this.listas.add_attribute (renderer, "text", 0);
-		this.listas.active = 0;
-		this.liststore = liststore;
-		this.listas.set_model ( liststore );
+		this.combobox_listas.set_model ( liststore );
 	}
 
+[GtkCallback]
 	private void on_response (Dialog source, int response_id) {
         switch (response_id) {
     		case ResponseType.APPLY:
@@ -131,8 +78,8 @@ public class Nomeolvides.DialogHechoListaAgregar : Dialog {
 		Value lista_elegida;
 		Lista lista;
 
-		this.listas.get_active_iter( out iter );
-		this.liststore.get_value ( iter, 2, out lista_elegida );
+		this.combobox_listas.get_active_iter( out iter );
+		this.combobox_listas.get_model ().get_value ( iter, 2, out lista_elegida );
 		lista = lista_elegida as Lista;
 
 		this.id_lista = lista.id;
