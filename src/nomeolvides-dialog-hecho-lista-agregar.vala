@@ -23,13 +23,9 @@ using Nomeolvides;
 [GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-dialog-hecho-lista-agregar.ui" )]
 public class Nomeolvides.DialogHechoListaAgregar : Dialog {
   [GtkChild]
-  private Label label_hecho;
-  [GtkChild]
 	private ComboBox combobox_listas;
 	[GtkChild]
-  private TreeViewHechos treeview_muchos_hechos;
-	[GtkChild]
-	private Stack stack_hechos;
+	private StackHechosDialog stack_hechos;
 	public Array<Hecho> hechos;
 	private int64 id_lista;
 	
@@ -41,13 +37,11 @@ public class Nomeolvides.DialogHechoListaAgregar : Dialog {
 
 	public void setear_hechos ( Array<Hecho> hechos_elegidos ) {
 		if ( hechos_elegidos.length == 1 ) {
-			this.label_hecho.set_label ( hechos_elegidos.index (0).nombre );
+			this.stack_hechos.set_label_un_hecho ( hechos_elegidos.index (0).nombre );
 		} else {
 			this.title = _("Add Facts to List");
 			this.set_size_request ( 600, 200 );
-			this.treeview_muchos_hechos.set_margin_bottom ( 10 );
-			this.treeview_muchos_hechos.mostrar_hechos ( hechos_elegidos );
-			this.stack_hechos.set_size_request ( 110, 150 );
+			this.stack_hechos.set_treeview_muchos_hechos ( hechos_elegidos );
 			this.stack_hechos.set_visible_child_name ( "page_muchos_hechos" );
 		}
 

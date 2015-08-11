@@ -72,7 +72,8 @@ nomeolvides_SOURCES = \
 	nomeolvides-treeview-hechos.vala \
 	nomeolvides-utiles.vala \
 	nomeolvides-ventana-principal.vala \
-	$(NULL)
+	$(NULL) \
+	nomeolvides-stack-hechos-dialog.vala
 
 
 
