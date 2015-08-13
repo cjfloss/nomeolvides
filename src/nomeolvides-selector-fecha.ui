@@ -82,7 +82,7 @@
         <property name="can_focus">False</property>
         <property name="hexpand">True</property>
         <property name="model">liststore_mes</property>
-        <property name="active">0</property>
+        <property name="active">9</property>
         <signal name="changed" handler="set_dias_del_mes" swapped="no"/>
         <child>
           <object class="GtkCellRendererText" id="cellrenderertext_mes_nombre"/>

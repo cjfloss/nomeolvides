@@ -21,21 +21,12 @@ using Gtk;
 using Nomeolvides;
 
 public class Nomeolvides.DialogHechoAgregar : Nomeolvides.DialogHecho {
-
 	public DialogHechoAgregar ( VentanaPrincipal ventana, ListStoreColecciones colecciones ) {
 		base (ventana, colecciones);
-
 		this.set_title (_("Add a Historical Fact"));
-
 		this.response.connect(on_response);
-		this.nombre_entry.activate.connect(on_activate);
-
-#if DISABLE_GNOME3
-		this.add_button ( _("Add") , ResponseType.APPLY);
-#else
-		var boton = this.add_button ( _("Add") , ResponseType.APPLY);
-		boton.get_style_context ().add_class ( "suggested-action" );
-#endif
+		this.entry_nombre.activate.connect(on_activate);
+    this.button_aplicar.set_label ( "Add" );
 	}
 
 
@@ -53,7 +44,7 @@ public class Nomeolvides.DialogHechoAgregar : Nomeolvides.DialogHecho {
 	}
 
 	private void on_activate () {
-		if (this.nombre_entry.text_length > 0 && this.descripcion_textview.buffer.text.length > 0){
+		if (this.entry_nombre.text_length > 0 && this.textview_descripcion.buffer.text.length > 0){
 			this.response (ResponseType.APPLY);
 		}
 	}

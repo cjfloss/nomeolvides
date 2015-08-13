@@ -4,6 +4,7 @@
     <file>nomeolvides-app-menu.ui</file>
     <file>nomeolvides-dialog-hecho-lista-agregar.ui</file>
     <file>nomeolvides-dialog-hecho-borrar.ui</file>
+    <file>nomeolvides-dialog-hecho.ui</file>
     <file>nomeolvides-selector-fecha.ui</file>
     <file>nomeolvides-treeview-hechos.ui</file>
     <file>nomeolvides-stack-hechos-dialog.ui</file>

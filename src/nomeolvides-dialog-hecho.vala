@@ -20,108 +20,38 @@
 using Gtk;
 using Nomeolvides;
 
+[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-dialog-hecho.ui" )]
 public class Nomeolvides.DialogHecho : Dialog {
-	protected Entry nombre_entry;
-	protected TextView descripcion_textview;
-	protected ScrolledWindow descripcion_scroll;
-	protected ComboBox combo_colecciones;
-	protected SelectorFecha fecha;
-	protected Entry fuente_entry;
+  [GtkChild]
+	protected Entry entry_nombre;
+	[GtkChild]
+	protected TextView textview_descripcion;
+	[GtkChild]
+	protected ComboBox combobox_colecciones;
+	[GtkChild]
+	protected SelectorFecha selector_fecha;
+	[GtkChild]
+	protected Entry entry_fuente;
+	[GtkChild]
+	protected Button button_aplicar;
 	public Hecho respuesta { get; protected set; }
-	
+
 	public DialogHecho (VentanaPrincipal ventana, ListStoreColecciones colecciones_liststore ) {
-#if DISABLE_GNOME3
-#else
 		Object (use_header_bar: 1);
-#endif
-		this.resizable = true;
-		this.modal = true;
-		this.set_default_size (600,400);
-		this.set_size_request (400,250);
 		this.set_transient_for ( ventana as Window );
-
-		this.add_button ( _("Cancel") , ResponseType.CANCEL);
-		
-		var nombre_label = new Label.with_mnemonic (_("Name") + ": ");
-		var fecha_label = new Label.with_mnemonic (_("Date") + ": ");
-		var coleccion_label = new Label.with_mnemonic (_("Colection") + ": ");
-		var fuente_label = new Label.with_mnemonic (_("Source") + ": ");
-
-		nombre_label.set_halign ( Align.END );
-		fecha_label.set_halign ( Align.END );
-		coleccion_label.set_halign ( Align.END );
-		fuente_label.set_halign ( Align.END );
-#if DISABLE_GNOME3
-		nombre_label.set_margin_left ( 15 );
-		fecha_label.set_margin_left ( 15 );
-		coleccion_label.set_margin_left ( 15 );
-		fuente_label.set_margin_left ( 15 );
-#else
-		nombre_label.set_margin_end ( 15 );
-		fecha_label.set_margin_end ( 15 );
-		coleccion_label.set_margin_end ( 15 );
-		fuente_label.set_margin_end ( 15 );
-#endif
-		this.nombre_entry = new Entry ();
-		this.fuente_entry = new Entry ();
-		
-		this.combo_colecciones = new ComboBox ();
-		this.fecha = new SelectorFecha ();
-
-		var descripcion_frame = new Frame( _("Description") );
-		descripcion_frame.set_shadow_type(ShadowType.ETCHED_IN);
-		this.descripcion_scroll = new ScrolledWindow ( null, null );
-		this.descripcion_scroll.set_policy (PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
-		this.descripcion_textview = new TextView ();
-		this.descripcion_textview.set_wrap_mode (WrapMode.WORD);
-		
-		this.descripcion_scroll.add_with_viewport ( this.descripcion_textview );
-		descripcion_frame.add ( this.descripcion_scroll );
-
-		this.set_combo_box ( colecciones_liststore );
-		
-		Box box_hecho = new Box (Orientation.HORIZONTAL, 0);
-		Box box_labels = new Box (Orientation.VERTICAL, 0);
-		Box box_widgets = new Box (Orientation.VERTICAL, 0);
-
-		box_labels.pack_start (nombre_label, false, false, 5);		
-		box_labels.pack_start (fecha_label, false, false, 5);
-		box_labels.pack_start (coleccion_label, false, false, 5);
-		box_labels.pack_start (fuente_label, false, false, 5);
-		box_widgets.pack_start (nombre_entry, false, false, 0);
-		box_widgets.pack_start (fecha, false, false, 0);
-		box_widgets.pack_start (combo_colecciones, false, false, 0);
-		box_widgets.pack_start (fuente_entry, false, false, 0);
-		
-		box_hecho.pack_start (box_labels, true, false, 0);
-		box_hecho.pack_start (box_widgets, true, true, 0);
-	
-		var contenido = this.get_content_area() as Box;
-
-		contenido.pack_start(box_hecho, false, false, 0);
-		contenido.pack_start(descripcion_frame, true, true, 0);
-		
-		this.show_all ();
+		this.combobox_colecciones.set_model ( colecciones_liststore );
 	}
 
 	protected void crear_respuesta() {
-		if(this.nombre_entry.get_text_length () > 0) {
-			this.respuesta  = new Hecho ( Utiles.sacarCaracterEspecial ( this.nombre_entry.get_text () ),
-										  Utiles.sacarCaracterEspecial ( this.descripcion_textview.buffer.text ),
-										  this.fecha.get_anio (),
-										  this.fecha.get_mes (),
-										  this.fecha.get_dia (),
+		if(this.entry_nombre.get_text_length () > 0) {
+			this.respuesta  = new Hecho ( Utiles.sacarCaracterEspecial ( this.entry_nombre.get_text () ),
+										  Utiles.sacarCaracterEspecial ( this.textview_descripcion.buffer.text ),
+										  this.selector_fecha.get_anio (),
+										  this.selector_fecha.get_mes (),
+										  this.selector_fecha.get_dia (),
 										  this.get_coleccion (),
-										  Utiles.sacarCaracterEspecial ( this.fuente_entry.get_text () ) );
+										  Utiles.sacarCaracterEspecial ( this.entry_fuente.get_text () ) );
 		}
-	}
-
-	protected void set_combo_box ( ListStoreColecciones liststore) {
-		CellRendererText renderer = new CellRendererText ();
-		this.combo_colecciones.pack_start (renderer, true);
-		this.combo_colecciones.add_attribute (renderer, "text", 0);
-		this.combo_colecciones.active = 0;
-		this.combo_colecciones.set_model ( liststore );
 	}
 
 	protected int64 get_coleccion () {
@@ -129,11 +59,11 @@ public class Nomeolvides.DialogHecho : Dialog {
 		Value value_coleccion;
 		Coleccion coleccion;
 
-		this.combo_colecciones.get_active_iter( out iter );
-		ListStoreColecciones liststore = this.combo_colecciones.get_model () as ListStoreColecciones;
+		this.combobox_colecciones.get_active_iter( out iter );
+		ListStoreColecciones liststore = this.combobox_colecciones.get_model () as ListStoreColecciones;
 		liststore.get_value ( iter, 2, out value_coleccion );
 		coleccion = value_coleccion as Coleccion;
-		
+
 		return coleccion.id;
 	}
 }
