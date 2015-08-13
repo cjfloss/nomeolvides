@@ -16,7 +16,7 @@
     </child>
     <child>
       <object class="GtkTreeViewColumn" id="treeviewcolumn_hechos_nombre">
-        <property name="title" translatable="yes">Nombre</property>
+        <property name="title" translatable="yes">Name</property>
         <property name="expand">True</property>
         <child>
           <object class="GtkCellRendererText" id="cellrenderertext_hechos_nombre">
@@ -31,7 +31,7 @@
     </child>
     <child>
       <object class="GtkTreeViewColumn" id="treeviewcolumn_hecho_fecha">
-        <property name="title" translatable="yes">fecha</property>
+        <property name="title" translatable="yes">Date</property>
         <child>
           <object class="GtkCellRendererText" id="cellrenderertext_hecho_fecha"/>
           <attributes>
