@@ -304,7 +304,7 @@ public class Nomeolvides.App : Gtk.Application  {
 		var abrir_archivo = new DialogHechosImportar (this.window, GLib.Environment.get_current_dir (), this.datos.lista_de_colecciones ());
 		abrir_archivo.set_transient_for ( this.window );
 
-		if (abrir_archivo.run () == ResponseType.ACCEPT) {
+		if ( abrir_archivo.run () == ResponseType.APPLY ) {
 			this.datos.open_file ( abrir_archivo.get_filename (), abrir_archivo.get_coleccion_id () );
 		}
 		abrir_archivo.close ();
