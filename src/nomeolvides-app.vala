@@ -88,14 +88,14 @@ public class Nomeolvides.App : Gtk.Application  {
 	}
 
 	private void connect_signals () {
-		this.window.toolbar_add_button_clicked.connect ( this.add_hecho_dialog );
-		this.window.toolbar_undo_button_clicked.connect ( this.undo_hecho );
-		this.window.toolbar_redo_button_clicked.connect ( this.redo_hecho );
-		this.window.toolbar_edit_button_clicked.connect ( this.edit_hecho_dialog );
-		this.window.toolbar_delete_button_clicked.connect ( this.delete_hecho_dialog );
-		this.window.toolbar_send_button_clicked.connect ( this.send_hecho );
-		this.window.toolbar_list_agregar_button_clicked.connect ( this.add_hecho_lista );
-		this.window.toolbar_list_quitar_button_clicked.connect ( this.remove_hecho_lista );
+		this.window.headerbar_boton_agregar_clicked.connect ( this.add_hecho_dialog );
+		this.window.headerbar_boton_deshacer_clicked.connect ( this.undo_hecho );
+		this.window.headerbar_boton_rehacer_clicked.connect ( this.redo_hecho );
+		this.window.headerbar_boton_editar_clicked.connect ( this.edit_hecho_dialog );
+		this.window.headerbar_boton_borrar_clicked.connect ( this.delete_hecho_dialog );
+		this.window.headerbar_boton_enviar_clicked.connect ( this.send_hecho );
+		this.window.headerbar_boton_agregar_a_lista_agregar_clicked.connect ( this.add_hecho_lista );
+		this.window.headerbar_boton_agregar_a_lista_quitar_clicked.connect ( this.remove_hecho_lista );
 
 		this.window.anios_hechos_anios_cursor_changed.connect ( this.elegir_anio );
 		this.window.anios_hechos_listas_cursor_changed.connect ( this.elegir_lista );
@@ -133,7 +133,7 @@ public class Nomeolvides.App : Gtk.Application  {
 				this.datos.agregar_hecho( add_dialog.respuesta );
 			}
 			add_dialog.destroy();
-			this.window.toolbar.add_button.set_active ( false );
+			this.window.headerbar.boton_agregar.set_active ( false );
 		}
 	}
 	
@@ -160,7 +160,7 @@ public class Nomeolvides.App : Gtk.Application  {
 			this.datos.edit_hecho ( edit_dialog.respuesta );
 		}
 		edit_dialog.destroy();
-		this.window.toolbar.edit_button.set_active ( false );
+		this.window.headerbar.boton_editar.set_active ( false );
 	}
 
 	public void delete_hecho_dialog () {
@@ -173,7 +173,7 @@ public class Nomeolvides.App : Gtk.Application  {
 			}
 		}	
 		delete_dialog.destroy ();
-		this.window.toolbar.delete_button.set_active ( false );
+		this.window.headerbar.boton_borrar.set_active ( false );
 	}
 
 	public void about_dialog () {
@@ -194,7 +194,7 @@ public class Nomeolvides.App : Gtk.Application  {
 	private void preferencias_dialog_run () {
 		this.dialogo_preferencias.ejecutar ( this.datos.lista_de_colecciones (), this.datos.lista_de_listas () );
 		this.dialogo_preferencias.show_all ();
-		this.dialogo_preferencias.set_toolbar_buttons_invisible ();
+		this.dialogo_preferencias.set_toolbar_botones_invisible ();
 		this.dialogo_preferencias.run ();
 	}
 
@@ -235,17 +235,17 @@ public class Nomeolvides.App : Gtk.Application  {
 				stdout.printf(err.message+"\n");
 			}
 		}
-		this.window.toolbar.send_button.set_active ( false );
+		this.window.headerbar.boton_enviar.set_active ( false );
 	}
 
 	public void undo_hecho () {
 		this.datos.deshacer_cambios ();
-		this.window.toolbar.undo_button.set_active ( false );
+		this.window.headerbar.boton_deshacer.set_active ( false );
 	}
 
 	public void redo_hecho () {
 		this.datos.rehacer_cambios ();
-		this.window.toolbar.redo_button.set_active ( false );
+		this.window.headerbar.boton_rehacer.set_active ( false );
 	}
 
 	public void add_hecho_lista () {
@@ -269,8 +269,8 @@ public class Nomeolvides.App : Gtk.Application  {
 			}
 			dialogo.close ();
 		}
-		this.window.toolbar.list_button.active = false;
-		this.window.toolbar.list_button.set_active ( false );
+		this.window.headerbar.boton_agregar_a_lista.active = false;
+		this.window.headerbar.boton_agregar_a_lista.set_active ( false );
 	}
 
 	public void remove_hecho_lista () {
@@ -286,7 +286,7 @@ public class Nomeolvides.App : Gtk.Application  {
 			}
 		}
 		dialogo.close ();
-		this.window.toolbar.list_button.set_active ( false );
+		this.window.headerbar.boton_agregar_a_lista.set_active ( false );
 
 	}
 

@@ -22,7 +22,7 @@ using Nomeolvides;
 
 public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	private Box main_box { get; private set; }
-	public Toolbar toolbar { get; private set; }
+	public HeaderBar headerbar { get; private set; }
 	public InterfazPrincipal anios_hechos { get; private set; }
 	private int anio_actual;
 	private Lista lista_actual;
@@ -31,7 +31,7 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 		Object (application: app);
 		this.set_application (app);
 		this.set_title ("Nomeolvides v" + Config.VERSION );
-		this.set_position (WindowPosition.CENTER);
+		this.set_position ( WindowPosition.CENTER );
 		this.set_default_size (1100,600);
 		this.set_size_request (500,350);
 
@@ -43,12 +43,10 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 		
 		this.add (main_box);
 		
-		this.toolbar = new Nomeolvides.Toolbar ();
+		this.headerbar = new Nomeolvides.HeaderBar ();
 
-		this.toolbar.agregar_send_button ();
-		this.toolbar.agregar_list_button ();
 	#if DISABLE_GNOME3
-		this.toolbar.agregar_titulo ();
+		this.headerbar.agregar_titulo ();
 
 		var menu_barra = new MenuBar ();
 		this.main_box.pack_start ( menu_barra, false, false, 0 );
@@ -88,9 +86,9 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 		menu_acerca.activate.connect ( this.menu_acerca_activate_signal );
 		menu_ayuda.add ( menu_acerca );
 
-		this.main_box.pack_start ( this.toolbar, false, false, 0 );
+		this.main_box.pack_start ( this.headerbar, false, false, 0 );
 	#else
-		this.set_titlebar ( toolbar );
+		this.set_titlebar ( headerbar );
 	#endif
 		this.main_box.pack_start ( anios_hechos, true, true, 0 );
 
@@ -98,56 +96,56 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	}
 
 	private void conectar_seniales () {
-		this.toolbar.add_button.activado.connect ( this.toolbar_add_button_clicked_signal );
-		this.toolbar.undo_button.activado.connect ( this.toolbar_undo_button_clicked_signal );
-		this.toolbar.redo_button.activado.connect ( this.toolbar_redo_button_clicked_signal );
-		this.toolbar.edit_button.activado.connect ( this.toolbar_edit_button_clicked_signal );
-		this.toolbar.delete_button.activado.connect ( this.toolbar_delete_button_clicked_signal );
-		this.toolbar.send_button.activado.connect ( this.toolbar_send_button_clicked_signal );
+		this.headerbar.boton_agregar.activado.connect ( this.headerbar_boton_agregar_clicked_signal );
+		this.headerbar.boton_deshacer.activado.connect ( this.headerbar_boton_deshacer_clicked_signal );
+		this.headerbar.boton_rehacer.activado.connect ( this.headerbar_boton_rehacer_clicked_signal );
+		this.headerbar.boton_editar.activado.connect ( this.headerbar_boton_editar_clicked_signal );
+		this.headerbar.boton_borrar.activado.connect ( this.headerbar_boton_borrar_clicked_signal );
+		this.headerbar.boton_enviar.activado.connect ( this.headerbar_boton_enviar_clicked_signal );
 		this.anios_hechos.anios_cursor_changed.connect ( this.anios_hechos_anios_cursor_changed_signal );
 		this.anios_hechos.listas_cursor_changed.connect ( this.anios_hechos_listas_cursor_changed_signal );
 		this.anios_hechos.hechos_selection_changed.connect ( this.elegir_hecho );
 	}
 
-	private void toolbar_add_button_clicked_signal () {
-		this.toolbar_add_button_clicked ();
+	private void headerbar_boton_agregar_clicked_signal () {
+		this.headerbar_boton_agregar_clicked ();
 	}
 
-	private void toolbar_undo_button_clicked_signal () {
-		this.toolbar_undo_button_clicked ();
+	private void headerbar_boton_deshacer_clicked_signal () {
+		this.headerbar_boton_deshacer_clicked ();
 	}
 
-	private void toolbar_redo_button_clicked_signal () {
-		this.toolbar_redo_button_clicked ();
+	private void headerbar_boton_rehacer_clicked_signal () {
+		this.headerbar_boton_rehacer_clicked ();
 	}
 
-	private void toolbar_edit_button_clicked_signal () {
-		this.toolbar_edit_button_clicked ();
+	private void headerbar_boton_editar_clicked_signal () {
+		this.headerbar_boton_editar_clicked ();
 	}
 
-	private void toolbar_delete_button_clicked_signal () {
-		this.toolbar_delete_button_clicked ();
+	private void headerbar_boton_borrar_clicked_signal () {
+		this.headerbar_boton_borrar_clicked ();
 	}
 
-	private void toolbar_send_button_clicked_signal () {
-		this.toolbar_send_button_clicked ();
+	private void headerbar_boton_enviar_clicked_signal () {
+		this.headerbar_boton_enviar_clicked ();
 	}
 
-	private void toolbar_list_button_agregar_clicked_signal () {
-		this.toolbar_list_agregar_button_clicked ();
+	private void headerbar_boton_agregar_a_lista_agregar_clicked_signal () {
+		this.headerbar_boton_agregar_a_lista_agregar_clicked ();
 	}
 
-	private void toolbar_list_button_quitar_clicked_signal () {
-		this.toolbar_list_quitar_button_clicked ();
+	private void headerbar_boton_agregar_a_lista_quitar_clicked_signal () {
+		this.headerbar_boton_agregar_a_lista_quitar_clicked ();
 	}
 
 	private void anios_hechos_anios_cursor_changed_signal () {
 		this.anio_actual = this.anios_hechos.get_anio_actual ();
 		if ( this.anio_actual != 0 ) {
-			this.toolbar.list_button_set_agregar ();
-			this.toolbar.list_button.activado.disconnect (this.toolbar_list_button_quitar_clicked_signal);
-			this.toolbar.list_button.activado.disconnect (this.toolbar_list_button_agregar_clicked_signal);
-			this.toolbar.list_button.activado.connect ( this.toolbar_list_button_agregar_clicked_signal );
+			this.headerbar.boton_agregar_a_lista_set_agregar ();
+			this.headerbar.boton_agregar_a_lista.activado.disconnect (this.headerbar_boton_agregar_a_lista_quitar_clicked_signal);
+			this.headerbar.boton_agregar_a_lista.activado.disconnect (this.headerbar_boton_agregar_a_lista_agregar_clicked_signal);
+			this.headerbar.boton_agregar_a_lista.activado.connect ( this.headerbar_boton_agregar_a_lista_agregar_clicked_signal );
 			this.anios_hechos_anios_cursor_changed ();
 		}
 		
@@ -157,10 +155,10 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	private void anios_hechos_listas_cursor_changed_signal () {
 		this.lista_actual = this.anios_hechos.get_lista_actual ();
 		if (this.lista_actual != null ) {
-			this.toolbar.list_button_set_quitar ();
-			this.toolbar.list_button.activado.disconnect (this.toolbar_list_button_quitar_clicked_signal);
-			this.toolbar.list_button.activado.disconnect (this.toolbar_list_button_agregar_clicked_signal);
-			this.toolbar.list_button.activado.connect ( this.toolbar_list_button_quitar_clicked_signal );
+			this.headerbar.boton_agregar_a_lista_set_quitar ();
+			this.headerbar.boton_agregar_a_lista.activado.disconnect (this.headerbar_boton_agregar_a_lista_quitar_clicked_signal);
+			this.headerbar.boton_agregar_a_lista.activado.disconnect (this.headerbar_boton_agregar_a_lista_agregar_clicked_signal);
+			this.headerbar.boton_agregar_a_lista.activado.connect ( this.headerbar_boton_agregar_a_lista_quitar_clicked_signal );
 			this.anios_hechos_listas_cursor_changed ();
 		}
 
@@ -185,18 +183,18 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 
 	private void actualizar_anio_label () {
 		if ( this.anio_actual != 0) {
-			this.toolbar.set_label_anio ( this.anio_actual.to_string() );
+			this.headerbar.set_label_anio ( this.anio_actual.to_string() );
 		} else {
-			this.toolbar.set_label_anio ( );
+			this.headerbar.set_label_anio ( );
 
 		}
 	}
 
 	private void actualizar_lista_label () {
 		if ( this.lista_actual != null ) {
-			this.toolbar.set_label_lista ( this.lista_actual.nombre );
+			this.headerbar.set_label_lista ( this.lista_actual.nombre );
 		} else {
-			this.toolbar.set_label_lista ( );
+			this.headerbar.set_label_lista ( );
 		}	
 	}
 
@@ -222,21 +220,22 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 		
 		if ( hecho != null ) {
 			if ( this.get_hechos_seleccionados ().length == 1 ) {
-				this.toolbar.set_buttons_visible ();
+				this.headerbar.set_botones_visible ();
 			} else {
 				if ( this.get_hechos_seleccionados ().length > 0 ) {
-					this.toolbar.set_buttons_multiseleccion_visible ();
+					this.headerbar.set_botones_multiseleccion_visible ();
 				} else {
-					this.toolbar.set_buttons_invisible ();
+					this.headerbar.set_botones_invisible ();
 				}
 			}
 		} else {
-			this.toolbar.set_buttons_invisible ();		
+			this.headerbar.set_botones_invisible ();
 		}
 	}
 
 	public void show_visible () {
 		this.show_all ();
+		this.headerbar.set_botones_invisible ();
 		this.anios_hechos.mostrar_scroll_vista ( false );
 	}
 
@@ -245,19 +244,19 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	}
 
 	public void activar_boton_deshacer () {
-		this.toolbar.activar_deshacer ();
+		this.headerbar.activar_deshacer ();
 	}
 
 	public void desactivar_boton_deshacer () {
-		this.toolbar.desactivar_deshacer ();
+		this.headerbar.desactivar_deshacer ();
 	}
 
 	public void activar_boton_rehacer () {
-		this.toolbar.activar_rehacer ();
+		this.headerbar.activar_rehacer ();
 	}
 
 	public void desactivar_boton_rehacer () {
-		this.toolbar.desactivar_rehacer ();
+		this.headerbar.desactivar_rehacer ();
 	}
 
 	public void limpiar_hechos_view () {
@@ -286,14 +285,14 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	}
 
 #endif
-	public signal void toolbar_add_button_clicked ();
-	public signal void toolbar_undo_button_clicked ();
-	public signal void toolbar_redo_button_clicked ();
-	public signal void toolbar_edit_button_clicked ();
-	public signal void toolbar_delete_button_clicked ();
-	public signal void toolbar_send_button_clicked ();
-	public signal void toolbar_list_quitar_button_clicked ();
-	public signal void toolbar_list_agregar_button_clicked ();
+	public signal void headerbar_boton_agregar_clicked ();
+	public signal void headerbar_boton_deshacer_clicked ();
+	public signal void headerbar_boton_rehacer_clicked ();
+	public signal void headerbar_boton_editar_clicked ();
+	public signal void headerbar_boton_borrar_clicked ();
+	public signal void headerbar_boton_enviar_clicked ();
+	public signal void headerbar_boton_agregar_a_lista_quitar_clicked ();
+	public signal void headerbar_boton_agregar_a_lista_agregar_clicked ();
 	public signal void anios_hechos_anios_cursor_changed ();
 	public signal void anios_hechos_listas_cursor_changed ();
 #if DISABLE_GNOME3

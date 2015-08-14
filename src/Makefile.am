@@ -73,7 +73,8 @@ nomeolvides_SOURCES = \
 	nomeolvides-utiles.vala \
 	nomeolvides-ventana-principal.vala \
 	nomeolvides-stack-hechos-dialog.vala \
-	$(NULL)
+	$(NULL) \
+	nomeolvides-headerbar.vala
 
 nomeolvides-resources.c: nomeolvides.gresource.xml
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(srcdir)/nomeolvides.gresource.xml \

@@ -33,9 +33,9 @@ public class Nomeolvides.PreferenciasListas: Nomeolvides.PreferenciasBase {
 		this.editar_dialog = new DialogListaEditar () as DialogBase;
 		this.borrar_dialog = new DialogListaBorrar () as DialogBaseBorrar;
 	#else
-		this.agregar_dialog = new DialogListaAgregar ( this.toolbar.add_button ) as DialogBase;
-		this.editar_dialog = new DialogListaEditar ( this.toolbar.edit_button ) as DialogBase;
-		this.borrar_dialog = new DialogListaBorrar ( this.toolbar.delete_button ) as DialogBaseBorrar;
+		this.agregar_dialog = new DialogListaAgregar ( this.toolbar.boton_agregar ) as DialogBase;
+		this.editar_dialog = new DialogListaEditar ( this.toolbar.boton_editar ) as DialogBase;
+		this.borrar_dialog = new DialogListaBorrar ( this.toolbar.boton_borrar ) as DialogBaseBorrar;
 	#endif
 		this.conectar_signals ();
 	}

@@ -37,12 +37,6 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 		this.deshacer = new Deshacer<Base> ();
 
 		this.toolbar = new Nomeolvides.Toolbar ();
-		this.toolbar.set_border_width ( 1 );
-
-#if DISABLE_GNOME3
-#else
-		this.toolbar.set_show_close_button ( false );
-#endif
 
 		this.scroll_view = new ScrolledWindow (null,null);
 		this.scroll_view.set_policy ( PolicyType.NEVER, PolicyType.AUTOMATIC );
@@ -57,11 +51,11 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 	}
 
 	protected void conectar_signals () {
-		this.toolbar.add_button.activado.connect ( this.add_dialog );
-		this.toolbar.delete_button.activado.connect ( this.delete_dialog );
-		this.toolbar.edit_button.activado.connect ( this.edit_dialog );
-		this.toolbar.undo_button.activado.connect ( this.deshacer_cambios );
-		this.toolbar.redo_button.activado.connect ( this.rehacer_cambios );
+		this.toolbar.boton_agregar.activado.connect ( this.add_dialog );
+		this.toolbar.boton_borrar.activado.connect ( this.delete_dialog );
+		this.toolbar.boton_editar.activado.connect ( this.edit_dialog );
+		this.toolbar.boton_deshacer.activado.connect ( this.deshacer_cambios );
+		this.toolbar.boton_rehacer.activado.connect ( this.rehacer_cambios );
 
 		this.deshacer.deshacer_sin_items.connect ( this.toolbar.desactivar_deshacer );
 		this.deshacer.deshacer_con_items.connect ( this.toolbar.activar_deshacer );
@@ -86,7 +80,7 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
  			this.agregar ( agregar_dialog.respuesta );
 		}
 		this.agregar_dialog.hide ();
-		this.toolbar.add_button.set_active ( false );
+		this.toolbar.boton_agregar.set_active ( false );
 	#endif
 
 		this.agregar_dialog.borrar_datos ();
@@ -103,7 +97,7 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 				this.cambio_signal ();
 			}
 		}
-		this.toolbar.edit_button.set_active ( false );
+		this.toolbar.boton_editar.set_active ( false );
 		this.editar_dialog.hide ();
 	#endif
 	}
@@ -118,15 +112,15 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 			this.cambio_signal ();
 		}
 		this.borrar_dialog.hide ();
-		this.toolbar.delete_button.set_active ( false );
+		this.toolbar.boton_borrar.set_active ( false );
 	#endif
 	}
 
 	protected virtual void elegir () {
 		if( this.treeview.get_selection ().count_selected_rows () > -1 ) {
-			this.toolbar.set_buttons_visible ();
+			this.toolbar.set_botones_visible ();
 		} else {
-			this.toolbar.set_buttons_invisible ();
+			this.toolbar.set_botones_invisible ();
 		}
 	}
 
@@ -150,7 +144,7 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 	}
 
 	public void set_buttons_invisible () {
-		this.toolbar.set_buttons_invisible ();
+		this.toolbar.set_botones_invisible ();
 	}
 #if DISABLE_GNOME3
 #else
