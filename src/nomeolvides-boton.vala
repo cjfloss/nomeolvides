@@ -1,4 +1,4 @@
-/* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
+  /* -*- Mode: vala; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * nomeolvides-button-nmobutton.vala
  * Copyright (C) 2014 Fernando Fernandez <fernando@softwareperonista.com.ar>
@@ -19,31 +19,13 @@
 using Gtk;
 using Nomeolvides;
 
+[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-boton.ui" ) ]
 public class Nomeolvides.Boton : Gtk.ToggleButton {
-	// Constructor
 	public Boton ( string label ) {
 		this.set_label ( label );
-		this.setear_propiedades ();
-		this.toggled.connect (apretar);
 	}
 
-	public Boton.icono ( string icono, Gtk.IconSize tamanio ) {
-		var imagen = new Image.from_icon_name ( icono, tamanio );
-		this.set_image ( imagen );
-		this.setear_propiedades ();
-	}
-
-	public Boton.con_margen ( string label ) {
-		this.set_label ( label );
-		this.setear_propiedades ();
-		this.set_margin_top ( 5 );
-		this.set_margin_bottom ( 5 );
-	}
-
-	private void setear_propiedades () {
-		this.set_halign ( Align.START );
-	}
-
+  [GtkCallback]
 	public void apretar () {
 		if ( this.get_active () ) {
 			this.activado ();
