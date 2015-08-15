@@ -20,10 +20,13 @@
 using Gtk;
 using Nomeolvides;
 
-public class Nomeolvides.PreferenciasBase : Gtk.Box {
+[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-preferencias-base.ui" )]
+public class Nomeolvides.PreferenciasBase : Gtk.Grid {
 	protected TreeViewBase treeview { get; protected set; }
-	protected ScrolledWindow scroll_view;
-	protected Nomeolvides.Toolbar toolbar;
+	[GtkChild]
+	protected ScrolledWindow scrolledwindow_preferencias_treeview;
+	[GtkChild]
+	protected Nomeolvides.Toolbar toolbar_preferencias;
 	protected AccionesDB db;
 	protected Deshacer<Base> deshacer;
 	protected DialogBase agregar_dialog;
@@ -31,19 +34,8 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 	protected DialogBaseBorrar borrar_dialog;
 
 	public PreferenciasBase () {
-		this.set_orientation ( Orientation.VERTICAL );
-
 		this.db = new AccionesDB ( Configuracion.base_de_datos() );
 		this.deshacer = new Deshacer<Base> ();
-
-		this.toolbar = new Nomeolvides.Toolbar ();
-
-		this.scroll_view = new ScrolledWindow (null,null);
-		this.scroll_view.set_policy ( PolicyType.NEVER, PolicyType.AUTOMATIC );
-		this.scroll_view.set_border_width ( 1 );
-
-		this.pack_start ( toolbar, false, false, 0 );
-		this.show_all ();
 	}
 
 	public void actualizar_model ( ListStoreBase liststore ) {
@@ -51,16 +43,16 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 	}
 
 	protected void conectar_signals () {
-		this.toolbar.boton_agregar.activado.connect ( this.add_dialog );
-		this.toolbar.boton_borrar.activado.connect ( this.delete_dialog );
-		this.toolbar.boton_editar.activado.connect ( this.edit_dialog );
-		this.toolbar.boton_deshacer.activado.connect ( this.deshacer_cambios );
-		this.toolbar.boton_rehacer.activado.connect ( this.rehacer_cambios );
+		this.toolbar_preferencias.boton_agregar.activado.connect ( this.add_dialog );
+		this.toolbar_preferencias.boton_borrar.activado.connect ( this.delete_dialog );
+		this.toolbar_preferencias.boton_editar.activado.connect ( this.edit_dialog );
+		this.toolbar_preferencias.boton_deshacer.activado.connect ( this.deshacer_cambios );
+		this.toolbar_preferencias.boton_rehacer.activado.connect ( this.rehacer_cambios );
 
-		this.deshacer.deshacer_sin_items.connect ( this.toolbar.desactivar_deshacer );
-		this.deshacer.deshacer_con_items.connect ( this.toolbar.activar_deshacer );
-		this.deshacer.rehacer_sin_items.connect ( this.toolbar.desactivar_rehacer );
-		this.deshacer.rehacer_con_items.connect ( this.toolbar.activar_rehacer );
+		this.deshacer.deshacer_sin_items.connect ( this.toolbar_preferencias.desactivar_deshacer );
+		this.deshacer.deshacer_con_items.connect ( this.toolbar_preferencias.activar_deshacer );
+		this.deshacer.rehacer_sin_items.connect ( this.toolbar_preferencias.desactivar_rehacer );
+		this.deshacer.rehacer_con_items.connect ( this.toolbar_preferencias.activar_rehacer );
 		this.treeview.cursor_changed.connect ( this.elegir );
 	#if DISABLE_GNOME3
 	#else
@@ -80,7 +72,7 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
  			this.agregar ( agregar_dialog.respuesta );
 		}
 		this.agregar_dialog.hide ();
-		this.toolbar.boton_agregar.set_active ( false );
+		this.toolbar_preferencias.boton_agregar.set_active ( false );
 	#endif
 
 		this.agregar_dialog.borrar_datos ();
@@ -97,7 +89,7 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 				this.cambio_signal ();
 			}
 		}
-		this.toolbar.boton_editar.set_active ( false );
+		this.toolbar_preferencias.boton_editar.set_active ( false );
 		this.editar_dialog.hide ();
 	#endif
 	}
@@ -112,15 +104,15 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 			this.cambio_signal ();
 		}
 		this.borrar_dialog.hide ();
-		this.toolbar.boton_borrar.set_active ( false );
+		this.toolbar_preferencias.boton_borrar.set_active ( false );
 	#endif
 	}
 
 	protected virtual void elegir () {
 		if( this.treeview.get_selection ().count_selected_rows () > -1 ) {
-			this.toolbar.set_botones_visible ();
+			this.toolbar_preferencias.set_botones_visible ();
 		} else {
-			this.toolbar.set_botones_invisible ();
+			this.toolbar_preferencias.set_botones_invisible ();
 		}
 	}
 
@@ -144,7 +136,7 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 	}
 
 	public void set_buttons_invisible () {
-		this.toolbar.set_botones_invisible ();
+		this.toolbar_preferencias.set_botones_invisible ();
 	}
 #if DISABLE_GNOME3
 #else

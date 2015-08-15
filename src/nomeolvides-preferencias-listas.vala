@@ -25,17 +25,17 @@ public class Nomeolvides.PreferenciasListas: Nomeolvides.PreferenciasBase {
 		this.treeview = new TreeViewBase ();
 		this.treeview.set_border_width ( 20 );
 		this.treeview.set_model ( liststore_listas );
-		this.scroll_view.add ( this.treeview );
-		this.pack_start ( scroll_view, true, true, 0 );
+		this.scrolledwindow_preferencias_treeview.add ( this.treeview );
+		this.scrolledwindow_preferencias_treeview.show ();
 
 	#if DISABLE_GNOME3
 		this.agregar_dialog = new DialogListaAgregar () as DialogBase;
 		this.editar_dialog = new DialogListaEditar () as DialogBase;
 		this.borrar_dialog = new DialogListaBorrar () as DialogBaseBorrar;
 	#else
-		this.agregar_dialog = new DialogListaAgregar ( this.toolbar.boton_agregar ) as DialogBase;
-		this.editar_dialog = new DialogListaEditar ( this.toolbar.boton_editar ) as DialogBase;
-		this.borrar_dialog = new DialogListaBorrar ( this.toolbar.boton_borrar ) as DialogBaseBorrar;
+		this.agregar_dialog = new DialogListaAgregar ( this.toolbar_preferencias.boton_agregar ) as DialogBase;
+		this.editar_dialog = new DialogListaEditar ( this.toolbar_preferencias.boton_editar ) as DialogBase;
+		this.borrar_dialog = new DialogListaBorrar ( this.toolbar_preferencias.boton_borrar ) as DialogBaseBorrar;
 	#endif
 		this.conectar_signals ();
 	}

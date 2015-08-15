@@ -20,13 +20,9 @@
 using Gtk;
 using Nomeolvides;
 
+[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-toolbar.ui" )]
 public class Nomeolvides.Toolbar : Nomeolvides.HeaderBar {
-	public Toolbar () {
-    this.show.connect ( this.set_botones_invisible );
-    this.set_title ( "" );
-    this.set_border_width ( 1 );
-    this.set_show_close_button ( false );
-	}
+	public Toolbar () {}
 
 	public new void set_botones_visible () {
 		this.set_botones_multiseleccion_visible ();

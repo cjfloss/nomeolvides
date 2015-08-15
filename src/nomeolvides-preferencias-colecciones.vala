@@ -29,8 +29,8 @@ public class Nomeolvides.PreferenciasColecciones : Nomeolvides.PreferenciasBase 
 		treeview_colecciones.set_model ( liststore_colecciones );
 		treeview_colecciones.coleccion_visible_toggle_change.connect ( signal_toggle_change );
 		this.treeview = treeview_colecciones;
-		this.scroll_view.add ( this.treeview );
-		this.pack_start ( scroll_view, true, true, 0 );
+		this.scrolledwindow_preferencias_treeview.add ( this.treeview );
+		this.scrolledwindow_preferencias_treeview.show ();
 		this.cambio_toggle = false;
 
 	#if DISABLE_GNOME3
@@ -38,9 +38,9 @@ public class Nomeolvides.PreferenciasColecciones : Nomeolvides.PreferenciasBase 
 		this.editar_dialog = new DialogColeccionEditar () as DialogBase;
 		this.borrar_dialog = new DialogColeccionBorrar () as DialogBaseBorrar;
 	#else
-		this.agregar_dialog = new DialogColeccionAgregar ( this.toolbar.boton_agregar ) as DialogBase;
-		this.editar_dialog = new DialogColeccionEditar ( this.toolbar.boton_editar ) as DialogBase;
-		this.borrar_dialog = new DialogColeccionBorrar ( this.toolbar.boton_borrar ) as DialogBaseBorrar;
+		this.agregar_dialog = new DialogColeccionAgregar ( this.toolbar_preferencias.boton_agregar ) as DialogBase;
+		this.editar_dialog = new DialogColeccionEditar ( this.toolbar_preferencias.boton_editar ) as DialogBase;
+		this.borrar_dialog = new DialogColeccionBorrar ( this.toolbar_preferencias.boton_borrar ) as DialogBaseBorrar;
 	#endif
 		this.conectar_signals ();
 	}
