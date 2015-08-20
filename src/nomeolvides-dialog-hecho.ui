@@ -68,6 +68,10 @@
                           <object class="GtkTextView" id="textview_descripcion">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="left_margin">5</property>
+                            <property name="right_margin">5</property>
+                            <property name="wrap_mode">word</property>
+                            <property name="justification">fill</property>
                           </object>
                         </child>
                       </object>
