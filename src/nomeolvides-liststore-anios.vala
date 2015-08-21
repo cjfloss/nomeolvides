@@ -7,12 +7,12 @@
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * nomeolvides is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -28,6 +28,8 @@ public class Nomeolvides.ListStoreAnios : Gtk.ListStore {
 		Type[] tipos= { typeof (int) };
 		this.set_column_types(tipos);
 		this.anios = new Array<int>();
+		this.set_sort_column_id(0, SortType.ASCENDING);
+		this.set_sort_func(2, ordenar_anios);
 	}
 
 	public void agregar ( int nuevo ) {
@@ -102,5 +104,29 @@ public class Nomeolvides.ListStoreAnios : Gtk.ListStore {
 				flag = this.iter_next ( ref iter );
 			}
 		} while ( flag );
-	}	
+	}
+
+		private int ordenar_anios (Gtk.TreeModel model2, Gtk.TreeIter iter1, Gtk.TreeIter iter2) {
+		GLib.Value val1;
+		GLib.Value val2;
+
+		int anio1;
+		int anio2;
+
+		this.get_value(iter1, 0, out val1);
+		this.get_value(iter2, 0, out val2);
+
+		anio1 = (int) val1;
+		anio2 = (int) val2;
+
+		if (anio1 < anio2) {
+			return -1;
+		} else {
+			if (anio1 > anio2) {
+				return 1;
+			} else {
+				return 0;
+			}
+		}
+	}
 }
