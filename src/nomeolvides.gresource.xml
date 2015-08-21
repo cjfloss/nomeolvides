@@ -13,6 +13,7 @@
     <file>nomeolvides-dialog-hechos-importar.ui</file>
     <file>nomeolvides-selector-fecha.ui</file>
     <file>nomeolvides-treeview-hechos.ui</file>
+    <file>nomeolvides-treeview-base.ui</file>
     <file>nomeolvides-stack-hechos-dialog.ui</file>
   </gresource>
 </gresources> 

@@ -20,30 +20,14 @@
 using Gtk;
 using Nomeolvides;
 
+[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-treeview-base.ui" )]
 public class Nomeolvides.TreeViewBase : TreeView {
-	public TreeViewBase () {
-		this.ventana_principal ();
-		const float CENTRADO = (float)0.5;
-
-		var cantidad_cell = new CellRendererText ();
-		cantidad_cell.xalign = CENTRADO;
-
-		this.insert_column_with_attributes ( -1, _("Amount of Facts"), cantidad_cell, "text", 1 );
-
-	}
+  [GtkChild]
+  private TreeViewColumn treeviewcolumn_base_cantidad_hechos;
+	public TreeViewBase () {}
 
 	public TreeViewBase.ventana_principal () {
-
-		var nombre_cell = new CellRendererText ();
-		nombre_cell.ellipsize = Pango.EllipsizeMode.END;
-		nombre_cell.width_chars = 30;
-
-		var nombre_columna = new TreeViewColumn.with_attributes ( _("Name"), nombre_cell, "text", 0 );
-
-		nombre_columna.set_expand ( true );
-
-		this.insert_column ( nombre_columna, -1 );
-
+	  this.treeviewcolumn_base_cantidad_hechos.set_visible ( false );
 	}
 
 	public int64 get_elemento_id () {
