@@ -260,7 +260,7 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	}
 
 	public void limpiar_hechos_view () {
-		this.anios_hechos.limpiar_hechos_view ();
+		this.anios_hechos.limpiar_treeview_hechos ();
 	}
 
 #if DISABLE_GNOME3
