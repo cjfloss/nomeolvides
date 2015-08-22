@@ -22,53 +22,36 @@ using Nomeolvides;
 
 public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 	private TreeViewHechos hechos_view;
-	private TreeViewAnios anios_view;
-	private TreeViewBase listas_view;
 	private Portada vista_hecho;
+	private NotebookAniosListas notebook_anios_listas;
 	private ScrolledWindow scroll_hechos_view;
-	private ScrolledWindow scroll_anios_view;
-	private ScrolledWindow scroll_listas_view;
-	private Notebook anios_listas;
 	private int anio_actual;
 	private Lista lista_actual;
 	private AccionesDB db;
 
 	public InterfazPrincipal () {
 		this.db = new AccionesDB ( Configuracion.base_de_datos() );
-		this.anios_view = new TreeViewAnios ();
 		this.hechos_view = new TreeViewHechos ();
-		this.listas_view = new TreeViewBase ();
-		this.listas_view.no_mostrar_treeviewcolumn_base_cantidad_hechos ( );
 		this.vista_hecho = new Portada ();
 		this.vista_hecho.set_size_request (300,-1);
 
 		this.scroll_hechos_view = new ScrolledWindow (null,null);
-		this.scroll_anios_view = new ScrolledWindow (null,null);
-		this.scroll_listas_view = new ScrolledWindow (null,null);
 		this.scroll_hechos_view.set_policy (PolicyType.NEVER, PolicyType.AUTOMATIC);
-		this.scroll_anios_view.set_policy (PolicyType.NEVER, PolicyType.AUTOMATIC);
-		this.scroll_listas_view.set_policy (PolicyType.NEVER, PolicyType.AUTOMATIC);
+		this.scroll_hechos_view.add ( this.hechos_view );
 
-		this.anios_listas = new Notebook ();
+		this.notebook_anios_listas = new NotebookAniosListas ();
 
 		this.hechos_view.get_selection ().changed.connect ( this.elegir_hecho );
-		this.anios_view.cursor_changed.connect ( this.elegir_anio );
-		this.listas_view.cursor_changed.connect ( this.elegir_lista );
+		this.notebook_anios_listas.treeview_anios.cursor_changed.connect ( this.elegir_anio );
+		this.notebook_anios_listas.treeview_listas.cursor_changed.connect ( this.elegir_lista );
 		this.hechos_view.row_activated.connect ( mostrar_vista );
-		this.anios_listas.switch_page.connect ( cambiar_pestania );
+		this.notebook_anios_listas.switch_page.connect ( cambiar_pestania );
 
 		Separator separador = new Separator(Orientation.VERTICAL);
 
 		this.anio_actual = 0;
 
-		this.scroll_hechos_view.add ( this.hechos_view );
-		this.scroll_anios_view.add ( this.anios_view );
-		this.scroll_listas_view.add ( this.listas_view );
-
-		this.anios_listas.append_page ( this.scroll_anios_view, new Label(_("Years") ));
-		this.anios_listas.append_page ( this.scroll_listas_view, new Label (_("Lists") ));
-		
-		this.pack_start (this.anios_listas, false, false, 0);
+		this.pack_start (this.notebook_anios_listas, false, false, 0);
 		this.pack_start (new Separator(Orientation.VERTICAL), false, false, 2);
 		this.pack_start (this.scroll_hechos_view, true, true, 0);
 		this.pack_start (separador, false, false, 2);
@@ -86,8 +69,8 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 		}
 	}
 	private void elegir_anio () {
-		if ( this.anio_actual != this.anios_view.get_anio () || this.anios_view.get_anio () == 0 ) {
-			this.anio_actual = this.anios_view.get_anio ();
+		if ( this.anio_actual != this.notebook_anios_listas.treeview_anios.get_anio () || this.notebook_anios_listas.treeview_anios.get_anio () == 0 ) {
+			this.anio_actual = this.notebook_anios_listas.treeview_anios.get_anio ();
 			this.lista_actual = null; //ningina lista
 			this.anios_cursor_changed();
 			this.mostrar_scroll_vista ( false );
@@ -96,7 +79,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 
 	private void elegir_lista () {
 			var lista = this.db.select_lista ( "WHERE rowid=\"" 
-		                                                + this.listas_view.get_elemento_id ().to_string() + "\"");
+		                                                + this.notebook_anios_listas.treeview_listas.get_elemento_id ().to_string() + "\"");
 		if ( this.lista_actual != lista ) {
 			this.lista_actual = lista;
 			this.anio_actual = 0; //ningún anio
@@ -106,7 +89,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 	}
 
 	private void cambiar_pestania () {
-		switch ( this.anios_listas.get_current_page () ) {
+		switch ( this.notebook_anios_listas.get_current_page () ) {
 		case 0:
 			this.elegir_lista ();
 			break;
@@ -143,16 +126,16 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 	}
 
 	public void cargar_lista_anios ( Array<int> anios ) {
-		this.anios_view.agregar_varios ( anios );
+		this.notebook_anios_listas.treeview_anios.agregar_varios ( anios );
 		this.listas_cursor_changed ();
 	}
 
 	public void cargar_listas ( ListStoreListas listas ) {
 		if ( !(listas.vacio) ) {			
-			this.listas_view.set_model ( listas );
-			this.anios_listas.get_nth_page (1).show ();
+			this.notebook_anios_listas.treeview_listas.set_model ( listas );
+			this.notebook_anios_listas.get_nth_page (1).show ();
 		} else {
-			this.anios_listas.get_nth_page (1).hide ();
+			this.notebook_anios_listas.get_nth_page (1).hide ();
 			this.elegir_anio ();
 		}
 		this.anios_cursor_changed ();
@@ -179,8 +162,8 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 	}
 
 	public string get_nombre_pestania () {
-		return this.anios_listas.get_tab_label_text ( this.anios_listas.get_nth_page
-		                                               ( this.anios_listas.get_current_page () ) );
+		return this.notebook_anios_listas.get_tab_label_text ( this.notebook_anios_listas.get_nth_page
+		                                               ( this.notebook_anios_listas.get_current_page () ) );
 	}
 
 	public void limpiar_hechos_view () {
