@@ -24,11 +24,12 @@ using Nomeolvides;
 public class Nomeolvides.TreeViewBase : TreeView {
   [GtkChild]
   private TreeViewColumn treeviewcolumn_base_cantidad_hechos;
-	public TreeViewBase () {}
 
-	public TreeViewBase.ventana_principal () {
-	  this.treeviewcolumn_base_cantidad_hechos.set_visible ( false );
-	}
+	construct {}
+
+ public void no_mostrar_treeviewcolumn_base_cantidad_hechos () {
+    this.treeviewcolumn_base_cantidad_hechos.set_visible ( false );
+  }
 
 	public int64 get_elemento_id () {
 		var elemento = this.get_elemento ();

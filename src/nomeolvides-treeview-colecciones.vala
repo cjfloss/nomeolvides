@@ -20,14 +20,12 @@
 using Gtk;
 using Nomeolvides;
 
+[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-treeview-colecciones.ui" )]
 public class Nomeolvides.TreeViewColecciones : TreeViewBase {
-	private CellRendererToggle toggle_visible;
+  [GtkChild]
+	private CellRendererToggle cellrenderertext_colecciones_visible;
 	
-	public TreeViewColecciones () {
-		this.toggle_visible = new CellRendererToggle();
-		this.toggle_visible.toggled.connect ( signal_toggle );
-		this.insert_column_with_attributes ( -1, _("Visible"), this.toggle_visible, "active", 3 );
-	}
+	public TreeViewColecciones () {}
 
 	public bool get_coleccion_cursor_visible () {
 		TreePath path;
@@ -44,13 +42,14 @@ public class Nomeolvides.TreeViewColecciones : TreeViewBase {
 		return (bool) visible;
 	}
 
+  [GtkCallback]
 	private void signal_toggle (string path) {
 		TreePath tree_path = new Gtk.TreePath.from_string (path);
 		TreeIter iter;
 		var liststore = this.get_model() as ListStoreColecciones;
 
 		liststore.get_iter (out iter, tree_path);
-		liststore.set_value (iter, 3, !this.toggle_visible.active);
+		liststore.set_value (iter, 3, !this.cellrenderertext_colecciones_visible.active);
 
 		this.coleccion_visible_toggle_change ();
 	}

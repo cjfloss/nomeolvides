@@ -24,7 +24,7 @@ using Nomeolvides;
 public class Nomeolvides.TreeViewAnios : TreeView {
 	private ListStoreAnios lista;
 
-	public TreeViewAnios () {
+	construct {
 		this.lista = new ListStoreAnios ();
 		this.set_model (this.lista);
 	}
