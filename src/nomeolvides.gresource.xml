@@ -16,6 +16,7 @@
     <file>nomeolvides-selector-fecha.ui</file>
     <file>nomeolvides-treeview-hechos.ui</file>
     <file>nomeolvides-treeview-base.ui</file>
+    <file>nomeolvides-popover-base.ui</file>
     <file>nomeolvides-treeview-colecciones.ui</file>
     <file>nomeolvides-treeview-anios.ui</file>
     <file>nomeolvides-stack-hechos-dialog.ui</file>

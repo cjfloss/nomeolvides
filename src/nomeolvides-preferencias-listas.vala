@@ -8,7 +8,7 @@
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
- * nomeolvides is distributed in the hope that it will be useful, but
+ * nomeolvides is distsibuted in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
@@ -28,15 +28,10 @@ public class Nomeolvides.PreferenciasListas: Nomeolvides.PreferenciasBase {
 		this.scrolledwindow_preferencias_treeview.add ( this.treeview );
 		this.scrolledwindow_preferencias_treeview.show ();
 
-	#if DISABLE_GNOME3
-		this.agregar_dialog = new DialogListaAgregar () as DialogBase;
-		this.editar_dialog = new DialogListaEditar () as DialogBase;
-		this.borrar_dialog = new DialogListaBorrar () as DialogBaseBorrar;
-	#else
-		this.agregar_dialog = new DialogListaAgregar ( this.toolbar_preferencias.boton_agregar ) as DialogBase;
-		this.editar_dialog = new DialogListaEditar ( this.toolbar_preferencias.boton_editar ) as DialogBase;
+		this.agregar_dialog = new PopoverListaAgregar ( this.toolbar_preferencias.boton_agregar ) as PopoverBase;
+		this.editar_dialog = new PopoverListaEditar ( this.toolbar_preferencias.boton_editar ) as PopoverBase;
 		this.borrar_dialog = new DialogListaBorrar ( this.toolbar_preferencias.boton_borrar ) as DialogBaseBorrar;
-	#endif
+
 		this.conectar_signals ();
 	}
 

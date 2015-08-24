@@ -20,31 +20,18 @@
 using Gtk;
 using Nomeolvides;
 
-public class Nomeolvides.DialogListaEditar : DialogBase {
-#if DISABLE_GNOME3
-	public DialogListaEditar () {
-		this.title = _("Edit Custom List");
-		Button boton_apply = this.get_widget_for_response ( ResponseType.APPLY ) as Button;
-		boton_apply.set_label ( _("Edit") );
-#else
-	public Base objeto_viejo;
-	public DialogListaEditar ( Widget relative_to ) {
+public class Nomeolvides.PopoverColeccionEditar : PopoverBase {
+		public Base objeto_viejo;
+
+	  public PopoverColeccionEditar ( Widget relative_to ) {
 		base ( relative_to );
-		base.aplicar_button.set_label ( _("Edit") );
-#endif
-		this.nombre_label.set_label (_("List Name") + ": ");
+		base.button_aplicar.set_label ( _("Edit") );
+		base.label_nombre.set_label ( _("Colection name") + ": " );
 	}
-#if DISABLE_GNOME3
-	protected override void crear_respuesta () {
-		if(this.nombre_entry.get_text_length () > 0) {
-			this.respuesta  = new Lista (this.nombre_entry.get_text ());
-			this.respuesta.id = this.id;
-		}
-	}
-#else
+
 	protected override void aplicar () {
-		if ( this.nombre_entry.get_text_length () > 0 ) {
-			this.respuesta = new Lista ( this.nombre_entry.get_text () );
+		if ( this.entry_nombre.get_text_length () > 0 ) {
+			this.respuesta = new Coleccion ( this.entry_nombre.get_text (), true );
 			this.respuesta.id = this.id;
 			this.signal_actualizar( this.objeto_viejo, this.respuesta );
 			this.borrar_datos ();
@@ -56,6 +43,5 @@ public class Nomeolvides.DialogListaEditar : DialogBase {
 		base.set_datos ( objeto );
 		this.objeto_viejo = objeto;
 	}
-#endif
-}
 
+}

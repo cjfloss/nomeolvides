@@ -33,15 +33,10 @@ public class Nomeolvides.PreferenciasColecciones : Nomeolvides.PreferenciasBase 
 		this.scrolledwindow_preferencias_treeview.show ();
 		this.cambio_toggle = false;
 
-	#if DISABLE_GNOME3
-		this.agregar_dialog = new DialogColeccionAgregar () as DialogBase;
-		this.editar_dialog = new DialogColeccionEditar () as DialogBase;
-		this.borrar_dialog = new DialogColeccionBorrar () as DialogBaseBorrar;
-	#else
-		this.agregar_dialog = new DialogColeccionAgregar ( this.toolbar_preferencias.boton_agregar ) as DialogBase;
-		this.editar_dialog = new DialogColeccionEditar ( this.toolbar_preferencias.boton_editar ) as DialogBase;
+		this.agregar_dialog = new PopoverColeccionAgregar ( this.toolbar_preferencias.boton_agregar ) as PopoverBase;
+		this.editar_dialog = new PopoverColeccionEditar ( this.toolbar_preferencias.boton_editar ) as PopoverBase;
 		this.borrar_dialog = new DialogColeccionBorrar ( this.toolbar_preferencias.boton_borrar ) as DialogBaseBorrar;
-	#endif
+
 		this.conectar_signals ();
 	}
 

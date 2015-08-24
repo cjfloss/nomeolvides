@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.19.0 -->
+<interface>
+  <requires lib="gtk+" version="3.16"/>
+  <template class="NomeolvidesPopoverBase" parent="GtkPopover">
+    <property name="can_focus">False</property>
+    <property name="position">bottom</property>
+    <signal name="closed" handler="ocultar" swapped="no"/>
+    <child>
+      <object class="GtkGrid" id="grid-dialog-base">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
+        <property name="margin_start">20</property>
+        <property name="margin_end">20</property>
+        <property name="margin_top">30</property>
+        <property name="margin_bottom">30</property>
+        <property name="column_spacing">20</property>
+        <property name="column_homogeneous">True</property>
+        <child>
+          <object class="GtkLabel" id="label_nombre">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Nombre</property>
+            <property name="margin_bottom">20</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="entry_nombre">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="has_focus">True</property>
+            <property name="can_default">True</property>
+            <property name="has_default">True</property>
+            <property name="max-length">30</property>
+            <property name="margin_bottom">20</property>
+            <signal name="changed" handler="activar_button_aplicar" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="button_cancelar">
+            <property name="label" translatable="yes">Cancel</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+	    <property name="can_default">True</property>
+            <signal name="clicked" handler="ocultar" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="button_aplicar">
+            <property name="label" translatable="yes"></property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="sensitive">False</property>
+            <signal name="clicked" handler="aplicar" swapped="no"/>
+            <style>
+              <class name="suggested-action"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
