@@ -20,6 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
+[GtkTemplate ( ui= "/org/softwareperonista/nomeolvides/nomeolvides-popover-coleccion-editar.ui" )]
 public class Nomeolvides.PopoverColeccionEditar : PopoverBase {
 		public Base objeto_viejo;
 
