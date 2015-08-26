@@ -20,17 +20,11 @@
 using Gtk;
 using Nomeolvides;
 
-public class Nomeolvides.DialogListaBorrar : DialogBaseBorrar {
-#if DISABLE_GNOME3
-	 public DialogListaBorrar () {
-		this.title = _("Delete Custom List");
-#else
-	public DialogListaBorrar ( Widget relative_to ) {
+public class Nomeolvides.PopoverListaBorrar : PopoverBaseBorrar {
+	public PopoverListaBorrar ( Widget relative_to ) {
 		base ( relative_to );
-		base.aplicar_button.set_label ( _("Delete") );
-#endif
-		this.pregunta.set_label ( _("Do you want to remove custom list?") );
-		this.nombre.set_label ( _("List") + ":");
-		this.hechos.set_label ( _("Amount of facts") + ":");
+		this.label_pregunta.set_label ( _("Do you want to remove custom list?") );
+		this.label_nombre.set_label ( _("List") + ":");
+		this.label_cantidad_hechos.set_label ( _("Amount of facts") + ":");
 	}
 }

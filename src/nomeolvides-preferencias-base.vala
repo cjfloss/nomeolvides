@@ -30,9 +30,9 @@ public class Nomeolvides.PreferenciasBase : Gtk.Grid {
 	protected Nomeolvides.Toolbar toolbar_preferencias;
 	protected AccionesDB db;
 	protected Deshacer<Base> deshacer;
-	protected PopoverBase agregar_dialog;
-	protected PopoverBase editar_dialog;
-	protected DialogBaseBorrar borrar_dialog;
+	protected PopoverBase popover_agregar;
+	protected PopoverBase popover_editar;
+	protected PopoverBaseBorrar popover_borrar;
 
 	public PreferenciasBase () {
 		this.db = new AccionesDB ( Configuracion.base_de_datos() );
@@ -56,30 +56,30 @@ public class Nomeolvides.PreferenciasBase : Gtk.Grid {
 		this.deshacer.rehacer_con_items.connect ( this.toolbar_preferencias.activar_rehacer );
 		this.treeview.cursor_changed.connect ( this.elegir );
 
-		this.agregar_dialog.signal_cerrado.connect ( this.desactivar_boton );
-		this.borrar_dialog.signal_cerrado.connect ( this.desactivar_boton );
-		this.editar_dialog.signal_cerrado.connect ( this.desactivar_boton );
-		this.agregar_dialog.signal_agregar.connect ( this.agregar );
-		this.editar_dialog.signal_actualizar.connect ( this.actualizar );
-		this.borrar_dialog.signal_borrar.connect ( this.borrar );
+		this.popover_agregar.signal_cerrado.connect ( this.desactivar_boton );
+		this.popover_borrar.signal_cerrado.connect ( this.desactivar_boton );
+		this.popover_editar.signal_cerrado.connect ( this.desactivar_boton );
+		this.popover_agregar.signal_agregar.connect ( this.agregar );
+		this.popover_editar.signal_actualizar.connect ( this.actualizar );
+		this.popover_borrar.signal_borrar.connect ( this.borrar );
 	}
 
 	protected virtual void add_dialog () {
-		this.agregar_dialog.show_all ();
+		this.popover_agregar.show_all ();
 
-		this.agregar_dialog.borrar_datos ();
+		this.popover_agregar.borrar_datos ();
 	}
 
 	public virtual void edit_dialog () {
 		Base objeto = this.treeview.get_elemento ();
-		this.editar_dialog.set_datos ( objeto );
-		this.editar_dialog.show_all ();
+		this.popover_editar.set_datos ( objeto );
+		this.popover_editar.show_all ();
 	}
 
 	private void delete_dialog () {
 		Base objeto = this.treeview.get_elemento ();
-		this.borrar_dialog.set_datos ( objeto, this.treeview.get_cantidad_hechos () );
-		this.borrar_dialog.show_all ();
+		this.popover_borrar.set_datos ( objeto, this.treeview.get_cantidad_hechos () );
+		this.popover_borrar.show_all ();
 	}
 
 	protected virtual void elegir () {

@@ -28,9 +28,9 @@ public class Nomeolvides.PreferenciasListas: Nomeolvides.PreferenciasBase {
 		this.scrolledwindow_preferencias_treeview.add ( this.treeview );
 		this.scrolledwindow_preferencias_treeview.show ();
 
-		this.agregar_dialog = new PopoverListaAgregar ( this.toolbar_preferencias.boton_agregar ) as PopoverBase;
-		this.editar_dialog = new PopoverListaEditar ( this.toolbar_preferencias.boton_editar ) as PopoverBase;
-		this.borrar_dialog = new DialogListaBorrar ( this.toolbar_preferencias.boton_borrar ) as DialogBaseBorrar;
+		this.popover_agregar = new PopoverListaAgregar ( this.toolbar_preferencias.boton_agregar ) as PopoverBase;
+		this.popover_editar = new PopoverListaEditar ( this.toolbar_preferencias.boton_editar ) as PopoverBase;
+		this.popover_borrar = new PopoverListaBorrar ( this.toolbar_preferencias.boton_borrar ) as PopoverBaseBorrar;
 
 		this.conectar_signals ();
 	}

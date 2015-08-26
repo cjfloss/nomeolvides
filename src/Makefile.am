@@ -30,8 +30,6 @@ nomeolvides_SOURCES = \
 	nomeolvides-deshacer.vala \
 	nomeolvides-dialog-archivo-abrir.vala \
 	nomeolvides-dialog-archivo-guardar.vala \
-	nomeolvides-dialog-base-borrar.vala \
-	nomeolvides-dialog-coleccion-borrar.vala \
 	nomeolvides-dialog-coleccion.vala \
 	nomeolvides-dialog-hecho-agregar.vala \
 	nomeolvides-dialog-hecho-borrar.vala \
@@ -40,7 +38,6 @@ nomeolvides_SOURCES = \
 	nomeolvides-dialog-hecho-lista-borrar.vala \
 	nomeolvides-dialog-hechos-importar.vala \
 	nomeolvides-dialog-hecho.vala \
-	nomeolvides-dialog-lista-borrar.vala \
 	nomeolvides-dialog-lista.vala \
 	nomeolvides-dialog-migrador.vala \
 	nomeolvides-dialog-preferencias.vala \
@@ -75,6 +72,9 @@ nomeolvides_SOURCES = \
 	nomeolvides-popover-coleccion-editar.vala \
 	nomeolvides-popover-lista-agregar.vala \
 	nomeolvides-popover-lista-editar.vala \
+	nomeolvides-popover-base-borrar.vala \
+	nomeolvides-popover-coleccion-borrar.vala \
+	nomeolvides-popover-lista-borrar.vala \
 	$(NULL)
 
 nomeolvides-resources.c: nomeolvides.gresource.xml
