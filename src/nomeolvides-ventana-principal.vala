@@ -190,6 +190,7 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 
 	public void cargar_hechos_view ( Array<Hecho> hechos ) {
 		this.anios_hechos.cargar_lista_hechos ( hechos );
+		this.cargar_linea_de_tiempo ( hechos );
 		this.anios_hechos.mostrar_scroll_vista ( false );
 	}
 
