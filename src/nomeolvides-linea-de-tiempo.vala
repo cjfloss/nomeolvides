@@ -27,6 +27,7 @@ public class Nomeolvides.LineaDeTiempo : Gtk.DrawingArea {
 	private Array<int> dias_hecho;
 	private int unidades;
 	private Escala escala;
+	private Surface surface;
 
 	private int px_por_unidad;
 
@@ -37,19 +38,46 @@ public class Nomeolvides.LineaDeTiempo : Gtk.DrawingArea {
 		this.dias_hecho = new Array<int> ();
 		this.escala = Escala.DIA;
 		this.px_por_unidad = 30;
+		crear_surface ();
 
-		this.draw.connect (dibujar);
+		this.draw.connect ( this.dibujar_widget );
 
 	}
 
-	private bool dibujar (Context context) {
+	private void crear_surface () {
+		this.surface = this.get_window ().create_similar_surface (Cairo.Content.COLOR,
+																  this.get_allocated_width (),
+																  this.get_allocated_height ());
+		this.inicializar_surface ();
+	}
+
+	private void inicializar_surface () {
+		Context context = new Context ( this.surface );
+
+		context.set_source_rgba (1, 1, 1, 1);
+		context.paint ();
+
+	}
+
+	private bool dibujar_widget (Context context) {
+
+		context.set_source_surface (this.surface, 0, 0 );
+		context.paint ();
+
+		return true;
+	}
+
+	private bool dibujar_linea () {
+
 		int width = this.get_allocated_width ();
 		int height = this.get_allocated_height ();
 		int posx = 0;
 		int posy = height/2;
 		int corrimiento_x = this.px_por_unidad * 2;
 		int ancho_linea = width - ( corrimiento_x * 2 );
-		
+
+		Context context = new Context ( this.surface );
+
 		if ( this.hechos.length > 1 ) {
 
 			context.set_source_rgba (1, 0, 0, 1);
@@ -87,9 +115,9 @@ public class Nomeolvides.LineaDeTiempo : Gtk.DrawingArea {
 
 	public void set_hechos ( Array<Hecho> nuevos_hechos ) {
 		int i;
-		
+
 		this.hechos = new Array<Hecho> ();
-		
+
 		for (i=0; i < nuevos_hechos.length; i++) {
 			this.hechos.append_val ( nuevos_hechos.index(i));
 		}
@@ -98,7 +126,10 @@ public class Nomeolvides.LineaDeTiempo : Gtk.DrawingArea {
 			this.calcular_unidades ();
 			this.calcular_dias_hechos ();
 			this.cambiar_width ();
-			this.queue_draw ();
+
+			this.crear_surface ();
+			this.dibujar_linea ();
+
 		} else {
 			this.visible = false;
 		}
@@ -138,7 +169,7 @@ public class Nomeolvides.LineaDeTiempo : Gtk.DrawingArea {
 
 		dias = this.diferencia_dias ( primer_dia, ultimo_dia );
 
-		if  ( dias < 60 ) {
+		if ( dias < 60 ) {
 			this.escala = Escala.DIA;
 			this.unidades = dias;
 			this.px_por_unidad = 60;
@@ -171,7 +202,7 @@ public class Nomeolvides.LineaDeTiempo : Gtk.DrawingArea {
 		DateTime primer_hecho = this.hechos.index(0).fecha;
 
 		this.dias_hecho = new Array<int> ();
-		
+
 		for (int i=0; i < this.hechos.length; i++) {
 			diferencia = this.diferencia_dias ( primer_hecho, this.hechos.index(i).fecha );
 			this.dias_hecho.append_val ( diferencia );
@@ -191,7 +222,6 @@ public class Nomeolvides.LineaDeTiempo : Gtk.DrawingArea {
 		context.line_to (posx, posy + 5);
 		context.stroke ();
 	}
-
 
 	private void dibujar_unidad (Context context, int posx, int posy, int corrimiento_x) {
 		switch (this.escala) {
