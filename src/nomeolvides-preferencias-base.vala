@@ -22,7 +22,6 @@ using Nomeolvides;
 
 [GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-preferencias-base.ui" )]
 public class Nomeolvides.PreferenciasBase : Gtk.Grid {
-  [GtkChild]
 	protected TreeViewBase treeview { get; protected set; }
 	[GtkChild]
 	protected ScrolledWindow scrolledwindow_preferencias_treeview;

@@ -133,9 +133,6 @@ hardcode_minus_L=no
 
 case "$host_os" in
   cygwin* | mingw* | pw32*)
-    # FIXME: the MSVC++ port hasn't been tested in a loooong time
-    # When not using gcc, we currently assume that we are using
-    # Microsoft Visual C++.
     if test "$GCC" != yes; then
       with_gnu_ld=no
     fi
