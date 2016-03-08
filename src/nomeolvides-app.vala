@@ -97,8 +97,8 @@ public class Nomeolvides.App : Gtk.Application  {
 		this.window.headerbar_boton_agregar_a_lista_agregar_clicked.connect ( this.add_hecho_lista );
 		this.window.headerbar_boton_agregar_a_lista_quitar_clicked.connect ( this.remove_hecho_lista );
 
-		this.window.anios_hechos_anios_cursor_changed.connect ( this.elegir_anio );
-		this.window.anios_hechos_listas_cursor_changed.connect ( this.elegir_lista );
+		this.window.interfaz_principal_anios_cursor_changed.connect ( this.elegir_anio );
+		this.window.interfaz_principal_listas_cursor_changed.connect ( this.elegir_lista );
 		
 		this.datos.datos_cambio_anios.connect ( this.cargar_lista_anios );
 		this.datos.datos_cambio_listas.connect ( this.cargar_listas );

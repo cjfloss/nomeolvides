@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.19.0 -->
+<interface>
+  <requires lib="gtk+" version="3.16"/>
+  <template class="NomeolvidesVentanaPrincipal" parent="GtkApplicationWindow">
+    <property name="width_request">500</property>
+    <property name="height_request">350</property>
+    <property name="can_focus">False</property>
+    <property name="default_width">1100</property>
+    <property name="default_height">600</property>
+    <child>
+      <object class="NomeolvidesInterfazPrincipal" id="interfaz_principal"/>
+    </child>
+    <child type="titlebar">
+      <object class="NomeolvidesHeaderBar" id="headerbar"/>
+    </child>
+  </template>
+</interface>
