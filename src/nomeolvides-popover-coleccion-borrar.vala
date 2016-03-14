@@ -20,18 +20,12 @@
 using Gtk;
 using Nomeolvides;
 
-public class Nomeolvides.DialogColeccionBorrar : DialogBaseBorrar {
-#if DISABLE_GNOME3
-	public DialogColeccionBorrar () {
-		this.title = _("Delete Collection");
-#else
-	public DialogColeccionBorrar ( Widget relative_to ) {
+public class Nomeolvides.PopoverColeccionBorrar : PopoverBaseBorrar {
+	public PopoverColeccionBorrar ( Widget relative_to ) {
 		base ( relative_to );
-		base.aplicar_button.set_label ( _("Delete") );
-#endif
-		this.pregunta.set_label ( _("Do you want to remove this collection?") );
-		this.nombre.set_label ( _("Colection") + ":");
-		this.hechos.set_label ( _("Amount of Facts") + ":");
+		this.label_pregunta.set_label ( _("Do you want to remove this collection?") );
+		this.label_nombre.set_label ( _("Colection") + ":");
+		this.label_cantidad_hechos.set_label ( _("Amount of Facts") + ":");
 	}
 }
 

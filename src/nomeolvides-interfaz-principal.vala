@@ -20,73 +20,43 @@
 using Gtk;
 using Nomeolvides;
 
-public class Nomeolvides.InterfazPrincipal : Gtk.Box {
-	private TreeViewHechos hechos_view;
-	private TreeViewAnios anios_view;
-	private TreeViewBase listas_view;
-	private Portada vista_hecho;
-	private ScrolledWindow scroll_hechos_view;
-	private ScrolledWindow scroll_anios_view;
-	private ScrolledWindow scroll_listas_view;
-	private Notebook anios_listas;
+[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-interfaz-principal.ui")]
+public class Nomeolvides.InterfazPrincipal : Gtk.Grid {
+  [GtkChild]
+	private TreeViewHechos treeview_hechos;
+  [GtkChild]
+	private Portada portada;
+  [GtkChild]
+	private NotebookAniosListas notebook_anios_listas;
 	private int anio_actual;
 	private Lista lista_actual;
 	private AccionesDB db;
 
-	public InterfazPrincipal () {
+	construct {
 		this.db = new AccionesDB ( Configuracion.base_de_datos() );
-		this.anios_view = new TreeViewAnios ();
-		this.hechos_view = new TreeViewHechos ();
-		this.listas_view = new TreeViewBase.ventana_principal ();
-		this.vista_hecho = new Portada ();
-		this.vista_hecho.set_size_request (300,-1);
 
-		this.scroll_hechos_view = new ScrolledWindow (null,null);
-		this.scroll_anios_view = new ScrolledWindow (null,null);
-		this.scroll_listas_view = new ScrolledWindow (null,null);
-		this.scroll_hechos_view.set_policy (PolicyType.NEVER, PolicyType.AUTOMATIC);
-		this.scroll_anios_view.set_policy (PolicyType.NEVER, PolicyType.AUTOMATIC);
-		this.scroll_listas_view.set_policy (PolicyType.NEVER, PolicyType.AUTOMATIC);
-
-		this.anios_listas = new Notebook ();
-
-		this.hechos_view.get_selection ().changed.connect ( this.elegir_hecho );
-		this.anios_view.cursor_changed.connect ( this.elegir_anio );
-		this.listas_view.cursor_changed.connect ( this.elegir_lista );
-		this.hechos_view.row_activated.connect ( mostrar_vista );
-		this.anios_listas.switch_page.connect ( cambiar_pestania );
-
-		Separator separador = new Separator(Orientation.VERTICAL);
+		this.treeview_hechos.get_selection ().changed.connect ( this.elegir_hecho );
+		this.notebook_anios_listas.treeview_anios.cursor_changed.connect ( this.elegir_anio );
+		this.notebook_anios_listas.treeview_listas.cursor_changed.connect ( this.elegir_lista );
+		this.treeview_hechos.row_activated.connect ( mostrar_vista );
+		this.notebook_anios_listas.switch_page.connect ( cambiar_pestania );
 
 		this.anio_actual = 0;
-
-		this.scroll_hechos_view.add ( this.hechos_view );
-		this.scroll_anios_view.add ( this.anios_view );
-		this.scroll_listas_view.add ( this.listas_view );
-
-		this.anios_listas.append_page ( this.scroll_anios_view, new Label(_("Years") ));
-		this.anios_listas.append_page ( this.scroll_listas_view, new Label (_("Lists") ));
-		
-		this.pack_start (this.anios_listas, false, false, 0);
-		this.pack_start (new Separator(Orientation.VERTICAL), false, false, 2);
-		this.pack_start (this.scroll_hechos_view, true, true, 0);
-		this.pack_start (separador, false, false, 2);
-		this.pack_start (this.vista_hecho, false, false, 0);
 	}
 
 	private void elegir_hecho () {
 		this.hechos_selection_changed();
-		if ( this.hechos_view.get_hechos_seleccionados ().length == 1 ) {
-			if (this.vista_hecho.visible == true ) {
+		if ( this.treeview_hechos.get_hechos_seleccionados ().length == 1 ) {
+			if (this.portada.visible == true ) {
 				this.mostrar_hecho ();
 			}
 		} else {
-			this.vista_hecho.set_visible ( false );
+			this.portada.set_visible ( false );
 		}
 	}
 	private void elegir_anio () {
-		if ( this.anio_actual != this.anios_view.get_anio () || this.anios_view.get_anio () == 0 ) {
-			this.anio_actual = this.anios_view.get_anio ();
+		if ( this.anio_actual != this.notebook_anios_listas.treeview_anios.get_anio () || this.notebook_anios_listas.treeview_anios.get_anio () == 0 ) {
+			this.anio_actual = this.notebook_anios_listas.treeview_anios.get_anio ();
 			this.lista_actual = null; //ningina lista
 			this.anios_cursor_changed();
 			this.mostrar_scroll_vista ( false );
@@ -95,7 +65,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 
 	private void elegir_lista () {
 			var lista = this.db.select_lista ( "WHERE rowid=\"" 
-		                                                + this.listas_view.get_elemento_id ().to_string() + "\"");
+		                                                + this.notebook_anios_listas.treeview_listas.get_elemento_id ().to_string() + "\"");
 		if ( this.lista_actual != lista ) {
 			this.lista_actual = lista;
 			this.anio_actual = 0; //ningún anio
@@ -105,7 +75,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 	}
 
 	private void cambiar_pestania () {
-		switch ( this.anios_listas.get_current_page () ) {
+		switch ( this.notebook_anios_listas.get_current_page () ) {
 		case 0:
 			this.elegir_lista ();
 			break;
@@ -116,8 +86,8 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 	}
 
 	private void mostrar_vista () {
-			if ( this.vista_hecho.visible == true ) {
-				this.vista_hecho.set_visible ( false );
+			if ( this.portada.visible == true ) {
+				this.portada.set_visible ( false );
 			} else {
 				this.mostrar_hecho ();
 			}
@@ -125,40 +95,40 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 
 	private void mostrar_hecho () {
 		Hecho hecho_a_mostrar;
-		this.hechos_view.get_hecho_cursor( out hecho_a_mostrar );
+		this.treeview_hechos.get_hecho_cursor( out hecho_a_mostrar );
 
 		if ( hecho_a_mostrar != null ) {
-			this.vista_hecho.set_datos_hecho ( hecho_a_mostrar );
-			this.vista_hecho.set_visible ( true );
+			this.portada.set_datos_hecho ( hecho_a_mostrar );
+			this.portada.set_visible ( true );
 		}
 	}	
 
 	public void mostrar_scroll_vista ( bool mostrar ) {	
 		if ( mostrar == true ) {
-			this.vista_hecho.show_all ();
+			this.portada.show_all ();
 		} else {	
-			this.vista_hecho.hide ();
+			this.portada.hide ();
 		}	
 	}
 
 	public void cargar_lista_anios ( Array<int> anios ) {
-		this.anios_view.agregar_varios ( anios );
+		this.notebook_anios_listas.treeview_anios.agregar_varios ( anios );
 		this.listas_cursor_changed ();
 	}
 
 	public void cargar_listas ( ListStoreListas listas ) {
 		if ( !(listas.vacio) ) {			
-			this.listas_view.set_model ( listas );
-			this.anios_listas.get_nth_page (1).show ();
+			this.notebook_anios_listas.treeview_listas.set_model ( listas );
+			this.notebook_anios_listas.get_nth_page (1).show ();
 		} else {
-			this.anios_listas.get_nth_page (1).hide ();
+			this.notebook_anios_listas.get_nth_page (1).hide ();
 			this.elegir_anio ();
 		}
 		this.anios_cursor_changed ();
 	}
 
 	public void cargar_lista_hechos ( Array<Hecho> hechos ) {
-		this.hechos_view.mostrar_hechos ( hechos );
+		this.treeview_hechos.mostrar_hechos ( hechos );
 	}
 
 	public int get_anio_actual () {
@@ -170,24 +140,24 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Box {
 	}
 
 	public TreePath get_hecho_actual ( out Hecho hecho ) {
-		return this.hechos_view.get_hecho_cursor (out hecho );
+		return this.treeview_hechos.get_hecho_cursor (out hecho );
 	}
 
 	public TreeSelection get_hechos_selection ( ) {
-		return this.hechos_view.get_selection ();
+		return this.treeview_hechos.get_selection ();
 	}
 
 	public string get_nombre_pestania () {
-		return this.anios_listas.get_tab_label_text ( this.anios_listas.get_nth_page
-		                                               ( this.anios_listas.get_current_page () ) );
+		return this.notebook_anios_listas.get_tab_label_text ( this.notebook_anios_listas.get_nth_page
+		                                               ( this.notebook_anios_listas.get_current_page () ) );
 	}
 
-	public void limpiar_hechos_view () {
-		this.hechos_view.limpiar ();
+	public void limpiar_treeview_hechos () {
+		this.treeview_hechos.limpiar ();
 	}
 
 	public Array<Hecho> get_hechos_seleccionados () {
-		return this.hechos_view.get_hechos_seleccionados ();
+		return this.treeview_hechos.get_hechos_seleccionados ();
 	}
 
 	public signal void hechos_selection_changed ();

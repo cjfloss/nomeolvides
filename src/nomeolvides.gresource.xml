@@ -2,5 +2,29 @@
 <gresources>
   <gresource prefix="/org/softwareperonista/nomeolvides">
     <file>nomeolvides-app-menu.ui</file>
+    <file>nomeolvides-dialog-hecho-lista-agregar.ui</file>
+    <file>nomeolvides-dialog-hecho-borrar.ui</file>
+    <file>nomeolvides-dialog-hecho.ui</file>
+    <file>nomeolvides-boton.ui</file>
+    <file>nomeolvides-preferencias-base.ui</file>
+    <file>nomeolvides-headerbar.ui</file>
+    <file>nomeolvides-toolbar.ui</file>
+    <file>nomeolvides-portada.ui</file>
+    <file>nomeolvides-interfaz-principal.ui</file>
+    <file>nomeolvides-notebook-anios-listas.ui</file>
+    <file>nomeolvides-dialog-hechos-importar.ui</file>
+    <file>nomeolvides-selector-fecha.ui</file>
+    <file>nomeolvides-treeview-hechos.ui</file>
+    <file>nomeolvides-treeview-base.ui</file>
+    <file>nomeolvides-popover-base.ui</file>
+    <file>nomeolvides-popover-base-borrar.ui</file>
+    <file>nomeolvides-popover-coleccion-agregar.ui</file>
+    <file>nomeolvides-popover-coleccion-editar.ui</file>
+    <file>nomeolvides-popover-lista-agregar.ui</file>
+    <file>nomeolvides-popover-lista-editar.ui</file>
+    <file>nomeolvides-treeview-colecciones.ui</file>
+    <file>nomeolvides-treeview-anios.ui</file>
+    <file>nomeolvides-stack-hechos-dialog.ui</file>
+    <file>nomeolvides-ventana-principal.ui</file>
   </gresource>
 </gresources> 

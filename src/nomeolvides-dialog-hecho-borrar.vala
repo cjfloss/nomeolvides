@@ -20,68 +20,37 @@
 using Gtk;
 using Nomeolvides;
 
+[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-dialog-hecho-borrar.ui" ) ]
 public class Nomeolvides.DialogHechoBorrar : Dialog {
-	public Grid grid;
-	private Label pregunta;
-	private Label hecho;
+	[GtkChild]
+	private StackHechosDialog stack_hechos;
+	[GtkChild]
+	private Label label_pregunta;
+	[GtkChild]
+  private Label label_fecha_pregunta;
+	[GtkChild]
+  private Label label_hecho_fecha;
 	public Array<Hecho> hechos;
 
 	public DialogHechoBorrar ( VentanaPrincipal ventana ) {
-#if DISABLE_GNOME3
-#else
 		Object (use_header_bar: 1);
-#endif
-		this.set_modal ( true );
 		this.set_transient_for ( ventana as Gtk.Window );
-		this.set_size_request ( 450, 200 );
-
-		this.pregunta = new Label.with_mnemonic ( "" );
-		this.hecho = new Label.with_mnemonic ( "" );
 		this.hechos = new Array<Hecho> ();
-
-		grid = new Grid ( );
-		grid.set_row_spacing ( 20 );
-		grid.set_column_spacing ( 10 );
-		grid.set_valign ( Align.CENTER );
-		grid.set_halign ( Align.CENTER );
-		grid.set_margin_top ( 15 );
-		grid.set_margin_bottom ( 15 );
-	#if DISABLE_GNOME3
-		grid.set_margin_left ( 30 );
-		grid.set_margin_right ( 30 );
-	#else
-		grid.set_margin_start ( 30 );
-		grid.set_margin_end ( 30 );
-	#endif
-
-		grid.attach ( pregunta, 0, 0, 2, 1 );
-		grid.attach ( hecho, 0, 1, 1, 1 );
-#if DISABLE_GNOME3
-		this.add_button ( _("Cancel"), ResponseType.CANCEL);
-#else
-		var boton = this.add_button ( _("Cancel"), ResponseType.CANCEL);
-		boton.get_style_context ().add_class ( "suggested-action" );
-#endif
-		this.add_button ( _("Delete"), ResponseType.APPLY);
-		var contenido = this.get_content_area() as Box;
-		contenido.pack_start(grid, false, false, 0);
-
-		this.show_all ();
 	}
 
 	public void setear_hechos ( Array<Hecho> hechos_elegidos ) {
-		if ( hechos_elegidos.length > 1 ) {
+		if ( hechos_elegidos.length == 1 ) {
+			this.stack_hechos.set_label_un_hecho ( hechos_elegidos.index (0).nombre );
+			this.label_hecho_fecha.set_label ( hechos_elegidos.index (0).fecha_to_string () );
+		} else {
+			this.title = _("Remove Facts");
 			this.set_size_request ( 600, 200 );
-			var treeview_hechos = new TreeViewHechos ();
-			var scroll_hechos = new ScrolledWindow ( null, null );
-			scroll_hechos.set_policy ( PolicyType.NEVER, PolicyType.AUTOMATIC );
-			treeview_hechos.set_margin_bottom ( 10 );
-			treeview_hechos.mostrar_hechos ( hechos_elegidos );
-			scroll_hechos.set_size_request ( 100, 110 );
-			scroll_hechos.add ( treeview_hechos );;
-			this.grid.attach ( scroll_hechos, 1, 1, 1, 1 );
+			this.label_hecho_fecha.destroy ();
+			this.label_fecha_pregunta.destroy ();
+			this.label_pregunta.set_label ( "Do you want to remove these facts?");
+			this.stack_hechos.set_treeview_muchos_hechos ( hechos_elegidos );
+			this.stack_hechos.set_visible_child_name ( "page_muchos_hechos" );
 		}
-		this.set_labels ( hechos_elegidos );
 
 		for ( int i = 0; i < hechos_elegidos.length; i++ ) {
 			this.hechos.append_val ( hechos_elegidos.index ( i ) );
@@ -90,7 +59,7 @@ public class Nomeolvides.DialogHechoBorrar : Dialog {
 		this.show_all ();
 	}
 
-	private void set_labels ( Array<Hecho> hechos_elegidos ) {
+/*	private void set_labels ( Array<Hecho> hechos_elegidos ) {
 		if ( hechos_elegidos.length == 1 ) {
 			this.set_title ( _("Remove Fact") );
 			Label hecho_de = new Label.with_mnemonic ( _("dated") + ":" );
@@ -111,5 +80,5 @@ public class Nomeolvides.DialogHechoBorrar : Dialog {
 			this.pregunta.set_markup ( "<big>" + _("Do you want to remove this facts?") + "</big>" );
 			this.hecho.set_label ( _("Facts") + ":" );
 		}
-	}
+	}*/
 }

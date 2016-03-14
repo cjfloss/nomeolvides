@@ -30,11 +30,6 @@ nomeolvides_SOURCES = \
 	nomeolvides-deshacer.vala \
 	nomeolvides-dialog-archivo-abrir.vala \
 	nomeolvides-dialog-archivo-guardar.vala \
-	nomeolvides-dialog-base-borrar.vala \
-	nomeolvides-dialog-base.vala \
-	nomeolvides-dialog-coleccion-agregar.vala \
-	nomeolvides-dialog-coleccion-borrar.vala \
-	nomeolvides-dialog-coleccion-editar.vala \
 	nomeolvides-dialog-coleccion.vala \
 	nomeolvides-dialog-hecho-agregar.vala \
 	nomeolvides-dialog-hecho-borrar.vala \
@@ -43,9 +38,6 @@ nomeolvides_SOURCES = \
 	nomeolvides-dialog-hecho-lista-borrar.vala \
 	nomeolvides-dialog-hechos-importar.vala \
 	nomeolvides-dialog-hecho.vala \
-	nomeolvides-dialog-lista-agregar.vala \
-	nomeolvides-dialog-lista-borrar.vala \
-	nomeolvides-dialog-lista-editar.vala \
 	nomeolvides-dialog-lista.vala \
 	nomeolvides-dialog-migrador.vala \
 	nomeolvides-dialog-preferencias.vala \
@@ -72,26 +64,30 @@ nomeolvides_SOURCES = \
 	nomeolvides-treeview-hechos.vala \
 	nomeolvides-utiles.vala \
 	nomeolvides-ventana-principal.vala \
+	nomeolvides-stack-hechos-dialog.vala \
+	nomeolvides-headerbar.vala \
+	nomeolvides-notebook-anios-listas.vala \
+	nomeolvides-popover-base.vala \
+	nomeolvides-popover-coleccion-agregar.vala \
+	nomeolvides-popover-coleccion-editar.vala \
+	nomeolvides-popover-lista-agregar.vala \
+	nomeolvides-popover-lista-editar.vala \
+	nomeolvides-popover-base-borrar.vala \
+	nomeolvides-popover-coleccion-borrar.vala \
+	nomeolvides-popover-lista-borrar.vala \
 	$(NULL)
-
-
 
 nomeolvides-resources.c: nomeolvides.gresource.xml
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(srcdir)/nomeolvides.gresource.xml \
 	--target=$@ --sourcedir=$(srcdir) --c-name nomeolvides --generate-source
 
-if DISABLE_GNOME3
 nomeolvides_VALAFLAGS = \
 	--pkg sqlite3 \
+	--pkg glib-2.0 \
 	--pkg gtk+-3.0 \
-	-g \
-	-D DISABLE_GNOME3
-else
-nomeolvides_VALAFLAGS = \
-	--pkg sqlite3 \
-	--pkg gtk+-3.0 \
+	--target-glib=2.40 \
+	--gresources nomeolvides.gresource.xml \
 	-g
-endif
 
 nomeolvides_LDFLAGS = \
 	-Wl,--export-dynamic

@@ -19,66 +19,26 @@
 using Gtk;
 using Nomeolvides;
 
+[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-dialog-hechos-importar.ui" )]
 public class Nomeolvides.DialogHechosImportar : Dialog {
-	private Button boton_elegir_archivo;
-	private ComboBox combo_colecciones;
-	private Label archivo_label;
+  [GtkChild]
+	private Button button_archivo;
+ [GtkChild]
+	private ComboBox combobox_colecciones;
 	private string directorio;
 	private string archivo;
-	
+
 	public DialogHechosImportar (VentanaPrincipal ventana, string directorio_actual, ListStoreColecciones colecciones_liststore ) {
-#if DISABLE_GNOME3
-#else
 		Object (use_header_bar: 1);
-#endif
-		this.title = _("Import Facts From File");
+		this.set_transient_for ( ventana );
+
 		this.directorio = directorio_actual;
-		this.set_default_size ( 512, 250 );
-		this.set_transient_for ( ventana as Window );
-
-		var boton_cancel = this.add_button ( _("Cancel"), ResponseType.CANCEL );
-		this.add_button ( _("Import"), ResponseType.ACCEPT );
-
-#if DISABLE_GNOME3
-#else
-		boton_cancel.get_style_context ().add_class ( "suggested-action" );
-#endif
 		var coleccion = new Coleccion ( _("Select Colection"), true );
-
 		colecciones_liststore.agregar_al_inicio ( coleccion , 0 );
-
-		this.boton_elegir_archivo = new Button ();
-		this.boton_elegir_archivo.set_label (_("Choose File"));
-		this.boton_elegir_archivo.clicked.connect ( this.elegir_archivo );
-
-		var coleccion_label = new Label.with_mnemonic ( _("Colection") );
-		this.archivo_label = new Label.with_mnemonic ( _("File") );
-		coleccion_label.set_halign ( Align.START );
-		this.archivo_label.set_halign ( Align.START );
-
-		this.combo_colecciones = new ComboBox ();
-		this.set_combo_box ( colecciones_liststore );
-		this.combo_colecciones.changed.connect ( this.set_sensitive_import );
-
-		var grid = new Grid ();
-		grid.set_column_spacing ( (uint)40 );
-		grid.set_row_spacing ( (uint)10 );
-		grid.set_border_width ( (uint)20 );
-		grid.set_valign ( Align.CENTER );
-		grid.set_vexpand ( true );
-		grid.set_halign ( Align.CENTER );
-
-		grid.attach ( archivo_label, 0 , 0 , 1, 1 );
-		grid.attach ( boton_elegir_archivo, 1, 0, 1, 1 );
-		grid.attach ( coleccion_label, 0, 1, 1, 1 );
-		grid.attach ( this.combo_colecciones, 1, 1, 1, 1 );
-
-		var contenido = this.get_content_area() as Box;
-		contenido.pack_start(grid, false, true, 0);
-
-		this.show_all ();
+		this.combobox_colecciones.set_model ( colecciones_liststore );
 	}
 
+  [GtkCallback]
 	private void elegir_archivo () {
 		var abrir_archivo = new FileChooserDialog ( _("Select a file"), null,
 		                                            FileChooserAction.OPEN, _("Cancel"),
@@ -88,18 +48,9 @@ public class Nomeolvides.DialogHechosImportar : Dialog {
 
 		if (abrir_archivo.run () == ResponseType.ACCEPT) {
 			this.archivo = abrir_archivo.get_filename ();
-			this.boton_elegir_archivo.set_label ( this.archivo.slice ( this.archivo.last_index_of ( "/" ) + 1, this.archivo.length ));
+			this.button_archivo.set_label ( this.archivo.slice ( this.archivo.last_index_of ( "/" ) + 1, this.archivo.length ));
 		}
 		abrir_archivo.destroy ();
-	}
-
-	public void set_combo_box ( ListStoreColecciones liststore) {
-		CellRendererText renderer = new CellRendererText ();
-		this.combo_colecciones.pack_start (renderer, true);
-		this.combo_colecciones.add_attribute (renderer, "text", 0);
-		this.combo_colecciones.active = 0;
-		this.combo_colecciones.set_model ( liststore );
-		this.set_sensitive_import ();
 	}
 
 	public int64 get_coleccion () {
@@ -107,19 +58,20 @@ public class Nomeolvides.DialogHechosImportar : Dialog {
 		Value value_coleccion;
 		Coleccion coleccion;
 
-		this.combo_colecciones.get_active_iter( out iter );
-		ListStoreColecciones liststore = this.combo_colecciones.get_model () as ListStoreColecciones;
+		this.combobox_colecciones.get_active_iter( out iter );
+		ListStoreColecciones liststore = this.combobox_colecciones.get_model () as ListStoreColecciones;
 		liststore.get_value ( iter, 2, out value_coleccion );
 		coleccion = value_coleccion as Coleccion;
 
 		return coleccion.id;
 	}
 
+  [GtkCallback]
 	private void set_sensitive_import () {
-		if ( this.combo_colecciones.active == 0 || this.boton_elegir_archivo.get_label () == _("Choose File") ) {
-			this.get_widget_for_response ( ResponseType.ACCEPT ).set_sensitive ( false );
+		if ( this.combobox_colecciones.active == 0 || this.button_archivo.get_label () == _("Choose File") ) {
+			this.get_widget_for_response ( ResponseType.APPLY ).set_sensitive ( false );
 		} else {
-			this.get_widget_for_response ( ResponseType.ACCEPT ).set_sensitive ( true );
+			this.get_widget_for_response ( ResponseType.APPLY ).set_sensitive ( true );
 		}
 	}
 

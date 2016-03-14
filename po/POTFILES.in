@@ -5,34 +5,37 @@ src/nomeolvides-archivo.vala
 src/nomeolvides-configuracion.vala
 src/nomeolvides-dialog-archivo-abrir.vala
 src/nomeolvides-dialog-archivo-guardar.vala
-src/nomeolvides-dialog-base-borrar.vala
-src/nomeolvides-dialog-base.vala
-src/nomeolvides-dialog-coleccion-agregar.vala
-src/nomeolvides-dialog-coleccion-borrar.vala
-src/nomeolvides-dialog-coleccion-editar.vala
 src/nomeolvides-dialog-coleccion.vala
 src/nomeolvides-dialog-hecho-agregar.vala
 src/nomeolvides-dialog-hecho-borrar.vala
 src/nomeolvides-dialog-hecho-editar.vala
 src/nomeolvides-dialog-hecho-lista-agregar.vala
 src/nomeolvides-dialog-hecho-lista-borrar.vala
-src/nomeolvides-dialog-hecho.vala
 src/nomeolvides-dialog-hechos-importar.vala
-src/nomeolvides-dialog-lista-agregar.vala
-src/nomeolvides-dialog-lista-borrar.vala
-src/nomeolvides-dialog-lista-editar.vala
 src/nomeolvides-dialog-lista.vala
 src/nomeolvides-dialog-migrador.vala
 src/nomeolvides-dialog-preferencias.vala
+src/nomeolvides-headerbar.vala
 src/nomeolvides-hecho.vala
-src/nomeolvides-interfaz-principal.vala
+src/nomeolvides-popover-coleccion-agregar.vala
+src/nomeolvides-popover-coleccion-borrar.vala
+src/nomeolvides-popover-coleccion-editar.vala
+src/nomeolvides-popover-lista-agregar.vala
+src/nomeolvides-popover-lista-borrar.vala
+src/nomeolvides-popover-lista-editar.vala
 src/nomeolvides-portada.vala
-src/nomeolvides-selector-fecha.vala
 src/nomeolvides-sqlite.vala
-src/nomeolvides-toolbar.vala
-src/nomeolvides-treeview-anios.vala
-src/nomeolvides-treeview-base.vala
-src/nomeolvides-treeview-colecciones.vala
-src/nomeolvides-treeview-hechos.vala
-src/nomeolvides-ventana-principal.vala
 [type: gettext/glade]src/nomeolvides-app-menu.ui
+[type: gettext/glade]src/nomeolvides-dialog-hecho-borrar.ui
+[type: gettext/glade]src/nomeolvides-dialog-hecho-lista-agregar.ui
+[type: gettext/glade]src/nomeolvides-dialog-hecho.ui
+[type: gettext/glade]src/nomeolvides-dialog-hechos-importar.ui
+[type: gettext/glade]src/nomeolvides-headerbar.ui
+[type: gettext/glade]src/nomeolvides-notebook-anios-listas.ui
+[type: gettext/glade]src/nomeolvides-popover-base-borrar.ui
+[type: gettext/glade]src/nomeolvides-popover-base.ui
+[type: gettext/glade]src/nomeolvides-selector-fecha.ui
+[type: gettext/glade]src/nomeolvides-treeview-anios.ui
+[type: gettext/glade]src/nomeolvides-treeview-base.ui
+[type: gettext/glade]src/nomeolvides-treeview-colecciones.ui
+[type: gettext/glade]src/nomeolvides-treeview-hechos.ui

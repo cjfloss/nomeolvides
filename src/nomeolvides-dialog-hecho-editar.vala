@@ -22,26 +22,22 @@ using Nomeolvides;
 
 public class Nomeolvides.DialogHechoEditar : Nomeolvides.DialogHecho {
 	private int64 hecho_id;
-	
+
 	public DialogHechoEditar ( VentanaPrincipal ventana, ListStoreColecciones colecciones ) {
 		base (ventana, colecciones );
 		this.set_title (_("Edit Fact"));
+		this.button_aplicar.set_label ("Edit");
 
-		this.add_button ( _("Edit") , ResponseType.APPLY);
-#if DISABLE_GNOME3
-#else
-		this.get_widget_for_response ( ResponseType.CANCEL ).get_style_context ().add_class ( "suggested-action" );
-#endif
 		this.response.connect(on_response);
 	}
 
 	public void set_datos ( Hecho hecho_a_editar ) {
-		this.nombre_entry.set_text(hecho_a_editar.nombre);
-		this.descripcion_textview.buffer.text= hecho_a_editar.descripcion;
-		this.fecha.set_anio(hecho_a_editar.fecha.get_year());
-		this.fecha.set_mes(hecho_a_editar.fecha.get_month());
-		this.fecha.set_dia(hecho_a_editar.fecha.get_day_of_month());
-		this.fuente_entry.set_text ( hecho_a_editar.fuente );
+		this.entry_nombre.set_text(hecho_a_editar.nombre);
+		this.textview_descripcion.buffer.text= hecho_a_editar.descripcion;
+		this.selector_fecha.set_anio(hecho_a_editar.fecha.get_year());
+		this.selector_fecha.set_mes(hecho_a_editar.fecha.get_month());
+		this.selector_fecha.set_dia(hecho_a_editar.fecha.get_day_of_month());
+		this.entry_fuente.set_text ( hecho_a_editar.fuente );
 		this.set_coleccion_de_hecho ( hecho_a_editar.coleccion );
 		this.hecho_id = hecho_a_editar.id;
 	}
@@ -64,8 +60,8 @@ public class Nomeolvides.DialogHechoEditar : Nomeolvides.DialogHecho {
 	}
 
 	protected void set_coleccion_de_hecho ( int64 coleccion_id ) {
-		ListStoreColecciones liststore = this.combo_colecciones.get_model () as ListStoreColecciones;
+		ListStoreColecciones liststore = this.combobox_colecciones.get_model () as ListStoreColecciones;
 
-		this.combo_colecciones.set_active ( liststore.indice_de_id ( coleccion_id ) );
+		this.combobox_colecciones.set_active ( liststore.indice_de_id ( coleccion_id ) );
 	}
 }

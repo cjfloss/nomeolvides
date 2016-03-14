@@ -20,32 +20,19 @@
 using Gtk;
 using Nomeolvides;
 
-public class Nomeolvides.DialogColeccionEditar : DialogBase {
-#if DISABLE_GNOME3
-	 public DialogColeccionEditar () {
-		this.title = _("Edit Collection");
-		Button boton_apply = this.get_widget_for_response ( ResponseType.APPLY ) as Button;
-		boton_apply.set_label ( _("Edit") );
-#else
-		public Base objeto_viejo;
-	 public DialogColeccionEditar ( Widget relative_to ) {
+[GtkTemplate ( ui= "/org/softwareperonista/nomeolvides/nomeolvides-popover-lista-editar.ui" )]
+public class Nomeolvides.PopoverListaEditar : PopoverBase {
+	public Base objeto_viejo;
+
+	public PopoverListaEditar ( Widget relative_to ) {
 		base ( relative_to );
-		base.aplicar_button.set_label ( _("Edit") );
-#endif		 
-		base.nombre_label.set_label ( _("Colection name") + ": " );
+		base.button_aplicar.set_label ( _("Edit") );
+		this.label_nombre.set_label (_("List Name") + ": ");
 	}
 
-#if DISABLE_GNOME3
-	protected override void crear_respuesta() {
-		if ( this.nombre_entry.get_text_length () > 0 ) {
-			this.respuesta = new Coleccion ( this.nombre_entry.get_text (), true );
-			this.respuesta.id = this.id;
-		}
-	}
-#else
 	protected override void aplicar () {
-		if ( this.nombre_entry.get_text_length () > 0 ) {
-			this.respuesta = new Coleccion ( this.nombre_entry.get_text (), true );
+		if ( this.entry_nombre.get_text_length () > 0 ) {
+			this.respuesta = new Lista ( this.entry_nombre.get_text () );
 			this.respuesta.id = this.id;
 			this.signal_actualizar( this.objeto_viejo, this.respuesta );
 			this.borrar_datos ();
@@ -57,6 +44,4 @@ public class Nomeolvides.DialogColeccionEditar : DialogBase {
 		base.set_datos ( objeto );
 		this.objeto_viejo = objeto;
 	}
-#endif
 }
-

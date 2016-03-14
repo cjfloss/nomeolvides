@@ -8,7 +8,7 @@
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
- * nomeolvides is distributed in the hope that it will be useful, but
+ * nomeolvides is distsibuted in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
@@ -25,18 +25,13 @@ public class Nomeolvides.PreferenciasListas: Nomeolvides.PreferenciasBase {
 		this.treeview = new TreeViewBase ();
 		this.treeview.set_border_width ( 20 );
 		this.treeview.set_model ( liststore_listas );
-		this.scroll_view.add ( this.treeview );
-		this.pack_start ( scroll_view, true, true, 0 );
+		this.scrolledwindow_preferencias_treeview.add ( this.treeview );
+		this.scrolledwindow_preferencias_treeview.show ();
 
-	#if DISABLE_GNOME3
-		this.agregar_dialog = new DialogListaAgregar () as DialogBase;
-		this.editar_dialog = new DialogListaEditar () as DialogBase;
-		this.borrar_dialog = new DialogListaBorrar () as DialogBaseBorrar;
-	#else
-		this.agregar_dialog = new DialogListaAgregar ( this.toolbar.add_button ) as DialogBase;
-		this.editar_dialog = new DialogListaEditar ( this.toolbar.edit_button ) as DialogBase;
-		this.borrar_dialog = new DialogListaBorrar ( this.toolbar.delete_button ) as DialogBaseBorrar;
-	#endif
+		this.popover_agregar = new PopoverListaAgregar ( this.toolbar_preferencias.boton_agregar ) as PopoverBase;
+		this.popover_editar = new PopoverListaEditar ( this.toolbar_preferencias.boton_editar ) as PopoverBase;
+		this.popover_borrar = new PopoverListaBorrar ( this.toolbar_preferencias.boton_borrar ) as PopoverBaseBorrar;
+
 		this.conectar_signals ();
 	}
 

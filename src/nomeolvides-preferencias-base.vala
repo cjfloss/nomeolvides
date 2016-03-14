@@ -20,36 +20,22 @@
 using Gtk;
 using Nomeolvides;
 
-public class Nomeolvides.PreferenciasBase : Gtk.Box {
+[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-preferencias-base.ui" )]
+public class Nomeolvides.PreferenciasBase : Gtk.Grid {
 	protected TreeViewBase treeview { get; protected set; }
-	protected ScrolledWindow scroll_view;
-	protected Nomeolvides.Toolbar toolbar;
+	[GtkChild]
+	protected ScrolledWindow scrolledwindow_preferencias_treeview;
+	[GtkChild]
+	protected Nomeolvides.Toolbar toolbar_preferencias;
 	protected AccionesDB db;
 	protected Deshacer<Base> deshacer;
-	protected DialogBase agregar_dialog;
-	protected DialogBase editar_dialog;
-	protected DialogBaseBorrar borrar_dialog;
+	protected PopoverBase popover_agregar;
+	protected PopoverBase popover_editar;
+	protected PopoverBaseBorrar popover_borrar;
 
 	public PreferenciasBase () {
-		this.set_orientation ( Orientation.VERTICAL );
-
 		this.db = new AccionesDB ( Configuracion.base_de_datos() );
 		this.deshacer = new Deshacer<Base> ();
-
-		this.toolbar = new Nomeolvides.Toolbar ();
-		this.toolbar.set_border_width ( 1 );
-
-#if DISABLE_GNOME3
-#else
-		this.toolbar.set_show_close_button ( false );
-#endif
-
-		this.scroll_view = new ScrolledWindow (null,null);
-		this.scroll_view.set_policy ( PolicyType.NEVER, PolicyType.AUTOMATIC );
-		this.scroll_view.set_border_width ( 1 );
-
-		this.pack_start ( toolbar, false, false, 0 );
-		this.show_all ();
 	}
 
 	public void actualizar_model ( ListStoreBase liststore ) {
@@ -57,76 +43,49 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 	}
 
 	protected void conectar_signals () {
-		this.toolbar.add_button.activado.connect ( this.add_dialog );
-		this.toolbar.delete_button.activado.connect ( this.delete_dialog );
-		this.toolbar.edit_button.activado.connect ( this.edit_dialog );
-		this.toolbar.undo_button.activado.connect ( this.deshacer_cambios );
-		this.toolbar.redo_button.activado.connect ( this.rehacer_cambios );
+		this.toolbar_preferencias.boton_agregar.activado.connect ( this.add_dialog );
+		this.toolbar_preferencias.boton_borrar.activado.connect ( this.delete_dialog );
+		this.toolbar_preferencias.boton_editar.activado.connect ( this.edit_dialog );
+		this.toolbar_preferencias.boton_deshacer.activado.connect ( this.deshacer_cambios );
+		this.toolbar_preferencias.boton_rehacer.activado.connect ( this.rehacer_cambios );
 
-		this.deshacer.deshacer_sin_items.connect ( this.toolbar.desactivar_deshacer );
-		this.deshacer.deshacer_con_items.connect ( this.toolbar.activar_deshacer );
-		this.deshacer.rehacer_sin_items.connect ( this.toolbar.desactivar_rehacer );
-		this.deshacer.rehacer_con_items.connect ( this.toolbar.activar_rehacer );
+		this.deshacer.deshacer_sin_items.connect ( this.toolbar_preferencias.desactivar_deshacer );
+		this.deshacer.deshacer_con_items.connect ( this.toolbar_preferencias.activar_deshacer );
+		this.deshacer.rehacer_sin_items.connect ( this.toolbar_preferencias.desactivar_rehacer );
+		this.deshacer.rehacer_con_items.connect ( this.toolbar_preferencias.activar_rehacer );
 		this.treeview.cursor_changed.connect ( this.elegir );
-	#if DISABLE_GNOME3
-	#else
-		this.agregar_dialog.signal_cerrado.connect ( this.desactivar_boton );
-		this.borrar_dialog.signal_cerrado.connect ( this.desactivar_boton );
-		this.editar_dialog.signal_cerrado.connect ( this.desactivar_boton );
-		this.agregar_dialog.signal_agregar.connect ( this.agregar );
-		this.editar_dialog.signal_actualizar.connect ( this.actualizar );
-		this.borrar_dialog.signal_borrar.connect ( this.borrar );
-	#endif
+
+		this.popover_agregar.signal_cerrado.connect ( this.desactivar_boton );
+		this.popover_borrar.signal_cerrado.connect ( this.desactivar_boton );
+		this.popover_editar.signal_cerrado.connect ( this.desactivar_boton );
+		this.popover_agregar.signal_agregar.connect ( this.agregar );
+		this.popover_editar.signal_actualizar.connect ( this.actualizar );
+		this.popover_borrar.signal_borrar.connect ( this.borrar );
 	}
 
 	protected virtual void add_dialog () {
-		this.agregar_dialog.show_all ();
-	#if DISABLE_GNOME3
-		if ( agregar_dialog.run() == ResponseType.APPLY ) {
- 			this.agregar ( agregar_dialog.respuesta );
-		}
-		this.agregar_dialog.hide ();
-		this.toolbar.add_button.set_active ( false );
-	#endif
+		this.popover_agregar.show_all ();
 
-		this.agregar_dialog.borrar_datos ();
+		this.popover_agregar.borrar_datos ();
 	}
 
 	public virtual void edit_dialog () {
 		Base objeto = this.treeview.get_elemento ();
-		this.editar_dialog.set_datos ( objeto );
-		this.editar_dialog.show_all ();
-
-	#if DISABLE_GNOME3
-		if (this.editar_dialog.run() == ResponseType.APPLY) {
-			if ( this.actualizar ( objeto, this.editar_dialog.respuesta ) ) {
-				this.cambio_signal ();
-			}
-		}
-		this.toolbar.edit_button.set_active ( false );
-		this.editar_dialog.hide ();
-	#endif
+		this.popover_editar.set_datos ( objeto );
+		this.popover_editar.show_all ();
 	}
 
 	private void delete_dialog () {
 		Base objeto = this.treeview.get_elemento ();
-		this.borrar_dialog.set_datos ( objeto, this.treeview.get_cantidad_hechos () );
-		this.borrar_dialog.show_all ();
-	#if DISABLE_GNOME3
-		if ( this.borrar_dialog.run() == ResponseType.APPLY ) {
-			this.borrar ( objeto );
-			this.cambio_signal ();
-		}
-		this.borrar_dialog.hide ();
-		this.toolbar.delete_button.set_active ( false );
-	#endif
+		this.popover_borrar.set_datos ( objeto, this.treeview.get_cantidad_hechos () );
+		this.popover_borrar.show_all ();
 	}
 
 	protected virtual void elegir () {
 		if( this.treeview.get_selection ().count_selected_rows () > -1 ) {
-			this.toolbar.set_buttons_visible ();
+			this.toolbar_preferencias.set_botones_visible ();
 		} else {
-			this.toolbar.set_buttons_invisible ();
+			this.toolbar_preferencias.set_botones_invisible ();
 		}
 	}
 
@@ -150,15 +109,13 @@ public class Nomeolvides.PreferenciasBase : Gtk.Box {
 	}
 
 	public void set_buttons_invisible () {
-		this.toolbar.set_buttons_invisible ();
+		this.toolbar_preferencias.set_botones_invisible ();
 	}
-#if DISABLE_GNOME3
-#else
+
 	protected void desactivar_boton ( Widget relative_to ) {
 		var boton = relative_to as ToggleButton;
 		boton.set_active ( false );
 	}
-#endif
 
 	protected virtual bool agregar ( Base objeto ) {
 		return false;
