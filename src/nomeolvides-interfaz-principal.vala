@@ -57,7 +57,8 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Grid {
 		}
 	}
 	private void elegir_anio () {
-		if ( this.anio_actual != this.notebook_anios_listas.treeview_anios.get_anio () || this.notebook_anios_listas.treeview_anios.get_anio () == 0 ) {
+		if ( this.anio_actual != this.notebook_anios_listas.treeview_anios.get_anio () || 
+					this.notebook_anios_listas.treeview_anios.get_anio () == 0 ) {
 			this.anio_actual = this.notebook_anios_listas.treeview_anios.get_anio ();
 			this.lista_actual = null; //ningina lista
 			this.anios_cursor_changed();
@@ -67,7 +68,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Grid {
 
 	private void elegir_lista () {
 			var lista = this.db.select_lista ( "WHERE rowid=\"" 
-		                                                + this.notebook_anios_listas.treeview_listas.get_elemento_id ().to_string() + "\"");
+								+ this.notebook_anios_listas.treeview_listas.get_elemento_id ().to_string() + "\"");
 		if ( this.lista_actual != lista ) {
 			this.lista_actual = lista;
 			this.anio_actual = 0; //ningún anio
@@ -103,14 +104,14 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Grid {
 			this.portada.set_datos_hecho ( hecho_a_mostrar );
 			this.revealer_portada.set_reveal_child ( true );
 		}
-	}	
+	}
 
-	public void mostrar_scroll_vista ( bool mostrar ) {	
+	public void mostrar_scroll_vista ( bool mostrar ) {
 		if ( mostrar == true ) {
 			this.revealer_portada.set_reveal_child ( true );
 		} else {
 			this.revealer_portada.set_reveal_child ( false );
-		}	
+		}
 	}
 
 	public void cargar_lista_anios ( Array<int> anios ) {
@@ -119,7 +120,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Grid {
 	}
 
 	public void cargar_listas ( ListStoreListas listas ) {
-		if ( !(listas.vacio) ) {			
+		if ( !(listas.vacio) ) {
 			this.notebook_anios_listas.treeview_listas.set_model ( listas );
 			this.notebook_anios_listas.get_nth_page (1).show ();
 		} else {
@@ -151,7 +152,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Grid {
 
 	public string get_nombre_pestania () {
 		return this.notebook_anios_listas.get_tab_label_text ( this.notebook_anios_listas.get_nth_page
-		                                               ( this.notebook_anios_listas.get_current_page () ) );
+																															( this.notebook_anios_listas.get_current_page () ) );
 	}
 
 	public void limpiar_treeview_hechos () {
