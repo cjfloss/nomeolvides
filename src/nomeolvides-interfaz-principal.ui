@@ -30,7 +30,14 @@
           </packing>
         </child>
         <child>
-          <object class="NomeolvidesPortada" id="portada"/>
+          <object class="GtkRevealer" id="revealer_portada">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="transition_type">slide-left</property>
+            <child>
+              <object class="NomeolvidesPortada" id="portada"/>
+            </child>
+          </object>
           <packing>
             <property name="left_attach">2</property>
             <property name="top_attach">0</property>

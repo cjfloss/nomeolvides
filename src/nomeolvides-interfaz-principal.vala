@@ -25,6 +25,8 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Grid {
   [GtkChild]
 	private TreeViewHechos treeview_hechos;
   [GtkChild]
+	private Revealer revealer_portada;
+	[GtkChild]
 	private Portada portada;
   [GtkChild]
 	private NotebookAniosListas notebook_anios_listas;
@@ -47,11 +49,11 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Grid {
 	private void elegir_hecho () {
 		this.hechos_selection_changed();
 		if ( this.treeview_hechos.get_hechos_seleccionados ().length == 1 ) {
-			if (this.portada.visible == true ) {
+			if (this.revealer_portada.get_child_revealed () == true ) {
 				this.mostrar_hecho ();
 			}
 		} else {
-			this.portada.set_visible ( false );
+			this.revealer_portada.set_reveal_child ( false );
 		}
 	}
 	private void elegir_anio () {
@@ -86,8 +88,8 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Grid {
 	}
 
 	private void mostrar_vista () {
-			if ( this.portada.visible == true ) {
-				this.portada.set_visible ( false );
+			if ( this.revealer_portada.get_child_revealed () == true ) {
+				this.revealer_portada.set_reveal_child ( false );
 			} else {
 				this.mostrar_hecho ();
 			}
@@ -99,15 +101,15 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Grid {
 
 		if ( hecho_a_mostrar != null ) {
 			this.portada.set_datos_hecho ( hecho_a_mostrar );
-			this.portada.set_visible ( true );
+			this.revealer_portada.set_reveal_child ( true );
 		}
 	}	
 
 	public void mostrar_scroll_vista ( bool mostrar ) {	
 		if ( mostrar == true ) {
-			this.portada.show_all ();
-		} else {	
-			this.portada.hide ();
+			this.revealer_portada.set_reveal_child ( true );
+		} else {
+			this.revealer_portada.set_reveal_child ( false );
 		}	
 	}
 
