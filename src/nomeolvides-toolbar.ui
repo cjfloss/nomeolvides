@@ -2,11 +2,49 @@
 <!-- Generated with glade 3.19.0 -->
 <interface>
   <requires lib="gtk+" version="3.16"/>
-  <template class="NomeolvidesToolbar" parent="NomeolvidesHeaderBar">
+  <template class="NomeolvidesToolbar" parent="NomeolvidesActionBar">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="border_width">1</property>
-    <property name="show_close_button">False</property>
-    <property name="title"></property>
+    <child>
+      <object class="NomeolvidesBoton" id="boton_agregar">
+        <property name="label" translatable="yes">Add</property>
+      </object>
+      <packing>
+        <property name="pack_type">start</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkGrid" id="grid_izquierda">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="NomeolvidesBoton" id="boton_deshacer">
+            <property name="label" translatable="yes">Undo</property>
+            <property name="sensitive">False</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="NomeolvidesBoton" id="boton_rehacer">
+            <property name="label" translatable="yes">Redo</property>
+            <property name="sensitive">False</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <style>
+          <class name="linked"/>
+        </style>
+      </object>
+      <packing>
+        <property name="pack_type">start</property>
+      </packing>
+    </child>
   </template>
 </interface>

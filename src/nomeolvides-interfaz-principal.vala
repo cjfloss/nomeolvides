@@ -7,12 +7,12 @@
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * nomeolvides is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -25,8 +25,12 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Grid {
   [GtkChild]
 	private TreeViewHechos treeview_hechos;
   [GtkChild]
+	private Revealer revealer_actionbar;
+  [GtkChild]
+	public Nomeolvides.ActionBar actionbar;
+  [GtkChild]
 	private Revealer revealer_portada;
-	[GtkChild]
+  [GtkChild]
 	private Portada portada;
   [GtkChild]
 	private NotebookAniosListas notebook_anios_listas;
@@ -57,7 +61,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Grid {
 		}
 	}
 	private void elegir_anio () {
-		if ( this.anio_actual != this.notebook_anios_listas.treeview_anios.get_anio () || 
+		if ( this.anio_actual != this.notebook_anios_listas.treeview_anios.get_anio () ||
 					this.notebook_anios_listas.treeview_anios.get_anio () == 0 ) {
 			this.anio_actual = this.notebook_anios_listas.treeview_anios.get_anio ();
 			this.lista_actual = null; //ningina lista
@@ -67,7 +71,7 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Grid {
 	}
 
 	private void elegir_lista () {
-			var lista = this.db.select_lista ( "WHERE rowid=\"" 
+			var lista = this.db.select_lista ( "WHERE rowid=\""
 								+ this.notebook_anios_listas.treeview_listas.get_elemento_id ().to_string() + "\"");
 		if ( this.lista_actual != lista ) {
 			this.lista_actual = lista;
@@ -161,6 +165,18 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Grid {
 
 	public Array<Hecho> get_hechos_seleccionados () {
 		return this.treeview_hechos.get_hechos_seleccionados ();
+	}
+
+	public void mostrar_actionbar ( ) {
+		if ( this.treeview_hechos.get_hechos_seleccionados ().length > 0 ) {
+			this.revealer_actionbar.set_reveal_child ( true );
+
+			if ( this.treeview_hechos.get_hechos_seleccionados ().length > 1 ) {
+				this.actionbar.set_botones_multiseleccion ();
+			}
+		} else {
+			this.revealer_actionbar.set_reveal_child ( false );
+		}
 	}
 
 	public signal void hechos_selection_changed ();

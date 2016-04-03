@@ -18,6 +18,7 @@ bin_PROGRAMS = nomeolvides
 nomeolvides_SOURCES = \
 	config.vapi \
 	nomeolvides-acciones-db.vala \
+        nomeolvides-actionbar.vala \
 	nomeolvides-app.vala \
 	nomeolvides-archivo.vala \
 	nomeolvides-base-de-datos.vala \

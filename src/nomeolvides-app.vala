@@ -1,18 +1,18 @@
 /* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /* Nomeolvides
- * 
+ *
  * Copyright (C) 2012 Andres Fernandez <andres@softwareperonista.com.ar>
- * 
+ *
  * nomeolvides is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * nomeolvides is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -80,7 +80,7 @@ public class Nomeolvides.App : Gtk.Application  {
 		    builder.add_from_resource ( "/org/softwareperonista/nomeolvides/nomeolvides-app-menu.ui");
   			set_app_menu ((MenuModel)builder.get_object ("app-menu"));
 		} catch (GLib.Error e ) {
-    		error ("loading ui file: %s", e.message); 
+    		error ("loading ui file: %s", e.message);
 		}
 	}
 
@@ -96,7 +96,7 @@ public class Nomeolvides.App : Gtk.Application  {
 
 		this.window.interfaz_principal_anios_cursor_changed.connect ( this.elegir_anio );
 		this.window.interfaz_principal_listas_cursor_changed.connect ( this.elegir_lista );
-		
+
 		this.datos.datos_cambio_anios.connect ( this.cargar_lista_anios );
 		this.datos.datos_cambio_listas.connect ( this.cargar_listas );
 		this.datos.datos_cambio_hechos.connect ( this.cargar_lista_hechos );
@@ -126,7 +126,7 @@ public class Nomeolvides.App : Gtk.Application  {
 			this.window.headerbar.boton_agregar.set_active ( false );
 		}
 	}
-	
+
 	private void elegir_anio () {
 		int anio = this.window.get_anio_actual ();
 		this.window.cargar_hechos_view ( this.datos.get_hechos_anio ( anio ) );
@@ -138,7 +138,7 @@ public class Nomeolvides.App : Gtk.Application  {
 	}
 
 	public void edit_hecho_dialog () {
-		Hecho hecho; 
+		Hecho hecho;
 
 		this.window.get_hecho_actual ( out hecho );
 
@@ -150,7 +150,7 @@ public class Nomeolvides.App : Gtk.Application  {
 			this.datos.edit_hecho ( edit_dialog.respuesta );
 		}
 		edit_dialog.destroy();
-		this.window.headerbar.boton_editar.set_active ( false );
+		this.window.interfaz_principal.actionbar.boton_editar.set_active ( false );
 	}
 
 	public void delete_hecho_dialog () {
@@ -161,9 +161,9 @@ public class Nomeolvides.App : Gtk.Application  {
 			for (int i = 0; i < delete_dialog.hechos.length; i++ ) {
 				this.datos.eliminar_hecho ( delete_dialog.hechos.index (i) );
 			}
-		}	
+		}
 		delete_dialog.destroy ();
-		this.window.headerbar.boton_borrar.set_active ( false );
+		this.window.interfaz_principal.actionbar.boton_borrar.set_active ( false );
 	}
 
 	public void about_dialog () {
@@ -197,7 +197,7 @@ public class Nomeolvides.App : Gtk.Application  {
 	}
 
 	public void send_hecho () {
-		Hecho hecho; 
+		Hecho hecho;
 		string asunto;
 		string cuerpo;
 		string direccion;
@@ -217,7 +217,7 @@ public class Nomeolvides.App : Gtk.Application  {
 				hechos_json += hechos.index (i).a_json () + "\n";
 			}
 			Archivo.escribir (archivo, hechos_json );
-		
+
 			string commando = @"xdg-email --subject '$asunto' --body '$cuerpo' --attach '$archivo' $direccion";
 			try {
 				Process.spawn_command_line_async( commando );
@@ -225,7 +225,7 @@ public class Nomeolvides.App : Gtk.Application  {
 				stdout.printf(err.message+"\n");
 			}
 		}
-		this.window.headerbar.boton_enviar.set_active ( false );
+		this.window.interfaz_principal.actionbar.boton_enviar.set_active ( false );
 	}
 
 	public void undo_hecho () {
@@ -259,8 +259,8 @@ public class Nomeolvides.App : Gtk.Application  {
 			}
 			dialogo.close ();
 		}
-		this.window.headerbar.boton_agregar_a_lista.active = false;
-		this.window.headerbar.boton_agregar_a_lista.set_active ( false );
+		this.window.interfaz_principal.actionbar.boton_agregar_a_lista.active = false;
+		this.window.interfaz_principal.actionbar.boton_agregar_a_lista.set_active ( false );
 	}
 
 	public void remove_hecho_lista () {
@@ -276,7 +276,7 @@ public class Nomeolvides.App : Gtk.Application  {
 			}
 		}
 		dialogo.close ();
-		this.window.headerbar.boton_agregar_a_lista.set_active ( false );
+		this.window.interfaz_principal.actionbar.boton_agregar_a_lista.set_active ( false );
 
 	}
 
@@ -284,7 +284,7 @@ public class Nomeolvides.App : Gtk.Application  {
 		DialogArchivoGuardar guardar_archivo = new DialogArchivoGuardar ( GLib.Environment.get_current_dir () );
 		guardar_archivo.set_transient_for ( this.window );
 
-		if (guardar_archivo.run () == ResponseType.ACCEPT) {		
+		if (guardar_archivo.run () == ResponseType.ACCEPT) {
 			this.datos.save_as_file ( guardar_archivo.get_filename () );
 		}
 		guardar_archivo.close ();

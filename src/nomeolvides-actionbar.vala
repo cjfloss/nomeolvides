@@ -20,31 +20,34 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-headerbar.ui" ) ]
-public class Nomeolvides.HeaderBar : Gtk.HeaderBar {
+[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-actionbar.ui" ) ]
+public class Nomeolvides.ActionBar : Gtk.ActionBar {
 [GtkChild]
-	public Boton boton_agregar;
+	public Boton boton_editar;
 [GtkChild]
-	public Boton boton_deshacer;
+	public Boton boton_borrar;
 [GtkChild]
-	public Boton boton_rehacer;
+	public Boton boton_enviar;
+[GtkChild]
+	public Boton boton_agregar_a_lista;
 
-	public HeaderBar () {}
-
-
-	public void activar_deshacer () {
-		this.boton_deshacer.set_sensitive ( true );
+	public ActionBar () {
+		this.show_all ();
 	}
 
-	public void desactivar_deshacer () {
-		this.boton_deshacer.set_sensitive ( false );
+
+	public void set_botones_multiseleccion () {
+      this.boton_editar.set_visible ( false );
+//	  this.boton_borrar.set_visible ( true );
+//    this.boton_enviar.set_visible ( true );
+//	  this.boton_agregar_a_lista.set_visible ( true );
 	}
 
-	public void activar_rehacer () {
-		this.boton_rehacer.set_sensitive ( true );
+	public void boton_agregar_a_lista_set_agregar ( ) {
+		this.boton_agregar_a_lista.set_label (_("Add to list"));
 	}
 
-	public void desactivar_rehacer () {
-		this.boton_rehacer.set_sensitive ( false );
+	public void boton_agregar_a_lista_set_quitar ( ) {
+		this.boton_agregar_a_lista.set_label (_("Remove from list"));
 	}
 }
