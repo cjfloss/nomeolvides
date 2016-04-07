@@ -25,7 +25,7 @@ public class Nomeolvides.Fecha : GLib.Object {
     private int siglo;
     private Presicion presicion;
 
-	public void Fecha ( string fecha, Presicion presicion ) {
+	public Fecha ( string fecha, Presicion presicion ) {
 		this.presicion = presicion;
 		switch (presicion) {
 			case Presicion.DIA:
@@ -103,7 +103,7 @@ public class Nomeolvides.Fecha : GLib.Object {
 		string anio = "";
 
 		if ( this.presicion < Presicion.ANIO ) {
-			anio = this.dia_mes.get_day_of_month ().to_string();
+			anio = this.dia_mes.get_year ().to_string();
 		} else {
 			if ( this.presicion == Presicion.ANIO ) {
 				anio = this.anio.to_string();
@@ -123,6 +123,19 @@ public class Nomeolvides.Fecha : GLib.Object {
 		}
 
 		return siglo;
+	}
+
+	public string get_fecha_format ( string formato ) {
+		string retorno;
+
+		retorno = formato.replace ( "%B", this.get_mes() );
+		stdout.printf ("%s\n", retorno);
+		retorno = retorno.replace ( "%e", this.get_dia() );
+		stdout.printf ("%s\n", retorno);
+		retorno = retorno.replace ( "%Y", this.get_anio() );
+		stdout.printf ("%s\n", retorno);
+
+		return retorno;
 	}
 
 	public static string a_romanos ( int decimal ) {

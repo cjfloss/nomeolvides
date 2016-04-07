@@ -32,11 +32,11 @@ public class Nomeolvides.DialogHechoEditar : Nomeolvides.DialogHecho {
 	}
 
 	public void set_datos ( Hecho hecho_a_editar ) {
-		this.entry_nombre.set_text(hecho_a_editar.nombre);
+		this.entry_nombre.set_text( hecho_a_editar.nombre );
 		this.textview_descripcion.buffer.text= hecho_a_editar.descripcion;
-		this.selector_fecha.set_anio(hecho_a_editar.fecha.get_year());
-		this.selector_fecha.set_mes(hecho_a_editar.fecha.get_month());
-		this.selector_fecha.set_dia(hecho_a_editar.fecha.get_day_of_month());
+		this.selector_fecha.set_anio( int.parse ( hecho_a_editar.fecha.get_anio () ) );
+		this.selector_fecha.set_mes( int.parse ( hecho_a_editar.fecha.get_mes_numerico () ) );
+		this.selector_fecha.set_dia( int.parse ( hecho_a_editar.fecha.get_dia () ) );
 		this.entry_fuente.set_text ( hecho_a_editar.fuente );
 		this.set_coleccion_de_hecho ( hecho_a_editar.coleccion );
 		this.hecho_id = hecho_a_editar.id;
