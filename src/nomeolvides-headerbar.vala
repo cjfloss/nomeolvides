@@ -28,6 +28,8 @@ public class Nomeolvides.HeaderBar : Gtk.HeaderBar {
 	public Boton boton_deshacer;
 [GtkChild]
 	public Boton boton_rehacer;
+[GtkChild]
+  public StackSwitcher headerbar_stackswitcher;
 
 	public HeaderBar () {}
 

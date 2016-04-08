@@ -37,7 +37,7 @@
       </object>
     </child>
     <child type="title">
-      <object class="GtkStackSwitcher" id="headebar_stackswitcher">
+      <object class="GtkStackSwitcher" id="headerbar_stackswitcher">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
       </object>

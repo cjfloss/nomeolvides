@@ -31,6 +31,7 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 
 	public VentanaPrincipal ( Gtk.Application app ) {
 		Object (application: app);
+		this.headerbar.headerbar_stackswitcher.set_stack ( this.interfaz_principal.stack_principal );
 		this.anio_actual = 0;
 		this.conectar_seniales ();
 	}
@@ -39,12 +40,12 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 		this.headerbar.boton_agregar.activado.connect ( this.headerbar_boton_agregar_clicked_signal );
 		this.headerbar.boton_deshacer.activado.connect ( this.headerbar_boton_deshacer_clicked_signal );
 		this.headerbar.boton_rehacer.activado.connect ( this.headerbar_boton_rehacer_clicked_signal );
-		this.interfaz_principal.actionbar.boton_editar.activado.connect ( this.headerbar_boton_editar_clicked_signal );
-		this.interfaz_principal.actionbar.boton_borrar.activado.connect ( this.headerbar_boton_borrar_clicked_signal );
-		this.interfaz_principal.actionbar.boton_enviar.activado.connect ( this.headerbar_boton_enviar_clicked_signal );
-		this.interfaz_principal.anios_cursor_changed.connect ( this.interfaz_principal_anios_cursor_changed_signal );
-		this.interfaz_principal.listas_cursor_changed.connect ( this.interfaz_principal_listas_cursor_changed_signal );
-		this.interfaz_principal.hechos_selection_changed.connect ( this.elegir_hecho );
+		this.interfaz_principal.interfaz_fecha.actionbar.boton_editar.activado.connect ( this.headerbar_boton_editar_clicked_signal );
+		this.interfaz_principal.interfaz_fecha.actionbar.boton_borrar.activado.connect ( this.headerbar_boton_borrar_clicked_signal );
+		this.interfaz_principal.interfaz_fecha.actionbar.boton_enviar.activado.connect ( this.headerbar_boton_enviar_clicked_signal );
+		this.interfaz_principal.interfaz_fecha.anios_cursor_changed.connect ( this.interfaz_principal_anios_cursor_changed_signal );
+		this.interfaz_principal.interfaz_fecha.listas_cursor_changed.connect ( this.interfaz_principal_listas_cursor_changed_signal );
+		this.interfaz_principal.interfaz_fecha.hechos_selection_changed.connect ( this.elegir_hecho );
 	}
 
 	private void headerbar_boton_agregar_clicked_signal () {
@@ -80,40 +81,40 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	}
 
 	private void interfaz_principal_anios_cursor_changed_signal () {
-		this.anio_actual = this.interfaz_principal.get_anio_actual ();
+		this.anio_actual = this.interfaz_principal.interfaz_fecha.get_anio_actual ();
 		if ( this.anio_actual != 0 ) {
-			this.interfaz_principal.actionbar.boton_agregar_a_lista_set_agregar ();
-			this.interfaz_principal.actionbar.boton_agregar_a_lista.activado.disconnect (this.headerbar_boton_agregar_a_lista_quitar_clicked_signal);
-			this.interfaz_principal.actionbar.boton_agregar_a_lista.activado.disconnect (this.headerbar_boton_agregar_a_lista_agregar_clicked_signal);
-			this.interfaz_principal.actionbar.boton_agregar_a_lista.activado.connect ( this.headerbar_boton_agregar_a_lista_agregar_clicked_signal );
+			this.interfaz_principal.interfaz_fecha.actionbar.boton_agregar_a_lista_set_agregar ();
+			this.interfaz_principal.interfaz_fecha.actionbar.boton_agregar_a_lista.activado.disconnect (this.headerbar_boton_agregar_a_lista_quitar_clicked_signal);
+			this.interfaz_principal.interfaz_fecha.actionbar.boton_agregar_a_lista.activado.disconnect (this.headerbar_boton_agregar_a_lista_agregar_clicked_signal);
+			this.interfaz_principal.interfaz_fecha.actionbar.boton_agregar_a_lista.activado.connect ( this.headerbar_boton_agregar_a_lista_agregar_clicked_signal );
 			this.interfaz_principal_anios_cursor_changed ();
 		}
 	}
 
 	private void interfaz_principal_listas_cursor_changed_signal () {
-		this.lista_actual = this.interfaz_principal.get_lista_actual ();
+/*		this.lista_actual = this.interfaz_principal.interfaz_fecha.get_lista_actual ();
 		if (this.lista_actual != null ) {
-			this.interfaz_principal.actionbar.boton_agregar_a_lista_set_quitar ();
-			this.interfaz_principal.actionbar.boton_agregar_a_lista.activado.disconnect (this.headerbar_boton_agregar_a_lista_quitar_clicked_signal);
-			this.interfaz_principal.actionbar.boton_agregar_a_lista.activado.disconnect (this.headerbar_boton_agregar_a_lista_agregar_clicked_signal);
-			this.interfaz_principal.actionbar.boton_agregar_a_lista.activado.connect ( this.headerbar_boton_agregar_a_lista_quitar_clicked_signal );
+			this.interfaz_principal.interfaz_fecha.actionbar.boton_agregar_a_lista_set_quitar ();
+			this.interfaz_principal.interfaz_fecha.actionbar.boton_agregar_a_lista.activado.disconnect (this.headerbar_boton_agregar_a_lista_quitar_clicked_signal);
+			this.interfaz_principal.interfaz_fecha.actionbar.boton_agregar_a_lista.activado.disconnect (this.headerbar_boton_agregar_a_lista_agregar_clicked_signal);
+			this.interfaz_principal.interfaz_fecha.actionbar.boton_agregar_a_lista.activado.connect ( this.headerbar_boton_agregar_a_lista_quitar_clicked_signal );
 			this.interfaz_principal_listas_cursor_changed ();
 		}
-
+*/
 	}
 
 	public void cargar_anios_view ( Array<int> ventana_principal_anios ) {
-		this.interfaz_principal.cargar_lista_anios ( ventana_principal_anios );
+		this.interfaz_principal.interfaz_fecha.cargar_lista_anios ( ventana_principal_anios );
 	}
 
 	public void cargar_listas_view ( ListStoreListas listas ) {
-		this.interfaz_principal.cargar_listas ( listas );
-		this.interfaz_principal.mostrar_scroll_vista ( false );
+//		this.interfaz_principal.cargar_listas ( listas );
+//		this.interfaz_principal.mostrar_scroll_vista ( false );
 	}
 
 	public void cargar_hechos_view ( Array<Hecho> hechos ) {
-		this.interfaz_principal.cargar_lista_hechos ( hechos );
-		this.interfaz_principal.mostrar_scroll_vista ( false );
+		this.interfaz_principal.interfaz_fecha.cargar_lista_hechos ( hechos );
+		this.interfaz_principal.interfaz_fecha.mostrar_scroll_vista ( false );
 	}
 
 	public int get_anio_actual () {
@@ -125,11 +126,11 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	}
 
 	public TreePath get_hecho_actual ( out Hecho hecho ) {
-		return this.interfaz_principal.get_hecho_actual (out hecho );
+		return this.interfaz_principal.interfaz_fecha.get_hecho_actual (out hecho );
 	}
 
 	public Array<Hecho> get_hechos_seleccionados () {
-		return this.interfaz_principal.get_hechos_seleccionados ();
+		return this.interfaz_principal.interfaz_fecha.get_hechos_seleccionados ();
 	}
 
 	private void elegir_hecho () {
@@ -137,18 +138,18 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 		this.get_hecho_actual ( out hecho );
 
 		if ( hecho != null ) {
-			this.interfaz_principal.mostrar_actionbar ();
+			this.interfaz_principal.interfaz_fecha.mostrar_actionbar ();
 		}
 	}
 
 	public void show_visible () {
 		this.show_all ();
-		this.interfaz_principal.mostrar_actionbar ();
-		this.interfaz_principal.mostrar_scroll_vista ( false );
+		this.interfaz_principal.interfaz_fecha.mostrar_actionbar ();
+		this.interfaz_principal.interfaz_fecha.mostrar_scroll_vista ( false );
 	}
 
 	public string get_pestania () {
-		return this.interfaz_principal.get_nombre_pestania ();
+		return "hola";//this.interfaz_principal.interfaz_fecha.get_nombre_pestania ();
 	}
 
 	public void activar_boton_deshacer () {
@@ -168,7 +169,7 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	}
 
 	public void limpiar_hechos_view () {
-		this.interfaz_principal.limpiar_treeview_hechos ();
+		this.interfaz_principal.interfaz_fecha.limpiar_treeview_hechos ();
 	}
 
 	public signal void headerbar_boton_agregar_clicked ();

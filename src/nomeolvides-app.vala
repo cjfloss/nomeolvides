@@ -150,7 +150,7 @@ public class Nomeolvides.App : Gtk.Application  {
 			this.datos.edit_hecho ( edit_dialog.respuesta );
 		}
 		edit_dialog.destroy();
-		this.window.interfaz_principal.actionbar.boton_editar.set_active ( false );
+		this.window.interfaz_principal.interfaz_fecha.actionbar.boton_editar.set_active ( false );
 	}
 
 	public void delete_hecho_dialog () {
@@ -163,7 +163,7 @@ public class Nomeolvides.App : Gtk.Application  {
 			}
 		}
 		delete_dialog.destroy ();
-		this.window.interfaz_principal.actionbar.boton_borrar.set_active ( false );
+		this.window.interfaz_principal.interfaz_fecha.actionbar.boton_borrar.set_active ( false );
 	}
 
 	public void about_dialog () {
@@ -225,7 +225,7 @@ public class Nomeolvides.App : Gtk.Application  {
 				stdout.printf(err.message+"\n");
 			}
 		}
-		this.window.interfaz_principal.actionbar.boton_enviar.set_active ( false );
+		this.window.interfaz_principal.interfaz_fecha.actionbar.boton_enviar.set_active ( false );
 	}
 
 	public void undo_hecho () {
@@ -259,8 +259,8 @@ public class Nomeolvides.App : Gtk.Application  {
 			}
 			dialogo.close ();
 		}
-		this.window.interfaz_principal.actionbar.boton_agregar_a_lista.active = false;
-		this.window.interfaz_principal.actionbar.boton_agregar_a_lista.set_active ( false );
+		this.window.interfaz_principal.interfaz_fecha.actionbar.boton_agregar_a_lista.active = false;
+		this.window.interfaz_principal.interfaz_fecha.actionbar.boton_agregar_a_lista.set_active ( false );
 	}
 
 	public void remove_hecho_lista () {
@@ -276,7 +276,7 @@ public class Nomeolvides.App : Gtk.Application  {
 			}
 		}
 		dialogo.close ();
-		this.window.interfaz_principal.actionbar.boton_agregar_a_lista.set_active ( false );
+		this.window.interfaz_principal.interfaz_fecha.actionbar.boton_agregar_a_lista.set_active ( false );
 
 	}
 

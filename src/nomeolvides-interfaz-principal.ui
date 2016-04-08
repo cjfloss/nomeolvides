@@ -2,62 +2,19 @@
 <!-- Generated with glade 3.19.0 -->
 <interface>
   <requires lib="gtk+" version="3.16"/>
-      <template class="NomeolvidesInterfazPrincipal" parent="GtkGrid">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <child>
-          <object class="NomeolvidesNotebookAniosListas" id="notebook_anios_listas"/>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">0</property>
-            <property name="height">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScrolledWindow" id="scrolledwindow_treeview_hechos">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hscrollbar_policy">never</property>
-            <property name="shadow_type">in</property>
-            <property name="halign">fill</property>
-            <property name="hexpand">True</property>
-            <child>
-              <object class="NomeolvidesTreeViewHechos" id="treeview_hechos"/>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkRevealer" id="revealer_portada">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="transition_type">slide-left</property>
-            <child>
-              <object class="NomeolvidesPortada" id="portada"/>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkRevealer" id="revealer_actionbar">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="transition_type">slide-up</property>
-            <child>
-              <object class="NomeolvidesActionBar" id="actionbar"/>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">1</property>
-            <property name="width">2</property>
-          </packing>
-        </child>
-      </template>
+    <template class="NomeolvidesInterfazPrincipal" parent="GtkGrid">
+      <child>
+        <object class="GtkStack" id="stack_principal">
+          <property name="visible">True</property>
+          <property name="can_focus">False</property>
+          <child>
+            <object class="NomeolvidesInterfazFecha" id="interfaz_fecha"/>
+            <packing>
+              <property name="name">page_interfaz_fecha</property>
+              <property name="title" translatable="yes">By Date</property>
+            </packing>
+          </child>
+        </object>
+      </child>
+    </template>
 </interface>
