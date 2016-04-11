@@ -123,5 +123,4 @@ public class Nomeolvides.InterfazFecha : Gtk.Grid {
 
 	public signal void hechos_selection_changed ();
 	public signal void anios_cursor_changed ();
-	public signal void listas_cursor_changed ();
 }
