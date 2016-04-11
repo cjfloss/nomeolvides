@@ -33,19 +33,16 @@ public class Nomeolvides.InterfazFecha : Gtk.Grid {
   [GtkChild]
 	private Portada portada;
   [GtkChild]
-	private NotebookAniosListas notebook_anios_listas;
+	private TreeViewAnios treeview_anios;
 	private int anio_actual;
-	private Lista lista_actual;
 	private AccionesDB db;
 
 	construct {
 		this.db = new AccionesDB ( Configuracion.base_de_datos() );
 
 		this.treeview_hechos.get_selection ().changed.connect ( this.elegir_hecho );
-		this.notebook_anios_listas.treeview_anios.cursor_changed.connect ( this.elegir_anio );
-		this.notebook_anios_listas.treeview_listas.cursor_changed.connect ( this.elegir_lista );
-		this.treeview_hechos.row_activated.connect ( mostrar_vista );
-		this.notebook_anios_listas.switch_page.connect ( cambiar_pestania );
+		this.treeview_anios.cursor_changed.connect ( this.elegir_anio );
+		this.treeview_hechos.row_activated.connect ( mostrar_portada );
 
 		this.anio_actual = 0;
 	}
@@ -61,38 +58,15 @@ public class Nomeolvides.InterfazFecha : Gtk.Grid {
 		}
 	}
 	private void elegir_anio () {
-		if ( this.anio_actual != this.notebook_anios_listas.treeview_anios.get_anio () ||
-					this.notebook_anios_listas.treeview_anios.get_anio () == 0 ) {
-			this.anio_actual = this.notebook_anios_listas.treeview_anios.get_anio ();
-			this.lista_actual = null; //ningina lista
+		if ( this.anio_actual != this.treeview_anios.get_anio () ||
+					this.treeview_anios.get_anio () == 0 ) {
+			this.anio_actual = this.treeview_anios.get_anio ();
 			this.anios_cursor_changed();
-			this.mostrar_scroll_vista ( false );
+			this.mostrar_portada ();
 		}
 	}
 
-	private void elegir_lista () {
-			var lista = this.db.select_lista ( "WHERE rowid=\""
-								+ this.notebook_anios_listas.treeview_listas.get_elemento_id ().to_string() + "\"");
-		if ( this.lista_actual != lista ) {
-			this.lista_actual = lista;
-			this.anio_actual = 0; //ningún anio
-			this.listas_cursor_changed ();
-			this.mostrar_scroll_vista ( false );
-		}
-	}
-
-	private void cambiar_pestania () {
-		switch ( this.notebook_anios_listas.get_current_page () ) {
-		case 0:
-			this.elegir_lista ();
-			break;
-		case 1:
-			this.elegir_anio ();
-			break;
-		}
-	}
-
-	private void mostrar_vista () {
+	public void mostrar_portada () {
 			if ( this.revealer_portada.get_child_revealed () == true ) {
 				this.revealer_portada.set_reveal_child ( false );
 			} else {
@@ -110,40 +84,16 @@ public class Nomeolvides.InterfazFecha : Gtk.Grid {
 		}
 	}
 
-	public void mostrar_scroll_vista ( bool mostrar ) {
-		if ( mostrar == true ) {
-			this.revealer_portada.set_reveal_child ( true );
-		} else {
-			this.revealer_portada.set_reveal_child ( false );
-		}
+	public void cargar_anios ( Array<int> anios ) {
+		this.treeview_anios.agregar_varios ( anios );
 	}
 
-	public void cargar_lista_anios ( Array<int> anios ) {
-		this.notebook_anios_listas.treeview_anios.agregar_varios ( anios );
-		this.listas_cursor_changed ();
-	}
-
-	public void cargar_listas ( ListStoreListas listas ) {
-		if ( !(listas.vacio) ) {
-			this.notebook_anios_listas.treeview_listas.set_model ( listas );
-			this.notebook_anios_listas.get_nth_page (1).show ();
-		} else {
-			this.notebook_anios_listas.get_nth_page (1).hide ();
-			this.elegir_anio ();
-		}
-		this.anios_cursor_changed ();
-	}
-
-	public void cargar_lista_hechos ( Array<Hecho> hechos ) {
+	public void cargar_hechos ( Array<Hecho> hechos ) {
 		this.treeview_hechos.mostrar_hechos ( hechos );
 	}
 
 	public int get_anio_actual () {
 		return this.anio_actual;
-	}
-
-	public Lista get_lista_actual () {
-		return this.lista_actual;
 	}
 
 	public TreePath get_hecho_actual ( out Hecho hecho ) {
@@ -152,11 +102,6 @@ public class Nomeolvides.InterfazFecha : Gtk.Grid {
 
 	public TreeSelection get_hechos_selection ( ) {
 		return this.treeview_hechos.get_selection ();
-	}
-
-	public string get_nombre_pestania () {
-		return this.notebook_anios_listas.get_tab_label_text ( this.notebook_anios_listas.get_nth_page
-																															( this.notebook_anios_listas.get_current_page () ) );
 	}
 
 	public void limpiar_treeview_hechos () {

@@ -104,7 +104,7 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	}
 
 	public void cargar_anios_view ( Array<int> ventana_principal_anios ) {
-		this.interfaz_principal.interfaz_fecha.cargar_lista_anios ( ventana_principal_anios );
+		this.interfaz_principal.interfaz_fecha.cargar_anios ( ventana_principal_anios );
 	}
 
 	public void cargar_listas_view ( ListStoreListas listas ) {
@@ -113,8 +113,8 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	}
 
 	public void cargar_hechos_view ( Array<Hecho> hechos ) {
-		this.interfaz_principal.interfaz_fecha.cargar_lista_hechos ( hechos );
-		this.interfaz_principal.interfaz_fecha.mostrar_scroll_vista ( false );
+		this.interfaz_principal.interfaz_fecha.cargar_hechos ( hechos );
+		this.interfaz_principal.interfaz_fecha.mostrar_portada ();
 	}
 
 	public int get_anio_actual () {
@@ -145,7 +145,7 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	public void show_visible () {
 		this.show_all ();
 		this.interfaz_principal.interfaz_fecha.mostrar_actionbar ();
-		this.interfaz_principal.interfaz_fecha.mostrar_scroll_vista ( false );
+		this.interfaz_principal.interfaz_fecha.mostrar_portada ();
 	}
 
 	public string get_pestania () {
