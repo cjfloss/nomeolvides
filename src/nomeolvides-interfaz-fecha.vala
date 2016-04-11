@@ -35,11 +35,8 @@ public class Nomeolvides.InterfazFecha : Gtk.Grid {
   [GtkChild]
 	private TreeViewAnios treeview_anios;
 	private int anio_actual;
-	private AccionesDB db;
 
 	construct {
-		this.db = new AccionesDB ( Configuracion.base_de_datos() );
-
 		this.treeview_hechos.get_selection ().changed.connect ( this.elegir_hecho );
 		this.treeview_anios.cursor_changed.connect ( this.elegir_anio );
 		this.treeview_hechos.row_activated.connect ( mostrar_portada );
