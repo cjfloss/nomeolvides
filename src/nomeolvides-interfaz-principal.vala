@@ -26,6 +26,8 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Grid {
   public Stack stack_principal;
   [GtkChild]
   public InterfazFecha interfaz_fecha;
+  [GtkChild]
+  public InterfazLista interfaz_lista;
 
   construct {}
 }

@@ -134,7 +134,7 @@ public class Nomeolvides.App : Gtk.Application  {
 
 	private void elegir_lista () {
 		Lista lista = this.window.get_lista_actual ();
-		this.window.cargar_hechos_view ( this.datos.get_hechos_lista ( lista ));
+		this.window.cargar_hechos_view ( this.datos.get_hechos_lista ( lista ) );
 	}
 
 	public void edit_hecho_dialog () {
@@ -317,13 +317,8 @@ public class Nomeolvides.App : Gtk.Application  {
 	}
 
 	public void cargar_lista_hechos () {
-		var pestania = this.window.get_pestania ();
-
-		if ( pestania == _("Years") ) {
-			this.elegir_anio ();
-		} else {
-			this.elegir_lista ();
-		}
+		this.elegir_anio ();
+		this.elegir_lista ();
 	}
 
 	public App () {

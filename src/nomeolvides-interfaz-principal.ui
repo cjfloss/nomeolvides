@@ -7,11 +7,19 @@
         <object class="GtkStack" id="stack_principal">
           <property name="visible">True</property>
           <property name="can_focus">False</property>
+          <property name="transition_type">slide-left-right</property>
           <child>
             <object class="NomeolvidesInterfazFecha" id="interfaz_fecha"/>
             <packing>
               <property name="name">page_interfaz_fecha</property>
               <property name="title" translatable="yes">By Date</property>
+            </packing>
+          </child>
+          <child>
+            <object class="NomeolvidesInterfazLista" id="interfaz_lista"/>
+            <packing>
+              <property name="name">page_interfaz_lista</property>
+              <property name="title" translatable="yes">Lists</property>
             </packing>
           </child>
         </object>

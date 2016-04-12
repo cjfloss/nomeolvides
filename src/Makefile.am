@@ -44,6 +44,7 @@ nomeolvides_SOURCES = \
 	nomeolvides-dialog-preferencias.vala \
 	nomeolvides-hecho.vala \
 	nomeolvides-interfaz-fecha.vala \
+	nomeolvides-interfaz-lista.vala \
 	nomeolvides-interfaz-principal.vala \
 	nomeolvides-lista.vala \
 	nomeolvides-liststore-anios.vala \
