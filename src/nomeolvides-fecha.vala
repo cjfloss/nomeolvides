@@ -129,11 +129,8 @@ public class Nomeolvides.Fecha : GLib.Object {
 		string retorno;
 
 		retorno = formato.replace ( "%B", this.get_mes() );
-		stdout.printf ("%s\n", retorno);
 		retorno = retorno.replace ( "%e", this.get_dia() );
-		stdout.printf ("%s\n", retorno);
 		retorno = retorno.replace ( "%Y", this.get_anio() );
-		stdout.printf ("%s\n", retorno);
 
 		return retorno;
 	}
