@@ -17,10 +17,11 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 using GLib;
+using Nomeolvides;
 
 public class Nomeolvides.Hecho : Nomeolvides.Base {
 	public string descripcion { get; private set; }
-	public DateTime fecha {get; private set; }
+	public Fecha fecha {get; private set; }
 	public int64 coleccion;
 	public string fuente { get; private set; }
 
@@ -29,7 +30,7 @@ public class Nomeolvides.Hecho : Nomeolvides.Base {
 	{
 		base ( nombre );
 		this.descripcion = Utiles.ponerCaracterEspecial ( descripcion );
-		this.fecha = new DateTime.utc (anio, mes, dia, 0,0,0);
+		this.fecha = new Fecha ( anio.to_string() + "-" + mes.to_string() + "-" + dia.to_string(), Fecha.Presicion.DIA );
 		this.coleccion = coleccion;
 		this.fuente = Utiles.ponerCaracterEspecial ( fuente );
 		this.hash = Utiles.calcular_checksum ( this.a_json () );
@@ -40,15 +41,15 @@ public class Nomeolvides.Hecho : Nomeolvides.Base {
 		if ( !json.contains ( "{\"Hecho\":{" ) ) {
 			this.nombre = "null";
 			this.descripcion = "null";
-			this.fecha = new DateTime.utc ( 2013,2,20,0,0,0 );
+			this.fecha = new Fecha ( "2013-2-20", Fecha.Presicion.DIA );
 			this.fuente = "null";
 		} else {
 			this.nombre = Utiles.ponerCaracterEspecial ( Utiles.sacarDatoJson ( json, "nombre" ) );
 			this.descripcion = Utiles.ponerCaracterEspecial ( Utiles.sacarDatoJson ( json, "descripcion" ) );
-			this.fecha = new DateTime.utc (int.parse ( Utiles.sacarDatoJson( json, "anio" ) ),
-			                               int.parse ( Utiles.sacarDatoJson( json, "mes" ) ),
-			                               int.parse ( Utiles.sacarDatoJson( json, "dia" ) ),
-			                     		   0,0,0);
+			this.fecha = new Fecha ( Utiles.sacarDatoJson( json, "anio" ) +
+			                         Utiles.sacarDatoJson( json, "mes" ) +
+			                         Utiles.sacarDatoJson( json, "dia" ),
+			                     	 Fecha.Presicion.DIA);
 			this.fuente = Utiles.ponerCaracterEspecial ( Utiles.sacarDatoJson ( json, "fuente" ) );
 		}	
 		this.hash = Utiles.calcular_checksum ( this.a_json () );
@@ -60,9 +61,9 @@ public class Nomeolvides.Hecho : Nomeolvides.Base {
 		var retorno = "{\"Hecho\":{";
 		retorno += base.a_json () + ",";
 		retorno += "\"descripcion\":\"" + Utiles.sacarCaracterEspecial( this.descripcion ) + "\",";
-		retorno += "\"anio\":\"" + this.fecha.get_year ().to_string () + "\",";
-		retorno += "\"mes\":\"" + this.fecha.get_month ().to_string () + "\",";
-		retorno += "\"dia\":\"" + this.fecha.get_day_of_month ().to_string () + "\",";
+		retorno += "\"anio\":\"" + this.fecha.get_anio () + "\",";
+		retorno += "\"mes\":\"" + this.fecha.get_mes_numerico () + "\",";
+		retorno += "\"dia\":\"" + this.fecha.get_dia () + "\",";
 		retorno += "\"fuente\":\"" + Utiles.sacarCaracterEspecial( this.fuente ) + "\",";
 		retorno += "\"coleccion\":\"" + this.coleccion.to_string () + "\"";
 
@@ -74,9 +75,9 @@ public class Nomeolvides.Hecho : Nomeolvides.Base {
 	public new string to_string () {
 		var retorno  = base.to_string () + ",";
 		retorno += "\"" + this.descripcion + "\",";
-		retorno += "\"" + this.fecha.get_year ().to_string () + "\",";
-		retorno += "\"" + this.fecha.get_month ().to_string () + "\",";
-		retorno += "\"" + this.fecha.get_day_of_month ().to_string () + "\",";
+		retorno += "\"" + this.fecha.get_anio () + "\",";
+		retorno += "\"" + this.fecha.get_mes_numerico () + "\",";
+		retorno += "\"" + this.fecha.get_dia () + "\",";
 		retorno += "\"" + this.fuente + "\",";
 		retorno += "\"" + this.coleccion.to_string () + "\"";
 
@@ -86,9 +87,9 @@ public class Nomeolvides.Hecho : Nomeolvides.Base {
 	public new string a_sql () {
 		var retorno  = base.a_sql () + ",";
 		retorno += "descripcion=\"" + Utiles.sacarCaracterEspecial( this.descripcion ) + "\",";
-		retorno += "anio=\"" + this.fecha.get_year ().to_string () + "\",";
-		retorno += "mes=\"" + this.fecha.get_month ().to_string () + "\",";
-		retorno += "dia=\"" + this.fecha.get_day_of_month ().to_string () + "\",";
+		retorno += "anio=\"" + this.fecha.get_anio () + "\",";
+		retorno += "mes=\"" + this.fecha.get_mes_numerico () + "\",";
+		retorno += "dia=\"" + this.fecha.get_dia () + "\",";
 		retorno += "fuente=\"" + Utiles.sacarCaracterEspecial( this.fuente ) + "\",";
 		retorno += "coleccion=\"" + this.coleccion.to_string () + "\"";
 		
@@ -97,7 +98,7 @@ public class Nomeolvides.Hecho : Nomeolvides.Base {
 
 	public string fecha_to_string () {
 		string texto;
-		texto = this.fecha.format(_("%B %e, %Y"));
+		texto = this.fecha.get_fecha_format ( _( "%B %e, %Y" ) );
 		return texto;
 	}
 
@@ -112,15 +113,15 @@ public class Nomeolvides.Hecho : Nomeolvides.Base {
 	}
 
 	public int get_anio () {
-		return this.fecha.get_year();
+		return int.parse( this.fecha.get_anio() );
 	}
 
 	public int get_mes () {
-		return this.fecha.get_month();
+		return int.parse( this.fecha.get_mes_numerico() );
 	}
 
 	public int get_dia () {
-		return this.fecha.get_day_of_month ();
+		return int.parse( this.fecha.get_dia () );
 	}
 
 	public void set_id ( int64 id ) {

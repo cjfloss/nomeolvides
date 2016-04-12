@@ -155,14 +155,14 @@ public class Nomeolvides.ListStoreHechos : Gtk.ListStore {
 		int anio1, mes1, dia1;
 		int anio2, mes2, dia2;
 		
-		anio1 = hecho1.fecha.get_year();
-		anio2 = hecho2.fecha.get_year();
+		anio1 = int.parse ( hecho1.fecha.get_anio () );
+		anio2 = int.parse ( hecho2.fecha.get_anio () );
 
-		mes1 = hecho1.fecha.get_month();
-		mes2 = hecho2.fecha.get_month();
+		mes1 = int.parse ( hecho1.fecha.get_mes_numerico () );
+		mes2 = int.parse ( hecho2.fecha.get_mes_numerico () );
 
-		dia1 = hecho1.fecha.get_day_of_month();
-		dia2 = hecho2.fecha.get_day_of_month();
+		dia1 = int.parse ( hecho1.fecha.get_dia () );
+		dia2 = int.parse ( hecho2.fecha.get_dia () );
 
 		if (anio1 < anio2) {
 			return -1;

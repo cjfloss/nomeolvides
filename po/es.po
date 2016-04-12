@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.9.556\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-15 11:37-0300\n"
+"POT-Creation-Date: 2016-04-11 22:34-0300\n"
 "PO-Revision-Date: 2015-02-08 05:47-0300\n"
 "Last-Translator: Fernando Fernandez <fernando@softwareperonista.com.ar>\n"
 "Language-Team: Español <nomeolvides@softwareperonista.com.ar>\n"
@@ -288,7 +288,7 @@ msgstr "Agregar a la lista"
 msgid "Remove from list"
 msgstr "Eliminar de la lista"
 
-#: ../src/nomeolvides-hecho.vala:100
+#: ../src/nomeolvides-hecho.vala:101
 msgid "%B %e, %Y"
 msgstr "%e de %B de %Y"
 
