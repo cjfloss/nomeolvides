@@ -145,7 +145,12 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 		this.get_hecho_actual ( out hecho );
 
 		if ( hecho != null ) {
+			if ( this.interfaz_principal
+					 .stack_principal
+					 .get_visible_child_name () == "page_interfaz_fecha")
 			this.interfaz_principal.interfaz_fecha.mostrar_actionbar ();
+		} else {
+			this.interfaz_principal.interfaz_lista.mostrar_actionbar ();
 		}
 	}
 
