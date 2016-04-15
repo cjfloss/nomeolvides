@@ -63,6 +63,7 @@ nomeolvides_SOURCES = \
 	nomeolvides-toolbar.vala \
 	nomeolvides-treeview-anios.vala \
 	nomeolvides-treeview-base.vala \
+	nomeolvides-treeview-listas.vala \
 	nomeolvides-treeview-colecciones.vala \
 	nomeolvides-treeview-hechos.vala \
 	nomeolvides-utiles.vala \

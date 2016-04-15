@@ -27,6 +27,6 @@ public class Nomeolvides.NotebookAniosListas : Gtk.Notebook {
   public TreeViewAnios treeview_anios;
 
   construct {
-    this.treeview_listas.no_mostrar_treeviewcolumn_base_cantidad_hechos ();
+  //  this.treeview_listas.no_mostrar_treeviewcolumn_base_cantidad_hechos ();
   }
 }

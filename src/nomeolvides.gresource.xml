@@ -27,6 +27,7 @@
     <file>nomeolvides-popover-lista-editar.ui</file>
     <file>nomeolvides-treeview-colecciones.ui</file>
     <file>nomeolvides-treeview-anios.ui</file>
+    <file>nomeolvides-treeview-listas.ui</file>
     <file>nomeolvides-stack-hechos-dialog.ui</file>
     <file>nomeolvides-ventana-principal.ui</file>
   </gresource>

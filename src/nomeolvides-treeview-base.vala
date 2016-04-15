@@ -22,14 +22,7 @@ using Nomeolvides;
 
 [GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-treeview-base.ui" )]
 public class Nomeolvides.TreeViewBase : TreeView {
-  [GtkChild]
-  private TreeViewColumn treeviewcolumn_base_cantidad_hechos;
-
 	construct {}
-
- public void no_mostrar_treeviewcolumn_base_cantidad_hechos () {
-    this.treeviewcolumn_base_cantidad_hechos.set_visible ( false );
-  }
 
 	public int64 get_elemento_id () {
 		var elemento = this.get_elemento ();

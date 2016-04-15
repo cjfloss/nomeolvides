@@ -111,6 +111,7 @@ public class Nomeolvides.InterfazFecha : Gtk.Grid {
 
 	public void mostrar_actionbar ( ) {
 		if ( this.treeview_hechos.get_hechos_seleccionados ().length > 0 ) {
+			this.actionbar.set_botones_uniseleccion ();
 			this.revealer_actionbar.set_reveal_child ( true );
 
 			if ( this.treeview_hechos.get_hechos_seleccionados ().length > 1 ) {

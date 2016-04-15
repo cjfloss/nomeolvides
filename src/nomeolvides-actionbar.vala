@@ -38,9 +38,10 @@ public class Nomeolvides.ActionBar : Gtk.ActionBar {
 
 	public void set_botones_multiseleccion () {
       this.boton_editar.set_visible ( false );
-//	  this.boton_borrar.set_visible ( true );
-//    this.boton_enviar.set_visible ( true );
-//	  this.boton_agregar_a_lista.set_visible ( true );
+	}
+
+	public void set_botones_uniseleccion () {
+		this.boton_editar.set_visible ( true );
 	}
 
 	public void boton_agregar_a_lista_set_agregar ( ) {
