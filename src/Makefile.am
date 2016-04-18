@@ -43,6 +43,7 @@ nomeolvides_SOURCES = \
 	nomeolvides-dialog-migrador.vala \
 	nomeolvides-dialog-preferencias.vala \
 	nomeolvides-hecho.vala \
+	nomeolvides-interfaz-base.vala \
 	nomeolvides-interfaz-fecha.vala \
 	nomeolvides-interfaz-lista.vala \
 	nomeolvides-interfaz-principal.vala \

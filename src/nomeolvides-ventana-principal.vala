@@ -132,8 +132,8 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 		return this.lista_actual;
 	}
 
-	public TreePath get_hecho_actual ( out Hecho hecho ) {
-		return this.interfaz_principal.interfaz_fecha.get_hecho_actual ( out hecho );
+	public Hecho get_hecho_actual () {
+		return this.interfaz_principal.interfaz_fecha.get_hechos_seleccionados ().index ( 0 );
 	}
 
 	public Array<Hecho> get_hechos_seleccionados () {
@@ -141,8 +141,7 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 	}
 
 	private void elegir_hecho () {
-		Hecho hecho;
-		this.get_hecho_actual ( out hecho );
+		Hecho hecho = this.get_hecho_actual ();
 
 		if ( hecho != null ) {
 			if ( this.interfaz_principal

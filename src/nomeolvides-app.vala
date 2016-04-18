@@ -138,9 +138,7 @@ public class Nomeolvides.App : Gtk.Application  {
 	}
 
 	public void edit_hecho_dialog () {
-		Hecho hecho;
-
-		this.window.get_hecho_actual ( out hecho );
+		Hecho hecho = this.window.get_hecho_actual ();
 
 		var edit_dialog = new DialogHechoEditar( this.window, this.datos.lista_de_colecciones () );
 		edit_dialog.set_datos ( hecho );
@@ -197,13 +195,11 @@ public class Nomeolvides.App : Gtk.Application  {
 	}
 
 	public void send_hecho () {
-		Hecho hecho;
+		Hecho hecho = this.window.get_hecho_actual ();
 		string asunto;
 		string cuerpo;
 		string direccion;
 		string archivo;
-
-		this.window.get_hecho_actual ( out hecho );
 
 		if( hecho != null) {
 			string hechos_json = "";
@@ -239,9 +235,6 @@ public class Nomeolvides.App : Gtk.Application  {
 	}
 
 	public void add_hecho_lista () {
-		Hecho hecho;
-		this.window.get_hecho_actual ( out hecho );
-
 		if ( !( this.datos.hay_listas ()) ) {
 			this.preferencias_dialog ( true );
 		}
