@@ -134,7 +134,9 @@ public class Nomeolvides.App : Gtk.Application  {
 
 	private void elegir_lista () {
 		Lista lista = this.window.get_lista_actual ();
-		this.window.cargar_hechos_view ( this.datos.get_hechos_lista ( lista ) );
+		if ( lista != null ) {
+			this.window.cargar_hechos_view ( this.datos.get_hechos_lista ( lista ) );
+		}
 	}
 
 	public void edit_hecho_dialog () {

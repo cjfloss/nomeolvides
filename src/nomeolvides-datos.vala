@@ -53,7 +53,7 @@ public class Nomeolvides.Datos : GLib.Object {
 	}
 
 	public void quitar_hecho_lista ( Hecho hecho, Lista lista ) {
-		this.db.delete_hecho_lista ( hecho, lista );		
+		this.db.delete_hecho_lista ( hecho, lista );
 		this.datos_cambio_hechos ();
 	}
 
