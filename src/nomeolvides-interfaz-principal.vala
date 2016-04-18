@@ -29,5 +29,17 @@ public class Nomeolvides.InterfazPrincipal : Gtk.Grid {
   [GtkChild]
   public InterfazLista interfaz_lista;
 
-  construct {}
+  construct {
+	this.interfaz_fecha.hechos_selection_changed.connect ( this.elegir_hecho );
+	this.interfaz_lista.hechos_selection_changed.connect ( this.elegir_hecho );
+  }
+
+ 	private void elegir_hecho () {
+		if ( this.stack_principal
+					 .get_visible_child_name () == "page_interfaz_fecha") {
+			this.interfaz_fecha.mostrar_actionbar ();
+		} else {
+			this.interfaz_lista.mostrar_actionbar ();
+		}
+	}
 }

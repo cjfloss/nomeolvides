@@ -45,8 +45,6 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 		this.interfaz_principal.interfaz_fecha.actionbar.boton_enviar.activado.connect ( this.headerbar_boton_enviar_clicked_signal );
 		this.interfaz_principal.interfaz_fecha.anios_cursor_changed.connect ( this.interfaz_principal_anios_cursor_changed_signal );
 		this.interfaz_principal.interfaz_lista.listas_cursor_changed.connect ( this.interfaz_principal_listas_cursor_changed_signal );
-		this.interfaz_principal.interfaz_fecha.hechos_selection_changed.connect ( this.elegir_hecho );
-		this.interfaz_principal.interfaz_lista.hechos_selection_changed.connect ( this.elegir_hecho );
 	}
 
 	private void headerbar_boton_agregar_clicked_signal () {
@@ -138,19 +136,6 @@ public class Nomeolvides.VentanaPrincipal : Gtk.ApplicationWindow {
 
 	public Array<Hecho> get_hechos_seleccionados () {
 		return this.interfaz_principal.interfaz_fecha.get_hechos_seleccionados ();
-	}
-
-	private void elegir_hecho () {
-		Hecho hecho = this.get_hecho_actual ();
-
-		if ( hecho != null ) {
-			if ( this.interfaz_principal
-					 .stack_principal
-					 .get_visible_child_name () == "page_interfaz_fecha")
-			this.interfaz_principal.interfaz_fecha.mostrar_actionbar ();
-		} else {
-			this.interfaz_principal.interfaz_lista.mostrar_actionbar ();
-		}
 	}
 
 	public void show_visible () {
