@@ -1,6 +1,10 @@
 sudo: required
 language: c
 compiler: gcc
+
+env:
+- ARCH_TRAVIS_CLEAN_CHROOT=1
+
 arch:
   packages:
     -gtk3
@@ -13,5 +17,6 @@ arch:
   script:
     - ./autogen.sh
     - make
+
 script:
   - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
