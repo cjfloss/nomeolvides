@@ -1,15 +1,17 @@
 sudo: required
-dist: trusty
 language: c
 compiler: gcc
-before_install:
-  - sudo add-apt-repository ppa:vala-team/ppa -y
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq gnome-common libglib2.0-dev libgtk-3-dev
-         libsqlite3-dev libvala-0.30-dev valac-0.30 gobject-introspection
-
-before_script:
-  - ./autogen.sh
-
+arch:
+  packages:
+    -gtk3
+    -xdg-utils
+    -git
+    -vala
+    -autogen
+    -libltdl
+    -intltool
+  script:
+    - ./autogen.sh
+    - make
 script:
-  - make
+  - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
