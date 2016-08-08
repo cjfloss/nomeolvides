@@ -2,18 +2,15 @@ sudo: required
 language: c
 compiler: gcc
 
-env:
-- ARCH_TRAVIS_CLEAN_CHROOT=1
-
 arch:
   packages:
-    -gtk3
-    -xdg-utils
-    -git
-    -vala
-    -autogen
-    -libltdl
-    -intltool
+    - gtk3
+    - xdg-utils
+    - git
+    - vala
+    - autogen
+    - libltdl
+    - intltool
   script:
     - ./autogen.sh
     - make
