@@ -13,6 +13,7 @@ arch:
     - intltool
     - autoconf-archive
     - gobject-introspection
+    - appstream-glib
   script:
     - ./autogen.sh
     - make
