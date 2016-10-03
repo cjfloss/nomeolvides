@@ -1,10 +1,10 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
-_Keywords=history;facts;
+Keywords=history;facts;
 Type=Application
 Terminal=false
 Categories=GTK;GNOME;Education;
 Exec=nomeolvides
 Name=Nomeolvides
-_Comment=Ephemeride Manager
+Comment=Ephemeride Manager
 Icon=nomeolvides
