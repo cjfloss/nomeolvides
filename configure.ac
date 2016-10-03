@@ -60,6 +60,7 @@ GLIB_GSETTINGS
 GOBJECT_INTROSPECTION_CHECK([1.42.0])
 AM_PROG_VALAC([0.32])
 VAPIGEN_CHECK
+APPSTREAM_XML
 
 
 AX_COMPILER_FLAGS
@@ -128,9 +129,9 @@ AC_SUBST(GLIB_COMPILE_RESOURCES)
 AC_OUTPUT([
 Makefile
 src/Makefile
-po/Makefile.in
 data/Makefile
 data/nomeolvides.desktop.in
+po/Makefile.in
 ],[],
 [API_VERSION='$API_VERSION'])
 AC_OUTPUT
