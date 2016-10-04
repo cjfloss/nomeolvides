@@ -72,6 +72,7 @@ nomeolvides-resources.c: nomeolvides.gresource.xml
 
 nomeolvides_CFLAGS = \
 	-include config.h \
+	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\" \
 	$(GTK_MODULE_CFLAGS) \
 	$(SQLITE_MODULE_CFLAGS) \
 	$(NULL)

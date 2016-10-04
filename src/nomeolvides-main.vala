@@ -22,10 +22,10 @@ using Nomeolvides;
 
 public static int main ( string[] args ) {
 
-//	Intl.setlocale(LocaleCategory.MESSAGES, "");
-//	Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.PACKAGE_LOCALE_DIR);
-//	Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
-//	Intl.textdomain (Config.GETTEXT_PACKAGE);
+	Intl.setlocale(LocaleCategory.MESSAGES, "");
+	Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.PACKAGE_LOCALE_DIR);
+	Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
+	Intl.textdomain (Config.GETTEXT_PACKAGE);
 
 	Gtk.init(ref args);
 
