@@ -9,8 +9,11 @@ arch:
     - git
     - vala
     - autogen
-    - libltdl
+    - libtool
     - intltool
+    - autoconf-archive
+    - gobject-introspection
+    - appstream-glib
   script:
     - ./autogen.sh
     - make

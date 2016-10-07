@@ -2,17 +2,6 @@
 
 ## Created by Anjuta
 
-AM_CPPFLAGS = \
-	-include config.h \
-	$(NOMEOLVIDES_CFLAGS) \
-	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\" \
-	-DPACKAGE_SRC_DIR=\""$(srcdir)"\" \
-	-DPACKAGE_DATA_DIR=\""$(pkgdatadir)"\"
-
-AM_CFLAGS =\
-	 -Wall\
-	 -g
-
 bin_PROGRAMS = nomeolvides
 
 nomeolvides_SOURCES = \
@@ -79,22 +68,44 @@ nomeolvides_SOURCES = \
 	$(NULL)
 
 nomeolvides-resources.c: nomeolvides.gresource.xml
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(srcdir)/nomeolvides.gresource.xml \
-	--target=$@ --sourcedir=$(srcdir) --c-name nomeolvides --generate-source
+	$(AM_V_GEN) glib-compile-resources --sourcedir=$(srcdir) --target=$@ --c-name nomeolvides --generate-source $<
 
-nomeolvides_VALAFLAGS = \
-	--pkg sqlite3 \
-	--pkg glib-2.0 \
-	--pkg gtk+-3.0 \
-	--target-glib=2.40 \
-	--gresources nomeolvides.gresource.xml \
-	-g
+nomeolvides_CFLAGS = \
+	-include config.h \
+	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\" \
+	$(GTK_MODULE_CFLAGS) \
+	$(SQLITE_MODULE_CFLAGS) \
+	$(NULL)
+
+nomeolvides_LDADD = \
+	$(GTK_MODULE_LIBS) \
+	$(SQLITE_MODULE_LIBS) \
+	$(NULL)
 
 nomeolvides_LDFLAGS = \
-	-Wl,--export-dynamic
+	$(WARN_LDFLAGS) \
+	$(NULL)
 
-nomeolvides_LDADD = $(NOMEOLVIDES_LIBS)
 
+nomeolvides_VALAFLAGS = \
+	--thread \
+	--target-glib=2.44 \
+	--pkg glib-2.0 \
+	--pkg gtk+-3.0 \
+	--pkg sqlite3 \
+	--gresources nomeolvides.gresource.xml \
+	$(NULL)
+
+
+if PLATFORM_WIN32
+nomeolvides_LDFLAGS += -Wl,--export-all-symbols
+else
+nomeolvides_LDFLAGS += -Wl,--export-dynamic
+endif
+
+if NATIVE_WIN32
+nomeolvides_LDFLAGS += -mwindows
+endif
 
 EXTRA_DIST = 	$(ui_DATA) \
 		app-menu.ui

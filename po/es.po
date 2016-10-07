@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.9.556\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-11 22:34-0300\n"
+"Report-Msgid-Bugs-To: desarrolladores@softwareperonista.com.ar\n"
+"POT-Creation-Date: 2016-10-07 17:31-0300\n"
 "PO-Revision-Date: 2015-02-08 05:47-0300\n"
 "Last-Translator: Fernando Fernandez <fernando@softwareperonista.com.ar>\n"
 "Language-Team: Español <nomeolvides@softwareperonista.com.ar>\n"
@@ -16,47 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Gtranslator 2.91.6\n"
-
-#: ../data/nomeolvides.appdata.xml.in.h:1 ../src/nomeolvides-headerbar.vala:47
-#: ../src/nomeolvides-headerbar.vala:55
-msgid "Nomeolvides"
-msgstr "Nomeolvides"
-
-#: ../data/nomeolvides.appdata.xml.in.h:2 ../data/nomeolvides.desktop.in.in.h:2
-msgid "Ephemeride Manager"
-msgstr "Gestor de Efemérides"
-
-#: ../data/nomeolvides.appdata.xml.in.h:3
-msgid ""
-"A simple historical facts manager featuring a number of basic actions such "
-"as add historical facts in differents collections, edit and organize them in "
-"personalized lists created by the user and import/export facts for backup or "
-"sharing."
-msgstr ""
-"Un gestor de hechos históricos sencillo que implementa un conjunto básico de "
-"acciones, tales como agregar hechos históricos en diferentes colecciones, "
-"editarlos y organizarlos en listas personalizadas creadas por el usuario y "
-"importar/exportar hechos para hacer copias de seguridad o compartirlos."
-
-#: ../data/nomeolvides.appdata.xml.in.h:4
-msgid ""
-"It focuses on providing a friendly user interface even when manage a great "
-"amount of facts."
-msgstr ""
-"Está enfocado en ofrecer una interfaz amigable aun manejando una gran "
-"cantidad de hechos."
-
-#: ../data/nomeolvides.appdata.xml.in.h:5
-msgid "The default interface"
-msgstr "Interfaz por Defecto"
-
-#: ../data/nomeolvides.appdata.xml.in.h:6
-msgid "The classic interface"
-msgstr "Interfaz Clásica"
-
-#: ../data/nomeolvides.desktop.in.in.h:1
-msgid "history;facts;"
-msgstr "historia;hechos;"
 
 #: ../src/nomeolvides-app.vala:322
 #: ../src/nomeolvides-notebook-anios-listas.ui.h:1
@@ -279,6 +238,10 @@ msgstr "Cerrar"
 #: ../src/nomeolvides-headerbar.vala:46
 msgid "Year"
 msgstr "Año"
+
+#: ../src/nomeolvides-headerbar.vala:47 ../src/nomeolvides-headerbar.vala:55
+msgid "Nomeolvides"
+msgstr "Nomeolvides"
 
 #: ../src/nomeolvides-headerbar.vala:80 ../src/nomeolvides-headerbar.ui.h:4
 msgid "Add to list"
@@ -523,3 +486,38 @@ msgstr "Visible"
 #: ../src/nomeolvides-treeview-hechos.ui.h:2
 msgid "Date"
 msgstr "Fecha"
+
+#~ msgid "Ephemeride Manager"
+#~ msgstr "Gestor de Efemérides"
+
+#~ msgid ""
+#~ "A simple historical facts manager featuring a number of basic actions "
+#~ "such as add historical facts in differents collections, edit and organize "
+#~ "them in personalized lists created by the user and import/export facts "
+#~ "for backup or sharing."
+#~ msgstr ""
+#~ "Un gestor de hechos históricos sencillo que implementa un conjunto básico "
+#~ "de acciones, tales como agregar hechos históricos en diferentes "
+#~ "colecciones, editarlos y organizarlos en listas personalizadas creadas "
+#~ "por el usuario y importar/exportar hechos para hacer copias de seguridad "
+#~ "o compartirlos."
+
+#~ msgid ""
+#~ "It focuses on providing a friendly user interface even when manage a "
+#~ "great amount of facts."
+#~ msgstr ""
+#~ "Está enfocado en ofrecer una interfaz amigable aun manejando una gran "
+#~ "cantidad de hechos."
+
+#~ msgid "The default interface"
+#~ msgstr "Interfaz por Defecto"
+
+#~ msgid "The classic interface"
+#~ msgstr "Interfaz Clásica"
+
+#~ msgid "history;facts;"
+#~ msgstr "historia;hechos;"
+
+#, fuzzy
+#~ msgid "nomeolvides"
+#~ msgstr "Nomeolvides"

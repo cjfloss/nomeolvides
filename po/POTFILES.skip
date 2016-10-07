@@ -1,4 +1,3 @@
-data/nomeolvides.desktop.in
 src/nomeolvides-app.c
 src/nomeolvides-archivo.c
 src/nomeolvides-configuracion.c

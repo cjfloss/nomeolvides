@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2015 Fernando Fernandez <fernando@softwareperonista.com.ar> -->
-<application>
-  <id type="desktop">nomeolvides.desktop</id>
-  <metadata_license>CC-BY-SA</metadata_license>
-  <project_license>GPL-3.0</project_license>
-  <_name>Nomeolvides</_name>
-  <_summary>Ephemeride Manager</_summary>
+<component type="desktop">
+ <id>nomeolvides.desktop</id>
+ <metadata_license>CC-BY-SA-3.0</metadata_license>
+ <project_license>GPL-3.0</project_license>
+ <name>Nomeolvides</name>
+ <summary>Ephemeride Manager</summary>
   <description>
-    <_p>
+    <p>
       A simple historical facts manager featuring a number of basic actions
       such as add historical facts in differents collections, edit and
       organize them in personalized lists created by the user and
       import/export facts for backup or sharing.
-    </_p>
-    <_p>
+    </p>
+    <p>
       It focuses on providing a friendly user interface even when manage a
       great amount of facts.
-    </_p>
+    </p>
   </description>
   <screenshots>
     <screenshot type="default">
       <image>https://softwareperonista.com.ar/screenshots/nomeolvides.png</image>
-      <_caption>The default interface</_caption>
+      <caption>The default interface</caption>
     </screenshot>
     <screenshot>
       <image>https://softwareperonista.com.ar/screenshots/nomeolvides-legacy.png</image>
-      <_caption>The classic interface</_caption>
+      <caption>The classic interface</caption>
     </screenshot>
   </screenshots>
   <url type="homepage">https://github.com/softwareperonista/nomeolvides</url>
-  <updatecontact>desarrolladores_at_softwareperonista.com.ar</updatecontact>
-</application>
-
+  <updatecontact>desarrolladores@softwareperonista.com.ar</updatecontact>
+  <translation type="gettext">nomeolvides</translation>
+</component>
