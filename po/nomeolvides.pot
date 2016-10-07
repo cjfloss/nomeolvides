@@ -17,18 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/nomeolvides.appdata.xml.in:6 data/nomeolvides.desktop.in.in:9
+#: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:6 data/ar.com.softwareperonista.Nomeolvides.desktop.in.in:9
 #: src/nomeolvides-headerbar.vala:47 src/nomeolvides-headerbar.vala:55
-#: data/nomeolvides.desktop.in:9
+#: data/ar.com.softwareperonista.Nomeolvides.desktop.in:9
 msgid "Nomeolvides"
 msgstr ""
 
-#: data/nomeolvides.appdata.xml.in:7 data/nomeolvides.desktop.in.in:10
-#: data/nomeolvides.desktop.in:10
+#: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:7 data/ar.com.softwareperonista.Nomeolvides.desktop.in.in:10
+#: data/ar.com.softwareperonista.Nomeolvides.desktop.in:10
 msgid "Ephemeride Manager"
 msgstr ""
 
-#: data/nomeolvides.appdata.xml.in:9
+#: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:9
 msgid ""
 "A simple historical facts manager featuring a number of basic actions such "
 "as add historical facts in differents collections, edit and organize them in "
@@ -36,25 +36,25 @@ msgid ""
 "sharing."
 msgstr ""
 
-#: data/nomeolvides.appdata.xml.in:15
+#: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:15
 msgid ""
 "It focuses on providing a friendly user interface even when manage a great "
 "amount of facts."
 msgstr ""
 
-#: data/nomeolvides.appdata.xml.in:23
+#: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:23
 msgid "The default interface"
 msgstr ""
 
-#: data/nomeolvides.appdata.xml.in:27
+#: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:27
 msgid "The classic interface"
 msgstr ""
 
-#: data/nomeolvides.desktop.in.in:4 data/nomeolvides.desktop.in:4
+#: data/ar.com.softwareperonista.Nomeolvides.desktop.in.in:4 data/ar.com.softwareperonista.Nomeolvides.desktop.in:4
 msgid "history;facts;"
 msgstr ""
 
-#: data/nomeolvides.desktop.in.in:11 data/nomeolvides.desktop.in:11
+#: data/ar.com.softwareperonista.Nomeolvides.desktop.in.in:11 data/ar.com.softwareperonista.Nomeolvides.desktop.in:11
 msgid "nomeolvides"
 msgstr ""
 

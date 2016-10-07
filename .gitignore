@@ -66,9 +66,9 @@ nomeolvides_vala.stamp
 .anjuta_sym_db.db
 
 compile
-data/nomeolvides.appdata.xml
-data/nomeolvides.desktop
-data/nomeolvides.desktop.in
+data/ar.com.softwareperonista.Nomeolvides.appdata.xml
+data/ar.com.softwareperonista.Nomeolvides.desktop
+data/ar.com.softwareperonista.Nomeolvides.desktop.in
 m4/
 po/.intltool-merge-cache
 po/POTFILES
