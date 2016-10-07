@@ -20,7 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-portada.ui" ) ]
+[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides/nomeolvides-portada.ui" ) ]
 public class Nomeolvides.Portada : Grid {
   [GtkChild]
 	private Label label_nombre;

@@ -20,7 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-dialog-hecho-lista-agregar.ui" )]
+[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides/nomeolvides-dialog-hecho-lista-agregar.ui" )]
 public class Nomeolvides.DialogHechoListaAgregar : Dialog {
   [GtkChild]
 	private ComboBox combobox_listas;

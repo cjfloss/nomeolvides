@@ -20,7 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-preferencias-base.ui" )]
+[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides/nomeolvides-preferencias-base.ui" )]
 public class Nomeolvides.PreferenciasBase : Gtk.Grid {
 	protected TreeViewBase treeview { get; protected set; }
 	[GtkChild]

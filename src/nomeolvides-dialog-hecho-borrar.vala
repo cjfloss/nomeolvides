@@ -20,7 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-dialog-hecho-borrar.ui" ) ]
+[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides/nomeolvides-dialog-hecho-borrar.ui" ) ]
 public class Nomeolvides.DialogHechoBorrar : Dialog {
 	[GtkChild]
 	private StackHechosDialog stack_hechos;

@@ -20,7 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-headerbar.ui" ) ]
+[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides/nomeolvides-headerbar.ui" ) ]
 public class Nomeolvides.HeaderBar : Gtk.HeaderBar {
 [GtkChild]
 	public Boton boton_agregar;

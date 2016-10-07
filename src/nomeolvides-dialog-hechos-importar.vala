@@ -19,7 +19,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-dialog-hechos-importar.ui" )]
+[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides/nomeolvides-dialog-hechos-importar.ui" )]
 public class Nomeolvides.DialogHechosImportar : Dialog {
   [GtkChild]
 	private Button button_archivo;

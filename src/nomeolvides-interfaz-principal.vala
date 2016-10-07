@@ -20,7 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-interfaz-principal.ui")]
+[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides/nomeolvides-interfaz-principal.ui")]
 public class Nomeolvides.InterfazPrincipal : Gtk.Grid {
   [GtkChild]
 	private TreeViewHechos treeview_hechos;

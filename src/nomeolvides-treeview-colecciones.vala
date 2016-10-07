@@ -20,7 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-treeview-colecciones.ui" )]
+[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides/nomeolvides-treeview-colecciones.ui" )]
 public class Nomeolvides.TreeViewColecciones : TreeViewBase {
   [GtkChild]
 	private CellRendererToggle cellrenderertext_colecciones_visible;

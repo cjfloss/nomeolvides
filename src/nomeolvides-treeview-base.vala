@@ -20,7 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-treeview-base.ui" )]
+[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides/nomeolvides-treeview-base.ui" )]
 public class Nomeolvides.TreeViewBase : TreeView {
   [GtkChild]
   private TreeViewColumn treeviewcolumn_base_cantidad_hechos;

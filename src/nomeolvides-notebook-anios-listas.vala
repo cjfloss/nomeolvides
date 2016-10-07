@@ -19,7 +19,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-notebook-anios-listas.ui" )]
+[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides/nomeolvides-notebook-anios-listas.ui" )]
 public class Nomeolvides.NotebookAniosListas : Gtk.Notebook {
 	[GtkChild]
   public TreeViewBase treeview_listas;

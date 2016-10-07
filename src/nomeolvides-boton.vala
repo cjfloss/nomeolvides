@@ -19,7 +19,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-boton.ui" ) ]
+[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides/nomeolvides-boton.ui" ) ]
 public class Nomeolvides.Boton : Gtk.ToggleButton {
 	public Boton ( string label ) {
 		this.set_label ( label );

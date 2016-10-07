@@ -20,7 +20,7 @@
 using Gtk;
 using Nomeolvides;
 
-[GtkTemplate ( ui = "/org/softwareperonista/nomeolvides/nomeolvides-dialog-hecho.ui" )]
+[GtkTemplate ( ui = "/ar/com/softwareperonista/nomeolvides/nomeolvides-dialog-hecho.ui" )]
 public class Nomeolvides.DialogHecho : Dialog {
   [GtkChild]
 	protected Entry entry_nombre;
