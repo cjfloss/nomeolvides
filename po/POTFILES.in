@@ -23,17 +23,17 @@ src/nomeolvides-popover-lista-borrar.vala
 src/nomeolvides-popover-lista-editar.vala
 src/nomeolvides-portada.vala
 src/nomeolvides-sqlite.vala
-[type: gettext/glade]src/nomeolvides-app-menu.ui
-[type: gettext/glade]src/nomeolvides-dialog-hecho-borrar.ui
-[type: gettext/glade]src/nomeolvides-dialog-hecho-lista-agregar.ui
-[type: gettext/glade]src/nomeolvides-dialog-hecho.ui
-[type: gettext/glade]src/nomeolvides-dialog-hechos-importar.ui
-[type: gettext/glade]src/nomeolvides-headerbar.ui
-[type: gettext/glade]src/nomeolvides-notebook-anios-listas.ui
-[type: gettext/glade]src/nomeolvides-popover-base-borrar.ui
-[type: gettext/glade]src/nomeolvides-popover-base.ui
-[type: gettext/glade]src/nomeolvides-selector-fecha.ui
-[type: gettext/glade]src/nomeolvides-treeview-anios.ui
-[type: gettext/glade]src/nomeolvides-treeview-base.ui
-[type: gettext/glade]src/nomeolvides-treeview-colecciones.ui
-[type: gettext/glade]src/nomeolvides-treeview-hechos.ui
+src/nomeolvides-app-menu.ui
+src/nomeolvides-dialog-hecho-borrar.ui
+src/nomeolvides-dialog-hecho-lista-agregar.ui
+src/nomeolvides-dialog-hecho.ui
+src/nomeolvides-dialog-hechos-importar.ui
+src/nomeolvides-headerbar.ui
+src/nomeolvides-notebook-anios-listas.ui
+src/nomeolvides-popover-base-borrar.ui
+src/nomeolvides-popover-base.ui
+src/nomeolvides-selector-fecha.ui
+src/nomeolvides-treeview-anios.ui
+src/nomeolvides-treeview-base.ui
+src/nomeolvides-treeview-colecciones.ui
+src/nomeolvides-treeview-hechos.ui

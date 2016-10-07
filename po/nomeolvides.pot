@@ -1,32 +1,32 @@
-# Nomeolvides.
-# Copyright (C) 2013,2014 Software Peronista.
-# This file is distributed under the same license as the Nomeolvides package.
-# Fernando Fernandez <fernando@softwareperonista.com.ar>, 2013, 2014, 2015.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Software Peronista
+# This file is distributed under the same license as the nomeolvides package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.9.556\n"
+"Project-Id-Version: nomeolvides 0.13.0.42\n"
 "Report-Msgid-Bugs-To: desarrolladores@softwareperonista.com.ar\n"
 "POT-Creation-Date: 2016-10-03 22:23-0300\n"
-"PO-Revision-Date: 2015-02-08 05:47-0300\n"
-"Last-Translator: Fernando Fernandez <fernando@softwareperonista.com.ar>\n"
-"Language-Team: Español <nomeolvides@softwareperonista.com.ar>\n"
-"Language: es \n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 2.91.6\n"
 
 #: data/nomeolvides.appdata.xml.in:6 data/nomeolvides.desktop.in.in:9
 #: src/nomeolvides-headerbar.vala:47 src/nomeolvides-headerbar.vala:55
 #: data/nomeolvides.desktop.in:9
 msgid "Nomeolvides"
-msgstr "Nomeolvides"
+msgstr ""
 
 #: data/nomeolvides.appdata.xml.in:7 data/nomeolvides.desktop.in.in:10
 #: data/nomeolvides.desktop.in:10
 msgid "Ephemeride Manager"
-msgstr "Gestor de Efemérides"
+msgstr ""
 
 #: data/nomeolvides.appdata.xml.in:9
 msgid ""
@@ -35,60 +35,53 @@ msgid ""
 "personalized lists created by the user and import/export facts for backup or "
 "sharing."
 msgstr ""
-"Un gestor de hechos históricos sencillo que implementa un conjunto básico de "
-"acciones, tales como agregar hechos históricos en diferentes colecciones, "
-"editarlos y organizarlos en listas personalizadas creadas por el usuario y "
-"importar/exportar hechos para hacer copias de seguridad o compartirlos."
 
 #: data/nomeolvides.appdata.xml.in:15
 msgid ""
 "It focuses on providing a friendly user interface even when manage a great "
 "amount of facts."
 msgstr ""
-"Está enfocado en ofrecer una interfaz amigable aun manejando una gran "
-"cantidad de hechos."
 
 #: data/nomeolvides.appdata.xml.in:23
 msgid "The default interface"
-msgstr "Interfaz por Defecto"
+msgstr ""
 
 #: data/nomeolvides.appdata.xml.in:27
 msgid "The classic interface"
-msgstr "Interfaz Clásica"
+msgstr ""
 
 #: data/nomeolvides.desktop.in.in:4 data/nomeolvides.desktop.in:4
 msgid "history;facts;"
-msgstr "historia;hechos;"
+msgstr ""
 
 #: data/nomeolvides.desktop.in.in:11 data/nomeolvides.desktop.in:11
-#, fuzzy
 msgid "nomeolvides"
-msgstr "Nomeolvides"
+msgstr ""
 
 #: src/nomeolvides-app.vala:322 src/nomeolvides-notebook-anios-listas.ui:29
 msgid "Years"
-msgstr "Años"
+msgstr ""
 
 #: src/nomeolvides-archivo.vala:105 src/nomeolvides-archivo.vala:120
 msgid "Error while open"
-msgstr "Error al abrir"
+msgstr ""
 
 #: src/nomeolvides-configuracion.vala:32
 msgid "About Nomeolvides"
-msgstr "Acerca de Nomeolvides"
+msgstr ""
 
 #: src/nomeolvides-configuracion.vala:33
 msgid "Historical ephemeris manager"
-msgstr "Gestor de efemérides históricas"
+msgstr ""
 
 #: src/nomeolvides-configuracion.vala:34
 msgid "and"
-msgstr "y"
+msgstr ""
 
 #: src/nomeolvides-dialog-archivo-abrir.vala:29
 #: src/nomeolvides-dialog-hechos-importar.vala:71
 msgid "Choose File"
-msgstr "Elija un Archivo"
+msgstr ""
 
 #: src/nomeolvides-dialog-archivo-abrir.vala:33
 #: src/nomeolvides-dialog-archivo-guardar.vala:32
@@ -102,98 +95,98 @@ msgstr "Elija un Archivo"
 #: src/nomeolvides-dialog-hechos-importar.ui:92
 #: src/nomeolvides-popover-base-borrar.ui:98 src/nomeolvides-popover-base.ui:51
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr ""
 
 #: src/nomeolvides-dialog-archivo-abrir.vala:34
 #: src/nomeolvides-dialog-hechos-importar.vala:45
 msgid "Open"
-msgstr "Abrir"
+msgstr ""
 
 #: src/nomeolvides-dialog-archivo-guardar.vala:28
 msgid "Save File"
-msgstr "Guardar Archivo"
+msgstr ""
 
 #: src/nomeolvides-dialog-archivo-guardar.vala:33
 msgid "Save"
-msgstr "Guardar"
+msgstr ""
 
 #: src/nomeolvides-dialog-coleccion.vala:36
 #: src/nomeolvides-popover-coleccion-agregar.vala:28
 #: src/nomeolvides-popover-coleccion-editar.vala:30
 msgid "Colection name"
-msgstr "Nombre de la Colección"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-agregar.vala:26
 msgid "Add a Historical Fact"
-msgstr "Agregar Hecho Histórico"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-borrar.vala:46
 msgid "Remove Facts"
-msgstr "Elimnar Hechos"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-editar.vala:28
 msgid "Edit Fact"
-msgstr "Editar Hecho"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-lista-agregar.vala:42
 msgid "Add Facts to List"
-msgstr "Agregar Hechos a la Lista"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-lista-borrar.vala:44
 msgid "From list"
-msgstr "De la lista"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-lista-borrar.vala:85
 msgid "Remove Fact from List"
-msgstr "Elimnar Hecho de la Lista"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-lista-borrar.vala:90
 #: src/nomeolvides-dialog-hecho-lista-borrar.vala:92
 #: src/nomeolvides-dialog-hecho-borrar.ui:115
 msgid "Remove"
-msgstr "Elimnar"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-lista-borrar.vala:104
 msgid "Do you want to remove this fact from the list?"
-msgstr "¿Desea eliminar este hecho de la lista?"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-lista-borrar.vala:105
 msgid "Fact"
-msgstr "Hecho"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-lista-borrar.vala:114
 msgid "Remove Facts from List"
-msgstr "Elimnar Hechos de la Lista"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-lista-borrar.vala:116
 msgid "Do you want to remove this facts from the list?"
-msgstr "¿Desea eliminar estos hechos de la lista?"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-lista-borrar.vala:117
 msgid "Facts"
-msgstr "Hechos"
+msgstr ""
 
 #: src/nomeolvides-dialog-hechos-importar.vala:36
 msgid "Select Colection"
-msgstr "Sleccione una Colección"
+msgstr ""
 
 #: src/nomeolvides-dialog-hechos-importar.vala:43
 msgid "Select a file"
-msgstr "Sleccione un archivo"
+msgstr ""
 
 #: src/nomeolvides-dialog-lista.vala:36
 #: src/nomeolvides-popover-lista-agregar.vala:28
 #: src/nomeolvides-popover-lista-editar.vala:30
 msgid "List Name"
-msgstr "Nombre de la Lista"
+msgstr ""
 
 #: src/nomeolvides-dialog-migrador.vala:46
 msgid "Database Migration"
-msgstr "Migración de la Base de Datos"
+msgstr ""
 
 #: src/nomeolvides-dialog-migrador.vala:61
 msgid "Start migration"
-msgstr "Comenzar Migración"
+msgstr ""
 
 #: src/nomeolvides-dialog-migrador.vala:64
 msgid ""
@@ -211,316 +204,301 @@ msgid ""
 "\n"
 "Sincerely, the development team."
 msgstr ""
-"Estimado usuario,\n"
-"\n"
-"Dado que esta versión de Nomeolvides tiene una gran cantidad de cambios "
-"internos, es necesario llevar a cabo una migración de los los datos cargados "
-"en las versiones anteriores.\n"
-"\n"
-"El proceso de migración es automática y los datos migrados no serán "
-"eliminados después del proceso para evitar perder su trabajo, si se produce "
-"un error.\n"
-"\n"
-"Por favor, compruebe que todos los datos hayan sido correctamente migrados "
-"después de finalizado el proceso y, si no es así, notifíquenos a "
-"desarrolladores@softwareperonista.com.ar\n"
-"\n"
-"Atentamente, el equipo de desarrollo."
 
 #: src/nomeolvides-dialog-migrador.vala:237
 msgid "Finish Migration"
-msgstr "Finalizar Migración"
+msgstr ""
 
 #: src/nomeolvides-dialog-migrador.vala:241
 #: src/nomeolvides-dialog-migrador.vala:330
 msgid "Migrating Collections"
-msgstr "Migrando Colecciones"
+msgstr ""
 
 #: src/nomeolvides-dialog-migrador.vala:246
 msgid "Facts from Collection"
-msgstr "Hechos de la Colección"
+msgstr ""
 
 #: src/nomeolvides-dialog-migrador.vala:251
 #: src/nomeolvides-dialog-migrador.vala:382
 msgid "Migrating Lists"
-msgstr "Migrando Listas"
+msgstr ""
 
 #: src/nomeolvides-dialog-migrador.vala:256
 msgid "Facts from List"
-msgstr "Hechos de la Lista"
+msgstr ""
 
 #: src/nomeolvides-dialog-migrador.vala:305
 msgid "Migrating Collection"
-msgstr "Migrando Colección"
+msgstr ""
 
 #: src/nomeolvides-dialog-migrador.vala:318
 #: src/nomeolvides-dialog-migrador.vala:323
 #: src/nomeolvides-dialog-migrador.vala:370
 #: src/nomeolvides-dialog-migrador.vala:375
 msgid "Migrating Facts"
-msgstr "Migrando Hechos"
+msgstr ""
 
 #: src/nomeolvides-dialog-migrador.vala:351
 msgid "Migrating List"
-msgstr "Migrando Lista"
+msgstr ""
 
 #: src/nomeolvides-dialog-preferencias.vala:32
 msgid "Preferences"
-msgstr "Preferencias"
+msgstr ""
 
 #: src/nomeolvides-dialog-preferencias.vala:40
 msgid "Colections"
-msgstr "Colecciones"
+msgstr ""
 
 #: src/nomeolvides-dialog-preferencias.vala:41
 #: src/nomeolvides-notebook-anios-listas.ui:56
 msgid "Lists"
-msgstr "Listas"
+msgstr ""
 
 #: src/nomeolvides-dialog-preferencias.vala:46
 msgid "Close"
-msgstr "Cerrar"
+msgstr ""
 
 #: src/nomeolvides-headerbar.vala:46
 msgid "Year"
-msgstr "Año"
+msgstr ""
 
 #: src/nomeolvides-headerbar.vala:80 src/nomeolvides-headerbar.ui:55
 msgid "Add to list"
-msgstr "Agregar a la lista"
+msgstr ""
 
 #: src/nomeolvides-headerbar.vala:84
 msgid "Remove from list"
-msgstr "Eliminar de la lista"
+msgstr ""
 
 #: src/nomeolvides-hecho.vala:101
 msgid "%B %e, %Y"
-msgstr "%e de %B de %Y"
+msgstr ""
 
 #: src/nomeolvides-popover-coleccion-agregar.vala:27
 #: src/nomeolvides-popover-lista-agregar.vala:27
 #: src/nomeolvides-dialog-hecho-lista-agregar.ui:95
 #: src/nomeolvides-dialog-hecho.ui:191 src/nomeolvides-headerbar.ui:17
 msgid "Add"
-msgstr "Agregar"
+msgstr ""
 
 #: src/nomeolvides-popover-coleccion-borrar.vala:26
 msgid "Do you want to remove this collection?"
-msgstr "¿Desea eliminar esta colección?"
+msgstr ""
 
 #: src/nomeolvides-popover-coleccion-borrar.vala:27
 msgid "Colection"
-msgstr "Colección"
+msgstr ""
 
 #: src/nomeolvides-popover-coleccion-borrar.vala:28
 #: src/nomeolvides-popover-base-borrar.ui:69
 msgid "Amount of Facts"
-msgstr "Cantidad de Hechos"
+msgstr ""
 
 #: src/nomeolvides-popover-coleccion-editar.vala:29
 #: src/nomeolvides-popover-lista-editar.vala:29 src/nomeolvides-headerbar.ui:82
 msgid "Edit"
-msgstr "Editar"
+msgstr ""
 
 #: src/nomeolvides-popover-lista-borrar.vala:26
 msgid "Do you want to remove custom list?"
-msgstr "¿Desea eliminar la lista personalizada?"
+msgstr ""
 
 #: src/nomeolvides-popover-lista-borrar.vala:27
 msgid "List"
-msgstr "Lista"
+msgstr ""
 
 #: src/nomeolvides-popover-lista-borrar.vala:28
 #: src/nomeolvides-treeview-base.ui:34
 msgid "Amount of facts"
-msgstr "Cantidad de Hechos"
+msgstr ""
 
 #: src/nomeolvides-portada.vala:44
 msgid "Source"
-msgstr "Fuente"
+msgstr ""
 
 #: src/nomeolvides-sqlite.vala:37
 msgid "Could not open the data base"
-msgstr "No se pudo abrir la base de datos"
+msgstr ""
 
 #: src/nomeolvides-sqlite.vala:56
 msgid "Failed to execute the sentence"
-msgstr "Error al ejecutar la sentencia"
+msgstr ""
 
 #: src/nomeolvides-sqlite.vala:174
 msgid "Error parsing facts"
-msgstr "Error parseando hechos"
+msgstr ""
 
 #: src/nomeolvides-sqlite.vala:401 src/nomeolvides-sqlite.vala:459
 #: src/nomeolvides-sqlite.vala:490 src/nomeolvides-sqlite.vala:519
 msgid "Error"
-msgstr "Error"
+msgstr ""
 
 #: src/nomeolvides-sqlite.vala:584
 msgid "Error parsing lists"
-msgstr "Error parseando listas"
+msgstr ""
 
 #: src/nomeolvides-app-menu.ui:6
 msgid "_Preferences"
-msgstr "_Preferencias"
+msgstr ""
 
 #: src/nomeolvides-app-menu.ui:12
 msgid "_Export Facts..."
-msgstr "_Exportar Hechos"
+msgstr ""
 
 #: src/nomeolvides-app-menu.ui:16
 msgid "_Import Facts..."
-msgstr "_Importar Hechos"
+msgstr ""
 
 #: src/nomeolvides-app-menu.ui:22
 msgid "_About Nomeolvides"
-msgstr "_Acerca de Nomeolvides"
+msgstr ""
 
 #: src/nomeolvides-app-menu.ui:26
 msgid "_Quit"
-msgstr "_Salir"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-borrar.ui:7
 msgid "Remove Fact"
-msgstr "Elimnar Hecho"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-borrar.ui:43
 msgid "Do you want to remove this fact?"
-msgstr "¿Desea eliminar este hecho?"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-borrar.ui:58
 msgid "Fact: "
-msgstr "Hecho: "
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-borrar.ui:69
 msgid "Dated: "
-msgstr "Fecha: "
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-lista-agregar.ui:7
 msgid "Add Fact to List"
-msgstr "Agregar Hecho a la Lista"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-lista-agregar.ui:34
 msgid "Add fact: "
-msgstr "Agregar Hecho: "
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho-lista-agregar.ui:45
 msgid "to list"
-msgstr "a la lista"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho.ui:85
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho.ui:119
 msgid "Name:"
-msgstr "Nombre:"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho.ui:132
 msgid "Date:"
-msgstr "Fecha:"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho.ui:145
 msgid "Colection:"
-msgstr "Colección:"
+msgstr ""
 
 #: src/nomeolvides-dialog-hecho.ui:158
 msgid "Source:"
-msgstr "Fuente:"
+msgstr ""
 
 #: src/nomeolvides-dialog-hechos-importar.ui:7
 msgid "Import Facts from File"
-msgstr "Importar hechos desde un Archivo"
+msgstr ""
 
 #: src/nomeolvides-dialog-hechos-importar.ui:33
 msgid "File: "
-msgstr "Archivo: "
+msgstr ""
 
 #: src/nomeolvides-dialog-hechos-importar.ui:44
 msgid "Colection: "
-msgstr "Colección: "
+msgstr ""
 
 #: src/nomeolvides-dialog-hechos-importar.ui:71
 msgid "Choose a file"
-msgstr "Elija un Archivo"
+msgstr ""
 
 #: src/nomeolvides-dialog-hechos-importar.ui:100
 msgid "Import"
-msgstr "Importar"
+msgstr ""
 
 #: src/nomeolvides-headerbar.ui:26
 msgid "Undo"
-msgstr "Deshacer"
+msgstr ""
 
 #: src/nomeolvides-headerbar.ui:36
 msgid "Redo"
-msgstr "Rehacer"
+msgstr ""
 
 #: src/nomeolvides-headerbar.ui:64
 msgid "Send"
-msgstr "Enviar"
+msgstr ""
 
 #: src/nomeolvides-headerbar.ui:73 src/nomeolvides-popover-base-borrar.ui:111
 msgid "Delete"
-msgstr "Borrar"
+msgstr ""
 
 #: src/nomeolvides-popover-base.ui:25 src/nomeolvides-treeview-anios.ui:20
 #: src/nomeolvides-treeview-base.ui:19 src/nomeolvides-treeview-hechos.ui:20
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 #: src/nomeolvides-selector-fecha.ui:27
 msgid "January"
-msgstr "Enero"
+msgstr ""
 
 #: src/nomeolvides-selector-fecha.ui:31
 msgid "February"
-msgstr "Febrero"
+msgstr ""
 
 #: src/nomeolvides-selector-fecha.ui:35
 msgid "March"
-msgstr "Marzo"
+msgstr ""
 
 #: src/nomeolvides-selector-fecha.ui:39
 msgid "April"
-msgstr "Abril"
+msgstr ""
 
 #: src/nomeolvides-selector-fecha.ui:43
 msgid "May"
-msgstr "Mayo"
+msgstr ""
 
 #: src/nomeolvides-selector-fecha.ui:47
 msgid "June"
-msgstr "Junio"
+msgstr ""
 
 #: src/nomeolvides-selector-fecha.ui:51
 msgid "July"
-msgstr "Julio"
+msgstr ""
 
 #: src/nomeolvides-selector-fecha.ui:55
 msgid "August"
-msgstr "Agosto"
+msgstr ""
 
 #: src/nomeolvides-selector-fecha.ui:59
 msgid "September"
-msgstr "Septimbre"
+msgstr ""
 
 #: src/nomeolvides-selector-fecha.ui:63
 msgid "October"
-msgstr "Octubre"
+msgstr ""
 
 #: src/nomeolvides-selector-fecha.ui:67
 msgid "November"
-msgstr "Noviembre"
+msgstr ""
 
 #: src/nomeolvides-selector-fecha.ui:71
 msgid "December"
-msgstr "Diciembre"
+msgstr ""
 
 #: src/nomeolvides-treeview-colecciones.ui:8
 msgid "Visible"
-msgstr "Visible"
+msgstr ""
 
 #: src/nomeolvides-treeview-hechos.ui:35
 msgid "Date"
-msgstr "Fecha"
+msgstr ""

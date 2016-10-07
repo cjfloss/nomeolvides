@@ -9,12 +9,14 @@ then
 	echo "Actualizando POTFILES"
 	cd po
 	../scripts/crear-potfiles > /dev/null 2> /dev/null
-	../scripts/crear-potfiles --disable-gnome3-support > /dev/null 2> /dev/null
-	intltool-update es
 	cd ..
+
+	make -C po nomeolvides.pot
+	msgmerge -U po/es.po po/nomeolvides.pot
 
 	git add po/POTFILES.in
 	git add po/POTFILES.skip
+	git add po/nomeolvides.pot
 	git add po/es.po
 fi
 
