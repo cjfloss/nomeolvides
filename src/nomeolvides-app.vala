@@ -327,6 +327,7 @@ public class Nomeolvides.App : Gtk.Application  {
 	}
 
 	public App () {
+		Object (application_id: "ar.com.softwareperonista.Nomeolvides");
 		app = this;
 		Configuracion.set_config ();
 		this.datos = new Datos ();
