@@ -136,7 +136,6 @@ EXTRA_DIST = 	$(ui_DATA) \
 		nomeolvides-ventana-principal.ui \
 		$(NULL)
 
-
 # Remove ui directory on uninstall
 uninstall-local:
 	-rm -r $(uidir)
