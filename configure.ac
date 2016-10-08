@@ -10,7 +10,7 @@ dnl ***********************************************************************
 m4_define([major_version],[0])
 m4_define([minor_version],[13])
 m4_define([micro_version],[0])
-m4_define([pico_version],[59])
+m4_define([pico_version],[60])
 m4_define([package_version],[major_version.minor_version.micro_version.pico_version])
 m4_define([bug_report_url],[https://github.com/softwareperonista/nomeolvides/issue])
 m4_define([api_version],[0])
