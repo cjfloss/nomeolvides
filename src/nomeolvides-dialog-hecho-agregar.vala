@@ -26,7 +26,7 @@ public class Nomeolvides.DialogHechoAgregar : Nomeolvides.DialogHecho {
 		this.set_title (_("Add a Historical Fact"));
 		this.response.connect(on_response);
 		this.entry_nombre.activate.connect(on_activate);
-    this.button_aplicar.set_label ( "Add" );
+    this.button_aplicar.set_label ( _("Add") );
 	}
 
 

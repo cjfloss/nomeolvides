@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.9.556\n"
 "Report-Msgid-Bugs-To: desarrolladores@softwareperonista.com.ar\n"
-"POT-Creation-Date: 2016-10-08 16:15-0300\n"
+"POT-Creation-Date: 2016-10-08 16:55-0300\n"
 "PO-Revision-Date: 2016-10-08 16:24-0300\n"
 "Last-Translator: Fernando Fernandez <fernando@softwareperonista.com.ar>\n"
 "Language-Team: Español; Castellano <desarrolladores@softwareperonista.com."
@@ -97,6 +97,7 @@ msgid "Migrating List"
 msgstr "Migrando Lista"
 
 #: src/nomeolvides-popover-coleccion-agregar.vala:27
+#: src/nomeolvides-dialog-hecho-agregar.vala:29
 #: src/nomeolvides-popover-lista-agregar.vala:27
 #: src/nomeolvides-headerbar.ui:17
 #: src/nomeolvides-dialog-hecho-lista-agregar.ui:95
