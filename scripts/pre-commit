@@ -7,15 +7,12 @@ then
 	git add configure.ac
 
 	echo "Actualizando POTFILES"
-	cd po
-	../scripts/crear-potfiles > /dev/null 2> /dev/null
-	cd ..
+	scripts/crear-potfiles > /dev/null 2> /dev/null
 
-	make -C po nomeolvides.pot
+	make -C po nomeolvides.pot-update
 	msgmerge -U po/es.po po/nomeolvides.pot
 
 	git add po/POTFILES.in
-	git add po/POTFILES.skip
 	git add po/nomeolvides.pot
 	git add po/es.po
 fi

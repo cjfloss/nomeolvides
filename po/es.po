@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.9.556\n"
 "Report-Msgid-Bugs-To: desarrolladores@softwareperonista.com.ar\n"
-"POT-Creation-Date: 2016-10-03 22:23-0300\n"
+"POT-Creation-Date: 2016-10-08 16:15-0300\n"
 "PO-Revision-Date: 2015-02-08 05:47-0300\n"
 "Last-Translator: Fernando Fernandez <fernando@softwareperonista.com.ar>\n"
 "Language-Team: Español <nomeolvides@softwareperonista.com.ar>\n"
@@ -16,176 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Gtranslator 2.91.6\n"
-
-#: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:6 data/ar.com.softwareperonista.Nomeolvides.desktop.in.in:9
-#: src/nomeolvides-headerbar.vala:47 src/nomeolvides-headerbar.vala:55
-#: data/ar.com.softwareperonista.Nomeolvides.desktop.in:9
-msgid "Nomeolvides"
-msgstr "Nomeolvides"
-
-#: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:7 data/ar.com.softwareperonista.Nomeolvides.desktop.in.in:10
-#: data/ar.com.softwareperonista.Nomeolvides.desktop.in:10
-msgid "Ephemeride Manager"
-msgstr "Gestor de Efemérides"
-
-#: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:9
-msgid ""
-"A simple historical facts manager featuring a number of basic actions such "
-"as add historical facts in differents collections, edit and organize them in "
-"personalized lists created by the user and import/export facts for backup or "
-"sharing."
-msgstr ""
-"Un gestor de hechos históricos sencillo que implementa un conjunto básico de "
-"acciones, tales como agregar hechos históricos en diferentes colecciones, "
-"editarlos y organizarlos en listas personalizadas creadas por el usuario y "
-"importar/exportar hechos para hacer copias de seguridad o compartirlos."
-
-#: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:15
-msgid ""
-"It focuses on providing a friendly user interface even when manage a great "
-"amount of facts."
-msgstr ""
-"Está enfocado en ofrecer una interfaz amigable aun manejando una gran "
-"cantidad de hechos."
-
-#: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:23
-msgid "The default interface"
-msgstr "Interfaz por Defecto"
-
-#: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:27
-msgid "The classic interface"
-msgstr "Interfaz Clásica"
-
-#: data/ar.com.softwareperonista.Nomeolvides.desktop.in.in:4 data/ar.com.softwareperonista.Nomeolvides.desktop.in:4
-msgid "history;facts;"
-msgstr "historia;hechos;"
-
-#: data/ar.com.softwareperonista.Nomeolvides.desktop.in.in:11 data/ar.com.softwareperonista.Nomeolvides.desktop.in:11
-#, fuzzy
-msgid "nomeolvides"
-msgstr "Nomeolvides"
-
-#: src/nomeolvides-app.vala:322 src/nomeolvides-notebook-anios-listas.ui:29
-msgid "Years"
-msgstr "Años"
-
-#: src/nomeolvides-archivo.vala:105 src/nomeolvides-archivo.vala:120
-msgid "Error while open"
-msgstr "Error al abrir"
-
-#: src/nomeolvides-configuracion.vala:32
-msgid "About Nomeolvides"
-msgstr "Acerca de Nomeolvides"
-
-#: src/nomeolvides-configuracion.vala:33
-msgid "Historical ephemeris manager"
-msgstr "Gestor de efemérides históricas"
-
-#: src/nomeolvides-configuracion.vala:34
-msgid "and"
-msgstr "y"
-
-#: src/nomeolvides-dialog-archivo-abrir.vala:29
-#: src/nomeolvides-dialog-hechos-importar.vala:71
-msgid "Choose File"
-msgstr "Elija un Archivo"
-
-#: src/nomeolvides-dialog-archivo-abrir.vala:33
-#: src/nomeolvides-dialog-archivo-guardar.vala:32
-#: src/nomeolvides-dialog-coleccion.vala:32
-#: src/nomeolvides-dialog-hecho-lista-borrar.vala:88
-#: src/nomeolvides-dialog-hechos-importar.vala:44
-#: src/nomeolvides-dialog-lista.vala:32
-#: src/nomeolvides-dialog-hecho-borrar.ui:107
-#: src/nomeolvides-dialog-hecho-lista-agregar.ui:87
-#: src/nomeolvides-dialog-hecho.ui:183
-#: src/nomeolvides-dialog-hechos-importar.ui:92
-#: src/nomeolvides-popover-base-borrar.ui:98 src/nomeolvides-popover-base.ui:51
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: src/nomeolvides-dialog-archivo-abrir.vala:34
-#: src/nomeolvides-dialog-hechos-importar.vala:45
-msgid "Open"
-msgstr "Abrir"
-
-#: src/nomeolvides-dialog-archivo-guardar.vala:28
-msgid "Save File"
-msgstr "Guardar Archivo"
-
-#: src/nomeolvides-dialog-archivo-guardar.vala:33
-msgid "Save"
-msgstr "Guardar"
-
-#: src/nomeolvides-dialog-coleccion.vala:36
-#: src/nomeolvides-popover-coleccion-agregar.vala:28
-#: src/nomeolvides-popover-coleccion-editar.vala:30
-msgid "Colection name"
-msgstr "Nombre de la Colección"
-
-#: src/nomeolvides-dialog-hecho-agregar.vala:26
-msgid "Add a Historical Fact"
-msgstr "Agregar Hecho Histórico"
-
-#: src/nomeolvides-dialog-hecho-borrar.vala:46
-msgid "Remove Facts"
-msgstr "Elimnar Hechos"
-
-#: src/nomeolvides-dialog-hecho-editar.vala:28
-msgid "Edit Fact"
-msgstr "Editar Hecho"
-
-#: src/nomeolvides-dialog-hecho-lista-agregar.vala:42
-msgid "Add Facts to List"
-msgstr "Agregar Hechos a la Lista"
-
-#: src/nomeolvides-dialog-hecho-lista-borrar.vala:44
-msgid "From list"
-msgstr "De la lista"
-
-#: src/nomeolvides-dialog-hecho-lista-borrar.vala:85
-msgid "Remove Fact from List"
-msgstr "Elimnar Hecho de la Lista"
-
-#: src/nomeolvides-dialog-hecho-lista-borrar.vala:90
-#: src/nomeolvides-dialog-hecho-lista-borrar.vala:92
-#: src/nomeolvides-dialog-hecho-borrar.ui:115
-msgid "Remove"
-msgstr "Elimnar"
-
-#: src/nomeolvides-dialog-hecho-lista-borrar.vala:104
-msgid "Do you want to remove this fact from the list?"
-msgstr "¿Desea eliminar este hecho de la lista?"
-
-#: src/nomeolvides-dialog-hecho-lista-borrar.vala:105
-msgid "Fact"
-msgstr "Hecho"
-
-#: src/nomeolvides-dialog-hecho-lista-borrar.vala:114
-msgid "Remove Facts from List"
-msgstr "Elimnar Hechos de la Lista"
-
-#: src/nomeolvides-dialog-hecho-lista-borrar.vala:116
-msgid "Do you want to remove this facts from the list?"
-msgstr "¿Desea eliminar estos hechos de la lista?"
-
-#: src/nomeolvides-dialog-hecho-lista-borrar.vala:117
-msgid "Facts"
-msgstr "Hechos"
-
-#: src/nomeolvides-dialog-hechos-importar.vala:36
-msgid "Select Colection"
-msgstr "Sleccione una Colección"
-
-#: src/nomeolvides-dialog-hechos-importar.vala:43
-msgid "Select a file"
-msgstr "Sleccione un archivo"
-
-#: src/nomeolvides-dialog-lista.vala:36
-#: src/nomeolvides-popover-lista-agregar.vala:28
-#: src/nomeolvides-popover-lista-editar.vala:30
-msgid "List Name"
-msgstr "Nombre de la Lista"
 
 #: src/nomeolvides-dialog-migrador.vala:46
 msgid "Database Migration"
@@ -264,45 +94,95 @@ msgstr "Migrando Hechos"
 msgid "Migrating List"
 msgstr "Migrando Lista"
 
-#: src/nomeolvides-dialog-preferencias.vala:32
-msgid "Preferences"
-msgstr "Preferencias"
+#: src/nomeolvides-popover-coleccion-agregar.vala:27
+#: src/nomeolvides-popover-lista-agregar.vala:27
+#: src/nomeolvides-headerbar.ui:17
+#: src/nomeolvides-dialog-hecho-lista-agregar.ui:95
+#: src/nomeolvides-dialog-hecho.ui:191
+msgid "Add"
+msgstr "Agregar"
 
-#: src/nomeolvides-dialog-preferencias.vala:40
-msgid "Colections"
-msgstr "Colecciones"
+#: src/nomeolvides-popover-coleccion-agregar.vala:28
+#: src/nomeolvides-dialog-coleccion.vala:36
+#: src/nomeolvides-popover-coleccion-editar.vala:30
+msgid "Colection name"
+msgstr "Nombre de la Colección"
 
-#: src/nomeolvides-dialog-preferencias.vala:41
-#: src/nomeolvides-notebook-anios-listas.ui:56
-msgid "Lists"
-msgstr "Listas"
+#: src/nomeolvides-dialog-hecho-borrar.vala:46
+msgid "Remove Facts"
+msgstr "Elimnar Hechos"
 
-#: src/nomeolvides-dialog-preferencias.vala:46
-msgid "Close"
-msgstr "Cerrar"
+#: src/nomeolvides-dialog-hecho-editar.vala:28
+msgid "Edit Fact"
+msgstr "Editar Hecho"
 
-#: src/nomeolvides-headerbar.vala:46
-msgid "Year"
-msgstr "Año"
+#: src/nomeolvides-portada.vala:44
+msgid "Source"
+msgstr "Fuente"
 
-#: src/nomeolvides-headerbar.vala:80 src/nomeolvides-headerbar.ui:55
-msgid "Add to list"
-msgstr "Agregar a la lista"
+#: src/nomeolvides-archivo.vala:105 src/nomeolvides-archivo.vala:120
+msgid "Error while open"
+msgstr "Error al abrir"
 
-#: src/nomeolvides-headerbar.vala:84
-msgid "Remove from list"
-msgstr "Eliminar de la lista"
+#: src/nomeolvides-dialog-hecho-agregar.vala:26
+msgid "Add a Historical Fact"
+msgstr "Agregar Hecho Histórico"
+
+#: src/nomeolvides-dialog-coleccion.vala:32
+#: src/nomeolvides-dialog-hechos-importar.vala:44
+#: src/nomeolvides-dialog-archivo-guardar.vala:32
+#: src/nomeolvides-dialog-lista.vala:32
+#: src/nomeolvides-dialog-archivo-abrir.vala:33
+#: src/nomeolvides-dialog-hecho-lista-borrar.vala:88
+#: src/nomeolvides-dialog-hechos-importar.ui:92
+#: src/nomeolvides-popover-base.ui:51 src/nomeolvides-popover-base-borrar.ui:98
+#: src/nomeolvides-dialog-hecho-lista-agregar.ui:87
+#: src/nomeolvides-dialog-hecho.ui:183
+#: src/nomeolvides-dialog-hecho-borrar.ui:107
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/nomeolvides-dialog-hechos-importar.vala:36
+msgid "Select Colection"
+msgstr "Sleccione una Colección"
+
+#: src/nomeolvides-dialog-hechos-importar.vala:43
+msgid "Select a file"
+msgstr "Sleccione un archivo"
+
+#: src/nomeolvides-dialog-hechos-importar.vala:45
+#: src/nomeolvides-dialog-archivo-abrir.vala:34
+msgid "Open"
+msgstr "Abrir"
+
+#: src/nomeolvides-dialog-hechos-importar.vala:71
+#: src/nomeolvides-dialog-archivo-abrir.vala:29
+msgid "Choose File"
+msgstr "Elija un Archivo"
+
+#: src/nomeolvides-popover-lista-agregar.vala:28
+#: src/nomeolvides-popover-lista-editar.vala:30
+#: src/nomeolvides-dialog-lista.vala:36
+msgid "List Name"
+msgstr "Nombre de la Lista"
 
 #: src/nomeolvides-hecho.vala:101
 msgid "%B %e, %Y"
 msgstr "%e de %B de %Y"
 
-#: src/nomeolvides-popover-coleccion-agregar.vala:27
-#: src/nomeolvides-popover-lista-agregar.vala:27
-#: src/nomeolvides-dialog-hecho-lista-agregar.ui:95
-#: src/nomeolvides-dialog-hecho.ui:191 src/nomeolvides-headerbar.ui:17
-msgid "Add"
-msgstr "Agregar"
+#: src/nomeolvides-popover-lista-editar.vala:29
+#: src/nomeolvides-popover-coleccion-editar.vala:29
+#: src/nomeolvides-headerbar.ui:82
+msgid "Edit"
+msgstr "Editar"
+
+#: src/nomeolvides-dialog-archivo-guardar.vala:28
+msgid "Save File"
+msgstr "Guardar Archivo"
+
+#: src/nomeolvides-dialog-archivo-guardar.vala:33
+msgid "Save"
+msgstr "Guardar"
 
 #: src/nomeolvides-popover-coleccion-borrar.vala:26
 msgid "Do you want to remove this collection?"
@@ -316,28 +196,6 @@ msgstr "Colección"
 #: src/nomeolvides-popover-base-borrar.ui:69
 msgid "Amount of Facts"
 msgstr "Cantidad de Hechos"
-
-#: src/nomeolvides-popover-coleccion-editar.vala:29
-#: src/nomeolvides-popover-lista-editar.vala:29 src/nomeolvides-headerbar.ui:82
-msgid "Edit"
-msgstr "Editar"
-
-#: src/nomeolvides-popover-lista-borrar.vala:26
-msgid "Do you want to remove custom list?"
-msgstr "¿Desea eliminar la lista personalizada?"
-
-#: src/nomeolvides-popover-lista-borrar.vala:27
-msgid "List"
-msgstr "Lista"
-
-#: src/nomeolvides-popover-lista-borrar.vala:28
-#: src/nomeolvides-treeview-base.ui:34
-msgid "Amount of facts"
-msgstr "Cantidad de Hechos"
-
-#: src/nomeolvides-portada.vala:44
-msgid "Source"
-msgstr "Fuente"
 
 #: src/nomeolvides-sqlite.vala:37
 msgid "Could not open the data base"
@@ -360,73 +218,112 @@ msgstr "Error"
 msgid "Error parsing lists"
 msgstr "Error parseando listas"
 
-#: src/nomeolvides-app-menu.ui:6
-msgid "_Preferences"
-msgstr "_Preferencias"
+#: src/nomeolvides-headerbar.vala:46
+msgid "Year"
+msgstr "Año"
 
-#: src/nomeolvides-app-menu.ui:12
-msgid "_Export Facts..."
-msgstr "_Exportar Hechos"
+#: src/nomeolvides-headerbar.vala:47 src/nomeolvides-headerbar.vala:55
+#: data/ar.com.softwareperonista.Nomeolvides.desktop.in.in:9
+#: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:6
+msgid "Nomeolvides"
+msgstr "Nomeolvides"
 
-#: src/nomeolvides-app-menu.ui:16
-msgid "_Import Facts..."
-msgstr "_Importar Hechos"
+#: src/nomeolvides-headerbar.vala:80 src/nomeolvides-headerbar.ui:55
+msgid "Add to list"
+msgstr "Agregar a la lista"
 
-#: src/nomeolvides-app-menu.ui:22
-msgid "_About Nomeolvides"
-msgstr "_Acerca de Nomeolvides"
+#: src/nomeolvides-headerbar.vala:84
+msgid "Remove from list"
+msgstr "Eliminar de la lista"
 
-#: src/nomeolvides-app-menu.ui:26
-msgid "_Quit"
-msgstr "_Salir"
+#: src/nomeolvides-dialog-hecho-lista-borrar.vala:44
+msgid "From list"
+msgstr "De la lista"
 
-#: src/nomeolvides-dialog-hecho-borrar.ui:7
-msgid "Remove Fact"
-msgstr "Elimnar Hecho"
+#: src/nomeolvides-dialog-hecho-lista-borrar.vala:85
+msgid "Remove Fact from List"
+msgstr "Elimnar Hecho de la Lista"
 
-#: src/nomeolvides-dialog-hecho-borrar.ui:43
-msgid "Do you want to remove this fact?"
-msgstr "¿Desea eliminar este hecho?"
+#: src/nomeolvides-dialog-hecho-lista-borrar.vala:90
+#: src/nomeolvides-dialog-hecho-lista-borrar.vala:92
+#: src/nomeolvides-dialog-hecho-borrar.ui:115
+msgid "Remove"
+msgstr "Elimnar"
 
-#: src/nomeolvides-dialog-hecho-borrar.ui:58
-msgid "Fact: "
-msgstr "Hecho: "
+#: src/nomeolvides-dialog-hecho-lista-borrar.vala:104
+msgid "Do you want to remove this fact from the list?"
+msgstr "¿Desea eliminar este hecho de la lista?"
 
-#: src/nomeolvides-dialog-hecho-borrar.ui:69
-msgid "Dated: "
-msgstr "Fecha: "
+#: src/nomeolvides-dialog-hecho-lista-borrar.vala:105
+msgid "Fact"
+msgstr "Hecho"
 
-#: src/nomeolvides-dialog-hecho-lista-agregar.ui:7
-msgid "Add Fact to List"
-msgstr "Agregar Hecho a la Lista"
+#: src/nomeolvides-dialog-hecho-lista-borrar.vala:114
+msgid "Remove Facts from List"
+msgstr "Elimnar Hechos de la Lista"
 
-#: src/nomeolvides-dialog-hecho-lista-agregar.ui:34
-msgid "Add fact: "
-msgstr "Agregar Hecho: "
+#: src/nomeolvides-dialog-hecho-lista-borrar.vala:116
+msgid "Do you want to remove this facts from the list?"
+msgstr "¿Desea eliminar estos hechos de la lista?"
 
-#: src/nomeolvides-dialog-hecho-lista-agregar.ui:45
-msgid "to list"
-msgstr "a la lista"
+#: src/nomeolvides-dialog-hecho-lista-borrar.vala:117
+msgid "Facts"
+msgstr "Hechos"
 
-#: src/nomeolvides-dialog-hecho.ui:85
-msgid "Description"
-msgstr "Descripción"
+#: src/nomeolvides-dialog-preferencias.vala:32
+msgid "Preferences"
+msgstr "Preferencias"
 
-#: src/nomeolvides-dialog-hecho.ui:119
-msgid "Name:"
-msgstr "Nombre:"
+#: src/nomeolvides-dialog-preferencias.vala:40
+msgid "Colections"
+msgstr "Colecciones"
 
-#: src/nomeolvides-dialog-hecho.ui:132
-msgid "Date:"
-msgstr "Fecha:"
+#: src/nomeolvides-dialog-preferencias.vala:41
+#: src/nomeolvides-notebook-anios-listas.ui:56
+msgid "Lists"
+msgstr "Listas"
 
-#: src/nomeolvides-dialog-hecho.ui:145
-msgid "Colection:"
-msgstr "Colección:"
+#: src/nomeolvides-dialog-preferencias.vala:46
+msgid "Close"
+msgstr "Cerrar"
 
-#: src/nomeolvides-dialog-hecho.ui:158
-msgid "Source:"
-msgstr "Fuente:"
+#: src/nomeolvides-popover-lista-borrar.vala:26
+msgid "Do you want to remove custom list?"
+msgstr "¿Desea eliminar la lista personalizada?"
+
+#: src/nomeolvides-popover-lista-borrar.vala:27
+msgid "List"
+msgstr "Lista"
+
+#: src/nomeolvides-popover-lista-borrar.vala:28
+#: src/nomeolvides-treeview-base.ui:34
+msgid "Amount of facts"
+msgstr "Cantidad de Hechos"
+
+#: src/nomeolvides-configuracion.vala:32
+msgid "About Nomeolvides"
+msgstr "Acerca de Nomeolvides"
+
+#: src/nomeolvides-configuracion.vala:33
+msgid "Historical ephemeris manager"
+msgstr "Gestor de efemérides históricas"
+
+#: src/nomeolvides-configuracion.vala:34
+msgid "and"
+msgstr "y"
+
+#: src/nomeolvides-app.vala:322 src/nomeolvides-notebook-anios-listas.ui:29
+msgid "Years"
+msgstr "Años"
+
+#: src/nomeolvides-dialog-hecho-lista-agregar.vala:42
+msgid "Add Facts to List"
+msgstr "Agregar Hechos a la Lista"
+
+#: src/nomeolvides-treeview-anios.ui:20 src/nomeolvides-popover-base.ui:25
+#: src/nomeolvides-treeview-base.ui:19 src/nomeolvides-treeview-hechos.ui:20
+msgid "Name"
+msgstr "Nombre"
 
 #: src/nomeolvides-dialog-hechos-importar.ui:7
 msgid "Import Facts from File"
@@ -448,6 +345,26 @@ msgstr "Elija un Archivo"
 msgid "Import"
 msgstr "Importar"
 
+#: src/nomeolvides-app-menu.ui:6
+msgid "_Preferences"
+msgstr "_Preferencias"
+
+#: src/nomeolvides-app-menu.ui:12
+msgid "_Export Facts..."
+msgstr "_Exportar Hechos"
+
+#: src/nomeolvides-app-menu.ui:16
+msgid "_Import Facts..."
+msgstr "_Importar Hechos"
+
+#: src/nomeolvides-app-menu.ui:22
+msgid "_About Nomeolvides"
+msgstr "_Acerca de Nomeolvides"
+
+#: src/nomeolvides-app-menu.ui:26
+msgid "_Quit"
+msgstr "_Salir"
+
 #: src/nomeolvides-headerbar.ui:26
 msgid "Undo"
 msgstr "Deshacer"
@@ -464,10 +381,21 @@ msgstr "Enviar"
 msgid "Delete"
 msgstr "Borrar"
 
-#: src/nomeolvides-popover-base.ui:25 src/nomeolvides-treeview-anios.ui:20
-#: src/nomeolvides-treeview-base.ui:19 src/nomeolvides-treeview-hechos.ui:20
-msgid "Name"
-msgstr "Nombre"
+#: src/nomeolvides-treeview-colecciones.ui:8
+msgid "Visible"
+msgstr "Visible"
+
+#: src/nomeolvides-dialog-hecho-lista-agregar.ui:7
+msgid "Add Fact to List"
+msgstr "Agregar Hecho a la Lista"
+
+#: src/nomeolvides-dialog-hecho-lista-agregar.ui:34
+msgid "Add fact: "
+msgstr "Agregar Hecho: "
+
+#: src/nomeolvides-dialog-hecho-lista-agregar.ui:45
+msgid "to list"
+msgstr "a la lista"
 
 #: src/nomeolvides-selector-fecha.ui:27
 msgid "January"
@@ -517,10 +445,87 @@ msgstr "Noviembre"
 msgid "December"
 msgstr "Diciembre"
 
-#: src/nomeolvides-treeview-colecciones.ui:8
-msgid "Visible"
-msgstr "Visible"
+#: src/nomeolvides-dialog-hecho.ui:85
+msgid "Description"
+msgstr "Descripción"
+
+#: src/nomeolvides-dialog-hecho.ui:119
+msgid "Name:"
+msgstr "Nombre:"
+
+#: src/nomeolvides-dialog-hecho.ui:132
+msgid "Date:"
+msgstr "Fecha:"
+
+#: src/nomeolvides-dialog-hecho.ui:145
+msgid "Colection:"
+msgstr "Colección:"
+
+#: src/nomeolvides-dialog-hecho.ui:158
+msgid "Source:"
+msgstr "Fuente:"
 
 #: src/nomeolvides-treeview-hechos.ui:35
 msgid "Date"
 msgstr "Fecha"
+
+#: src/nomeolvides-dialog-hecho-borrar.ui:7
+msgid "Remove Fact"
+msgstr "Elimnar Hecho"
+
+#: src/nomeolvides-dialog-hecho-borrar.ui:43
+msgid "Do you want to remove this fact?"
+msgstr "¿Desea eliminar este hecho?"
+
+#: src/nomeolvides-dialog-hecho-borrar.ui:58
+msgid "Fact: "
+msgstr "Hecho: "
+
+#: src/nomeolvides-dialog-hecho-borrar.ui:69
+msgid "Dated: "
+msgstr "Fecha: "
+
+#: data/ar.com.softwareperonista.Nomeolvides.desktop.in.in:4
+msgid "history;facts;"
+msgstr "historia;hechos;"
+
+#: data/ar.com.softwareperonista.Nomeolvides.desktop.in.in:10
+#: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:7
+msgid "Ephemeride Manager"
+msgstr "Gestor de Efemérides"
+
+#: data/ar.com.softwareperonista.Nomeolvides.desktop.in.in:11
+msgid "ar.com.softwareperonista.Nomeolvides"
+msgstr ""
+
+#: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:9
+msgid ""
+"A simple historical facts manager featuring a number of basic actions such "
+"as add historical facts in differents collections, edit and organize them in "
+"personalized lists created by the user and import/export facts for backup or "
+"sharing."
+msgstr ""
+"Un gestor de hechos históricos sencillo que implementa un conjunto básico de "
+"acciones, tales como agregar hechos históricos en diferentes colecciones, "
+"editarlos y organizarlos en listas personalizadas creadas por el usuario y "
+"importar/exportar hechos para hacer copias de seguridad o compartirlos."
+
+#: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:15
+msgid ""
+"It focuses on providing a friendly user interface even when manage a great "
+"amount of facts."
+msgstr ""
+"Está enfocado en ofrecer una interfaz amigable aun manejando una gran "
+"cantidad de hechos."
+
+#: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:23
+msgid "The default interface"
+msgstr "Interfaz por Defecto"
+
+#: data/ar.com.softwareperonista.Nomeolvides.appdata.xml.in:27
+msgid "The classic interface"
+msgstr "Interfaz Clásica"
+
+#, fuzzy
+#~ msgid "nomeolvides"
+#~ msgstr "Nomeolvides"
