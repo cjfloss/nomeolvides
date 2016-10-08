@@ -108,7 +108,34 @@ nomeolvides_LDFLAGS += -mwindows
 endif
 
 EXTRA_DIST = 	$(ui_DATA) \
-		app-menu.ui
+		nomeolvides.gresource.xml \
+		nomeolvides-app-menu.ui \
+		nomeolvides-dialog-hecho-lista-agregar.ui \
+		nomeolvides-dialog-hecho-borrar.ui \
+		nomeolvides-dialog-hecho.ui \
+		nomeolvides-boton.ui \
+		nomeolvides-preferencias-base.ui \
+		nomeolvides-headerbar.ui \
+		nomeolvides-toolbar.ui \
+		nomeolvides-portada.ui \
+		nomeolvides-interfaz-principal.ui \
+		nomeolvides-notebook-anios-listas.ui \
+		nomeolvides-dialog-hechos-importar.ui \
+		nomeolvides-selector-fecha.ui \
+		nomeolvides-treeview-hechos.ui \
+		nomeolvides-treeview-base.ui \
+		nomeolvides-popover-base.ui \
+		nomeolvides-popover-base-borrar.ui \
+		nomeolvides-popover-coleccion-agregar.ui \
+		nomeolvides-popover-coleccion-editar.ui \
+		nomeolvides-popover-lista-agregar.ui \
+		nomeolvides-popover-lista-editar.ui \
+		nomeolvides-treeview-colecciones.ui \
+		nomeolvides-treeview-anios.ui \
+		nomeolvides-stack-hechos-dialog.ui \
+		nomeolvides-ventana-principal.ui \
+		$(NULL)
+
 
 # Remove ui directory on uninstall
 uninstall-local:

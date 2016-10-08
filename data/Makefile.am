@@ -27,7 +27,7 @@ EXTRA_DIST = \
 CLEANFILES = \
 	$(desktop_DATA) \
 	$(desktop_in_files) \
-	$(appdata_DATA) \
+        $(appstream_XML) \
 	$(NULL)
 
 DISTCLEANFILES = \
