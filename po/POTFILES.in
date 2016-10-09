@@ -23,7 +23,6 @@ src/nomeolvides-popover-lista-borrar.vala
 src/nomeolvides-configuracion.vala
 src/nomeolvides-app.vala
 src/nomeolvides-dialog-hecho-lista-agregar.vala
-src/nomeolvides-resources.c
 src/nomeolvides-treeview-anios.ui
 src/nomeolvides-dialog-hechos-importar.ui
 src/nomeolvides-app-menu.ui

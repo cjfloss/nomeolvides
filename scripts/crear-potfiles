@@ -7,7 +7,6 @@ make distclean
 make
 
 find . -name *.vala -exec grep -l '_(' {} \; 2> /dev/null > po/POTFILES.in
-find . -name *.c -exec grep -l '_(' {} \; 2> /dev/null >> po/POTFILES.in
 find . -name *.ui -exec grep -l 'translatable="yes"' {} \; 2> /dev/null >> po/POTFILES.in
 find . -name *desktop.in.in >> po/POTFILES.in
 find . -name *.appdata.xml.in >> po/POTFILES.in
