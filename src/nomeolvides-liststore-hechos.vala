@@ -100,7 +100,7 @@ public class Nomeolvides.ListStoreHechos : Gtk.ListStore {
 	}
 
 	public void eliminar (TreeIter iter, Hecho a_eliminar ) {
-		this.remove (iter);
+		this.remove (ref iter);
 	}
 
 	private void eliminar_sobrantes ( ) {
@@ -115,7 +115,7 @@ public class Nomeolvides.ListStoreHechos : Gtk.ListStore {
 				hecho = (Hecho) value_hecho;
 
 				if ( this.sobra ( hecho )) {
-					this.remove (iter);
+					this.remove (ref iter);
 					flag = this.get_iter_first ( out iter );
 				} else {
 					flag = this.iter_next ( ref iter );

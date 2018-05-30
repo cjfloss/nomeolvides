@@ -578,7 +578,8 @@ public class Nomeolvides.Sqlite3 : Nomeolvides.BaseDeDatos, Object {
 				case Sqlite.DONE:
 					break;
 				case Sqlite.ROW:
-					anios.append_val( int.parse (stmt.column_text (0)) );					
+					int val = int.parse(stmt.column_text (0));
+					anios.append_val(val);
 					break;
 				default:
 					print (_("Error parsing lists"));

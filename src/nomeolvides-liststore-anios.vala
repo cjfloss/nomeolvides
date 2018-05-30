@@ -98,7 +98,7 @@ public class Nomeolvides.ListStoreAnios : Gtk.ListStore {
 			anio = (int) value_anio;
 
 			if ( this.sobra ( anio )) {
-				this.remove (iter);
+				this.remove (ref iter);
 				flag = this.get_iter_first ( out iter );
 			} else {
 				flag = this.iter_next ( ref iter );

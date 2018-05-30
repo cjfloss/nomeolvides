@@ -66,7 +66,7 @@ public class Nomeolvides.ListStoreBase : Gtk.ListStore {
 				this.get_value(iter, 2, out elemento_value);
 				elemento = elemento_value as Base;
 				if ( a_eliminar.hash == elemento.hash ) {
-					this.remove ( iter );
+					this.remove ( ref iter );
 					break;
 				}
 			}while (this.iter_next(ref iter));
