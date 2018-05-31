@@ -4,19 +4,15 @@ compiler: gcc
 
 arch:
   packages:
-    - gtk3
-    - xdg-utils
     - git
+    - meson
     - vala
-    - autogen
-    - libtool
-    - intltool
-    - autoconf-archive
-    - gobject-introspection
-    - appstream-glib
+    - gtk3
   script:
-    - ./autogen.sh
-    - make
+    - mkdir build
+    - meson build
+    - ninja -C build
+    - ninja -C build test
 
 script:
-  - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
+    - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
