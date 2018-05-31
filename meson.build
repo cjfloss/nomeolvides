@@ -18,7 +18,7 @@ deps = [
 
 gnome = import('gnome')
 
-#subdir('data')
+subdir('data')
 subdir('icon')
 subdir('config')
 subdir('ui')

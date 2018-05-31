@@ -68,7 +68,6 @@ nomeolvides_vala.stamp
 compile
 data/ar.com.softwareperonista.Nomeolvides.appdata.xml
 data/ar.com.softwareperonista.Nomeolvides.desktop
-data/ar.com.softwareperonista.Nomeolvides.desktop.in
 m4/
 po/.intltool-merge-cache
 po/POTFILES
