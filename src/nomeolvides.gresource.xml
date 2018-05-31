@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/ar/com/softwareperonista/nomeolvides">
-    <file>nomeolvides-app-menu.ui</file>
     <file>nomeolvides-dialog-hecho-lista-agregar.ui</file>
     <file>nomeolvides-dialog-hecho-borrar.ui</file>
     <file>nomeolvides-dialog-hecho.ui</file>

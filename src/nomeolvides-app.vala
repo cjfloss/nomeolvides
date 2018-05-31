@@ -55,6 +55,8 @@ public class Nomeolvides.App : Gtk.Application  {
 	}
 
 	public void create_app_menu () {
+		this.application_menu = new GLib.Menu ();
+
 		var action = new GLib.SimpleAction ("salir-app", null);
 		action.activate.connect (() => { salir_app (); });
 		this.add_action (action);
@@ -75,13 +77,23 @@ public class Nomeolvides.App : Gtk.Application  {
 		action.activate.connect (() => { preferencias_dialog ( false ); });
 		this.add_action (action);
 
-		var builder = new Builder ();
-	    try {
-		    builder.add_from_resource ( "/ar/com/softwareperonista/nomeolvides/nomeolvides-app-menu.ui");
-  			set_app_menu ((MenuModel)builder.get_object ("app-menu"));
-		} catch (GLib.Error e ) {
-    		error ("loading ui file: %s", e.message); 
-		}
+
+		var section = new GLib.Menu ();
+
+		section.append (_("_Preferences"), "app.preferencias-dialog");
+		application_menu.append_section (null, section);
+
+		section = new GLib.Menu ();
+		section.append (_("_Export Facts..."), "app.exportar-hechos");
+		section.append (_("_Import Facts..."), "app.importar-hechos");
+		application_menu.append_section (null, section);
+
+		section = new GLib.Menu ();
+		section.append (_("_About Nomeolvides"), "app.about");
+		section.append (_("_Quit"), "app.salir-app");
+		application_menu.append_section (null, section);
+
+		set_app_menu (application_menu);
 	}
 
 	private void connect_signals () {
